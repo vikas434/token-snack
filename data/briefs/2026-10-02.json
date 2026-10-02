@@ -1,0 +1,116 @@
+{
+  "date": "2026-10-02",
+  "notice": "On LinkedIn, Trending on X and the Watch Queue were skipped today. Everything below came from first-party changelogs and GitHub trending.",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Source unavailable this run."
+    },
+    {
+      "section": "TRENDING ON X",
+      "reason": "Source unavailable this run."
+    },
+    {
+      "section": "WATCH QUEUE",
+      "reason": "Source unavailable this run."
+    }
+  ],
+  "items": [
+    {
+      "slug": "codex-cli-instant-interrupt",
+      "section": "SHIPPED",
+      "title": "OpenAI ships Codex CLI 0.159.0 — instant interrupt lets you steer the agent mid-response",
+      "summary": "The new opt-in instant_interrupt setting lets you feed new input while Codex is still generating a response or mid-way through a long-running code-mode call, instead of waiting for the turn to finish or killing it outright. The same release compacts the welcome screen, lets you scroll the transcript while deciding on a plan, expands native Mermaid rendering, and adds thread-history pagination for app-server clients.",
+      "why": "The \"wait for the whole response or kill it\" choice has been the annoying part of every agentic CLI, and this is OpenAI quietly fixing that exact friction point in Codex.",
+      "actionLabel": "Try this",
+      "action": "Upgrade with npm install -g @openai/codex@latest, opt into instant_interrupt, and redirect it mid-task on a real change — then compare how that feels against interrupting Claude Code on the same kind of task.",
+      "permalink": "https://learn.chatgpt.com/docs/changelog",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "instant_interrupt is a genuine new capability, plus real workflow fixes — not a rehash or benchmark story."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched at eval time; the 0.159.0 entry dated Sept 29, 2026 matched verbatim."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted directly from the changelog text; nothing overstated."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Searched OpenAI's channel and the web for a first-party demo; none exists, so no Watch line."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A concrete pain-point fix for long agentic turns, one upgrade command away."
+        }
+      ]
+    },
+    {
+      "slug": "codegraph-code-knowledge-graph",
+      "section": "STUDY",
+      "title": "CodeGraph: an open-source, pre-indexed code knowledge graph for AI coding agents — 72.6k stars",
+      "summary": "CodeGraph runs a local Rust/tree-sitter parser to build a persisted knowledge graph of your codebase (symbols, calls, imports, inheritance) in SQLite, auto-syncing on file changes via OS-level file watchers. Agents query it through one MCP tool call instead of grepping file-by-file; across 7 real repos (VS Code, Django, Tokio, Excalidraw, OkHttp, Gin, Alamofire) the README reports 88% fewer tool calls, 53% faster, 62% fewer tokens, and 44% cheaper. Fully local, with integrations for Claude Code, Cursor, Codex CLI, and Gemini CLI.",
+      "why": "This is a production-grade, open-source version of almost exactly the semantic-code-graph problem — a graph of a codebase that an agent queries instead of re-deriving context from scratch every time.",
+      "actionLabel": "Try this",
+      "action": "Point it at one of your own repos per the README's quickstart, wire the generated MCP tool into Claude Code or Cursor, and compare how it explores a feature versus its usual grep-and-read pattern.",
+      "permalink": "https://github.com/colbymchenry/codegraph",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantial tool (Rust parser, SQLite+FTS5, file-watcher sync, MCP server) with a specific 7-repo benchmark."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched at eval time: 72.6k stars / 4.7k forks, README text matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Cross-checked against the README quotes."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete token/tool-call savings and wires into Claude Code or Cursor in ten minutes."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "OpenAI dots (always-on cloud agents)",
+      "stage": "step 3",
+      "reason": "Third day considered; still product-announcement-flavored with no benchmarks or first-party demo."
+    },
+    {
+      "title": "context-mode (mksglu/context-mode)",
+      "stage": "step 3",
+      "reason": "Strong, but lost the single STUDY slot to CodeGraph on relevance."
+    },
+    {
+      "title": "OpenAI Ultrafast tier / Pro 500",
+      "stage": "step 3",
+      "reason": "Pricing and plan-tier news."
+    },
+    {
+      "title": "DeepLearning.AI Data Engineering certificate",
+      "stage": "step 3",
+      "reason": "Too tangential to agentic AI / AI-driven SDLC."
+    }
+  ]
+}

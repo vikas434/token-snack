@@ -1,0 +1,213 @@
+{
+  "date": "2026-10-01",
+  "notice": "Trending on X and the Watch Queue were skipped today.",
+  "skipped": [
+    {
+      "section": "TRENDING ON X",
+      "reason": "Source unavailable this run."
+    },
+    {
+      "section": "WATCH QUEUE",
+      "reason": "Source unavailable this run."
+    }
+  ],
+  "items": [
+    {
+      "slug": "gemini-4-argon-1m-output",
+      "section": "SHIPPED",
+      "title": "Google ships Gemini 4 Argon — output token limit jumps from 64K to 1M",
+      "summary": "Argon is built for long-horizon professional work: software engineering, enterprise knowledge tasks, and vulnerability remediation. It sets a new state of the art on DeepSWE v1.1 (77.9%) and ranks #1 on AutomationBench (51.3%). The headline change is the output ceiling — up from 64K to 1M tokens. It's rolling out first to trusted cyber-defense partners via the Fairwind program, with broader API and Google AI Ultra access coming soon.",
+      "why": "A 16x jump in how much a model can output in one shot means fewer long coding or research tasks get chopped off mid-thought — a different kind of capability than just being smarter per token.",
+      "actionLabel": "Try this",
+      "action": "Not broadly available yet — check your Gemini API console or AI Ultra access over the next week, then point your longest-running agent task at it first.",
+      "permalink": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Output ceiling 64K to 1M plus new DeepSWE SOTA."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched before sending; figures matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Figures quoted from the page."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "No first-party demo exists yet; omitted."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Biggest story of the day, with a direct long-horizon coding implication."
+        }
+      ]
+    },
+    {
+      "slug": "gpt-6-1-sol-launch",
+      "section": "SHIPPED",
+      "title": "OpenAI ships GPT-6.1 Sol — matches flagship Astra on coding at one-fifth the cost",
+      "summary": "On DeepSWE v1.1, Sol matches GPT-6 Astra's coding performance at roughly a fifth of the per-task cost, lands within 2 points of Astra on OSWorld 2.0, and cached input drops to $0.10 per million tokens. Available via the API as gpt-6.1-sol and in ChatGPT Work and Codex.",
+      "why": "Near-flagship coding and computer-use capability becoming cheap enough to run constantly instead of sparingly changes how liberally you'd use an agent for routine work.",
+      "actionLabel": "Try this",
+      "action": "Point your next agentic coding task in Codex or the API at gpt-6.1-sol and compare — the cost difference is visible in one run.",
+      "permalink": "https://openai.com/index/introducing-gpt-6-1-sol/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete capability-per-cost deltas, real API availability."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched before sending."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Figures cross-checked."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Only third-party reaction videos; omitted."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Borderline cost-heavy, but directly actionable."
+        }
+      ]
+    },
+    {
+      "slug": "uber-ai-cost-context-knowledge-graph",
+      "section": "ON LINKEDIN",
+      "title": "Uber cut AI agent costs 52% while usage grew 10x — the lever was a 24M-node context knowledge graph",
+      "summary": "Uber split spend into users × sessions × turns × requests × tokens, protected adoption and attacked the agent's trajectory. The biggest lever: a 24M+ node graph linking 30+ internal systems that agents query instead of crawling the codebase cold — one question went from a wrong answer in 20 minutes to a correct one in 38 seconds.",
+      "why": "A production version of exactly the problem a semantic code knowledge graph is supposed to solve — agents stop re-deriving context and start querying a structure that already has it.",
+      "actionLabel": "Angle for you",
+      "action": "Sketch what a queryable graph of your own services, PRs, and incident history would look like, and where an agent currently wastes tokens rediscovering that context.",
+      "permalink": "https://www.linkedin.com/posts/rholmes84_ubers-cto-famously-admitted-that-earlier-share-7509959359389384705-vpGK/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Specific tactics and production numbers."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Verified by direct navigation."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted against the full post."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A production example of agents querying a context graph instead of re-deriving context."
+        }
+      ]
+    },
+    {
+      "slug": "callpad-agentic-eval-harness",
+      "section": "ON LINKEDIN",
+      "title": "CallPad's agents write and run their own evals against the live product — booking rate went from 35% to 65%",
+      "summary": "Every call their AI receptionist gets wrong becomes a permanent regression test: agents write evals from live failures, replay them against the deployed system, and score with an LLM judge plus deterministic checks before a person merges.",
+      "why": "A concrete blueprint for making sure an agent's production mistake can never silently happen again — without a human hand-writing the test.",
+      "actionLabel": "Angle for you",
+      "action": "Lift the pattern of agents generating eval cases from real failures and replaying them against the real system — not mocks — for any pipeline you gate merges on.",
+      "permalink": "https://www.linkedin.com/posts/k-sean-scalabrini-1a220266_callpad-agenticai-voiceai-ugcPost-7511090697714851840-cuYL/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete architecture with a measured outcome."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Verified by direct navigation."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted against the post."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Short, immediately applicable pattern."
+        }
+      ]
+    },
+    {
+      "slug": "openrig-claude-code-codex-harness",
+      "section": "STUDY",
+      "title": "OpenRig: a multi-agent harness that runs Claude Code and Codex together as one team",
+      "summary": "Define a team in YAML, boot it with one command, and OpenRig manages persistent identity, shared context, and session coordination across Claude Code and Codex agents — including a \"Claude owner + Codex checker\" pair.",
+      "why": "Having a second, differently-trained model check Claude Code's own diffs is a cheap way to catch the blind spots a single model has about its own output.",
+      "actionLabel": "Try this",
+      "action": "npx @openrig/cli init in a throwaway repo and stand up a Claude-owner / Codex-checker pod — ten minutes to see whether the second opinion catches anything.",
+      "permalink": "https://github.com/mvschwarz/openrig",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Maintained multi-agent harness, not a wrapper."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched: 3.2k stars, 219 forks."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Checked against the README."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Pairs two widely used coding agents with a 10-minute setup."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "OpenAI dots",
+      "stage": "step 3",
+      "reason": "Product-announcement-flavored; lost to Argon and Sol."
+    },
+    {
+      "title": "Cursor Rollouts + Security Review",
+      "stage": "step 3",
+      "reason": "Already sent Sept 30."
+    }
+  ]
+}
