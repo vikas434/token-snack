@@ -3,7 +3,12 @@ name: Build and deploy site
 on:
   push:
     branches: [main]
-    paths: ["data/**", "scripts/**", "assets/**", ".github/workflows/pages.yml"]
+    paths:
+      - "data/**"
+      - "scripts/**"
+      - "assets/**"
+      - "README.md"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -25,8 +30,10 @@ jobs:
           python-version: "3.12"
       - id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Validate and build
-        run: python3 scripts/build.py
+        run: python3 scripts/build.py --check && python3 scripts/build.py
         env:
           SITE_URL: https://token-snack.in
       - uses: actions/upload-pages-artifact@v3
