@@ -1,20 +1,5 @@
 {
   "date": "2026-10-02",
-  "notice": "On LinkedIn, Trending on X and the Watch Queue were skipped today. Everything below came from first-party changelogs and GitHub trending.",
-  "skipped": [
-    {
-      "section": "ON LINKEDIN",
-      "reason": "Source unavailable this run."
-    },
-    {
-      "section": "TRENDING ON X",
-      "reason": "Source unavailable this run."
-    },
-    {
-      "section": "WATCH QUEUE",
-      "reason": "Source unavailable this run."
-    }
-  ],
   "items": [
     {
       "slug": "codex-cli-instant-interrupt",
@@ -87,6 +72,191 @@
           "check": "Worth the time",
           "result": "PASS",
           "reason": "Concrete token/tool-call savings and wires into Claude Code or Cursor in ten minutes."
+        }
+      ]
+    },
+    {
+      "slug": "cursor-glm-5-3",
+      "section": "TRENDING ON X",
+      "title": "Cursor adds GLM 5.3 and GLM 5.3 Flash — the top-scoring open-weight model on CursorBench 4.0",
+      "summary": "Cursor's own account posted that GLM 5.3 and GLM 5.3 Flash are now selectable in Cursor's model picker, with GLM 5.3 Max topping Cursor's own CursorBench 4.0 leaderboard among open-weight models — scoring close to Opus 5.5 and Sonnet 5.5 in Cursor's own chart, at a noticeably lower cost per task.",
+      "why": "An open-weight model you can switch to today is now matching frontier-model scores on Cursor's own benchmark at a fraction of the cost.",
+      "actionLabel": "Angle for you",
+      "action": "Open Cursor's model picker, switch to GLM 5.3 (or GLM 5.3 Flash for lighter tasks) on your next session, and compare cost and quality against Sonnet 5.5 or Opus 5.5 on the same task.",
+      "permalink": "https://x.com/cursor_ai/status/2105787358557999585",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "An open-weight model newly matching frontier scores on a named benchmark, not a routine pricing post."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the post at eval time; the benchmark chart and model names matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Benchmark figures drawn directly from Cursor's own chart in the post."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item; no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A concrete, low-effort model swap to test on the next agentic session."
+        }
+      ]
+    },
+    {
+      "slug": "uber-mcp-gateway",
+      "section": "ON LINKEDIN",
+      "title": "Uber's engineering team details MCP Gateway — the platform routing 800+ MCP servers and 5,000+ tools",
+      "summary": "Uber consolidated its fragmented, team-by-team MCP integrations into one gateway: a Registry (control plane) plus Proxy Gateway (data plane) that auto-discovers existing HTTP/gRPC/TChannel APIs via an automated crawler workflow, generates MCP tool schemas with an LLM, and keeps every tool disabled until its owning team explicitly reviews and enables it.",
+      "why": "This is what MCP at scale actually looks like once you're past a handful of hand-wired tools — discovery, token-cost control, and who's allowed to turn a tool on all become real engineering problems.",
+      "actionLabel": "Angle for you",
+      "action": "If you're exposing any of your own services to agents, skim the post's sections on discovery, token cost, and installation — the same three problems show up fast past a handful of tools.",
+      "permalink": "https://www.linkedin.com/posts/a-great-spotlight-for-our-uber-engineering-share-7511484785144324097-wYGt/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A real engineering write-up on MCP-at-scale problems (discovery, token cost, governance), not a vendor pitch."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the post at eval time; architecture details matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Registry/Proxy Gateway split and auto-discovery details drawn from the post itself."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item; no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to exposing services as MCP tools at any scale."
+        }
+      ]
+    },
+    {
+      "slug": "stripe-tempo-agent-payments",
+      "section": "ON LINKEDIN",
+      "title": "Stripe's live protocol for AI agents to pay for things, explained with real transaction numbers",
+      "summary": "A write-up from a session with the Stripe and Tempo team walks through MPP (Machine Payments Protocol): a server responds HTTP 402 with payment terms, the agent authorizes via a payment header, and gets a receipt back — no checkout form. It's been live since March 2026 and had roughly 30,000 production transactions by August, used for both micropayment sessions and per-item purchases.",
+      "why": "A working HTTP-level protocol for machine-to-machine payments already processing real transactions, with commenters already debating the hard part: proving who authorized a payment.",
+      "actionLabel": "Angle for you",
+      "action": "If any side project of yours has an agent doing anything transactional, read the authorization/receipt flow in the linked deep-dive — it's a clean reference for building your own agent-authorization trail, payment or not.",
+      "permalink": "https://www.linkedin.com/posts/alexxubyte_how-ai-agents-pay-inside-stripe-and-tempo-share-7511073606425055233-Sf1X/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A working, named protocol with real production transaction volume, not a concept pitch."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the post and the linked deep-dive at eval time."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Corrected the framing after fact-checking: the protocol has been live since March 2026, not newly launched, so 'new protocol' language was dropped."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item; no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A clean, concrete reference for agent-authorization trails."
+        }
+      ]
+    },
+    {
+      "slug": "watch-cole-medin-jev-ai-coding",
+      "section": "WATCH QUEUE",
+      "title": "Cole Medin: The BEST Jev Use Cases for AI Coding (Absolute Game Changers)",
+      "summary": "Four concrete ways Cole Medin uses the fast, cheap Jev decision-model alongside his coding agent: as a security-hook guard before risky actions, for automated gameplay testing, for real browser-based testing, and to classify incoming GitHub issues and PRs so his workflows pick the right steps and model.",
+      "why": "A working engineer showing exactly where a fast, cheap decision model earns its keep around an LLM coding agent, instead of another hype video.",
+      "actionLabel": "Worth the drive",
+      "action": "17 minutes — worth it for the security-hooks and workflow-classification segments if you want a concrete pattern for gating or routing your own agent's actions.",
+      "permalink": "https://www.youtube.com/watch?v=qwnJJMNGwgY",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Four distinct, concrete use cases for a decision model paired with a coding agent, not generic hype."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the video page at eval time; live and public."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the video's own description and chapter markers; no transcript tool was available this run, substance verified via description, chapters, and comments."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "A hands-on walkthrough format, confirmed via description and chapters."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "17 minutes with a concrete, adaptable gating/routing pattern."
+        }
+      ]
+    },
+    {
+      "slug": "watch-simon-scrapes-skills-outdated",
+      "section": "WATCH QUEUE",
+      "title": "Simon Scrapes: Everything You Know About Skills IS OUTDATED",
+      "summary": "Seven specific, current best practices for writing agent skills that hold up — content lists, degrees of freedom in instructions, testing on every model before shipping, nested references, checklists, self-correction loops, and dependency handling — tied back to the latest skill-building documentation.",
+      "why": "If a skill you wrote has started ignoring instructions or behaving inconsistently, this is a direct, current explanation of why.",
+      "actionLabel": "Worth the drive",
+      "action": "13 minutes — if you maintain any agent skills, worth an audit pass against these seven rules afterward.",
+      "permalink": "https://www.youtube.com/watch?v=e7TY56-yIvM",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Seven specific, current practices tied to updated documentation, not a rehash of basics."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the video page at eval time; live and public."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the video's own description and chapter markers; no transcript tool was available this run, substance verified via description, chapters, and comments."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "An explainer/walkthrough format, confirmed via description and chapters."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "13 minutes with a direct audit checklist for maintained skills."
         }
       ]
     }
