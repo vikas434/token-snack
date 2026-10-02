@@ -32,7 +32,12 @@ OUT = ROOT / "_site"
 SITE_TITLE = "Token Snack"
 SITE_BYLINE = "by Vikas"
 SITE_NAME = f"{SITE_TITLE} {SITE_BYLINE}"
-SITE_DESCRIPTION = "A short, eval-gated daily brief on AI tooling for engineers."
+# Name meaning: a small daily bite of AI tooling — so you spend tokens on what matters.
+SITE_TAGLINE = "A daily snack for token optimization"
+SITE_DESCRIPTION = (
+    "Token Snack by Vikas — a daily snack for token optimization. "
+    "Short, eval-gated AI tooling picks for engineers who want signal, not slop."
+)
 # Prefer SITE_URL from the environment; otherwise the live Vercel URL.
 SITE_URL = (os.environ.get("SITE_URL") or "https://token-snack.vercel.app").rstrip("/")
 
@@ -189,14 +194,17 @@ def page(
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="{up}index.html"><span class="dot"></span>{esc(SITE_TITLE)} <span class="byline">{esc(SITE_BYLINE)}</span></a>
+  <div class="brand-block">
+    <a class="brand" href="{up}index.html"><span class="dot"></span>{esc(SITE_TITLE)} <span class="byline">{esc(SITE_BYLINE)}</span></a>
+    <p class="tagline">{esc(SITE_TAGLINE)}</p>
+  </div>
   <nav><a href="{up}archive/index.html">Archive</a><a href="{up}feed.xml">RSS</a>
   <button class="theme" type="button" aria-label="Toggle dark mode" onclick="var r=document.documentElement,n=(r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark'?'light':'dark';r.dataset.theme=n;try{{localStorage.setItem('ddai-theme',n)}}catch(e){{}}">◐</button></nav>
 </header>
 <main class="wrap">
 {body}
 </main>
-<footer class="foot">{esc(SITE_NAME)} — picked, cut and eval-checked daily. Every link is first-party.</footer>
+<footer class="foot">{esc(SITE_NAME)} — {esc(SITE_TAGLINE)}. Picked, cut and eval-checked daily. Every link is first-party.</footer>
 </body>
 </html>
 """
@@ -261,6 +269,7 @@ def render_brief(
     out = [
         '<header class="masthead">',
         f'<p class="kicker">{esc(SITE_NAME)}</p>',
+        f'<p class="masthead-tagline">{esc(SITE_TAGLINE)}</p>',
         f'<h1>{esc(pretty_date(b["date"]))}</h1>',
         f'<p class="edition-meta">Edition {edition} of {total_editions} · {esc(pick_count_label(n))}</p>',
         '<hr class="masthead-rule">',
@@ -330,7 +339,9 @@ def render_archive(briefs: list[dict]) -> str:
             f'<span class="chips">{chips}</span></a><ul class="tops">{tops}</ul></li>'
         )
     return (
-        f'<p class="kicker">{esc(SITE_NAME)}</p><h1>Every brief</h1>'
+        f'<p class="kicker">{esc(SITE_NAME)}</p>'
+        f'<p class="masthead-tagline">{esc(SITE_TAGLINE)}</p>'
+        f'<h1>Every brief</h1>'
         f'<ul class="days">{"".join(rows)}</ul>'
     )
 
@@ -364,6 +375,8 @@ def render_feed(briefs: list[dict]) -> str:
 def render_markdown(b: dict, *, edition: int, total_editions: int) -> str:
     lines = [
         f"# {SITE_NAME}",
+        "",
+        f"*{SITE_TAGLINE}*",
         "",
         f"**{pretty_date(b['date'])}** · Edition {edition} of {total_editions} · "
         f"{pick_count_label(len(b['items']))}",

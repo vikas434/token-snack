@@ -1,6 +1,14 @@
 # Token Snack by Vikas
 
+**A daily snack for token optimization.**
+
 **Read every day:** [https://token-snack.vercel.app/](https://token-snack.vercel.app/)
+
+## Why the name?
+
+LLMs bill in tokens. Attention is a token too. Most “AI news” burns both — long feeds, hype, and tools you will never open.
+
+**Token Snack** is a small daily bite: a few verified AI tooling picks that help you code smarter and spend tokens (and time) on what actually matters. Snack-sized. Eval-gated. Not a buffet of slop.
 
 ## What this is
 
@@ -38,24 +46,60 @@ An empty section (or even an empty day) is fine. Better nothing than filler.
 
 Browse the archive, subscribe via RSS, or open a dated page such as [token-snack.vercel.app/2026-10-02/](https://token-snack.vercel.app/2026-10-02/).
 
-## For builders of this repo
+## Installation (run the site locally)
 
-Public content only. Every day one JSON file is written; Vercel (and optionally GitHub Actions) builds the static site from it. The live site is [https://token-snack.vercel.app/](https://token-snack.vercel.app/).
+You need **Python 3.12+** (no pip packages required) and **git**.
+
+```bash
+git clone https://github.com/vikas434/token-snack.git
+cd token-snack
+python3 scripts/build.py --check          # validate all briefs
+python3 scripts/build.py                  # write HTML into _site/
+python3 -m http.server -d _site 8000      # open http://127.0.0.1:8000
+```
+
+The live site is built the same way on [Vercel](https://token-snack.vercel.app/) from [`vercel.json`](vercel.json) (`buildCommand` → `_site`).
+
+## Contribution guide
+
+Thank you for wanting to help. Two paths:
+
+### 1. Improve the brief (readers)
+
+The daily picks are curated through a private eval pipeline. The best contribution is **feedback** on what was useful or not, and what you wish the brief covered:
+
+**[Feedback form →](https://claude.ai/code/artifact/0623b2e2-d9bb-417a-b18d-ce1d1ee61fb4)**
+
+Please do **not** open PRs that only add random news links to `data/briefs/` without going through that quality bar. Empty days and hard cuts are intentional.
+
+### 2. Improve the website (engineers)
+
+PRs are welcome for the **public renderer and docs**, for example:
+
+- Clearer layout, accessibility, or print styles in `assets/style.css`
+- Safer validation or clearer errors in `scripts/build.py`
+- README / schema docs that help new readers
+- Bug fixes in RSS, archive, markdown, or standalone HTML output
+
+Suggested flow:
+
+1. Fork the repo and create a branch.
+2. Run `python3 scripts/build.py --check` and a local preview before you open a PR.
+3. Keep changes focused. Do not commit `_site/` (it is gitignored and rebuilt on deploy).
+4. Never add emails, API keys, private Google / Claude links, or personal notes to public brief JSON — the build will reject them.
+5. Open a PR against `main` with a short note on *why* the change helps readers.
+
+Repo layout:
 
 ```
-data/briefs/YYYY-MM-DD.json   ← daily public brief
+data/briefs/YYYY-MM-DD.json   ← daily public brief (from the private pipeline)
 scripts/build.py              ← validate + render _site/
 assets/style.css
 .github/workflows/pages.yml
 vercel.json
 ```
 
-```bash
-python3 scripts/build.py --check
-python3 scripts/build.py && python3 -m http.server -d _site 8000
-```
-
-### Brief schema
+### Brief schema (for contributors)
 
 ```jsonc
 {
