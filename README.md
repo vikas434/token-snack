@@ -1,13 +1,28 @@
 # Token Snack by Vikas
 
-A short, eval-gated daily brief on AI tooling for engineers.
+[Token Snack](https://token-snack.in) is a daily AI tooling brief curated by Vikas for engineers who ship with agents, IDEs, and model APIs — and who would rather spend five minutes on signal than an hour on hype.
 
-**Live site:** https://token-snack.in  
-**Repo:** https://github.com/vikas434/token-snack
+AI tooling moves every day: new CLI capabilities, open-source harnesses, workflow tips, and “listen while driving” videos. Most of that stream is noise — pricing posts, benchmark theater, and aggregator links. Token Snack cuts hard, keeps only first-party permalinks, and runs a five-check eval gate before anything reaches the page. An empty day is a valid outcome. That discipline is the product.
 
-Every day an automated job gathers candidates from public sources, cuts hard,
-runs a 5-check eval gate on each survivor, then commits one JSON file here —
-the repo holds only public brief content and the code that renders it. GitHub Actions validates it, builds the static site and deploys it to Pages.
+**Read the latest edition:** [https://token-snack.in](https://token-snack.in)
+
+## Why it matters
+
+- **Depth over volume.** A few verified picks beat a long digest. Ceilings (not quotas) keep the brief short enough to finish after work.
+- **Actionable, not ornamental.** Every item includes why it matters and a concrete next step — try this, angle for you, or worth the drive.
+- **Eval before publish.** Meaningful, link works, summary accurate, watch material, worth his time — any FAIL drops the item.
+- **Public and private stay separate.** This repo and the live site hold only public brief data. No emails, secrets, or private links.
+
+## What you get on the site
+
+- Daily editions at [token-snack.in](https://token-snack.in) and dated permalinks such as [token-snack.in/2026-10-02/](https://token-snack.in/2026-10-02/)
+- Sections: Shipped, On LinkedIn, Trending on X, Study, Watch Queue
+- Archive of past briefs, RSS, Markdown and standalone HTML twins per day
+- Dark / light theme and a print-friendly layout
+
+## How the repo works
+
+Every day the curation job writes one public JSON file. GitHub Actions validates it, builds the static site, and deploys to Pages at [token-snack.in](https://token-snack.in).
 
 ```
 data/briefs/YYYY-MM-DD.json   ← the only thing the routine writes each day
@@ -16,8 +31,17 @@ assets/style.css
 .github/workflows/pages.yml   ← build + deploy on every push to main
 ```
 
-Local preview: `python3 scripts/build.py && python3 -m http.server -d _site 8000`  
-Validate only: `python3 scripts/build.py --check`
+Local preview:
+
+```bash
+python3 scripts/build.py && python3 -m http.server -d _site 8000
+```
+
+Validate only:
+
+```bash
+python3 scripts/build.py --check
+```
 
 ## Brief schema
 
@@ -47,14 +71,14 @@ Validate only: `python3 scripts/build.py --check`
 
 ## Public data only
 
-This repository and https://token-snack.in are public. The build fails (and nothing deploys) if a brief is malformed, has keys outside this schema, a URL is not `https://`, or the file contains anything that looks private:
+This repository and [token-snack.in](https://token-snack.in) are public. The build fails (and nothing deploys) if a brief is malformed, has keys outside this schema, a URL is not `https://`, or the file contains anything that looks private:
 
 - Email addresses
 - Phone numbers
 - Private links (`claude.ai`, Google Docs / Drive / Gmail)
 - API-key or token shapes (`sk-…`, `ghp_…`, `github_pat_…`, `AKIA…`, `AIza…`, `xox…`, bearer tokens, `api_key=`)
 
-Eval reasons are included in that scan. Keep them to one public line. Never paste feedback notes, inbox contents, or secrets into the JSON. The site byline "by Vikas" lives in the HTML template only — not inside brief fields.
+Eval reasons are included in that scan. Keep them to one public line. Never paste feedback notes, inbox contents, or secrets into the JSON. The site byline “by Vikas” lives in the HTML template only — not inside brief fields.
 
 ## Build outputs
 
@@ -71,13 +95,13 @@ Eval reasons are included in that scan. Keep them to one public line. Never past
 | `CNAME` | Custom domain (`token-snack.in`) |
 | `assets/style.css` | Styles |
 
-## Custom domain (token-snack.in)
+## Custom domain
 
-GitHub Pages serves the site. The registrar only holds DNS.
+GitHub Pages serves the site. The registrar only holds DNS for [token-snack.in](https://token-snack.in).
 
-1. Push this repo to `main` on https://github.com/vikas434/token-snack (GitHub Actions builds `_site/` including `CNAME`).
+1. Push to `main` on https://github.com/vikas434/token-snack (Actions builds `_site/` including `CNAME`).
 2. In the repo: **Settings → Pages**. Source: GitHub Actions. Custom domain: `token-snack.in`. Enable **Enforce HTTPS** after the certificate appears.
-3. At the registrar for `token-snack.in`, set:
+3. At the registrar, set:
 
 | Host | Type | Value |
 |------|------|-------|
@@ -87,4 +111,4 @@ GitHub Pages serves the site. The registrar only holds DNS.
 | `@` | A | `185.199.111.153` |
 | `www` | CNAME | `vikas434.github.io` |
 
-4. Wait for DNS, then open https://token-snack.in.
+4. Wait for DNS, then open [https://token-snack.in](https://token-snack.in).
