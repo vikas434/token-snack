@@ -1,121 +1,84 @@
 # Token Snack by Vikas
 
-[Token Snack](https://token-snack.in) is a daily AI tooling brief curated by Vikas for engineers who ship with agents, IDEs, and model APIs — and who would rather spend five minutes on signal than an hour on hype.
+**Read every day:** [https://token-snack.vercel.app/](https://token-snack.vercel.app/)
 
-AI tooling moves every day: new CLI capabilities, open-source harnesses, workflow tips, and “listen while driving” videos. Most of that stream is noise — pricing posts, benchmark theater, and aggregator links. Token Snack cuts hard, keeps only first-party permalinks, and runs a five-check eval gate before anything reaches the page. An empty day is a valid outcome. That discipline is the product.
+## What this is
 
-**Read the latest edition:** [https://token-snack.in](https://token-snack.in)
+Token Snack is a short daily brief on what is going on in AI tooling — the kind of updates that help a software engineer code faster, stay current, and actually use new tools the same week they ship.
 
-## Why it matters
+I started it for myself. I am a software engineer, a PhD research scholar (working on ideas around semantic code knowledge graphs), and an entrepreneur at heart who wants to build real things. Every day there is too much news: new models, new CLIs, LinkedIn threads, YouTube videos, research notes. I needed one place that answers a simple question:
 
-- **Depth over volume.** A few verified picks beat a long digest. Ceilings (not quotas) keep the brief short enough to finish after work.
-- **Actionable, not ornamental.** Every item includes why it matters and a concrete next step — try this, angle for you, or worth the drive.
-- **Eval before publish.** Meaningful, link works, summary accurate, watch material, worth his time — any FAIL drops the item.
-- **Public and private stay separate.** This repo and the live site hold only public brief data. No emails, secrets, or private links.
+> What changed today that can make my coding life easier — and what research or product work is worth my attention?
 
-## What you get on the site
+So I built a private pipeline that gathers candidates, cuts hard, and runs a serious evaluation before anything reaches me. I get a daily email. I mark things useful or not useful. That feedback makes the next day’s filter better. All of that eval and personal feedback lives in my own setup — it is not dumped into this public repo.
 
-- Daily editions at [token-snack.in](https://token-snack.in) and dated permalinks such as [token-snack.in/2026-10-02/](https://token-snack.in/2026-10-02/)
-- Sections: Shipped, On LinkedIn, Trending on X, Study, Watch Queue
-- Archive of past briefs, RSS, Markdown and standalone HTML twins per day
-- Dark / light theme and a print-friendly layout
+**What you see here is only the final, filtered result.** After that personal filtration, the brief that clears the bar is published on this website, every day, for anyone who wants the same help.
 
-## How the repo works
+This is not AI slop. Links are first-party. Claims are checked. Items that fail the eval do not make it. If you read Token Snack regularly, you should walk away knowing what is going on and what you can try today — not feeling buried in hype.
 
-Every day the curation job writes one public JSON file. GitHub Actions validates it, builds the static site, and deploys to Pages at [token-snack.in](https://token-snack.in).
+## Feedback
+
+I want this to be useful for you, not only for me. If something should be better — topics, length, format, sources — please tell me:
+
+**[Send feedback →](https://claude.ai/code/artifact/0623b2e2-d9bb-417a-b18d-ce1d1ee61fb4)**
+
+Like / dislike notes on items and general suggestions both help. Thank you for using Token Snack.
+
+## What you will find on the site
+
+Each day’s edition is short on purpose. Sections may include:
+
+- **Shipped** — real product or tooling changes you can try
+- **On LinkedIn** — concrete posts you can apply this week
+- **Trending on X** — signal with a clear “where do I use this” angle
+- **Study** — deeper tools or research worth a look (including open source)
+- **Watch Queue** — a couple of videos worth listening to while driving or commuting
+
+An empty section (or even an empty day) is fine. Better nothing than filler.
+
+Browse the archive, subscribe via RSS, or open a dated page such as [token-snack.vercel.app/2026-10-02/](https://token-snack.vercel.app/2026-10-02/).
+
+## For builders of this repo
+
+Public content only. Every day one JSON file is written; Vercel (and optionally GitHub Actions) builds the static site from it. The live site is [https://token-snack.vercel.app/](https://token-snack.vercel.app/).
 
 ```
-data/briefs/YYYY-MM-DD.json   ← the only thing the routine writes each day
-scripts/build.py              ← validates every brief + renders _site/ (no dependencies)
+data/briefs/YYYY-MM-DD.json   ← daily public brief
+scripts/build.py              ← validate + render _site/
 assets/style.css
-.github/workflows/pages.yml   ← build + deploy on every push to main
+.github/workflows/pages.yml
+vercel.json
 ```
-
-Local preview:
-
-```bash
-python3 scripts/build.py && python3 -m http.server -d _site 8000
-```
-
-Validate only:
 
 ```bash
 python3 scripts/build.py --check
+python3 scripts/build.py && python3 -m http.server -d _site 8000
 ```
 
-## Deploy (GitHub Pages + Vercel)
-
-The site is **not** a Node app. There is no root `index.html` in git — Python writes HTML into `_site/` (gitignored). That is why a bare Vercel import shows `NOT_FOUND` at https://token-snack.vercel.app/ until a build is configured.
-
-- **GitHub Pages** — Actions runs `scripts/build.py` and publishes `_site/` (custom domain [token-snack.in](https://token-snack.in)).
-- **Vercel** — [`vercel.json`](vercel.json) sets `buildCommand` to the same Python build and `outputDirectory` to `_site`. In the Vercel project, Framework Preset should be **Other**, Output Directory **`_site`**.
-
-## Brief schema
+### Brief schema
 
 ```jsonc
 {
-  "date": "2026-10-02",                 // must equal the file name
-  "notice": "optional one-line note shown at the top (e.g. sections skipped)",
+  "date": "2026-10-02",
+  "notice": "optional",
   "skipped": [{ "section": "WATCH QUEUE", "reason": "…" }],
-  "items": [                            // [] on a "nothing cleared the bar" day
-    {
-      "slug": "codegraph-code-knowledge-graph",   // unique, lowercase-kebab
-      "section": "SHIPPED | ON LINKEDIN | TRENDING ON X | STUDY | WATCH QUEUE",
-      "title": "…",
-      "summary": "optional — omit the key when the title is enough",
-      "why": "one plain-English sentence",
-      "actionLabel": "Try this | Angle for you | Worth the drive",
-      "action": "one concrete ≤10-minute step",
-      "permalink": "https://… (first-party only)",
-      "image": "https://…",                       // optional card image
-      "watch": { "label": "…", "url": "https://…" },   // optional, SHIPPED demo video
-      "eval": [{ "check": "Meaningful", "result": "PASS | FAIL | N/A", "reason": "…" }]
-    }
-  ],
+  "items": [{
+    "slug": "unique-kebab",
+    "section": "SHIPPED | ON LINKEDIN | TRENDING ON X | STUDY | WATCH QUEUE",
+    "title": "…",
+    "summary": "optional",
+    "why": "one plain sentence",
+    "actionLabel": "Try this | Angle for you | Worth the drive",
+    "action": "one concrete step",
+    "permalink": "https://…",
+    "image": "https://…",
+    "watch": { "label": "…", "url": "https://…" },
+    "eval": [{ "check": "Meaningful", "result": "PASS | FAIL | N/A", "reason": "…" }]
+  }],
   "dropped": [{ "title": "…", "stage": "step 3 | eval gate", "reason": "…" }]
 }
 ```
 
-## Public data only
+### Public data only
 
-This repository and [token-snack.in](https://token-snack.in) are public. The build fails (and nothing deploys) if a brief is malformed, has keys outside this schema, a URL is not `https://`, or the file contains anything that looks private:
-
-- Email addresses
-- Phone numbers
-- Private links (`claude.ai`, Google Docs / Drive / Gmail)
-- API-key or token shapes (`sk-…`, `ghp_…`, `github_pat_…`, `AKIA…`, `AIza…`, `xox…`, bearer tokens, `api_key=`)
-
-Eval reasons are included in that scan. Keep them to one public line. Never paste feedback notes, inbox contents, or secrets into the JSON. The site byline “by Vikas” lives in the HTML template only — not inside brief fields.
-
-## Build outputs
-
-`python3 scripts/build.py` writes `_site/` (gitignored):
-
-| Path | Purpose |
-|------|---------|
-| `index.html` | Latest edition |
-| `YYYY-MM-DD/index.html` | Permalink for that day |
-| `YYYY-MM-DD.md` | Markdown twin of the edition |
-| `YYYY-MM-DD-standalone.html` | Same edition with CSS inlined |
-| `archive/index.html` | All days |
-| `feed.xml` | RSS |
-| `CNAME` | Custom domain (`token-snack.in`) |
-| `assets/style.css` | Styles |
-
-## Custom domain
-
-GitHub Pages serves the site. The registrar only holds DNS for [token-snack.in](https://token-snack.in).
-
-1. Push to `main` on https://github.com/vikas434/token-snack (Actions builds `_site/` including `CNAME`).
-2. In the repo: **Settings → Pages**. Source: GitHub Actions. Custom domain: `token-snack.in`. Enable **Enforce HTTPS** after the certificate appears.
-3. At the registrar, set:
-
-| Host | Type | Value |
-|------|------|-------|
-| `@` | A | `185.199.108.153` |
-| `@` | A | `185.199.109.153` |
-| `@` | A | `185.199.110.153` |
-| `@` | A | `185.199.111.153` |
-| `www` | CNAME | `vikas434.github.io` |
-
-4. Wait for DNS, then open [https://token-snack.in](https://token-snack.in).
+This repo and the site are public. The build fails if a brief contains emails, phone numbers, private Google / `claude.ai` links, or API-key-shaped secrets. Keep eval reasons short and public. Personal feedback stays in the private pipeline — not in these files.

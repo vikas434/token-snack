@@ -12,7 +12,6 @@ Output:
   _site/YYYY-MM-DD-standalone.html inlined CSS edition
   _site/archive/index.html         list of all days
   _site/feed.xml                   RSS feed
-  _site/CNAME                      custom domain
   _site/assets/style.css
 No third-party dependencies.
 """
@@ -34,9 +33,8 @@ SITE_TITLE = "Token Snack"
 SITE_BYLINE = "by Vikas"
 SITE_NAME = f"{SITE_TITLE} {SITE_BYLINE}"
 SITE_DESCRIPTION = "A short, eval-gated daily brief on AI tooling for engineers."
-CUSTOM_DOMAIN = "token-snack.in"
-# Prefer SITE_URL from the environment; otherwise the public custom domain.
-SITE_URL = (os.environ.get("SITE_URL") or f"https://{CUSTOM_DOMAIN}").rstrip("/")
+# Prefer SITE_URL from the environment; otherwise the live Vercel URL.
+SITE_URL = (os.environ.get("SITE_URL") or "https://token-snack.vercel.app").rstrip("/")
 
 SECTIONS = {  # order on the page, accent colour, card action label
     "SHIPPED": ("#1D9E75", "Try this"),
@@ -425,7 +423,6 @@ def main(argv: list[str]) -> int:
     (OUT / "assets").mkdir(parents=True)
     (OUT / "assets" / "style.css").write_text(css, encoding="utf-8")
     (OUT / ".nojekyll").write_text("")
-    (OUT / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
 
     chronological = sorted(b["date"] for b in briefs)
     total = len(chronological)

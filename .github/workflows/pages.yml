@@ -35,7 +35,7 @@ jobs:
       - name: Validate and build
         run: python3 scripts/build.py --check && python3 scripts/build.py
         env:
-          SITE_URL: https://token-snack.in
+          SITE_URL: https://token-snack.vercel.app
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
