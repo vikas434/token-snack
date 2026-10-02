@@ -293,8 +293,6 @@ def render_brief(
     n = len(b["items"])
     out = [
         '<header class="masthead">',
-        f'<p class="kicker">{esc(SITE_NAME)}</p>',
-        f'<p class="masthead-tagline">{esc(SITE_TAGLINE)}</p>',
         f'<h1>{esc(pretty_date(b["date"]))}</h1>',
         f'<p class="edition-meta">Edition {edition} of {total_editions} · {esc(pick_count_label(n))}</p>',
         '<hr class="masthead-rule">',
@@ -364,8 +362,6 @@ def render_archive(briefs: list[dict]) -> str:
             f'<span class="chips">{chips}</span></a><ul class="tops">{tops}</ul></li>'
         )
     return (
-        f'<p class="kicker">{esc(SITE_NAME)}</p>'
-        f'<p class="masthead-tagline">{esc(SITE_TAGLINE)}</p>'
         f'<h1>Every brief</h1>'
         f'<ul class="days">{"".join(rows)}</ul>'
     )

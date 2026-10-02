@@ -28,9 +28,9 @@ This is not AI slop. Links are first-party. Claims are checked. Items that fail 
 
 ## Feedback
 
-I want this to be useful for you, not only for me. If something should be better — topics, length, format, sources — please tell me:
+I want this to be useful for you, not only for me. If something should be better — topics, length, format, sources — please connect on LinkedIn and message me:
 
-**[Send feedback →](https://claude.ai/code/artifact/0623b2e2-d9bb-417a-b18d-ce1d1ee61fb4)**
+**[Connect on LinkedIn →](https://www.linkedin.com/in/vikas008/)**
 
 Like / dislike notes on items and general suggestions both help. Thank you for using Token Snack.
 
@@ -68,9 +68,9 @@ Thank you for wanting to help. Two paths:
 
 ### 1. Improve the brief (readers)
 
-The daily picks are curated through a private eval pipeline. The best contribution is **feedback** on what was useful or not, and what you wish the brief covered:
+The daily picks are curated through a private eval pipeline. The best contribution is **feedback** on what was useful or not, and what you wish the brief covered — connect on LinkedIn and message me:
 
-**[Feedback form →](https://claude.ai/code/artifact/0623b2e2-d9bb-417a-b18d-ce1d1ee61fb4)**
+**[Connect on LinkedIn →](https://www.linkedin.com/in/vikas008/)**
 
 Please do **not** open PRs that only add random news links to `data/briefs/` without going through that quality bar. Empty days and hard cuts are intentional.
 
