@@ -1,0 +1,7 @@
+{
+  "buildCommand": "python3 scripts/build.py --check && python3 scripts/build.py",
+  "outputDirectory": "_site",
+  "installCommand": "",
+  "framework": null,
+  "cleanUrls": true
+}

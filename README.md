@@ -43,6 +43,13 @@ Validate only:
 python3 scripts/build.py --check
 ```
 
+## Deploy (GitHub Pages + Vercel)
+
+The site is **not** a Node app. There is no root `index.html` in git — Python writes HTML into `_site/` (gitignored). That is why a bare Vercel import shows `NOT_FOUND` at https://token-snack.vercel.app/ until a build is configured.
+
+- **GitHub Pages** — Actions runs `scripts/build.py` and publishes `_site/` (custom domain [token-snack.in](https://token-snack.in)).
+- **Vercel** — [`vercel.json`](vercel.json) sets `buildCommand` to the same Python build and `outputDirectory` to `_site`. In the Vercel project, Framework Preset should be **Other**, Output Directory **`_site`**.
+
 ## Brief schema
 
 ```jsonc
