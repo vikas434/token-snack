@@ -33,6 +33,8 @@ a{color:var(--link)}
 .top nav a:hover{color:var(--text)}
 .theme{background:none;border:1px solid var(--border);color:var(--muted);width:30px;height:30px;cursor:pointer;font-size:17px;line-height:1}
 .wrap{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+.hero{margin:0 0 22px}
+.hero img{display:block;width:100%;height:auto;border:1px solid var(--border);border-radius:2px;background:#0a0a0a}
 .masthead{margin:8px 0 18px}
 .kicker{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--faint);margin:16px 0 4px}
 .masthead .kicker{margin-top:0}

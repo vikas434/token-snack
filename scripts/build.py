@@ -288,16 +288,28 @@ def render_brief(
     *,
     edition: int,
     total_editions: int,
+    show_hero: bool = False,
 ) -> str:
     up = "../" * depth
     n = len(b["items"])
-    out = [
-        '<header class="masthead">',
-        f'<h1>{esc(pretty_date(b["date"]))}</h1>',
-        f'<p class="edition-meta">Edition {edition} of {total_editions} · {esc(pick_count_label(n))}</p>',
-        '<hr class="masthead-rule">',
-        "</header>",
-    ]
+    out: list[str] = []
+    if show_hero:
+        out.append(
+            f'<figure class="hero">'
+            f'<img src="{up}assets/hero-banner.png" width="1024" height="537" '
+            f'alt="{esc(SITE_NAME)} — The daily AI tooling brief. '
+            f'Picked by an agent. Checked like an editor.">'
+            f"</figure>"
+        )
+    out.extend(
+        [
+            '<header class="masthead">',
+            f'<h1>{esc(pretty_date(b["date"]))}</h1>',
+            f'<p class="edition-meta">Edition {edition} of {total_editions} · {esc(pick_count_label(n))}</p>',
+            '<hr class="masthead-rule">',
+            "</header>",
+        ]
+    )
     if b.get("notice"):
         out.append(f'<p class="notice">{esc(b["notice"])}</p>')
     items = b["items"]
@@ -456,7 +468,7 @@ def main(argv: list[str]) -> int:
         shutil.rmtree(OUT)
     (OUT / "assets").mkdir(parents=True)
     (OUT / "assets" / "style.css").write_text(css, encoding="utf-8")
-    for name in ("logo.svg", "favicon.svg", "og-banner.jpg"):
+    for name in ("logo.svg", "favicon.svg", "og-banner.jpg", "hero-banner.png"):
         src = ROOT / "assets" / name
         if src.exists():
             shutil.copy(src, OUT / "assets" / name)
@@ -507,11 +519,19 @@ def main(argv: list[str]) -> int:
             (OUT / "index.html").write_text(
                 page(
                     f"{SITE_NAME} — {pretty_date(b['date'])}",
-                    render_brief(b, 0, prev_d, None, edition=edition, total_editions=total),
+                    render_brief(
+                        b,
+                        0,
+                        prev_d,
+                        None,
+                        edition=edition,
+                        total_editions=total,
+                        show_hero=True,
+                    ),
                     0,
                     desc,
                     canonical=f"{SITE_URL}/",
-                    og_image=og_image,
+                    og_image=og_image or DEFAULT_OG_IMAGE,
                 ),
                 encoding="utf-8",
             )

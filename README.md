@@ -4,7 +4,7 @@
 
 **Read every day:** [https://token-snack.vercel.app/](https://token-snack.vercel.app/)
 
-Brand mark: three tiles (green · purple · bitten orange snack) — see `assets/logo.svg` and `assets/favicon.svg`. Social preview uses `assets/og-banner.jpg`.
+Brand mark: three tiles (green · purple · bitten orange snack) — see `assets/logo.svg` and `assets/favicon.svg`. Homepage hero and social preview use `assets/hero-banner.png` / `assets/og-banner.jpg` (no domain URL in the art).
 
 ## Why the name?
 
