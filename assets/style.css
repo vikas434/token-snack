@@ -20,12 +20,15 @@ body{margin:0;background:var(--bg);color:var(--text);
 a{color:var(--link)}
 .top{max-width:720px;margin:0 auto;padding:18px 16px 0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .brand-block{min-width:0}
-.brand{font-weight:700;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+.brand{font-weight:700;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:10px;letter-spacing:-.01em}
+.brand .brand-text{display:inline-flex;align-items:baseline;gap:6px;flex-wrap:wrap}
 .brand .byline{font-weight:500;color:var(--muted);font-size:14px}
-.brand .dot{width:10px;height:10px;background:#1D9E75;box-shadow:12px 0 0 #7F77DD,24px 0 0 #C77D2E;margin-right:26px}
-.tagline{margin:4px 0 0;font-size:12px;line-height:1.35;color:var(--faint);letter-spacing:.01em}
+.logo-mark{display:block;width:72px;height:29px;flex-shrink:0}
+.tagline{margin:6px 0 0;font-size:12px;line-height:1.35;color:var(--faint);letter-spacing:.01em;padding-left:2px}
 .masthead-tagline{margin:0 0 10px;font-size:14px;line-height:1.4;color:var(--muted)}
 .top nav{display:flex;gap:14px;align-items:center;font-size:14px;flex-shrink:0;padding-top:2px}
+.foot-brand{display:inline-block;vertical-align:middle;margin-right:6px}
+.foot-brand .logo-mark{width:48px;height:19px;display:inline-block;vertical-align:middle}
 .top nav a{color:var(--muted);text-decoration:none}
 .top nav a:hover{color:var(--text)}
 .theme{background:none;border:1px solid var(--border);color:var(--muted);width:30px;height:30px;cursor:pointer;font-size:17px;line-height:1}

@@ -40,6 +40,27 @@ SITE_DESCRIPTION = (
 )
 # Prefer SITE_URL from the environment; otherwise the live Vercel URL.
 SITE_URL = (os.environ.get("SITE_URL") or "https://token-snack.vercel.app").rstrip("/")
+DEFAULT_OG_IMAGE = f"{SITE_URL}/assets/og-banner.jpg"
+
+
+def logo_mark(mask_id: str = "bite") -> str:
+    """Three-tile snack mark from the Token Snack brand banner."""
+    return (
+        f'<svg class="logo-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 48" '
+        f'width="72" height="29" role="img" aria-hidden="true">'
+        f'<rect x="2" y="8" width="28" height="28" rx="7" fill="#1D9E75"/>'
+        f'<rect x="38" y="8" width="28" height="28" rx="7" fill="#7F77DD"/>'
+        f'<defs><mask id="{mask_id}">'
+        f'<rect x="74" y="8" width="28" height="28" rx="7" fill="white"/>'
+        f'<circle cx="102" cy="12" r="7" fill="black"/>'
+        f'<circle cx="104" cy="22" r="4.5" fill="black"/>'
+        f"</mask></defs>"
+        f'<rect x="74" y="8" width="28" height="28" rx="7" fill="#C77D2E" mask="url(#{mask_id})"/>'
+        f'<circle cx="104" cy="40" r="2.2" fill="#C77D2E"/>'
+        f'<circle cx="110" cy="38" r="1.6" fill="#C77D2E"/>'
+        f'<circle cx="107" cy="44" r="1.3" fill="#C77D2E"/>'
+        f"</svg>"
+    )
 
 SECTIONS = {  # order on the page, accent colour, card action label
     "SHIPPED": ("#1D9E75", "Try this"),
@@ -176,8 +197,9 @@ def page(
     ]
     if canonical:
         og.append(f'<meta property="og:url" content="{esc(canonical)}">')
-    if og_image:
-        og.append(f'<meta property="og:image" content="{esc(og_image)}">')
+    social = og_image or DEFAULT_OG_IMAGE
+    og.append(f'<meta property="og:image" content="{esc(social)}">')
+    og.append(f'<meta name="twitter:image" content="{esc(social)}">')
     og_block = "\n".join(og)
     return f"""<!doctype html>
 <html lang="en">
@@ -188,6 +210,9 @@ def page(
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 {canon}{og_block}
+<link rel="icon" href="{up}assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{up}assets/favicon.svg">
+<link rel="mask-icon" href="{up}assets/favicon.svg" color="#1D9E75">
 {style}
 <link rel="alternate" type="application/rss+xml" title="{esc(SITE_NAME)}" href="{up}feed.xml">
 <script>try{{var t=localStorage.getItem('ddai-theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
@@ -195,7 +220,7 @@ def page(
 <body>
 <header class="top">
   <div class="brand-block">
-    <a class="brand" href="{up}index.html"><span class="dot"></span>{esc(SITE_TITLE)} <span class="byline">{esc(SITE_BYLINE)}</span></a>
+    <a class="brand" href="{up}index.html">{logo_mark("bite-h")}<span class="brand-text">{esc(SITE_TITLE)} <span class="byline">{esc(SITE_BYLINE)}</span></span></a>
     <p class="tagline">{esc(SITE_TAGLINE)}</p>
   </div>
   <nav><a href="{up}archive/index.html">Archive</a><a href="{up}feed.xml">RSS</a>
@@ -204,7 +229,7 @@ def page(
 <main class="wrap">
 {body}
 </main>
-<footer class="foot">{esc(SITE_NAME)} — {esc(SITE_TAGLINE)}. Picked, cut and eval-checked daily. Every link is first-party.</footer>
+<footer class="foot"><span class="foot-brand">{logo_mark("bite-f")}</span> {esc(SITE_NAME)} — {esc(SITE_TAGLINE)}. Picked, cut and eval-checked daily. Every link is first-party.</footer>
 </body>
 </html>
 """
@@ -435,6 +460,10 @@ def main(argv: list[str]) -> int:
         shutil.rmtree(OUT)
     (OUT / "assets").mkdir(parents=True)
     (OUT / "assets" / "style.css").write_text(css, encoding="utf-8")
+    for name in ("logo.svg", "favicon.svg", "og-banner.jpg"):
+        src = ROOT / "assets" / name
+        if src.exists():
+            shutil.copy(src, OUT / "assets" / name)
     (OUT / ".nojekyll").write_text("")
 
     chronological = sorted(b["date"] for b in briefs)

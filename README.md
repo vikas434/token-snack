@@ -4,6 +4,8 @@
 
 **Read every day:** [https://token-snack.vercel.app/](https://token-snack.vercel.app/)
 
+Brand mark: three tiles (green · purple · bitten orange snack) — see `assets/logo.svg` and `assets/favicon.svg`. Social preview uses `assets/og-banner.jpg`.
+
 ## Why the name?
 
 LLMs bill in tokens. Attention is a token too. Most “AI news” burns both — long feeds, hype, and tools you will never open.
