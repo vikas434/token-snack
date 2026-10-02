@@ -28,7 +28,7 @@ jobs:
       - name: Validate and build
         run: python3 scripts/build.py
         env:
-          SITE_URL: ${{ steps.pages.outputs.base_url }}
+          SITE_URL: https://token-snack.in
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

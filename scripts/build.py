@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the Daily Dose of AI static site from data/briefs/*.json.
+"""Build the Token Snack by Vikas static site from data/briefs/*.json.
 
 Usage:  python3 scripts/build.py            # writes the site into _site/
         python3 scripts/build.py --check    # validate data only, write nothing
@@ -8,8 +8,11 @@ Each brief is one JSON file named YYYY-MM-DD.json (schema in README.md).
 Output:
   _site/index.html                 latest brief
   _site/YYYY-MM-DD/index.html      permalink for every day
+  _site/YYYY-MM-DD.md              markdown twin
+  _site/YYYY-MM-DD-standalone.html inlined CSS edition
   _site/archive/index.html         list of all days
   _site/feed.xml                   RSS feed
+  _site/CNAME                      custom domain
   _site/assets/style.css
 No third-party dependencies.
 """
@@ -27,8 +30,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data" / "briefs"
 OUT = ROOT / "_site"
-SITE_TITLE = "Daily Dose of AI"
-SITE_URL = os.environ.get("SITE_URL", "").rstrip("/")  # set by the Pages workflow; empty -> relative links
+SITE_TITLE = "Token Snack"
+SITE_BYLINE = "by Vikas"
+SITE_NAME = f"{SITE_TITLE} {SITE_BYLINE}"
+SITE_DESCRIPTION = "A short, eval-gated daily brief on AI tooling for engineers."
+CUSTOM_DOMAIN = "token-snack.in"
+# Prefer SITE_URL from the environment; otherwise the public custom domain.
+SITE_URL = (os.environ.get("SITE_URL") or f"https://{CUSTOM_DOMAIN}").rstrip("/")
 
 SECTIONS = {  # order on the page, accent colour, card action label
     "SHIPPED": ("#1D9E75", "Try this"),
@@ -44,10 +52,29 @@ SLUG_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 REQUIRED_ITEM = ("slug", "section", "title", "why", "action", "permalink")
 # Only these keys may appear, so nothing else can leak into the public site.
 BRIEF_KEYS = {"date", "notice", "skipped", "items", "dropped"}
-ITEM_KEYS = {"slug", "section", "title", "summary", "why", "actionLabel", "action", "permalink", "watch", "eval"}
-# Generic privacy guard: no e-mail addresses, private Claude/Google links, or phone numbers.
+ITEM_KEYS = {"slug", "section", "title", "summary", "why", "actionLabel", "action",
+             "permalink", "watch", "eval", "image"}
+# Public-site guard: emails, private links, phones, and common API-key shapes.
+# Scanned against the whole file (including https:// URLs) so secrets in query strings fail.
 PRIVATE_RE = re.compile(
-    r"[\w.+-]+@[\w-]+\.[\w.]+|claude\.ai/|(docs|drive|mail)\.google\.com|\+?\d[\d ()-]{9,}\d", re.I)
+    r"(?:"
+    r"[\w.+-]+@[\w-]+\.[\w.]+"
+    r"|claude\.ai/"
+    r"|(?:docs|drive|mail)\.google\.com"
+    # Phone-like: leading +country, or digits with separators (not bare LinkedIn/GitHub ids).
+    r"|\+\d{1,3}[\d\s().-]{6,}\d"
+    r"|\b\d{3}[-.\s()]\d{2,4}[-.\s()]\d{2,4}\b"
+    r"|\bsk-[A-Za-z0-9_-]{10,}"
+    r"|\bghp_[A-Za-z0-9]{20,}"
+    r"|\bgithub_pat_[A-Za-z0-9_]{20,}"
+    r"|\bAKIA[0-9A-Z]{16}"
+    r"|\bAIza[0-9A-Za-z_-]{20,}"
+    r"|\bxox[baprs]-[A-Za-z0-9-]{10,}"
+    r"|\bbearer\s+[A-Za-z0-9._\-]{20,}"
+    r"|api[_-]?key\s*[=:]\s*\S+"
+    r")",
+    re.I,
+)
 
 
 class BriefError(ValueError):
@@ -64,9 +91,16 @@ def safe_url(u: str, where: str) -> str:
     return u
 
 
+def scan_private(raw: str, where: str) -> None:
+    hit = PRIVATE_RE.search(raw)
+    if hit:
+        raise BriefError(f"{where}: looks like private data or a secret ({hit.group(0)!r}) — remove it")
+
+
 def load_brief(path: Path) -> dict:
     try:
-        b = json.loads(path.read_text(encoding="utf-8"))
+        raw = path.read_text(encoding="utf-8")
+        b = json.loads(raw)
     except json.JSONDecodeError as e:
         raise BriefError(f"{path.name}: invalid JSON ({e})") from e
     d = b.get("date")
@@ -76,10 +110,7 @@ def load_brief(path: Path) -> dict:
     extra = set(b) - BRIEF_KEYS
     if extra:
         raise BriefError(f"{path.name}: unexpected top-level keys {sorted(extra)}")
-    raw = path.read_text(encoding="utf-8")
-    hit = PRIVATE_RE.search(raw) if "claude.ai/" in raw else PRIVATE_RE.search(re.sub(r"https://\S+", "", raw))
-    if hit:
-        raise BriefError(f"{path.name}: looks like private data ({hit.group(0)!r}) — remove it")
+    scan_private(raw, path.name)
     items = b.get("items")
     if not isinstance(items, list):
         raise BriefError(f"{path.name}: 'items' must be a list (empty is fine)")
@@ -97,6 +128,8 @@ def load_brief(path: Path) -> dict:
             raise BriefError(f"{where}: slug must be unique lowercase-kebab")
         seen.add(it["slug"])
         safe_url(it["permalink"], where)
+        if it.get("image"):
+            safe_url(it["image"], where + " image")
         if it.get("watch"):
             safe_url(it["watch"].get("url"), where + " watch")
         for e in it.get("eval", []):
@@ -110,46 +143,85 @@ def pretty_date(d: str) -> str:
     return x.strftime("%A, %B ") + str(x.day) + x.strftime(", %Y")
 
 
-def page(title: str, body: str, depth: int, description: str = "") -> str:
+def pick_count_label(n: int) -> str:
+    return f"{n} pick" if n == 1 else f"{n} picks"
+
+
+def page(
+    title: str,
+    body: str,
+    depth: int,
+    description: str = "",
+    *,
+    canonical: str = "",
+    og_image: str = "",
+    inline_css: str = "",
+) -> str:
     up = "../" * depth
+    desc = description or SITE_DESCRIPTION
+    style = (
+        f"<style>\n{inline_css}\n</style>"
+        if inline_css
+        else f'<link rel="stylesheet" href="{up}assets/style.css">'
+    )
+    canon = f'<link rel="canonical" href="{esc(canonical)}">\n' if canonical else ""
+    og = [
+        f'<meta property="og:title" content="{esc(title)}">',
+        f'<meta property="og:description" content="{esc(desc)}">',
+        f'<meta property="og:type" content="article">',
+        f'<meta name="twitter:card" content="summary">',
+    ]
+    if canonical:
+        og.append(f'<meta property="og:url" content="{esc(canonical)}">')
+    if og_image:
+        og.append(f'<meta property="og:image" content="{esc(og_image)}">')
+    og_block = "\n".join(og)
     return f"""<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>{esc(title)}</title>
-<meta name="description" content="{esc(description or 'A short, eval-gated daily brief on AI tooling for engineers.')}">
-<link rel="stylesheet" href="{up}assets/style.css">
-<link rel="alternate" type="application/rss+xml" title="{SITE_TITLE}" href="{up}feed.xml">
+<meta name="description" content="{esc(desc)}">
+{canon}{og_block}
+{style}
+<link rel="alternate" type="application/rss+xml" title="{esc(SITE_NAME)}" href="{up}feed.xml">
 <script>try{{var t=localStorage.getItem('ddai-theme');if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="{up}index.html"><span class="dot"></span>{SITE_TITLE}</a>
+  <a class="brand" href="{up}index.html"><span class="dot"></span>{esc(SITE_TITLE)} <span class="byline">{esc(SITE_BYLINE)}</span></a>
   <nav><a href="{up}archive/index.html">Archive</a><a href="{up}feed.xml">RSS</a>
   <button class="theme" type="button" aria-label="Toggle dark mode" onclick="var r=document.documentElement,n=(r.dataset.theme||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark'?'light':'dark';r.dataset.theme=n;try{{localStorage.setItem('ddai-theme',n)}}catch(e){{}}">◐</button></nav>
 </header>
 <main class="wrap">
 {body}
 </main>
-<footer class="foot">Picked, cut and eval-checked daily. Every link is first-party.</footer>
+<footer class="foot">{esc(SITE_NAME)} — picked, cut and eval-checked daily. Every link is first-party.</footer>
 </body>
 </html>
 """
 
 
-def render_item(it: dict) -> str:
+def render_item(it: dict, *, lead: bool = False) -> str:
     color, default_label = SECTIONS[it["section"]]
     label = it.get("actionLabel") or default_label
-    parts = [f'<article class="card" id="{esc(it["slug"])}" style="--accent:{color}">',
-             f'<h3>{esc(it["title"])}</h3>']
+    cls = "card lead" if lead else "card"
+    parts = [f'<article class="{cls}" id="{esc(it["slug"])}" style="--accent:{color}">']
+    if it.get("image"):
+        parts.append(f'<img class="card-image" src="{esc(it["image"])}" alt="" loading="lazy">')
+    parts.append(f'<h3>{esc(it["title"])}</h3>')
     if it.get("summary"):
         parts.append(f'<p class="summary">{esc(it["summary"])}</p>')
     parts.append(f'<p class="why"><strong>Why it matters:</strong> {esc(it["why"])}</p>')
     parts.append(f'<p class="action"><strong>{esc(label)}:</strong> {esc(it["action"])}</p>')
     w = it.get("watch")
     if w:
-        parts.append(f'<p class="action"><strong>Watch:</strong> <a href="{esc(w["url"])}">{esc(w.get("label") or w["url"])}</a></p>')
+        parts.append(
+            f'<p class="action"><strong>Watch:</strong> '
+            f'<a href="{esc(w["url"])}">{esc(w.get("label") or w["url"])}</a></p>'
+        )
     shown = re.sub(r"^https://(www\.)?", "", it["permalink"])
     parts.append(f'<a class="permalink" href="{esc(it["permalink"])}">{esc(shown)}</a>')
     ev = it.get("eval") or []
@@ -157,39 +229,82 @@ def render_item(it: dict) -> str:
         passed = sum(1 for e in ev if e.get("result") == "PASS")
         scored = sum(1 for e in ev if e.get("result") != "N/A")
         rows = "".join(
-            f'<li><span class="res res-{esc(e.get("result","")).lower().replace("/","")}">{esc(e.get("result"))}</span>'
-            f' <b>{esc(e.get("check"))}</b> — {esc(e.get("reason"))}</li>' for e in ev)
-        parts.append(f'<details class="eval"><summary>Eval gate: {passed}/{scored} checks passed</summary><ul>{rows}</ul></details>')
+            f'<li><span class="res res-{esc(e.get("result", "")).lower().replace("/", "")}">'
+            f'{esc(e.get("result"))}</span>'
+            f' <b>{esc(e.get("check"))}</b> — {esc(e.get("reason"))}</li>'
+            for e in ev
+        )
+        parts.append(
+            f'<details class="eval"><summary>Eval gate: {passed}/{scored} checks passed</summary>'
+            f"<ul>{rows}</ul></details>"
+        )
     parts.append("</article>")
     return "\n".join(parts)
 
 
-def render_brief(b: dict, depth: int, prev_d: str | None, next_d: str | None) -> str:
+def lead_slug(items: list[dict]) -> str | None:
+    for it in items:
+        if it["section"] == "SHIPPED":
+            return it["slug"]
+    return items[0]["slug"] if items else None
+
+
+def render_brief(
+    b: dict,
+    depth: int,
+    prev_d: str | None,
+    next_d: str | None,
+    *,
+    edition: int,
+    total_editions: int,
+) -> str:
     up = "../" * depth
-    out = [f'<p class="kicker">AI Tooling Brief</p><h1>{esc(pretty_date(b["date"]))}</h1>']
+    n = len(b["items"])
+    out = [
+        '<header class="masthead">',
+        f'<p class="kicker">{esc(SITE_NAME)}</p>',
+        f'<h1>{esc(pretty_date(b["date"]))}</h1>',
+        f'<p class="edition-meta">Edition {edition} of {total_editions} · {esc(pick_count_label(n))}</p>',
+        '<hr class="masthead-rule">',
+        "</header>",
+    ]
     if b.get("notice"):
         out.append(f'<p class="notice">{esc(b["notice"])}</p>')
     items = b["items"]
     if not items:
         out.append('<p class="empty">Nothing cleared today\'s bar — no picks today.</p>')
+    lead = lead_slug(items)
     for sec in SECTIONS:
         group = [i for i in items if i["section"] == sec]
         if group:
             out.append(f'<section><h2 class="sec">{esc(LABELS[sec])}</h2>')
-            out.extend(render_item(i) for i in group)
+            out.extend(render_item(i, lead=(i["slug"] == lead)) for i in group)
             out.append("</section>")
     skipped = b.get("skipped") or []
     dropped = b.get("dropped") or []
     if skipped or dropped:
         out.append('<details class="meta"><summary>What didn\'t make it today</summary>')
         if skipped:
-            out.append("<h4>Skipped sections</h4><ul>" + "".join(
-                f'<li><b>{esc(s.get("section"))}</b> — {esc(s.get("reason"))}</li>' for s in skipped) + "</ul>")
+            out.append(
+                "<h4>Skipped sections</h4><ul>"
+                + "".join(
+                    f'<li><b>{esc(s.get("section"))}</b> — {esc(s.get("reason"))}</li>'
+                    for s in skipped
+                )
+                + "</ul>"
+            )
         if dropped:
-            out.append("<h4>Cut candidates</h4><ul>" + "".join(
-                f'<li><b>{esc(x.get("title"))}</b> <span class="stage">{esc(x.get("stage",""))}</span> — {esc(x.get("reason"))}</li>'
-                for x in dropped) + "</ul>")
+            out.append(
+                "<h4>Cut candidates</h4><ul>"
+                + "".join(
+                    f'<li><b>{esc(x.get("title"))}</b> <span class="stage">{esc(x.get("stage", ""))}</span>'
+                    f' — {esc(x.get("reason"))}</li>'
+                    for x in dropped
+                )
+                + "</ul>"
+            )
         out.append("</details>")
+    out.append(f'<p class="end-line">End of brief — {esc(pretty_date(b["date"]))}</p>')
     nav = []
     if prev_d:
         nav.append(f'<a href="{up}{prev_d}/index.html">← {esc(prev_d)}</a>')
@@ -206,28 +321,83 @@ def render_archive(briefs: list[dict]) -> str:
         counts = {}
         for i in b["items"]:
             counts[i["section"]] = counts.get(i["section"], 0) + 1
-        chips = "".join(f'<span class="chip" style="--accent:{SECTIONS[s][0]}">{esc(LABELS[s])} {n}</span>'
-                        for s, n in counts.items()) or '<span class="chip">no picks</span>'
+        chips = "".join(
+            f'<span class="chip" style="--accent:{SECTIONS[s][0]}">{esc(LABELS[s])} {n}</span>'
+            for s, n in counts.items()
+        ) or '<span class="chip">no picks</span>'
         tops = "".join(f"<li>{esc(i['title'])}</li>" for i in b["items"][:3])
-        rows.append(f'<li class="day"><a href="../{b["date"]}/index.html"><span class="d">{esc(pretty_date(b["date"]))}</span>'
-                    f'<span class="chips">{chips}</span></a><ul class="tops">{tops}</ul></li>')
-    return '<p class="kicker">Archive</p><h1>Every brief</h1><ul class="days">' + "".join(rows) + "</ul>"
+        rows.append(
+            f'<li class="day"><a href="../{b["date"]}/index.html">'
+            f'<span class="d">{esc(pretty_date(b["date"]))}</span>'
+            f'<span class="chips">{chips}</span></a><ul class="tops">{tops}</ul></li>'
+        )
+    return (
+        f'<p class="kicker">{esc(SITE_NAME)}</p><h1>Every brief</h1>'
+        f'<ul class="days">{"".join(rows)}</ul>'
+    )
 
 
 def render_feed(briefs: list[dict]) -> str:
     entries = []
     for b in briefs[:30]:
         d = dt.date.fromisoformat(b["date"])
-        pub = dt.datetime(d.year, d.month, d.day, 6, 0, tzinfo=dt.timezone.utc).strftime("%a, %d %b %Y %H:%M:%S +0000")
-        desc = "".join(f"<p><b>{esc(i['section'])}</b> — <a href=\"{esc(i['permalink'])}\">{esc(i['title'])}</a><br>{esc(i['why'])}</p>"
-                       for i in b["items"]) or "<p>No picks today.</p>"
-        entries.append(f"<item><title>{esc(SITE_TITLE)} — {esc(pretty_date(b['date']))}</title>"
-                       f"<link>{SITE_URL}/{b['date']}/</link><guid isPermaLink=\"false\">{b['date']}</guid>"
-                       f"<pubDate>{pub}</pubDate><description>{esc(desc)}</description></item>")
-    return ('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>'
-            f"<title>{SITE_TITLE}</title><link>{SITE_URL or '.'}/</link>"
-            "<description>A short, eval-gated daily brief on AI tooling for engineers.</description>"
-            + "".join(entries) + "</channel></rss>\n")
+        pub = dt.datetime(d.year, d.month, d.day, 6, 0, tzinfo=dt.timezone.utc).strftime(
+            "%a, %d %b %Y %H:%M:%S +0000"
+        )
+        desc = "".join(
+            f"<p><b>{esc(i['section'])}</b> — "
+            f"<a href=\"{esc(i['permalink'])}\">{esc(i['title'])}</a><br>{esc(i['why'])}</p>"
+            for i in b["items"]
+        ) or "<p>No picks today.</p>"
+        entries.append(
+            f"<item><title>{esc(SITE_NAME)} — {esc(pretty_date(b['date']))}</title>"
+            f"<link>{SITE_URL}/{b['date']}/</link><guid isPermaLink=\"false\">{b['date']}</guid>"
+            f"<pubDate>{pub}</pubDate><description>{esc(desc)}</description></item>"
+        )
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel>'
+        f"<title>{esc(SITE_NAME)}</title><link>{SITE_URL}/</link>"
+        f"<description>{esc(SITE_DESCRIPTION)}</description>"
+        + "".join(entries)
+        + "</channel></rss>\n"
+    )
+
+
+def render_markdown(b: dict, *, edition: int, total_editions: int) -> str:
+    lines = [
+        f"# {SITE_NAME}",
+        "",
+        f"**{pretty_date(b['date'])}** · Edition {edition} of {total_editions} · "
+        f"{pick_count_label(len(b['items']))}",
+        "",
+    ]
+    if b.get("notice"):
+        lines.extend([f"> {b['notice']}", ""])
+    if not b["items"]:
+        lines.extend(["Nothing cleared today's bar — no picks today.", ""])
+    for sec in SECTIONS:
+        group = [i for i in b["items"] if i["section"] == sec]
+        if not group:
+            continue
+        lines.extend([f"## {LABELS[sec]}", ""])
+        for it in group:
+            label = it.get("actionLabel") or SECTIONS[it["section"]][1]
+            lines.append(f"### {it['title']}")
+            lines.append("")
+            if it.get("summary"):
+                lines.extend([it["summary"], ""])
+            lines.extend([f"**Why it matters:** {it['why']}", ""])
+            lines.extend([f"**{label}:** {it['action']}", ""])
+            if it.get("watch"):
+                w = it["watch"]
+                lines.append(f"**Watch:** [{w.get('label') or w['url']}]({w['url']})")
+                lines.append("")
+            if it.get("image"):
+                lines.append(f"![ ]({it['image']})")
+                lines.append("")
+            lines.extend([f"[{it['permalink']}]({it['permalink']})", ""])
+    lines.extend([f"— End of brief — {pretty_date(b['date'])}", ""])
+    return "\n".join(lines)
 
 
 def main(argv: list[str]) -> int:
@@ -249,26 +419,78 @@ def main(argv: list[str]) -> int:
     if "--check" in argv:
         return 0
 
+    css = (ROOT / "assets" / "style.css").read_text(encoding="utf-8")
     if OUT.exists():
         shutil.rmtree(OUT)
     (OUT / "assets").mkdir(parents=True)
-    shutil.copy(ROOT / "assets" / "style.css", OUT / "assets" / "style.css")
+    (OUT / "assets" / "style.css").write_text(css, encoding="utf-8")
     (OUT / ".nojekyll").write_text("")
+    (OUT / "CNAME").write_text(CUSTOM_DOMAIN + "\n", encoding="utf-8")
+
+    chronological = sorted(b["date"] for b in briefs)
+    total = len(chronological)
+    edition_of = {d: i + 1 for i, d in enumerate(chronological)}
 
     dates = [b["date"] for b in briefs]
     for idx, b in enumerate(briefs):
         prev_d = dates[idx + 1] if idx + 1 < len(dates) else None
         next_d = dates[idx - 1] if idx > 0 else None
-        desc = "; ".join(i["title"] for i in b["items"][:3])
+        edition = edition_of[b["date"]]
+        desc = "; ".join(i["title"] for i in b["items"][:3]) or SITE_DESCRIPTION
+        og_image = next((i["image"] for i in b["items"] if i.get("image")), "")
+        canonical = f"{SITE_URL}/{b['date']}/"
         day_dir = OUT / b["date"]
         day_dir.mkdir()
         (day_dir / "index.html").write_text(
-            page(f"{SITE_TITLE} — {pretty_date(b['date'])}", render_brief(b, 1, prev_d, next_d), 1, desc), encoding="utf-8")
+            page(
+                f"{SITE_NAME} — {pretty_date(b['date'])}",
+                render_brief(b, 1, prev_d, next_d, edition=edition, total_editions=total),
+                1,
+                desc,
+                canonical=canonical,
+                og_image=og_image,
+            ),
+            encoding="utf-8",
+        )
+        (OUT / f"{b['date']}.md").write_text(
+            render_markdown(b, edition=edition, total_editions=total),
+            encoding="utf-8",
+        )
+        (OUT / f"{b['date']}-standalone.html").write_text(
+            page(
+                f"{SITE_NAME} — {pretty_date(b['date'])}",
+                render_brief(b, 0, None, None, edition=edition, total_editions=total),
+                0,
+                desc,
+                canonical=canonical,
+                og_image=og_image,
+                inline_css=css,
+            ),
+            encoding="utf-8",
+        )
         if idx == 0:
             (OUT / "index.html").write_text(
-                page(f"{SITE_TITLE} — {pretty_date(b['date'])}", render_brief(b, 0, prev_d, None), 0, desc), encoding="utf-8")
+                page(
+                    f"{SITE_NAME} — {pretty_date(b['date'])}",
+                    render_brief(b, 0, prev_d, None, edition=edition, total_editions=total),
+                    0,
+                    desc,
+                    canonical=f"{SITE_URL}/",
+                    og_image=og_image,
+                ),
+                encoding="utf-8",
+            )
     (OUT / "archive").mkdir()
-    (OUT / "archive" / "index.html").write_text(page(f"{SITE_TITLE} — Archive", render_archive(briefs), 1), encoding="utf-8")
+    (OUT / "archive" / "index.html").write_text(
+        page(
+            f"{SITE_NAME} — Archive",
+            render_archive(briefs),
+            1,
+            f"Archive of {SITE_NAME}",
+            canonical=f"{SITE_URL}/archive/",
+        ),
+        encoding="utf-8",
+    )
     (OUT / "feed.xml").write_text(render_feed(briefs), encoding="utf-8")
     print(f"Built {OUT.relative_to(ROOT)}/")
     return 0

@@ -18,20 +18,28 @@ html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);
   font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
 a{color:var(--link)}
-.top{max-width:680px;margin:0 auto;padding:18px 16px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top{max-width:720px;margin:0 auto;padding:18px 16px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{font-weight:700;text-decoration:none;color:var(--text);display:flex;align-items:center;gap:8px;letter-spacing:-.01em}
+.brand .byline{font-weight:500;color:var(--muted);font-size:14px}
 .brand .dot{width:10px;height:10px;background:#1D9E75;box-shadow:12px 0 0 #7F77DD,24px 0 0 #C77D2E;margin-right:26px}
 .top nav{display:flex;gap:14px;align-items:center;font-size:14px}
 .top nav a{color:var(--muted);text-decoration:none}
 .top nav a:hover{color:var(--text)}
 .theme{background:none;border:1px solid var(--border);color:var(--muted);width:30px;height:30px;cursor:pointer;font-size:17px;line-height:1}
-.wrap{max-width:680px;margin:0 auto;padding:20px 16px 40px}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 40px}
+.masthead{margin:8px 0 18px}
 .kicker{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--faint);margin:16px 0 4px}
-h1{font-size:28px;line-height:1.2;margin:0 0 18px;letter-spacing:-.02em}
+.masthead .kicker{margin-top:0}
+h1{font-size:28px;line-height:1.2;margin:0 0 8px;letter-spacing:-.02em}
+.edition-meta{font-size:13px;color:var(--muted);margin:0 0 12px}
+.masthead-rule{border:0;border-top:2px solid var(--text);margin:0 0 4px;opacity:.85}
 .notice{background:var(--card);border:1px solid var(--border);padding:12px 14px;font-size:14px;color:var(--muted);margin:0 0 8px}
 .empty{color:var(--muted)}
 h2.sec{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--faint);margin:28px 0 10px;font-weight:600}
 .card{background:var(--card);border-left:4px solid var(--accent);padding:18px;margin:0 0 14px}
+.card.lead{padding:22px 20px;border-left-width:6px}
+.card.lead h3{font-size:20px;letter-spacing:-.015em}
+.card-image{display:block;width:100%;max-height:280px;object-fit:cover;margin:0 0 14px;border:1px solid var(--border)}
 .card h3{font-size:17px;line-height:1.35;margin:0 0 10px}
 .summary{font-size:14px;color:var(--muted);margin:0 0 12px}
 .why{background:var(--tint);color:var(--tint-text);padding:10px 12px;font-size:14px;margin:0 0 12px}
@@ -47,6 +55,7 @@ h2.sec{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--fa
 .meta h4{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--faint);margin:14px 0 4px}
 .meta li{margin:6px 0;color:var(--muted)}
 .meta .stage{font-size:11px;color:var(--faint)}
+.end-line{margin:28px 0 0;font-size:12px;color:var(--faint);letter-spacing:.02em}
 .pager{display:flex;justify-content:space-between;gap:12px;margin-top:28px;font-size:14px}
 .days{list-style:none;padding:0;margin:0}
 .day{background:var(--card);border:1px solid var(--border);margin:0 0 10px;padding:14px 16px}
@@ -54,6 +63,14 @@ h2.sec{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--fa
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font-size:11px;font-weight:600;padding:2px 8px;border-left:3px solid var(--accent,var(--faint));background:var(--bg);color:var(--muted)}
 .tops{margin:8px 0 0;padding-left:18px;font-size:14px;color:var(--muted)}
-.foot{max-width:680px;margin:0 auto;padding:0 16px 32px;font-size:12px;color:var(--faint)}
+.foot{max-width:720px;margin:0 auto;padding:0 16px 32px;font-size:12px;color:var(--faint)}
 .foot a{color:var(--faint)}
-@media (max-width:480px){h1{font-size:23px}.card{padding:15px}}
+@media (max-width:480px){h1{font-size:23px}.card{padding:15px}.card.lead h3{font-size:18px}}
+@media print{
+  .top nav,.theme,.pager,.eval{display:none!important}
+  body{background:#fff;color:#000}
+  .wrap{max-width:none;padding:0}
+  .card{break-inside:avoid;border:1px solid #ccc;border-left-width:4px}
+  .why{background:#f0f4f8;color:#000}
+  a{color:#000;text-decoration:underline}
+}
