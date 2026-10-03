@@ -1,0 +1,254 @@
+{
+  "date": "2026-10-03",
+  "items": [
+    {
+      "slug": "claude-mods-plugins",
+      "section": "SHIPPED",
+      "title": "Anthropic ships Claude Mods — plugins can now hook deeper into Claude Code's own behavior",
+      "summary": "Claude Code 2.1.287 added Claude Mods: plugins are no longer limited to slash commands and subagents, they can now modify deeper behavior, the same way a browser extension reaches into a page. The same release ships a built-in example, \"You should know\" — a side agent that watches your session and flags things you or Claude might miss (enable with /plugin enable cc-plugin-you-should-know@builtin).",
+      "why": "The plugin system just stopped being a way to add commands and became an actual extension API you can hook into live sessions with.",
+      "actionLabel": "Try this",
+      "action": "Run /plugin enable cc-plugin-you-should-know@builtin on your next session and see what it catches, then skim the mods/hooks docs if you want to write your own.",
+      "permalink": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Claude Mods is a genuine new extension point (plugins can modify deeper session behavior), not a routine version bump."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the raw changelog at eval time; the Claude Mods entry matched verbatim."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted directly from the changelog text; example mod names that could not be independently verified were left out rather than guessed."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched for a first-party demo video for this release; none found, so no Watch line was added."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A new extension point plus a ready-to-enable built-in mod, one command away."
+        }
+      ]
+    },
+    {
+      "slug": "openai-dots-always-on-agents",
+      "section": "SHIPPED",
+      "title": "OpenAI ships dots — always-on agents that investigate bugs and prep PRs while you're away",
+      "summary": "Dots run continuously on their own cloud compute, connect to 4,000+ apps, and do proactive background work. OpenAI's own developer examples: a dot investigating a bug report and preparing a pull request with a test video attached, and building/testing improvements from customer feedback without step-by-step direction.",
+      "why": "This is OpenAI's answer to \"keep working after I close the laptop\" — point a dot at an open bug and it can come back with a ready PR instead of waiting for you to start a session.",
+      "actionLabel": "Try this",
+      "action": "Watch the dots demo, then point one at a real open issue in a side project to see what it comes back with.",
+      "permalink": "https://openai.com/index/introducing-dots/",
+      "watch": {
+        "label": "Watch",
+        "url": "https://www.youtube.com/watch?v=fHEIw5CcN5U"
+      },
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A genuinely new always-on agent product, not an incremental update to an existing one."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched OpenAI's announcement page and the demo video at eval time; both live and matching."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted from OpenAI's own announcement and developer examples."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Found a genuine first-party demo video on OpenAI's own channel; this is the first day this candidate had one, which is why it clears the bar after being dropped on prior days for lacking exactly that."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A concrete new way to delegate background engineering work unsupervised."
+        }
+      ]
+    },
+    {
+      "slug": "jev-vllm-self-hosted",
+      "section": "ON LINKEDIN",
+      "title": "An engineer open-sourced a self-hosted, open-weights clone of a popular typed-decision API",
+      "summary": "A self-hosted project (jev-vllm) reimplements a hosted typed-decision API, running an open-weights model on your own GPU via vLLM + KServe. Measured on one NVIDIA GB10: 79ms p50 (~13 decisions/s), up to 94 decisions/s at 32 concurrent requests, no per-call cost, nothing leaves your hardware. Ships with a full working example: a fully local voice-controlled browser that acts mid-sentence.",
+      "why": "This turns \"ask an LLM for yes/no instead of a paragraph\" from a hosted-only pattern into something you can run and tune yourself, with real measured numbers instead of a vendor's claims.",
+      "actionLabel": "Angle for you",
+      "action": "The repo's client/payloads/ has a working request for every question type — clone it and point one at a real decision point in a side project (route this ticket, is this change risky) and compare latency/cost against just calling an LLM for the same judgment.",
+      "permalink": "https://github.com/umianta/jev-vllm",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A real open-source release with measured performance numbers, not a reshare of old news."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the GitHub repo at eval time; README and numbers matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Numbers and example quoted directly from the repo's own README."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A concrete, triable pattern with real latency numbers and a working example to clone."
+        }
+      ]
+    },
+    {
+      "slug": "included-health-langgraph-federated-agents",
+      "section": "STUDY",
+      "title": "A healthcare company built a federated multi-agent navigator on LangGraph + Deep Agents — and published the numbers",
+      "summary": "A LangGraph \"supergraph\" routes to specialized sub-agents (urgent care, scheduling, specialist search, behavioral health) built by separate product teams, sharing tone and context through a filesystem-based skill registry; durable execution keeps full context across human handoffs. Four product teams migrated in 2 weeks with no regressions. Since launch: 75% lift in chat engagement, over 95% agreement with the agent's routing calls, over 99% detection of high-risk situations.",
+      "why": "A real production system solving the \"many teams, one coherent agent\" problem with a filesystem-as-shared-context pattern, backed by real numbers rather than a feature announcement.",
+      "actionLabel": "Try this",
+      "action": "Read the \"Skills Registry\" section on progressive skill-file loading via a virtual filesystem — a concrete pattern for the same cross-service agent-context problem that keeps coming up in multi-agent design.",
+      "permalink": "https://www.langchain.com/blog/how-included-health-built-federated-agents-for-healthcare-navigation-with-deep-agents-and-langgraph",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A real production case study with concrete before/after numbers, not a feature pitch."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the blog post at eval time; figures matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Numbers and architecture description drafted directly from the post."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A directly relevant, well-measured pattern for shared context across specialized agents."
+        }
+      ]
+    },
+    {
+      "slug": "watch-loop-engineering-claude-code",
+      "section": "WATCH QUEUE",
+      "title": "Loop engineering — an agentic-loop technique for Claude Code past basic prompt engineering",
+      "summary": "Builds an agentic loop — the agent makes a change, a separate check scores it, the change is kept only if the score improves — with a concrete Claude Code setup: a project-context skill, a build skill, a write-checks skill that locks checks before the agent can see them, a fresh builder agent per feature, and an \"auto loop\" that rewrites its own working method from what failed last round.",
+      "why": "A specific, reproducible harness pattern for getting Claude Code to run unsupervised for hours without just hoping it stays on track.",
+      "actionLabel": "Worth the drive",
+      "action": "About 13 minutes — skip to the setup walkthrough and the auto-loop demonstration if short on time.",
+      "permalink": "https://www.youtube.com/watch?v=qLfSDQ5NGh0",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A concrete, reproducible harness pattern, not a generic prompting-tips video."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-confirmed the video is live and public at eval time."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the video's own expanded description and chapter markers; the in-page transcript panel did not surface text through available tooling this run, so the description/chapters were used as the verified substitute rather than a true transcript read."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "A walkthrough-with-live-demo format, confirmed via description and chapters."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A concrete, adaptable harness pattern in about 13 minutes."
+        }
+      ]
+    },
+    {
+      "slug": "watch-jitmem-agent-memory",
+      "section": "WATCH QUEUE",
+      "title": "Just-in-time memory — curating agent memory at read time, not write time",
+      "summary": "Walks through a research paper proposing deferred memory curation: instead of distilling a finished task into a fixed summary immediately — before you know what future tasks will need — raw trajectories are stored and curation is deferred to read time, when the current task is known. The approach gains several points over existing methods across three agent benchmarks; even an untrained curator beats the baselines.",
+      "why": "Flips the usual \"summarize and forget the details\" approach to agent memory on its head — the detail you'd normally throw away at write time turns out to be exactly what the next task needed.",
+      "actionLabel": "Worth the drive",
+      "action": "About 4 minutes — short enough for one traffic light.",
+      "permalink": "https://www.youtube.com/watch?v=aYgxbH8Nlck",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A specific mechanism (deferred curation) with named benchmark gains, not a generic news recap."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-confirmed the video is live and public at eval time."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Cross-checked against the cited paper's own abstract."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "A short explainer format, confirmed via description; channel is small but content was judged on substance after checking the cited paper."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A genuinely useful reframing in about 4 minutes."
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "section": "TRENDING ON X",
+      "reason": "Best candidate found (a customer-story post) turned out to be promotional copy with no real technical specifics once the underlying case study was re-fetched; nothing else cleared the bar today."
+    }
+  ],
+  "dropped": [
+    {
+      "title": "OpenAI Codex security-review feature",
+      "stage": "step 3",
+      "reason": "Only first-party source found was about six weeks old, not a new update despite a newsletter implying otherwise."
+    },
+    {
+      "title": "A small open-weight vision model reshared on LinkedIn",
+      "stage": "step 3",
+      "reason": "Verified the actual release was about three months old, just newly reshared."
+    },
+    {
+      "title": "Customer case study promoted on X about fast agent-written deploys",
+      "stage": "step 3",
+      "reason": "Promotional in tone with no real mechanics on guardrails or review once re-fetched; moved to today's TRENDING ON X skip instead."
+    }
+  ]
+}
