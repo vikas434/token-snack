@@ -1,0 +1,265 @@
+{
+  "date": "2026-10-04",
+  "items": [
+    {
+      "slug": "claude-mods-ui-selection-api",
+      "section": "SHIPPED",
+      "title": "Claude Code mods can now read your selection — $.ui.selection() ships in 2.1.288",
+      "summary": "Mods get a new $.ui.selection() call that returns selected text and transcript rows while you're in fullscreen mode — a concrete new surface on top of the Claude Mods launch a day earlier. The same release adds a --max-findings flag to /code-review so you can cap how many findings come back.",
+      "why": "This is the difference between a mod that just watches tool calls and one that actually knows what you've got highlighted on screen right now.",
+      "actionLabel": "Try this",
+      "action": "If you enabled a mod off the Claude Mods launch, check whether it can call $.ui.selection(); otherwise run /code-review --max-findings 5 on your next PR to cut the noise.",
+      "permalink": "https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A concrete new API surface on the mods system (UI selection access) plus a usability flag, not a routine patch bump."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the raw changelog at eval time; the 2.1.288 entry matched verbatim."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted directly from the changelog text for 2.1.288."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched for a first-party demo video for this specific release; none found, so no Watch line was added."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A one-command thing to check plus a flag that cuts noise on an existing daily command."
+        }
+      ]
+    },
+    {
+      "slug": "gemini-interactions-api",
+      "section": "ON LINKEDIN",
+      "title": "Google ships Gemini Interactions API — server-side state so you stop resending the whole conversation",
+      "summary": "The server now tracks conversation history and uploaded files for up to 7 days (or zero-retention if you opt out), runs multi-step tool loops past the old 60-second gateway timeout, and hands you a chronological trace of every turn's reasoning and tool calls.",
+      "why": "Cuts the boilerplate of managing conversation state and tool-call loops yourself, and should lower both cost and latency on anything multi-turn.",
+      "actionLabel": "Angle for you",
+      "action": "If you've got a Gemini-backed agent hand-rolling its own conversation state, swap one endpoint over to this API and compare latency and cost.",
+      "permalink": "https://www.linkedin.com/posts/edong186_standard-model-apis-were-designed-for-stateless-share-7511142134129831936-Ql5e/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A genuine new API with concrete mechanics (server-managed state, long-running tool loops), not a rehash."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the LinkedIn post at eval time; the post and its claims matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted directly from the post text, read in full."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Short, concrete, with a clear one-line swap-and-compare angle."
+        }
+      ]
+    },
+    {
+      "slug": "sign-in-with-chatgpt",
+      "section": "TRENDING ON X",
+      "title": "Sam Altman defends Sign in with ChatGPT as OpenAI opens it to 11 launch partners",
+      "summary": "Plus and Pro subscribers can now log into any of 11 commercial launch-partner apps with ChatGPT and bring their plan usage with them — Business and Enterprise support is coming. Altman's post is a direct response to pushback on why OpenAI built this at all.",
+      "why": "This is OpenAI building an identity-and-entitlement layer other apps can plug into — a real distribution channel, not a feature announcement.",
+      "actionLabel": "Angle for you",
+      "action": "Worth understanding the OAuth-style flow now if you're building anything that could let a user bring their existing ChatGPT subscription instead of your own billing.",
+      "permalink": "https://x.com/sama/status/2105739098640298253",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine active discourse about a real shipped auth/entitlement mechanism with named launch partners, not pure hot-take."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the tweet at eval time; text and view count matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted from the tweet plus the quoted thread, both read directly."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Has a concrete buildable angle (integrate as an auth/entitlement provider), applying the hard bar for this section."
+        }
+      ]
+    },
+    {
+      "slug": "langchain-model-router-harness",
+      "section": "STUDY",
+      "title": "LangChain cut Open SWE's model bill 64% with a three-tier router — and published how",
+      "summary": "The router runs a classifier on a thread's first message against per-tier criteria built from real LangSmith trace data, sending each request to one of three models along the cost-intelligence frontier. Outcome tracked via merged PRs and user feedback — quality held steady.",
+      "why": "A validated, concrete pattern for not paying frontier prices on every single call in a production coding agent, not just a cost-saving claim.",
+      "actionLabel": "Try this",
+      "action": "Apply the same pattern — base prompt, per-tier criteria, one classifier model — to route calls in one of your own agents and track the before/after cost.",
+      "permalink": "https://www.langchain.com/blog/how-to-build-a-model-router-in-the-harness",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A concrete architecture plus a validated outcome metric (64% cost cut, stable quality), not a listicle."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the post at eval time; figures and the quoted technical passage matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted directly from the post's own description of the four-step approach."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A directly actionable, measured pattern for agent cost control."
+        }
+      ]
+    },
+    {
+      "slug": "watch-claude-mods-biggest-upgrade",
+      "section": "WATCH QUEUE",
+      "title": "Claude Mods - The Biggest Claude Code Upgrade! — Prompt Engineering",
+      "summary": "Walks through what a Claude Code mod actually is versus hooks, skills and MCP servers, how a mod can intercept a tool call before it runs and draw its own terminal/desktop panels, how to install one from a marketplace, and a build-along of mods the creator wrote for his own workflow.",
+      "actionLabel": "Worth the drive",
+      "action": "10:37 — direct companion to the mods API extension above if you haven't set one up yet.",
+      "permalink": "https://www.youtube.com/watch?v=XaYubuLtW8M",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A concrete explainer-plus-build-along on a current feature, not a reaction video."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the video at eval time; title, channel and description matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the video's own full description, read in full rather than judged by title."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Full description confirms a walkthrough-plus-build-along format with specific mechanics covered."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Direct, practical companion content to a feature covered above."
+        }
+      ],
+      "why": "A hands-on companion to today's mods API update — concrete install-and-build steps instead of just a changelog line."
+    },
+    {
+      "slug": "watch-vscode-weekly-releases",
+      "section": "WATCH QUEUE",
+      "title": "How VS Code Went from Monthly to Weekly Releases with AI — Harald Kirschner",
+      "summary": "VS Code's principal PM on moving a 10-year-old, 50M-user product to weekly ships: agent-ready codebases, mandatory AI code review, auto-filed issues from 51 billion daily telemetry events, and VSC-Bench evals. Code written by agents that actually survives to merge rose from 55% to 86%.",
+      "actionLabel": "Worth the drive",
+      "action": "19:35 — a concrete playbook for AI-driven SDLC at scale, not another AI-hype talk.",
+      "permalink": "https://www.youtube.com/watch?v=I2LL_wd89-A",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Named insider source with specific, named metrics and concrete practices, not a generic talk."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the video at eval time; title, channel and description matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the video's own full description (pulled from player data), read in full rather than judged by title."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Full description is detailed and specific: concrete practices and named metrics, not vague hype language."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to AI-driven SDLC practice at scale, from a credible named source."
+        }
+      ],
+      "why": "Flips the usual AI-hype narrative — concrete engineering practices and named numbers from the team actually running the migration."
+    }
+  ],
+  "skipped": [],
+  "dropped": [
+    {
+      "title": "OpenAI Codex Security Cloud (DevDay recap mention)",
+      "stage": "eval gate",
+      "reason": "The underlying Codex Security feature traces back to a research-preview launch roughly seven months earlier; the DevDay recap page was a restatement, not new news, once the origin was checked."
+    },
+    {
+      "title": "Cursor Rollouts regression-to-cloud-fix post",
+      "stage": "step 3",
+      "reason": "The Rollouts feature itself launched over a week earlier; the recent post was a credits/promo extension, not a new capability."
+    },
+    {
+      "title": "A post about model-attribution dispute in tech media",
+      "stage": "step 3",
+      "reason": "Pure drama with no buildable angle or technical substance."
+    },
+    {
+      "title": "A research-blog post on a physics computation result",
+      "stage": "step 3",
+      "reason": "Research PR, not a tool or capability change."
+    },
+    {
+      "title": "A small-business AI partnership post",
+      "stage": "step 3",
+      "reason": "Partnership-only announcement, excluded by policy."
+    },
+    {
+      "title": "A customer case-study post about an internal app platform",
+      "stage": "step 3",
+      "reason": "Testimonial/partnership-adjacent in tone with a weak buildable angle; not selected over the stronger trending candidate."
+    },
+    {
+      "title": "A fast-moving open-source multi-agent model-routing tool",
+      "stage": "step 3",
+      "reason": "Passed an initial check but lost out to a fresher, first-party study candidate under the one-per-section cap."
+    }
+  ]
+}
