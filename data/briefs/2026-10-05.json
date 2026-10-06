@@ -1,0 +1,198 @@
+{
+  "date": "2026-10-05",
+  "items": [
+    {
+      "slug": "laya-rag-verdict-gate",
+      "section": "ON LINKEDIN",
+      "title": "A GenAI lead swapped the LLM-judge in his RAG pipeline for a 33ms verdict model",
+      "summary": "Kameshwara Pavan Kumar Mantha breaks a RAG answer into individual claims, then checks each one against the retrieved evidence with Laya -- a small, non-autoregressive decision model from Convai Innovations -- instead of a second LLM call. Claim-level verdicts land in roughly 33ms, and the pipeline releases, filters, or abstains based on the result.",
+      "why": "This is a live demo of a cheap, fast building block for catching an unsupported RAG claim before it reaches a user, without bolting on another expensive LLM call to judge the first one.",
+      "actionLabel": "Angle for you",
+      "action": "If any of your RAG or agent pipelines lean on an LLM as judge or reranker, try swapping one narrow check -- like 'does this claim match the retrieved doc?' -- for a small classifier like Laya and see what it does to latency and cost.",
+      "permalink": "https://huggingface.co/convaiinnovations/laya",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A concrete, working alternative to LLM-as-judge for claim verification, with real latency numbers, not a generic RAG tips post."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the model card at eval time; architecture and claim matched the post."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted from the LinkedIn post's own description plus the linked model card."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Gives a specific, testable swap for anyone running an LLM-judge step today."
+        }
+      ]
+    },
+    {
+      "slug": "default-hard-budget-caps",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: every paid API and cloud service needs a hard budget cap by default",
+      "summary": "Willison argues soft caps -- email me after $X -- aren't enough once coding agents make it trivial to stand up services that quietly rack up usage. He wants a real default: hit the limit, get errors, nothing more, with living dangerously as an explicit opt-in. He points to AWS's new project spending limits and Google Cloud's Spend Caps as the industry finally moving this way.",
+      "why": "Every agent or side project wired up to a paid API is one runaway loop away from a bill you didn't see coming, and most providers still only warn you after the fact.",
+      "actionLabel": "Angle for you",
+      "action": "Check the APIs behind your own side projects for a real hard spend limit rather than just a billing alert, and turn it on wherever one exists.",
+      "permalink": "https://simonwillison.net/2026/Oct/3/default-hard-budget-caps/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A clear, debated position backed by concrete recent product moves (AWS, Google Cloud), not a hot take alone."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the post at eval time; text and linked examples matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drafted directly from the post text."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item, no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A concrete, five-minute action (check and enable a hard cap) with real cost-risk relevance."
+        }
+      ]
+    },
+    {
+      "slug": "claude-skills-v1-3-pr-implement-spec-retro",
+      "section": "WATCH QUEUE",
+      "title": "Matt Pocock's Skills plugin v1.3 adds /pr, /implement-spec, and /retro",
+      "summary": "Pocock walks through three new skills in his widely-used Claude Code skills plugin: /implement-spec for landing large chunks of spec'd work, /pr for sharper code review, and /retro for surfacing hidden inefficiencies in past agent sessions.",
+      "why": "These are exactly the three gaps -- speccing big changes, reviewing what the agent wrote, and learning from past sessions -- that make agentic coding feel undisciplined in daily practice.",
+      "actionLabel": "Worth the drive",
+      "action": "14:34 -- if you're already running Claude Code skills, this is the fastest way to judge whether /implement-spec and /retro are worth adding to your own setup.",
+      "permalink": "https://www.youtube.com/watch?v=BsJGo1wFTvQ",
+      "watch": {
+        "label": "Watch",
+        "url": "https://www.youtube.com/watch?v=BsJGo1wFTvQ"
+      },
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete new skills in a widely-used plugin, demoed live, not a release-notes read-through."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the video at eval time; title, channel and description matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the video's own full description and chapter list, read in full."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Full description and chapters confirm a hands-on walkthrough of each new skill."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly actionable for anyone already using this skills plugin in Claude Code."
+        }
+      ]
+    },
+    {
+      "slug": "agents-write-own-tools-runtime-aws",
+      "section": "WATCH QUEUE",
+      "title": "Agents that write their own tools at runtime -- AWS's Sandhya Subramani demos meta-tooling",
+      "summary": "Subramani starts an agent with zero tools, then has it write and load a calculator and a character-counter tool for itself mid-session using the open-source Strands Agents SDK, before moving into self-assembling multi-agent swarms and the guardrails -- sandboxing, permissions, evals -- that keeping that safe actually requires.",
+      "why": "An agent that can write and load its own tool mid-conversation turns the question from 'did I give it the right tools' into 'how do I keep it honest about the ones it invents.'",
+      "actionLabel": "Worth the drive",
+      "action": "20:40 -- the back half on guardrails and evals for self-modifying agents is the part worth your attention if you're building anything agentic at work.",
+      "permalink": "https://www.youtube.com/watch?v=33Oct2hqGnk",
+      "watch": {
+        "label": "Watch",
+        "url": "https://www.youtube.com/watch?v=33Oct2hqGnk"
+      },
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A concrete, demoed pattern (runtime tool synthesis) plus a real discussion of the safety tradeoffs, not a generic agents talk."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the video at eval time; title, channel and description matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the video's own full description, read in full rather than judged by title."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Description and comments confirm a live demo plus a substantive guardrails/evals discussion."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to anyone building agentic systems that need to stay safely bounded."
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "section": "SHIPPED",
+      "reason": "The one live candidate (an OpenAI changelog entry) returned inconsistent content across repeated fetches at eval time, so its permalink could not be verified as stable; dropped rather than published on an unverifiable source."
+    },
+    {
+      "section": "STUDY",
+      "reason": "The strongest candidate traced back to a capability that had already shipped earlier and was being restated under new framing; no other candidate cleared the bar today."
+    }
+  ],
+  "dropped": [
+    {
+      "title": "OpenAI 'Computer Use added to Agents API' changelog entry",
+      "stage": "eval gate",
+      "reason": "Two fetches of the same changelog URL minutes apart returned different content; the link could not be verified as stable, so the item was dropped."
+    },
+    {
+      "title": "llm-d distributed inference project update",
+      "stage": "eval gate",
+      "reason": "Traced the underlying capability back to an earlier release; today's post was a restatement, not new news."
+    },
+    {
+      "title": "Uber MCP Gateway post (two independent authors)",
+      "stage": "step 3",
+      "reason": "Already covered in an earlier brief; today's posts were restatements of the same launch."
+    },
+    {
+      "title": "'Claude is now live in India' post",
+      "stage": "step 3",
+      "reason": "Traced back through an earlier commitment post to a cloud provider's region launch from about a week earlier; promotional restatement, not new."
+    },
+    {
+      "title": "A handful of model-version-bump rumors and recap posts",
+      "stage": "step 3",
+      "reason": "Unconfirmed version-number claims or pure restatements of earlier launches, excluded pending first-party confirmation."
+    }
+  ]
+}
