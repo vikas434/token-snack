@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-07",
+  "items": [
+    {
+      "slug": "cursor-remote-control-local-agents",
+      "section": "SHIPPED",
+      "title": "Cursor ships Remote Control: check in on local coding agents from the iOS app",
+      "summary": "Local Cursor agents running on your desktop can now be monitored and replied to from the Cursor iOS app -- check in, reply, or start new tasks from your phone. The agent itself keeps running on your machine; the phone just gets a window into it, so the computer has to stay powered on and online for it to work.",
+      "why": "If you've ever started a long Cursor agent task before a meeting and wanted to peek at it without walking back to your desk, you can now just do that from your phone.",
+      "actionLabel": "Try this",
+      "action": "Next long-running Cursor agent task you kick off before a meeting, check progress from the iOS app instead of walking back to your desk.",
+      "permalink": "https://cursor.com/changelog/remote-control-local-agents",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A genuine new capability (mobile monitoring/control of local agents), not a pricing or benchmark update."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the changelog permalink at eval time; title, date and claim matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn directly from the changelog entry's own text, including the caveat that the host machine must stay on and online."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Checked the vendor's own YouTube channel; no demo specific to this feature was found, so no Watch link was added."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete and immediately usable for anyone who runs long agent sessions away from their desk."
+        }
+      ]
+    },
+    {
+      "slug": "jev-ai-sdk-python-decisions",
+      "section": "TRENDING ON X",
+      "title": "Vercel brings Jev's narrow-decision model into the Python AI SDK",
+      "summary": "Jev isn't a chat model -- it answers narrow questions (pick one of N options, score something, yes/no) and returns a confidence score alongside structured JSON, at roughly $0.04 per million tokens and under 500ms latency. The new experimental evaluate() function in the Python AI SDK gives you one call and three question types to use it, reusing whatever AI Gateway auth you already have for GPT or Claude.",
+      "why": "Half the 'should an LLM really be doing this' classification steps in an agent pipeline are really just a cheap yes/no or pick-one decision wearing a full LLM prompt.",
+      "actionLabel": "Angle for you",
+      "action": "If any agent pipeline you run routes on an if/else that's currently backed by a full LLM call just to classify or score something, swap that one call for Jev's evaluate() -- it's a 10-minute \"uv add ai\" experiment.",
+      "permalink": "https://vercel.com/blog/jev-for-python-engineers",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A real new SDK capability (a narrow-decision model wired into a widely-used Python SDK), not pure discourse or a benchmark claim."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the Vercel blog post at eval time; title and the evaluate() API description matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn from the post's own description of the three question types, pricing and latency figures."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item; no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Gives a specific, testable swap for a cheap classification call inside an existing agent pipeline."
+        }
+      ]
+    },
+    {
+      "slug": "claude-mem-persistent-agent-memory",
+      "section": "STUDY",
+      "title": "claude-mem: a persistent memory layer for Claude Code between sessions",
+      "summary": "Captures what an agent did during a session, compresses it with AI, stores it in SQLite, then injects the relevant pieces back into your next session on that project -- so a fresh Claude Code session doesn't start from zero on work from yesterday. Hooks into Claude Code and a handful of other coding agents.",
+      "why": "This is the same cross-session context-continuity problem a lot of code-knowledge-graph research is going after, just solved here with compression and retrieval instead of a graph.",
+      "actionLabel": "Try this",
+      "action": "Install it against one repo you work in daily and see whether the injected context on session two actually kills the usual 're-explain the codebase' preamble.",
+      "permalink": "https://github.com/thedotmack/claude-mem",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A substantive open-source tool tackling cross-session agent memory, not a rehash or a benchmark-only repo."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the repo at eval time; README description matched the summary below."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Drawn directly from the repo's own README (SQLite storage, AI compression, lifecycle-hook injection)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item; no demo-video requirement."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "A concrete, installable tool directly relevant to cross-session context-continuity work, not generic hype."
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "The browser session used for scouting wasn't signed in to LinkedIn this run, so no candidates could be reviewed."
+    },
+    {
+      "section": "WATCH QUEUE",
+      "reason": "The browser session used for scouting wasn't signed in to YouTube this run, so no personalized video candidates could be reviewed."
+    }
+  ],
+  "dropped": [
+    {
+      "title": "OpenAI textGrain invisible ChatGPT/Codex watermarking (via AlphaSignal)",
+      "stage": "step 3",
+      "reason": "Compliance/policy feature (EU AI Act driven), not a coding capability, and no first-party OpenAI developer changelog entry could be found to confirm it independent of the aggregator."
+    },
+    {
+      "title": "Reflection AI 'Beam' 501B open-weight model release",
+      "stage": "step 3",
+      "reason": "Coincides with a large funding round for the company; couldn't separate the model announcement from funding-adjacent coverage with a clean first-party technical source in the time available."
+    },
+    {
+      "title": "Vals AI / 90 Claude agents find room-temperature magnetic semiconductor candidates",
+      "stage": "step 3",
+      "reason": "Genuinely interesting agentic-research result, but a materials-science finding rather than an AI-driven-SDLC capability, and no first-party write-up was found to verify the claims against."
+    },
+    {
+      "title": "swyx coding-agent preference poll on X",
+      "stage": "step 3",
+      "reason": "Pure discourse with no buildable angle beyond the poll itself; didn't clear the 'where do I use this' bar."
+    }
+  ]
+}
