@@ -1,0 +1,110 @@
+{
+  "date": "2026-10-09",
+  "items": [
+    {
+      "slug": "openai-decisions-api",
+      "section": "SHIPPED",
+      "title": "OpenAI ships the Decisions API: a typed, 10x-faster endpoint for yes/no, choice, and score calls",
+      "summary": "New POST /v1/decisions endpoint on gpt-6-luna skips free-text generation entirely — send a predicate, choice, or score question and get a typed answer with probabilities back, not a paragraph to parse. $0.10/M input tokens, no output-token or cache charges. Public beta now.",
+      "why": "Half the LLM calls in a typical agent pipeline — routing, classification, pass/fail gates — don't need a chat response at all, just a fast structured answer, and this is built specifically for that.",
+      "actionLabel": "Try this",
+      "action": "Swap one routing or classification step in an agent pipeline over to POST /v1/decisions and compare latency against your current prompt-and-parse approach.",
+      "permalink": "https://developers.openai.com/api/docs/guides/decisions",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "New endpoint type, model, and pricing model for structured decisions, not a rehash of prior narrow-decision coverage (different vendor, first-party GA push)." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the guide fresh; resolves to the Decisions API docs, not a 404 or homepage." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Re-read the guide; pricing and predicate/choice/score shape match the summary." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched for a first-party OpenAI demo video; only third-party explainers surfaced, so the Watch line was omitted." },
+        { "check": "Worth the time", "result": "PASS", "reason": "A new API primitive with real latency/pricing implications for agent pipelines — concrete, not corporate PR." }
+      ]
+    },
+    {
+      "slug": "gary-stafford-multi-agent-evals",
+      "section": "ON LINKEDIN",
+      "title": "An OpenAI engineer's concrete framework for evaluating multi-agent systems",
+      "summary": "Gary Stafford (Applied AI Engineer, OpenAI) walks through building evals with Promptfoo for multi-agent workflows: capture realistic agent episodes, combine deterministic checks with an LLM judge, test individual agents and the assembled workflow separately, and fix execution defects before trusting any model comparison.",
+      "why": "The comments confirm the real failure mode is broken tool-call handoffs that an LLM judge will happily wave through, not model quality.",
+      "actionLabel": "Angle for you",
+      "action": "Next time you're comparing models or prompts for a multi-step agent, add one deterministic check on the handoff/coordination layer before trusting an LLM-judge score.",
+      "permalink": "https://www.linkedin.com/posts/garystafford_agenticai-promptfoo-evals-share-7513439400484249600-P_J6/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A concrete technical framework with a worked example and open-source harness, not a conceptual teardown post." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the post fresh via logged-in browser; loads the full post and comment thread." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Re-read the full post text side by side with the summary; matches." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Clears the 'where do I use this' bar directly — a specific eval-design technique, not discourse." }
+      ]
+    },
+    {
+      "slug": "vela-2-decision-models",
+      "section": "ON LINKEDIN",
+      "title": "Vela 2.0: open-weight decision models that also point at the exact PII or hallucinated span",
+      "summary": "KR Labs and the vLLM Semantic Router team released Vela 2.0 (0.3B–9B, Apache-2.0): alongside choice/yes-no/score answers it now returns exact text spans for labels named at request time — PII, unsupported RAG claims, prompt-injection attempts — in one forward pass. The 0.3B size runs on a CPU.",
+      "why": "A CPU-sized, open model that flags PII and ungrounded claims in the same call as a routing decision is a real option for a guardrail layer, not just another benchmark post.",
+      "actionLabel": "Angle for you",
+      "action": "Try the 0.3B Vela 2.0 checkpoint on a PII or hallucinated-span check you currently run as a separate call, and compare against its published CPU numbers.",
+      "permalink": "https://www.linkedin.com/posts/adaamko_happy-to-introduce-%F0%9D%97%A9%F0%9D%97%B2%F0%9D%97%B9%F0%9D%97%AE-%F0%9D%9F%AE%F0%9D%9F%AC-our-newest-ugcPost-7513515895521120256-ccdy/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine open-weight model release with a new span-answer capability and published benchmarks — different vendor and capability from the Decisions API pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the post fresh; loads the full post, highlights, and comment thread." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Re-read the full post text; sizes, license, and benchmark figures match." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Specific, numbers-backed, and immediately applicable to a routing/guardrail layer." }
+      ]
+    },
+    {
+      "slug": "simonw-codex-voice-blog-feature",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison shipped a real blog feature by talking to Codex Desktop while cooking dinner",
+      "summary": "He built and shipped a Newsletters index page for his blog entirely by voice, dictating to Codex Desktop instead of typing — real, if small, production work rather than a toy demo.",
+      "why": "This is ordinary use of voice coding on a real feature, not a stunt — the signal that it has crossed from novelty into something you could actually reach for.",
+      "actionLabel": "Angle for you",
+      "action": "Next time you're away from the keyboard with a small, well-scoped change in mind, try dictating it to a coding agent with voice input instead of waiting until you're back at your desk.",
+      "permalink": "https://x.com/simonw/status/2108547065634844839",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A real, concrete usage example of voice-driven coding shipping real work, not pure discourse." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the post fresh; loads the post text and linked blog write-up, not a removed tweet." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Re-read the post and linked excerpt; matches the summary." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Honestly a 'where do I use this' item (dictate small changes) rather than pure discourse, which is what the bar for this section requires." }
+      ]
+    },
+    {
+      "slug": "cole-medin-agentic-apps",
+      "section": "WATCH QUEUE",
+      "title": "Cole Medin: how big companies actually deploy AI agents (not single chat agents)",
+      "summary": "Built in partnership with Oracle, but the lesson generalizes: enterprises aren't shipping one chat agent, they're building multi-agent 'agentic apps' with every LLM call wrapped in a tested workflow, policy-based security, and a human approving anything that matters.",
+      "why": "This is the gap between a weekend agent demo and something an enterprise actually runs — the workflow and approval-gate pattern around the LLM call, not the model, is what's doing the work.",
+      "actionLabel": "Worth the drive",
+      "action": "12 minutes — watch it as a sanity check against whatever agent architecture you're currently scoping for production.",
+      "permalink": "https://www.youtube.com/watch?v=cWjS56edaUA",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Covers concrete deployment patterns (multi-agent orchestration, human-in-the-loop) from a real enterprise context, not a reaction or hype video." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the video fresh; public, playable, 12:29 runtime, not private or removed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Cross-checked the summary against the video's chapter list and native AI-generated summary panel; a dedicated transcript tool was unavailable this run, noted in the run log." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete enterprise deployment patterns sit squarely in scope for a staff engineer scoping agentic SDLC work." }
+      ]
+    }
+  ],
+  "skipped": [
+    { "section": "STUDY", "reason": "Checked GitHub trending, LangChain community, and DeepLearning.AI; nothing cleared the bar for a staff engineer today (a beginner-level course, a stale course re-listing, and minor changelog bumps were the best candidates)." }
+  ],
+  "dropped": [
+    {
+      "title": "Cursor ships Remote Control: check in on local coding agents from your phone",
+      "stage": "eval gate",
+      "reason": "This exact feature and permalink were already published two days earlier. Failed the Meaningful check as a rehash, not new ground, even though the feature itself is well-sourced. Dropped whole rather than patched."
+    },
+    {
+      "title": "Matt Pocock: New Skills v1.3 — /implement-spec, /pr, and /retro",
+      "stage": "eval gate",
+      "reason": "The underlying release (Skills plugin v1.3 adding /pr, /implement-spec, /retro) was already covered four days earlier as a written item. A fresh video walkthrough of the same release is the same story in a different medium, not new ground, so it failed the Meaningful check. Dropped whole rather than patched."
+    },
+    {
+      "title": "Anthropic ships Claude Haiku 5.5 — 75% cheaper on average, with its first adjustable effort dial",
+      "stage": "eval gate",
+      "reason": "Caught on a second, broader duplicate check (against the run log's full history, not just the public repo's JSON files, which has no entry for the prior day this was sent): this exact model release was already sent as a SHIPPED item the day before. Failed the Meaningful check as a rehash. Dropped whole rather than patched, leaving SHIPPED at 1 item today."
+    }
+  ]
+}
