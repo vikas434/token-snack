@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-10",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Browser session on the connected device is not currently signed in to this site."
+    },
+    {
+      "section": "TRENDING ON X",
+      "reason": "Browser session on the connected device is not currently signed in to this site."
+    },
+    {
+      "section": "WATCH QUEUE",
+      "reason": "YouTube personalized shelf requires a signed-in session, which the connected device does not currently have."
+    }
+  ],
+  "items": [
+    {
+      "slug": "claude-dashboards-motion",
+      "section": "SHIPPED",
+      "title": "Anthropic ships Claude Dashboards and Motion — turn a data question into a live chart, no SQL",
+      "summary": "Dashboards (beta, paid plans) connects to BigQuery, Snowflake, Databricks, or Salesforce — ask a plain-English question and Claude writes the query, builds a live chart, and keeps it refreshed as the data changes. Motion (beta, Team/Enterprise) turns a report or chart into a short animation written as editable code, exported as MP4. Docs, Slides, and Design also left beta the same day, free on every plan.",
+      "why": "This is Claude quietly turning into a full data workspace — a live chart wired to your actual warehouse from a plain-English question, not a one-off script you have to babysit.",
+      "actionLabel": "Try this",
+      "action": "Point Dashboards at a spreadsheet or small table from a side project and ask it a plain-English question — then check whether the query it wrote is one you'd actually trust.",
+      "permalink": "https://claude.com/resources/articles/dashboards-and-motion",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new capability (NL-to-live-dashboard, code-based animation export); not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the page fresh; content matches the claims."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Summary checked line-by-line against the re-fetched page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched for a first-party demo video; found none, only third-party write-ups, so no Watch line was added."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Notable capability expansion worth knowing even though the BI/dashboard angle isn't core daily-coding work."
+        }
+      ]
+    },
+    {
+      "slug": "snyk-langgraph-case-study",
+      "section": "STUDY",
+      "title": "Snyk put a LangGraph agent in its core product — 60K+ queries, 85%+ resolved without a ticket",
+      "summary": "Snyk Assist runs on a single LangGraph runtime behind Slack, a web app, and a panel in Snyk's core product, with LangChain middleware for guardrails/fallbacks, a Postgres checkpointer for multi-turn memory, and LangSmith for tracing, CI-gated offline evals, and scheduled online evals in production.",
+      "why": "This is the concrete shape of a production agent — one runtime, real evals gating deploys, real numbers — not a demo.",
+      "actionLabel": "Try this",
+      "action": "If your agent evals are still ad hoc, borrow the CI-gating pattern here: offline evals block the pull request, scheduled online evals watch production after it ships.",
+      "permalink": "https://www.langchain.com/blog/how-snyk-turned-an-internal-support-agent-into-a-customer-feature",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Real production adoption numbers and architecture detail, not a version-bump or benchmark post."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the blog post fresh; numbers matched."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Checked against the re-fetched page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly applicable production-agent eval pattern for anyone building agentic systems."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "OpenAI Codex CLI 0.161.0",
+      "stage": "eval gate",
+      "reason": "Mostly incremental QoL (model defaults, mic/speaker picker, MCP terminal login) rather than a meaningful step change; cut rather than padding the SHIPPED section."
+    }
+  ]
+}
