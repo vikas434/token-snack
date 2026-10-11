@@ -18,40 +18,45 @@
       "permalink": "https://developers.googleblog.com/en/the-outer-loop-insights-first-an-ambient-quality-agent-that-diagnoses-your-production-agent/",
       "eval": [
         { "check": "Meaningful", "result": "PASS", "reason": "Genuine open-source capability release with a real repo; not a duplicate of any prior brief." },
-        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the permalink fresh; loads and matches the claim." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the permalink fresh twice; loads and matches the claim." },
         { "check": "Summary accurate", "result": "PASS", "reason": "Pipeline description and pass-rate figures verified against the re-fetched page." },
         { "check": "Watch material", "result": "PASS", "reason": "Searched for a first-party demo video twice; genuinely none found." },
         { "check": "Worth the time", "result": "PASS", "reason": "Directly applicable to agentic-systems and AI-driven-SDLC work; concrete and runnable this week." }
       ]
     },
     {
-      "slug": "codex-composer-predictions",
+      "slug": "anthropic-oss-scanner-cyber-mission",
       "section": "SHIPPED",
-      "title": "OpenAI ships Composer predictions in Codex -- Tab-accept suggestions for your next message",
-      "summary": "A beta feature in the Codex desktop app: after Codex responds, it may suggest what you will want to say next based on the thread so far. Press Tab to accept, then review or edit before sending. On by default for eligible personal ChatGPT Pro users in local and SSH threads.",
-      "why": "It is a small habit change, Tab instead of retyping the obvious next instruction, but across a long back-and-forth session with a coding agent that adds up fast.",
+      "title": "Anthropic ships OSS Scanner -- free AI security scans for open-source projects, sent with zero human review",
+      "summary": "Part of Anthropic's new Cyber Mission: enrolled open-source projects get periodic scans from Anthropic's strongest models, with reports including a proof of concept, an explanation, and a suggested fix where one exists. Reports are model-generated and sent without human review; Anthropic expects a true-positive rate above 90% at launch.",
+      "why": "A security report that reaches you with no human ever having read it first is a real trust test for AI-generated findings -- worth seeing what it flags on code you actually know well.",
       "actionLabel": "Try this",
-      "action": "If you have Codex desktop access, start a multi-turn thread and see how often its guess for your next message is actually right.",
-      "permalink": "https://help.openai.com/en/articles/20001601-composer-predictions-in-codex",
+      "action": "If you maintain an open-source repo, enroll and see what its first scan cycle flags against issues you already know about.",
+      "permalink": "https://www.anthropic.com/news/anthropic-cyber-mission",
       "eval": [
-        { "check": "Meaningful", "result": "PASS", "reason": "Real new beta interaction pattern, on by default for eligible users; not previously covered." },
-        { "check": "Link works", "result": "PASS", "reason": "Re-fetched OpenAI's help-center article fresh; matches eligibility and default-on details." },
-        { "check": "Summary accurate", "result": "PASS", "reason": "Eligibility and default-on status verified against the re-fetched page." },
-        { "check": "Watch material", "result": "PASS", "reason": "Searched OpenAI's own channels and the web; only third-party aggregator posts surfaced, so no Watch line was added." },
-        { "check": "Worth the time", "result": "PASS", "reason": "Narrow (Pro-only, Codex desktop) but a real, free interaction-speed habit change worth knowing about." }
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new live opt-in service, distinct from the Cyber Verification Program pen-testing-tier item covered previously." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the permalink fresh twice; loads and matches the claim." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "No-human-review wording and the true-positive-rate figure verified against the re-fetched page." },
+        { "check": "Watch material", "result": "PASS", "reason": "Searched Anthropic's own channels and the web; genuinely none found." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Free, concrete, actionable for anyone maintaining open-source code; a notable AI-trust data point regardless." }
       ]
     }
   ],
   "dropped": [
     {
-      "title": "Claude Code 2.1.293-296 incremental CLI/hook updates",
-      "stage": "step 3",
-      "reason": "Third-plus incremental point-release run in a row; no single change read as a capability step-change on a harsh read, so passed over in favor of the two picks above rather than padding the section."
+      "title": "OpenAI Codex Composer predictions (Tab-accept next-message suggestions)",
+      "stage": "eval gate",
+      "reason": "Factually verified and real, but on a harsh worth-the-time read this is a minor UX convenience, not something a knowledgeable engineer would call actually new -- cut in favor of a stronger second pick."
     },
     {
-      "title": "LangChain blog: how an internal support agent became a customer feature",
+      "title": "LangChain blog: agents that can pay (Stripe Link payments sample)",
       "stage": "step 3",
-      "reason": "Same underlying story already covered in a prior brief under a different slug; dropped as a duplicate."
+      "reason": "A sample/demo agent with one illustrative end-to-end test, not a real adoption or production case study."
+    },
+    {
+      "title": "Codex CLI 0.162.0-alpha pre-releases",
+      "stage": "step 3",
+      "reason": "No changelog text published for these builds; could not evaluate content."
     }
   ]
 }
