@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-11",
+  "skipped": [
+    { "section": "ON LINKEDIN", "reason": "local browser session was not signed in to LinkedIn this run; no sign-in attempted" },
+    { "section": "TRENDING ON X", "reason": "local browser session was not signed in to X this run; no sign-in attempted" },
+    { "section": "STUDY", "reason": "checked GitHub trending, LangChain's blog, DeepLearning.AI's catalog, and the most recent AlphaSignal top-news items; nothing cleared the bar today" },
+    { "section": "WATCH QUEUE", "reason": "local browser session was not signed in to YouTube this run; no sign-in attempted" }
+  ],
+  "items": [
+    {
+      "slug": "google-aqua-ambient-quality-agent",
+      "section": "SHIPPED",
+      "title": "Google open-sources AQuA, an ambient agent that diagnoses your production agent's failures",
+      "summary": "AQuA runs beside a deployed agent, outside its request path, and samples recent sessions from Cloud Trace, Logging, or BigQuery. It reviews each against a checklist, clusters shared failure mechanisms, verifies clusters against full transcripts before surfacing them, and tracks them as new, recurring, or resolved. Released as composable building blocks in google/adk-recipes; a local demo needs no cloud project. On the authors' own 32-session replay, full-session passes went from 5/32 to 13/32 after a one-line prompt fix the tool surfaced.",
+      "why": "This is the missing piece between an agent demo working and an agent running in production: a way to see what it is actually failing on, verified against real transcripts rather than a made-up confidence score.",
+      "actionLabel": "Try this",
+      "action": "Clone google/adk-recipes and run the included local demo on synthetic data before pointing it at anything real.",
+      "permalink": "https://developers.googleblog.com/en/the-outer-loop-insights-first-an-ambient-quality-agent-that-diagnoses-your-production-agent/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine open-source capability release with a real repo; not a duplicate of any prior brief." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the permalink fresh; loads and matches the claim." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Pipeline description and pass-rate figures verified against the re-fetched page." },
+        { "check": "Watch material", "result": "PASS", "reason": "Searched for a first-party demo video twice; genuinely none found." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly applicable to agentic-systems and AI-driven-SDLC work; concrete and runnable this week." }
+      ]
+    },
+    {
+      "slug": "codex-composer-predictions",
+      "section": "SHIPPED",
+      "title": "OpenAI ships Composer predictions in Codex -- Tab-accept suggestions for your next message",
+      "summary": "A beta feature in the Codex desktop app: after Codex responds, it may suggest what you will want to say next based on the thread so far. Press Tab to accept, then review or edit before sending. On by default for eligible personal ChatGPT Pro users in local and SSH threads.",
+      "why": "It is a small habit change, Tab instead of retyping the obvious next instruction, but across a long back-and-forth session with a coding agent that adds up fast.",
+      "actionLabel": "Try this",
+      "action": "If you have Codex desktop access, start a multi-turn thread and see how often its guess for your next message is actually right.",
+      "permalink": "https://help.openai.com/en/articles/20001601-composer-predictions-in-codex",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Real new beta interaction pattern, on by default for eligible users; not previously covered." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched OpenAI's help-center article fresh; matches eligibility and default-on details." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Eligibility and default-on status verified against the re-fetched page." },
+        { "check": "Watch material", "result": "PASS", "reason": "Searched OpenAI's own channels and the web; only third-party aggregator posts surfaced, so no Watch line was added." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Narrow (Pro-only, Codex desktop) but a real, free interaction-speed habit change worth knowing about." }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Claude Code 2.1.293-296 incremental CLI/hook updates",
+      "stage": "step 3",
+      "reason": "Third-plus incremental point-release run in a row; no single change read as a capability step-change on a harsh read, so passed over in favor of the two picks above rather than padding the section."
+    },
+    {
+      "title": "LangChain blog: how an internal support agent became a customer feature",
+      "stage": "step 3",
+      "reason": "Same underlying story already covered in a prior brief under a different slug; dropped as a duplicate."
+    }
+  ]
+}
