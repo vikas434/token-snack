@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-12",
+  "skipped": [
+    { "section": "ON LINKEDIN", "reason": "browser session wasn't signed in to LinkedIn this run" },
+    { "section": "TRENDING ON X", "reason": "browser session wasn't signed in to X this run" },
+    { "section": "STUDY", "reason": "checked AlphaSignal, GitHub trending, LangChain, and DeepLearning.AI; nothing cleared the bar today" },
+    { "section": "WATCH QUEUE", "reason": "browser session wasn't signed in to YouTube this run" }
+  ],
+  "items": [
+    {
+      "slug": "google-ml-drift-gpu-inference-engine",
+      "section": "SHIPPED",
+      "title": "Google open-sources ML Drift, the GPU engine behind LiteRT — and ships it with a guide for coding agents to write their own shaders",
+      "summary": "ML Drift is the cross-platform GPU compute engine (OpenGL ES, OpenCL, Metal, WebGPU) that powers on-device inference in LiteRT, now open-sourced under Apache 2.0 and usable standalone. It succeeds the old TFLite GPU delegate, adds 5D tensor support and prefill/decode-aware kernels for on-device LLMs, and previews a desktop WebGPU backend for Windows and Linux.",
+      "why": "The GPU engine itself is edge/mobile infra, but the real hook is that Google shipped an agentic SKILL.md guide alongside it so a coding agent can safely author, register, and verify its own custom GPU shaders — a pattern worth stealing anywhere you want an agent to touch risky, low-level code.",
+      "actionLabel": "Try this",
+      "action": "Skim the SKILL.md in google-ai-edge/ml-drift to see exactly how they scope what an agent is allowed to generate and verify for shader code — a reusable template for giving an agent safe write-access to a tricky part of your own stack.",
+      "permalink": "https://developers.googleblog.com/en/ml-drift-next-gen-gpu-aiml-inference-at-the-edge/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new open-source release succeeding the legacy TFLite GPU delegate, with concrete new capabilities; not a duplicate of anything sent previously." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the post fresh; loads and matches, dated Oct 8 2026." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "SKILL.md quote, repo link, and capability list verified word-for-word against the re-fetched page." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched; the post embeds only product demos built on ML Drift (not a walkthrough of ML Drift itself), so no Watch line was added." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Borderline but genuine: on-device GPU inference is edge infra, but the agent-safe custom-shader pattern is a concrete, reusable idea for agentic SDLC work." }
+      ]
+    }
+  ],
+  "dropped": [
+    { "title": "Anthropic Cyber Mission / OSS Scanner (Oct 8)", "stage": "step 3", "reason": "Already covered in the Oct 11 brief; duplicate." },
+    { "title": "Anthropic Claude Haiku 5.5 (Oct 7)", "stage": "step 3", "reason": "Already covered in the Oct 8 brief; duplicate." },
+    { "title": "Anthropic 2026 Usage Policy update (Oct 8)", "stage": "step 3", "reason": "Policy update, not a product capability change." },
+    { "title": "Anthropic Genesis Mission commitment (Oct 8)", "stage": "step 3", "reason": "Partnership/initiative announcement, not a shipped capability." },
+    { "title": "Anthropic Cyber Verification Program expansion (Oct 6)", "stage": "step 3", "reason": "Repeatedly passed over; security-access policy tier, low relevance to daily tooling." },
+    { "title": "OpenAI Decisions API (Oct 6)", "stage": "step 3", "reason": "Already covered in the Oct 9 brief; duplicate." },
+    { "title": "OpenAI GPT-6.1 Sol Ultrafast mode (Oct 8)", "stage": "step 3", "reason": "Latency tweak on an existing model; weaker than other candidates on prior review." },
+    { "title": "OpenAI API usage-tier consolidation (Oct 6)", "stage": "step 3", "reason": "Pricing/tier change, excluded by rule." },
+    { "title": "OpenAI HIPAA/BAA admin flow (Oct 5)", "stage": "step 3", "reason": "Compliance/admin feature, low relevance to daily coding work." },
+    { "title": "OpenAI chat-latest snapshot update (Oct 7)", "stage": "step 3", "reason": "Minor internal model-alias update, not notable." },
+    { "title": "OpenAI safety report on disrupted 'false front' operations (Oct 8)", "stage": "step 3", "reason": "Threat-intel/safety report, not a product capability ship." },
+    { "title": "Cursor Remote Control for local agents (Oct 6)", "stage": "step 3", "reason": "Already covered in the Oct 7 brief; this is a recurring near-duplicate resurfacing candidate." },
+    { "title": "Google Developer Knowledge API MCP ecosystem (Oct 7)", "stage": "step 3", "reason": "Already covered in the Oct 8 brief; duplicate." },
+    { "title": "Google AQuA ambient quality agent (Oct 8)", "stage": "step 3", "reason": "Already covered in the Oct 11 brief; duplicate." },
+    { "title": "AlphaSignal Oct 12 deep-dive: cross-model KV-cache sharing for multi-model agents", "stage": "step 3", "reason": "Both underlying first-party sources checked directly and found stale: one is an August 2026 arXiv preprint with no first-party blog post, the other was originally posted over a year ago and last revised seven months ago. Not fresh despite the newsletter's framing." },
+    { "title": "GitHub trending (daily check)", "stage": "step 3", "reason": "Only long-standing generic ML repos surfaced; nothing new or agent/SDLC-relevant." },
+    { "title": "LangChain blog case study on an internal-support-agent product (Oct 8)", "stage": "step 3", "reason": "Same story already covered in the Oct 10 brief under a different write-up; duplicate." },
+    { "title": "LangChain blog: Managed Deep Agents UX tutorial (Oct 9)", "stage": "step 3", "reason": "Tutorial, not an adoption/impact case study." },
+    { "title": "LangChain blog: agent payments with a payments provider (Oct 8)", "stage": "step 3", "reason": "Partner tutorial, no independent adoption numbers; previously passed over." },
+    { "title": "DeepLearning.AI course catalog", "stage": "step 3", "reason": "No newly launched course found today." }
+  ]
+}
