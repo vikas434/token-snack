@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-17",
+  "skipped": [
+    { "section": "ON LINKEDIN", "reason": "local browser session was not signed in to LinkedIn this run" },
+    { "section": "TRENDING ON X", "reason": "local browser session was not signed in to X this run" },
+    { "section": "WATCH QUEUE", "reason": "requires a signed-in YouTube session, unavailable this run" }
+  ],
+  "items": [
+    {
+      "slug": "cursor-cloud-agent-canvases-environments",
+      "section": "SHIPPED",
+      "title": "Cursor ships Cloud Agent Canvases — agents now build shareable visual outputs, not just text",
+      "summary": "Cloud agents can generate interactive canvases (dashboards, diagrams, custom review tools) as part of their work and share a finished one via link. A new Environments API (beta) lets you create and manage cloud agent environments programmatically, and environments now scale to 300 repos and load 5x faster.",
+      "why": "A coding agent that hands you back a working visual artifact instead of a wall of text is a real jump for anything beyond quick text review.",
+      "actionLabel": "Try this",
+      "action": "Next time a cloud agent finishes a multi-file change, ask it to build a canvas summarizing the diff and impact instead of a text PR description.",
+      "permalink": "https://cursor.com/changelog/cloud-agent-canvases-and-environments",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new capability (agent-built shareable canvases, Environments API beta, larger/faster environments); not a duplicate of any prior pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the changelog page fresh; loads and matches the claim, dated Oct 16 2026." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Canvas, Environments API, and 300-repo/5x-faster claims verified against the re-fetched page." },
+        { "check": "Watch material", "result": "PASS", "reason": "Searched Cursor's own blog and YouTube channel for a first-party demo of this specific feature; found none." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, actionable this week for anyone running cloud coding agents." }
+      ]
+    },
+    {
+      "slug": "google-agent-eval-toolkit-vibe-check",
+      "section": "SHIPPED",
+      "title": "Google open-sources agent-eval, a toolkit for moving agent testing past the \"vibe check\"",
+      "summary": "A framework-agnostic evaluation methodology plus an open-source scaffolding tool, agent-eval, that runs multi-turn scenarios, captures traces, and generates a pass/fail and root-cause report.",
+      "why": "A full day-0/day-1/day-2 playbook for turning agent testing into an actual CI-gated eval suite, published by a major vendor.",
+      "actionLabel": "Try this",
+      "action": "Do a manual review pass on 10-20 of your own agent's traces before writing a single metric, per the post's recommended first step.",
+      "permalink": "https://developers.googleblog.com/en/evaluating-ai-agents-moving-past-the-vibe-check/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "New open-source toolkit plus a named methodology; not a duplicate of any prior pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the post fresh twice; consistent title, date (Oct 15 2026), and content." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Toolkit name, GitHub path, and methodology details verified word-for-word against the re-fetched page." },
+        { "check": "Watch material", "result": "PASS", "reason": "Searched Google's own channels and the web for a first-party demo of this toolkit; found none." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, reusable eval-engineering practices, not abstract." }
+      ]
+    }
+  ],
+  "dropped": [
+    { "title": "Cursor: Origin App Marketplace (Oct 13)", "stage": "step 3", "reason": "Genuine but more ecosystem/partnership-flavored than a core capability change; cut in favor of a stronger pick." },
+    { "title": "Google: tour of the adk-recipes repo structure (Oct 15)", "stage": "step 3", "reason": "Decent but narrower than the agent-eval pick; only one Google slot used." },
+    { "title": "Google: DPoP support for Google OAuth (Oct 15)", "stage": "step 3", "reason": "Security/token-handling feature, low relevance to this brief's focus." },
+    { "title": "Anthropic: policy and governance posts (Oct 14-15)", "stage": "step 3", "reason": "Policy/governance updates, not capability ships; excluded by rule." },
+    { "title": "OpenAI: GPT-Live-1.1 voices, Decisions integration in GPT-Live (Oct 15-16)", "stage": "step 3", "reason": "Consumer voice features with low relevance to this brief's focus; one is an incremental extension of an already-covered API." },
+    { "title": "GitHub trending (daily check)", "stage": "step 3", "reason": "Returned only generic, non-AI-agent-relevant repositories today." },
+    { "title": "LangChain: other Oct 13-15 posts (agent-evals Q&A, newsletter, context-engineering guide, trace search feature, long-running-agent build)", "stage": "step 3", "reason": "Educational or feature-announcement posts without a real adoption/impact signal; one case-study pick used instead." },
+    { "title": "DeepLearning.AI: \"AI Prompting for Everyone\"", "stage": "step 3", "reason": "Too introductory for this brief's audience; same course flagged on a prior day." },
+    { "title": "AlphaSignal Top News: Meta's 816B open-weight model (\"Muse Spark Open\")", "stage": "step 3", "reason": "Could not find a first-party vendor announcement or model card after checking the vendor's own blog and model hub; only third-party aggregator pages found, so dropped rather than guessing a link." },
+    { "title": "AlphaSignal Top News: OpenAI GPT-Live-1.1 voices", "stage": "step 3", "reason": "Consumer voice feature, low relevance to this brief's focus." }
+  ]
+}
