@@ -1,0 +1,325 @@
+{
+  "date": "2026-10-18",
+  "skipped": [
+    {
+      "section": "SHIPPED",
+      "reason": "no genuine first-party capability ship from Cursor, Anthropic, OpenAI, or Google AI cleared the bar today (see dropped list)"
+    }
+  ],
+  "items": [
+    {
+      "slug": "harness-squared-recursive-agent-harness",
+      "section": "STUDY",
+      "title": "Google Research open-sources Harness²: agents that rewrite their own execution harness mid-task",
+      "summary": "A framework from Google Cloud AI Research and Northwestern lets an agent propose, test, and compose edits to its own harness (system prompt, tool guidance, subagents, skills) for the task at hand, then banks what worked into a reusable library. On the WorkBuddy benchmark with Gemini 3.5 Flash in OpenCode, average score goes from 72.4 to 77.5 after one improvement pass, and to 80.8 with 5-way parallel recursion. Code and paper are public.",
+      "why": "The gap between a generic coding agent and one tuned for your repo might just be letting the agent edit its own playbook instead of you editing it for it.",
+      "actionLabel": "Try this",
+      "action": "Clone google-research/harness2 and run its task-level recursion step against one of your own recurring task types, see what edit it finds that you wouldn't have thought to make.",
+      "permalink": "https://harness2.github.io",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new open-source research release with reproducible code and concrete benchmark numbers; checked against the run-log history, not a duplicate of any prior pick."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched harness2.github.io fresh; confirmed live GitHub repo (google-research/harness2, Apache-2.0) and arXiv paper (2610.14224)."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Benchmark numbers (72.4 to 77.5 to 80.8) and the 8-component harness description verified word-for-word against the re-fetched page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Open-source, runnable, and directly on-topic for agent-harness tuning work."
+        }
+      ]
+    },
+    {
+      "slug": "archify-claude-code-architecture-skill",
+      "section": "ON LINKEDIN",
+      "title": "Archify: a Claude Code skill that turns your codebase into an interactive architecture diagram",
+      "summary": "83.4k GitHub stars, 130K+ installs, v3.1.0 released Oct 14 — works with Claude Code, Codex, Cursor, and OpenCode. Reads a codebase (or a plan, or an idea) and generates a navigable diagram of services, data flows, and dependencies.",
+      "why": "This turns “explain this codebase to me” into something you can actually look at.",
+      "actionLabel": "Angle for you",
+      "action": "Run the install command against one of your own services this week and compare the generated dependency diagram to what you'd sketch by hand.",
+      "permalink": "https://www.linkedin.com/posts/daniel-lh-gordon_github-tt-a1iarchify-turn-any-idea-plan-share-7515985035401781248-k60T/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Real, actively-released open-source tool (83.4k stars, dated Oct 14 release), not corporate PR; not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Verified the LinkedIn post resolves in a logged-in session, and the GitHub repo it links to loads with a real release and changelog."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Star count, install command, and tool description verified against the GitHub repo directly."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Short, concrete, immediately-applicable tool matching the standing LinkedIn bar."
+        }
+      ]
+    },
+    {
+      "slug": "prompt-caching-coding-harnesses-arpit-bhayani",
+      "section": "ON LINKEDIN",
+      "title": "How Claude Code, OpenCode, and Pi each structure prompt caching, and what silently breaks it",
+      "summary": "A breakdown of where each coding harness puts its cache breakpoint, and the shared rule: static content first, volatile content last, stable key per session. Break that order once and you re-pay for the whole prefix.",
+      "why": "If you're not watching the cache-read token metric, you could be silently paying full price on every turn without knowing why.",
+      "actionLabel": "Angle for you",
+      "action": "Check whichever harness you're building on against this ordering, and watch the cache-read metric on a session where nothing should have invalidated it.",
+      "permalink": "https://www.linkedin.com/posts/arpitbhayani_every-harness-leverages-prompt-caching-differently-share-7517164638841536512-2Tia/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Specific technical detail across three real harnesses, not a rehash; not previously covered (a prior Arpit Bhayani pick was a different topic)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Verified the LinkedIn post resolves in a logged-in session."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Per-harness caching details verified against the post text directly."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete, directly actionable cost/latency optimization check."
+        }
+      ]
+    },
+    {
+      "slug": "claude-ecdsa-curve-origins",
+      "section": "TRENDING ON X",
+      "title": "Claude solves a 25-year-old cryptography mystery: where NIST's elliptic curve seeds came from",
+      "summary": "Anthropic's Frontier Red Team set Claude on the long-standing “are the NIST curves backdoored” question. In under 30 minutes it worked out the P-192 through P-521 seeds are outputs of the 1990s lrand48 generator seeded with Unix timestamps, not hash digests as long rumored, then used LLL lattice reduction and brute force to recover and confirm the hidden generator state. Reproducible Python is published under CC0.",
+      "why": "This isn't a benchmark score, it's Claude running a real guess-and-verify cryptanalysis workflow on a question nobody had cracked since 1999.",
+      "actionLabel": "Angle for you",
+      "action": "Worth reading end to end as a template: point an agent at an old unsolved technical mystery in your own domain and see what a guess-and-verify loop turns up.",
+      "permalink": "https://www.anthropic.com/research/ecdsa-curve-origins",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine novel research result with reproducible code, surfaced via X monitoring (swyx retweet chain); not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the Anthropic research page fresh; live, dated Oct 16/17 2026, with working Python reproductions."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Method details (lrand48, LLL lattice reduction, 1997-98 timestamps) verified word-for-word against the re-fetched page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete technique with a buildable angle, not pure discourse."
+        }
+      ]
+    },
+    {
+      "slug": "cole-medin-ai-software-factory",
+      "section": "WATCH QUEUE",
+      "title": "Cole Medin: why his fully-autonomous “dark factory” failed, and the software factory he runs instead",
+      "summary": "A real postmortem on running agents at scale: plan the release scope up front, split it into parallel issues, validate before code review, keep a manager agent, and maintain a short list of files the factory can never touch.",
+      "why": "The useful part isn't that the fully autonomous version failed, it's the specific list of guardrails that made the scaled-back version actually reliable.",
+      "actionLabel": "Worth the drive",
+      "action": "19 minutes. One chapter (7:34-9:03) is a sponsor segment if you want to skip it.",
+      "permalink": "https://www.youtube.com/watch?v=GQatuTWSRqY",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive technical postmortem with an open-source repo, not reaction content; checked against run-log history, Cole Medin covered before but different story each time."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Video confirmed live and public at the permalink."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Based on the full chapter list, description, and top comments read directly (TubeAlfred transcript tool was unavailable this run; used description, chapters, and comments as the disclosed fallback)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Top comments confirm real engineering value (\"the real value is all the architectural learning\"); sponsor segment is minor and clearly chaptered (~8% of runtime)."
+        }
+      ]
+    },
+    {
+      "slug": "matt-pocock-2027-interview",
+      "section": "WATCH QUEUE",
+      "title": "Matt Pocock: why spec-driven development made his code worse, and what he'd learn instead of chasing AI automation",
+      "summary": "An interview covering where coding agents actually clicked for him, why his spec-driven workflow failed for months, and how he treats models, harnesses, and effort levels as separate dials.",
+      "why": "His skills repo has been a good find before; this is him explaining the reasoning behind it, not just the workflow.",
+      "actionLabel": "Worth the drive",
+      "action": "45 minutes; the spec-driven-development-failure and models/harnesses/effort-levels chapters are the dense part if you want to skip to those.",
+      "permalink": "https://www.youtube.com/watch?v=Z8lf5oWKfj0",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive interview with concrete technical chapters, not just career discourse; checked against run-log history, different story from prior Matt Pocock skills-repo coverage."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Video confirmed live and public at the permalink, posted Oct 17 2026."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Based on the full chapter list and description read directly (TubeAlfred transcript tool was unavailable this run; used description, chapters, and comments as the disclosed fallback)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Sponsor mentions are brief host-read description links, not a dedicated segment; technical chapters are substantive."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Cursor: Cloud Agent Canvases and Environments (Oct 16 changelog)",
+      "stage": "step 3",
+      "reason": "Duplicate of yesterday's (Oct 17) brief item."
+    },
+    {
+      "title": "Google: Gemini 4 Argon developer availability (Oct 13 blog.google)",
+      "stage": "step 3",
+      "reason": "Too close to the already-covered Oct 1 Gemini 4 Argon ship; cut to avoid a near-duplicate."
+    },
+    {
+      "title": "Anthropic: \"An update on independent evaluators\" (Oct 15)",
+      "stage": "step 3",
+      "reason": "Governance/policy update, not a capability ship; excluded by rule."
+    },
+    {
+      "title": "OpenAI: prompt-to-voice and new GPT-Live voices (Oct 16)",
+      "stage": "step 3",
+      "reason": "Genuine new capability but no relevance to this brief's coding/SDLC focus."
+    },
+    {
+      "title": "Vercel: Python GA, containers, daemons for backends (Oct 15, via X)",
+      "stage": "step 3",
+      "reason": "Not AI-specific; no AI tooling angle."
+    },
+    {
+      "title": "Anthropic/OpenAI: $5M Simons Foundation math research funding (Oct 15, via X)",
+      "stage": "step 3",
+      "reason": "Funding/partnership announcement, explicitly excluded category."
+    },
+    {
+      "title": "Sam Altman retweet on interpretability (Oct 16, via X)",
+      "stage": "step 3",
+      "reason": "Pure discourse endorsement with no “where do I use this” angle."
+    },
+    {
+      "title": "Simon Willison: pelican/Fourier-epicycles benchmark meme, Python 3.15 notes (via X)",
+      "stage": "step 3",
+      "reason": "Meme content and tangential language-release notes, not substantive AI tooling news."
+    },
+    {
+      "title": "Ras Mic: \"Software Is DEAD\" (REA reverse-engineering tool, via YouTube AI shelf)",
+      "stage": "step 3",
+      "reason": "Hype-framed sponsored video about a tool (REA) that raises real security/ethics concerns; weaker “where do I use this” than the selected Watch Queue picks."
+    },
+    {
+      "title": "morluto/rea GitHub repo (248k stars, reverse engineering)",
+      "stage": "step 3",
+      "reason": "Enormous star growth but a security/ethics story more than an AI-SDLC productivity tool; passed over for Harness² in the single STUDY slot."
+    },
+    {
+      "title": "Avi Chawla: LLM fine-tuning techniques (LoRA family, LinkedIn)",
+      "stage": "step 3",
+      "reason": "Solid content but more ML-research-oriented than AI-SDLC/daily-coding focused; two stronger LinkedIn picks used instead."
+    },
+    {
+      "title": "Dr. Alvaro Cintas: LinkedIn post about Harness²",
+      "stage": "step 3",
+      "reason": "Redundant with the first-party Harness² pick already selected for STUDY."
+    },
+    {
+      "title": "LangChain: AI Search in LangSmith (Oct 13 blog)",
+      "stage": "step 3",
+      "reason": "Solid new feature but Harness² was the stronger, more novel pick for the single STUDY slot."
+    },
+    {
+      "title": "mksglu/context-mode GitHub repo (30.4k stars, context-window optimization)",
+      "stage": "step 3",
+      "reason": "Strong candidate but STUDY slot limited to one; Harness² had stronger first-party verification (published paper) versus self-reported adoption badges here."
+    },
+    {
+      "title": "GitHub trending (default daily page)",
+      "stage": "step 3",
+      "reason": "Mostly generic, non-AI-relevant repositories; no additional AI-SDLC candidates surfaced beyond context-mode and rea."
+    },
+    {
+      "title": "swyx / Latent Space \"High Taste Testers\" show launch (Oct 17, via X)",
+      "stage": "step 3",
+      "reason": "Podcast-launch announcement; the stronger, more substantive ECDSA research story took the single TRENDING ON X slot."
+    },
+    {
+      "title": "DeepLearning.AI (daily check)",
+      "stage": "step 3",
+      "reason": "No course announced in the last 7 days (checked community announcements and the courses page); nothing to pick."
+    },
+    {
+      "title": "AlphaSignal Top News: Meta \"Muse Spark Open\" 816B model (Oct 16 newsletter)",
+      "stage": "step 3",
+      "reason": "No first-party vendor source found for this model; dropped rather than linking an aggregator."
+    }
+  ]
+}
