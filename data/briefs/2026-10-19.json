@@ -1,0 +1,281 @@
+{
+  "date": "2026-10-19",
+  "items": [
+    {
+      "slug": "anthropic-opentelemetry-tracing-export",
+      "section": "SHIPPED",
+      "title": "Anthropic ships OpenTelemetry export for Claude traces, wired into 11 observability platforms",
+      "summary": "Now in beta: Messages API calls and Managed Agents runs can export spans via OpenTelemetry instead of a bespoke logging pipe, with first-party integration docs for 11 partner platforms.",
+      "why": "If you're running agents past the prototype stage, this is the difference between grepping stdout and watching latency and cost per step in a dashboard you already use.",
+      "actionLabel": "Try this",
+      "action": "Point the OTel exporter at whatever observability stack you already run and trace one of your longer agent loops end to end, see where the time and tokens actually go.",
+      "permalink": "https://platform.claude.com/docs/en/manage-claude/opentelemetry",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new capability (OTel export for Messages API and Managed Agents); not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the docs page fresh immediately before finalizing."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Beta badge, API scope, and partner-platform list verified word-for-word against the re-fetched page."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Searched Anthropic's own blog/YouTube and the web; no first-party demo found for this specific feature."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly actionable for anyone running agents past prototype stage."
+        }
+      ]
+    },
+    {
+      "slug": "kong-pr-review-agent-triage-cost",
+      "section": "ON LINKEDIN",
+      "title": "Kong built a PR-review agent, and the triage step cut median cost more than the model swap did",
+      "summary": "Kong's engineering blog walks through an internal PR-review agent: running the bulk of reviews on a cheaper open-weight model instead of a frontier model cuts per-review model cost roughly 7x, but the bigger lever was a cheap triage pass that routes only the PRs needing deep review to the expensive model, cutting the median review cost by more than a third.",
+      "why": "Most \"we switched to a cheaper model\" posts skip the part where the real savings came from routing, not the model choice alone.",
+      "actionLabel": "Angle for you",
+      "action": "If you're running anything multi-step on a frontier model by default, the triage-then-escalate pattern here is worth copying before you reach for a cheaper model everywhere.",
+      "permalink": "https://konghq.com/blog/engineering/agentic-engineering-platform",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete internal case study with real before/after cost numbers; not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched Kong's own engineering blog fresh."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Model-cost and median-review-cost figures verified word-for-word; the post attributes the cost drop specifically to the triage step, which the summary reflects."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete and immediately copyable routing pattern."
+        }
+      ]
+    },
+    {
+      "slug": "harnessrouter-uhp-cross-harness-routing",
+      "section": "ON LINKEDIN",
+      "title": "HarnessRouter's Universal Harness Protocol: far lower cost and faster, by routing between agent harnesses mid-task",
+      "summary": "An open-source router (1.4k GitHub stars) that sits in front of multiple agent harnesses and picks which one handles a given step. On its own benchmark it cut cost by over 99% and more than tripled end-to-end speed versus running everything on a single harness.",
+      "why": "This is a different lever than picking one harness and tuning it, it treats the harness choice itself as a per-step decision instead of a one-time one.",
+      "actionLabel": "Angle for you",
+      "action": "Worth a skim against your own semantic-graph work, the routing logic here is a cleaner, smaller example of \"pick the right tool per step\" than most of what's floating around right now.",
+      "permalink": "https://github.com/HarnessRouter/harnessrouter",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "A genuinely different lever (cross-harness routing) from anything sent previously."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Repo reachable; only a cached copy was available on the final re-check rather than a fresh live fetch (minor caveat)."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Cost and latency figures verified against the README; an unverifiable third-party adoption claim from the surfacing post was deliberately left out of the summary."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Open-source, runnable, directly relevant to harness/agent-tooling work."
+        }
+      ]
+    },
+    {
+      "slug": "simonw-anthropic-distillation-economics",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison does the math on what Anthropic's distillation crackdown says about rival labs' spending",
+      "summary": "Reacting to a report that Anthropic told investors distillation (rivals training on Anthropic's own model outputs) accounts for 5-7% of its revenue, Willison runs a back-of-envelope estimate suggesting rival labs could be spending upwards of half a billion dollars distilling Anthropic's models. That half-billion figure is Willison's own estimate using an assumed revenue number, not something Anthropic or the underlying report stated directly.",
+      "why": "The 5-7%-of-revenue figure is the real signal: distillation from a frontier lab is now a line item big enough that Anthropic is explaining it to investors.",
+      "actionLabel": "Angle for you",
+      "action": "Worth doing this same back-of-envelope check yourself whenever a model undercuts a frontier lab on price: how much of that gap is plausibly explained by distilling the thing it's undercutting.",
+      "permalink": "https://x.com/simonw/status/2110721515130089787",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Real discourse with an actual reported figure and a worked angle, not a meme or pure reaction; not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Tweet and the underlying report both re-checked live."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Quoted figures verified against the post text directly; explicitly flagged that the half-billion estimate is the author's own math, not a reported figure."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete where-do-I-use-this angle, not pure discourse."
+        }
+      ]
+    },
+    {
+      "slug": "stanford-hazy-research-ncm-training-speedup",
+      "section": "STUDY",
+      "title": "Stanford's Hazy Research lab claims 10-31x faster convergence and 4-5x fewer training tokens with a new method (NCM)",
+      "summary": "The lab's post breaks a 10-31x training-speed range down by model size and task, with a separate 4-5x reduction in the tokens needed to reach the same loss. Paper and code are both public.",
+      "why": "If the numbers hold up outside the paper's own benchmarks, training cost and time are the actual bottleneck for a lot of what you'd want to iterate on.",
+      "actionLabel": "Try this",
+      "action": "Worth reading the arXiv method section directly, not just the blog post, before deciding whether any of it is worth reproducing.",
+      "permalink": "https://hazyresearch.stanford.edu/blog/2026-10-12-ncm",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete reproducible research with public code and paper; not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Reachable; only a cached copy was available on the final re-check rather than a fresh live fetch (minor caveat)."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Speed and token-reduction figures verified against the blog's own breakdown."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to anyone iterating on training cost and time."
+        }
+      ]
+    },
+    {
+      "slug": "anthropic-flows-managed-agents-1000",
+      "section": "WATCH QUEUE",
+      "title": "Anthropic's CJ Avilla and Harrison Stall: why one agent isn't enough, and how Flows runs up to 1,000 of them",
+      "summary": "A hands-on conference workshop introducing Flows in Claude Managed Agents: hand Claude a goal and it plans and runs its own multi-agent topology through the API. Covers why single agents fail (laziness, self-preference bias, goal drift), a live demo, and running agents safely at scale (budgets, interrupts, credential vaults, network lockdown).",
+      "why": "This is Anthropic's own team explaining the failure modes that push you from one agent to an orchestrated topology, plus the actual safety controls, not just the happy-path demo.",
+      "actionLabel": "Worth the drive",
+      "action": "About 1h40m; the core walkthrough/demo and the agent-safety-at-scale chapter near the end are the two dense sections if you want to skip to those.",
+      "permalink": "https://www.youtube.com/watch?v=kiClTcJUnhc",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "First-party Anthropic team explaining a new feature plus real failure-mode and safety content; not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Video confirmed live."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Based on the video's own description and chapter list read directly (transcript tooling unavailable this run, disclosed fallback)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly on-topic for agent-harness and orchestration work."
+        }
+      ]
+    },
+    {
+      "slug": "langfuse-evals-high-stakes-agents",
+      "section": "WATCH QUEUE",
+      "title": "Langfuse's Doneyli De Jesus and Annabell Schafer: evals for high-stakes agents, walked through on a banking assistant",
+      "summary": "A conference workshop on evaluating agents where mistakes are expensive: tracing with PII masking, building eval datasets from real traces, turning domain-expert comments into failure modes, choosing between LLM-as-judge and code evaluators, and CI that blocks a prompt change when scores drop.",
+      "why": "Most eval content stays abstract; this one is an actual end-to-end loop on a regulated-industry example, the harder and more useful version of the topic.",
+      "actionLabel": "Worth the drive",
+      "action": "About 54 minutes; the tracing/PII-masking demo and the CI-gate section are the two most concrete chapters if you want to skip to those.",
+      "permalink": "https://www.youtube.com/watch?v=obfPzbapMIM",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete end-to-end eval workflow, not abstract advice; not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Video confirmed live."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Based on the video's own description and chapter list read directly (transcript tooling unavailable this run, disclosed fallback)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to agent eval and CI work."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Google Harness-squared (agents that rewrite their own execution harness mid-task)",
+      "stage": "step 3",
+      "reason": "Already sent as this exact STUDY item yesterday."
+    },
+    {
+      "title": "Cole Medin dark-factory follow-up video",
+      "stage": "step 3",
+      "reason": "Same underlying story as the Cole Medin Watch Queue item already sent yesterday."
+    },
+    {
+      "title": "A video reverse-engineering Claude Skills via a reverse-engineering GitHub tool",
+      "stage": "step 3",
+      "reason": "The underlying repo was already flagged for real security/ethics concerns in a prior run; passed over again for the same reason."
+    }
+  ]
+}
