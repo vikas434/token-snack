@@ -4,8 +4,8 @@
     {
       "slug": "anthropic-opentelemetry-tracing-export",
       "section": "SHIPPED",
-      "title": "Anthropic ships OpenTelemetry export for Claude traces, wired into 11 observability platforms",
-      "summary": "Now in beta: Messages API calls and Managed Agents runs can export spans via OpenTelemetry instead of a bespoke logging pipe, with first-party integration docs for 11 partner platforms.",
+      "title": "Anthropic ships OpenTelemetry export for Claude traces, wired into 12 observability platforms",
+      "summary": "Now in beta: Messages API calls, Sessions API requests, and Managed Agents runs can export spans via OpenTelemetry instead of a bespoke logging pipe, with first-party setup docs for 12 partner platforms (Arize AI, Braintrust, Databricks, Datadog, Grafana Cloud, Honeycomb, Langfuse, LangSmith, New Relic, PostHog, Sentry, Splunk) plus any other OTLP-compatible tool.",
       "why": "If you're running agents past the prototype stage, this is the difference between grepping stdout and watching latency and cost per step in a dashboard you already use.",
       "actionLabel": "Try this",
       "action": "Point the OTel exporter at whatever observability stack you already run and trace one of your longer agent loops end to end, see where the time and tokens actually go.",
@@ -24,7 +24,7 @@
         {
           "check": "Summary accurate",
           "result": "PASS",
-          "reason": "Beta badge, API scope, and partner-platform list verified word-for-word against the re-fetched page."
+          "reason": "Re-fetched the docs page fresh at the eval gate and found the partner count was actually 12, not 11 as first drafted (Arize AI, Braintrust, Databricks, Datadog, Grafana Cloud, Honeycomb, Langfuse, LangSmith, New Relic, PostHog, Sentry, Splunk) -- corrected before publishing rather than left as an off-by-one error."
         },
         {
           "check": "Watch material",
@@ -76,47 +76,10 @@
       ]
     },
     {
-      "slug": "harnessrouter-uhp-cross-harness-routing",
-      "section": "ON LINKEDIN",
-      "title": "HarnessRouter's Universal Harness Protocol: far lower cost and faster, by routing between agent harnesses mid-task",
-      "summary": "An open-source router (1.4k GitHub stars) that sits in front of multiple agent harnesses and picks which one handles a given step. On its own benchmark it cut cost by over 99% and more than tripled end-to-end speed versus running everything on a single harness.",
-      "why": "This is a different lever than picking one harness and tuning it, it treats the harness choice itself as a per-step decision instead of a one-time one.",
-      "actionLabel": "Angle for you",
-      "action": "Worth a skim against your own semantic-graph work, the routing logic here is a cleaner, smaller example of \"pick the right tool per step\" than most of what's floating around right now.",
-      "permalink": "https://github.com/HarnessRouter/harnessrouter",
-      "eval": [
-        {
-          "check": "Meaningful",
-          "result": "PASS",
-          "reason": "A genuinely different lever (cross-harness routing) from anything sent previously."
-        },
-        {
-          "check": "Link works",
-          "result": "PASS",
-          "reason": "Repo reachable; only a cached copy was available on the final re-check rather than a fresh live fetch (minor caveat)."
-        },
-        {
-          "check": "Summary accurate",
-          "result": "PASS",
-          "reason": "Cost and latency figures verified against the README; an unverifiable third-party adoption claim from the surfacing post was deliberately left out of the summary."
-        },
-        {
-          "check": "Watch material",
-          "result": "N/A",
-          "reason": "Not a SHIPPED item."
-        },
-        {
-          "check": "Worth the time",
-          "result": "PASS",
-          "reason": "Open-source, runnable, directly relevant to harness/agent-tooling work."
-        }
-      ]
-    },
-    {
       "slug": "simonw-anthropic-distillation-economics",
       "section": "TRENDING ON X",
       "title": "Simon Willison does the math on what Anthropic's distillation crackdown says about rival labs' spending",
-      "summary": "Reacting to a report that Anthropic told investors distillation (rivals training on Anthropic's own model outputs) accounts for 5-7% of its revenue, Willison runs a back-of-envelope estimate suggesting rival labs could be spending upwards of half a billion dollars distilling Anthropic's models. That half-billion figure is Willison's own estimate using an assumed revenue number, not something Anthropic or the underlying report stated directly.",
+      "summary": "Reacting to a Financial Times report that Anthropic told investors distillation (rivals training on Anthropic's own model outputs) accounts for 5-7% of its revenue, Willison runs a back-of-envelope estimate using Q2 revenue ($11.5B): that's more than half a billion dollars spent by other labs distilling Anthropic's models, if true. The FT separately reports Anthropic's Q3 revenue rose nearly 50% to $16.8B.",
       "why": "The 5-7%-of-revenue figure is the real signal: distillation from a frontier lab is now a line item big enough that Anthropic is explaining it to investors.",
       "actionLabel": "Angle for you",
       "action": "Worth doing this same back-of-envelope check yourself whenever a model undercuts a frontier lab on price: how much of that gap is plausibly explained by distilling the thing it's undercutting.",
@@ -152,9 +115,9 @@
     {
       "slug": "stanford-hazy-research-ncm-training-speedup",
       "section": "STUDY",
-      "title": "Stanford's Hazy Research lab claims 10-31x faster convergence and 4-5x fewer training tokens with a new method (NCM)",
-      "summary": "The lab's post breaks a 10-31x training-speed range down by model size and task, with a separate 4-5x reduction in the tokens needed to reach the same loss. Paper and code are both public.",
-      "why": "If the numbers hold up outside the paper's own benchmarks, training cost and time are the actual bottleneck for a lot of what you'd want to iterate on.",
+      "title": "Stanford's Hazy Research lab claims 10-31x faster generation and 4-5x fewer training tokens with a new method (NCM)",
+      "summary": "The lab's post describes a new language-modeling method (NCM): 10-31x faster text generation versus a baseline (21x on LM1B, 10x on OpenWebText, up to 31x on XSum, all on one H100), plus 4-5x fewer tokens needed to train it in the first place. Paper and code are both public.",
+      "why": "If the inference-speed numbers hold up outside the paper's own benchmarks, cheaper/faster generation at this scale changes the economics of anything that calls a model in a loop, agents included.",
       "actionLabel": "Try this",
       "action": "Worth reading the arXiv method section directly, not just the blog post, before deciding whether any of it is worth reproducing.",
       "permalink": "https://hazyresearch.stanford.edu/blog/2026-10-12-ncm",
@@ -172,7 +135,7 @@
         {
           "check": "Summary accurate",
           "result": "PASS",
-          "reason": "Speed and token-reduction figures verified against the blog's own breakdown."
+          "reason": "Re-fetched the blog post fresh at the eval gate and found the 10-31x figure is for generation/inference speed, not training convergence as first drafted -- corrected the title and summary before publishing rather than leave a mischaracterized (if still impressive) claim."
         },
         {
           "check": "Watch material",
@@ -276,6 +239,11 @@
       "title": "A video reverse-engineering Claude Skills via a reverse-engineering GitHub tool",
       "stage": "step 3",
       "reason": "The underlying repo was already flagged for real security/ethics concerns in a prior run; passed over again for the same reason."
+    },
+    {
+      "title": "HarnessRouter / \"Universal Harness Protocol\" cross-harness router",
+      "stage": "eval gate",
+      "reason": "Summary-accuracy FAIL: re-fetched the repo fresh and found it is actually called the Unified Harness Protocol (not Universal), and it does not route mid-task as drafted -- you pick one harness per task via metadata.harness_id upfront. The item's entire \"why it matters\" angle depended on the false mid-task-routing claim, so it was dropped rather than patched."
     }
   ]
 }
