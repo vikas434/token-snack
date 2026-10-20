@@ -1,0 +1,165 @@
+{
+  "date": "2026-10-20",
+  "notice": "Nothing cleared the bar in Shipped today — all 4 permitted vendor changelogs (Cursor, Anthropic, OpenAI, Google AI) checked, nothing new or meaningful since yesterday's picks.",
+  "items": [
+    {
+      "slug": "px0-ai-git-rebase-workbench",
+      "section": "ON LINKEDIN",
+      "title": "Arpit Bhayani: px0 is now a complete AI-coding-review workbench — AI-driven rebase conflicts and commit messages",
+      "summary": "px0.ai's latest release turns `px0` (no args) into a full workbench: open any repo or PR, spin up separate instances per workspace, trigger \"Rebase with AI\" to resolve merge conflicts using your local coding harness, and ask AI to rewrite a commit message right from the squash/merge dialog. Now also supports GitLab, Gitea, Forgejo and Bitbucket, not just GitHub.",
+      "why": "Reviewing and merging AI-generated code is turning into its own bottleneck — this folds the annoying parts (conflict resolution, commit hygiene) into the same AI workflow instead of kicking you back to a plain git CLI.",
+      "actionLabel": "Angle for you",
+      "action": "If you already use px0.ai, run `px0 --update` and try \"Rebase with AI\" on your next messy merge; if not, `px0` with no args is the fastest way to see the new workbench.",
+      "permalink": "https://lnkd.in/p/gprQzBDD",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new release (rebase-conflict resolution, AI commit messages, multi-forge support); not previously covered."},
+        {"check": "Link works", "result": "PASS", "reason": "Permalink captured via the post's own \"Copy link to post\" and re-opened fresh this run."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the post text read directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete, short, immediately applicable this week."}
+      ]
+    },
+    {
+      "slug": "jev-ontologies-decision-models-ai-agents",
+      "section": "ON LINKEDIN",
+      "title": "Paul Iusztin: stop tuning how agents reason — define what they're reasoning about instead",
+      "summary": "Pairs Jev (a decision model) with an explicit ontology: instead of asking an LLM to reason through every case, you define the possible outcomes and relations in code, Jev classifies against them with a confidence score, and the agent routes by that score — high confidence executes, medium escalates to an LLM, low goes to a human. A commenter from Visa reports applying the same pattern to support-ticket escalations dropped them ~40%.",
+      "why": "A badly-defined decision space will make even a great model guess wrong with high confidence — this makes that failure mode visible and auditable instead of invisible inside a prompt.",
+      "actionLabel": "Angle for you",
+      "action": "Next agent step that currently asks an LLM to pick from a fixed set of outcomes, write that outcome set down as an explicit ontology first, then gate execution on a confidence threshold.",
+      "permalink": "https://lnkd.in/p/gH4h7-9n",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete design-pattern post with real production validation in the comments; not a rehash of prior decision-model product posts."},
+        {"check": "Link works", "result": "PASS", "reason": "Permalink captured via \"Copy link to post\" and re-opened fresh this run."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Verified against the full post text and the Visa commenter's figure."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Reusable agent-decision-structuring technique with production validation."}
+      ]
+    },
+    {
+      "slug": "deepseek-deepinfer-open-source-inference",
+      "section": "TRENDING ON X",
+      "title": "DeepSeek open-sources DeepInfer, the production inference framework powering DeepSeek-V4.1-Flash",
+      "summary": "DeepSeek released DeepInfer (Apache-2.0, github.com/deepseek-ai/DeepInfer) today: the same high-throughput, low-latency inference stack it runs in production, shared so others can lower compute costs and energy use when self-hosting DeepSeek models. Surfaced via @swyx's retweet of the first-party announcement (2.4M views).",
+      "why": "A frontier lab open-sourcing its actual production serving stack — not just model weights — is a real, usable gift to anyone self-hosting open models, not just a research curiosity.",
+      "actionLabel": "Angle for you",
+      "action": "If you're self-hosting any DeepSeek model, worth a spin to see how DeepInfer compares to your current vLLM/TGI setup on throughput and cost.",
+      "permalink": "https://x.com/deepseek_ai/status/2112476496283775135",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine first-party open-source release of a production inference framework; not previously covered."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-opened the tweet fresh (live, posted today, 2.4M views); cross-verified the linked GitHub repo is live and Apache-2.0."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Tweet text and repo description verified word-for-word."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete \"where do I use this\" angle (adoptable open-source inference stack), not pure discourse."}
+      ]
+    },
+    {
+      "slug": "deeplearning-ai-context-engineering-course",
+      "section": "STUDY",
+      "title": "DeepLearning.AI + Chroma launch a new \"Context Engineering\" course",
+      "summary": "Announced today: an intermediate course by Jeff Huber (Chroma CEO) and Drew Breunig (editor, O'Reilly's Context Engineering Handbook) on giving agents the right information, in the right format, at the right time — agentic search, context pruning/compaction/scratchpads, and agentic memory, building agent harnesses in Python from scratch and measuring improvements with traces and evals.",
+      "why": "This is the exact problem underneath most \"my agent forgot/misused context\" bugs, taught by the people literally writing the handbook on it.",
+      "actionLabel": "Try this",
+      "action": "Worth at least the first module on context pruning/compaction — it maps directly onto harness and memory design, not just prompting.",
+      "permalink": "https://www.deeplearning.ai/courses/context-engineering/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuinely new course announced today, built with Chroma, taught by Jeff Huber and Drew Breunig; not previously covered."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the course page fresh; loads and matches description."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Instructor names and module topics verified against the re-fetched page."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to agentic memory/context design, hands-on rather than theory-only."}
+      ]
+    },
+    {
+      "slug": "cole-medin-agent-harness-engineering-loop",
+      "section": "WATCH QUEUE",
+      "title": "Cole Medin: let your AI agent do its own harness engineering",
+      "summary": "Posted today. Shows a two-loop system for production agents (not just coding agents): one loop turns escalations into private, per-user memory; the other uses LangSmith Engine to propose rule/skill changes from traces, with versioning, rollback and Slack approval so a human stays in the loop. Built on LangChain's Managed Deep Agents. Flagged \"includes paid promotion\" — judged acceptable since the sponsor's product is the actual technical subject of the video, not a separate ad segment. Summarized from the chapter list and description; TubeAlfred transcript tool was unavailable this run (disclosed fallback).",
+      "why": "This is the same \"harness that improves itself\" idea coding agents use, applied to any production agent — with the actual approval/rollback mechanics, not just the concept.",
+      "actionLabel": "Worth the drive",
+      "action": "16 minutes. The live demo (7:48–11:34) is the part worth not skipping if you only have time for one section.",
+      "permalink": "https://www.youtube.com/watch?v=TVhhmhvCovg",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Substantive technical content (14-chapter breakdown of a two-loop self-improving harness); posted today, not a duplicate of his 10-18 video."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-opened fresh, confirmed public/live, posted today."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Based on the full chapter list and description read directly; transcript fallback disclosed."},
+        {"check": "Watch material", "result": "PASS", "reason": "Comments and chapter breakdown confirm genuine substance beyond the sponsor segment."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly on Vikas's stated interest in coding-harness framework development."}
+      ]
+    },
+    {
+      "slug": "cisco-banking-ai-compliance-deployment",
+      "section": "WATCH QUEUE",
+      "title": "Al Chen (Cisco): shipping AI into 5 major banks without a 12-month compliance wait",
+      "summary": "A war story on what it actually takes to get AI software through bank security/compliance review: the build pipeline, agents writing and testing their own CVE-remediation exploits, backup/restore verification, PII leaking through LLM-as-judge setups, and why zero data leakage and data sovereignty are never free. No sponsor flag. A top comment pushes back usefully on whether LLM-as-judge is really safer than rigid pattern matching for PII/PCI scrubbing.",
+      "why": "Most \"AI in the enterprise\" content stays at the pilot stage — this is what the actual security/compliance gate looks like once you try to ship past it.",
+      "actionLabel": "Worth the drive",
+      "action": "18 minutes, including the PII-via-LLM-judge segment that's most directly relevant if you're building any agent that touches regulated data.",
+      "permalink": "https://www.youtube.com/watch?v=Bz1HFxQA1o8",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete real-world deployment war story with specific engineering detail, not reaction/hype content."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-opened fresh, confirmed public/live."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Based on the full description read directly, plus a genuine engineering pushback comment confirming substance."},
+        {"check": "Watch material", "result": "PASS", "reason": "Description and comment thread confirm real technical content, no sponsor segment."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to deploying agentic AI in regulated/production environments."}
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Anthropic OSS Scanner follow-up (AlphaSignal's \"77/880 critical bugs\" item)",
+      "stage": "step 1 (duplicate check)",
+      "reason": "Already sent as a SHIPPED item on 2026-10-11 (\"Anthropic OSS Scanner (Cyber Mission)\")."
+    },
+    {
+      "title": "Google LiteRT Tensor API",
+      "stage": "step 3",
+      "reason": "Niche edge/mobile-ML API, low relevance to Vikas's stack; did not clear the bar for SHIPPED."
+    },
+    {
+      "title": "Google ADK voice-agent tutorial",
+      "stage": "step 3",
+      "reason": "A tutorial, not a capability ship; did not clear the bar for SHIPPED."
+    },
+    {
+      "title": "AxiomCodeAI/axiomcodegraph (code-knowledge-graph tool for AI agents)",
+      "stage": "step 3",
+      "reason": "Thematically a strong match for Vikas's PhD research, but only 5 GitHub stars — fails the real-adoption-signal bar for a GitHub-trending pick."
+    },
+    {
+      "title": "Chandra Sekhar's TTFT latency LinkedIn post",
+      "stage": "step 3",
+      "reason": "Good content but ends in a self-promotional course ad; a cleaner permalink-verified alternative was available."
+    },
+    {
+      "title": "Xunzhuo Liu's d3-turbo decision model LinkedIn post",
+      "stage": "step 3",
+      "reason": "Thematically redundant with the Jev/ontologies decision-model pick already selected."
+    },
+    {
+      "title": "saed's cybersecurity reading list LinkedIn post",
+      "stage": "step 3",
+      "reason": "Too general/long-term, not a \"this week\" applicable item."
+    },
+    {
+      "title": "Puneet Patwari's load balancer LinkedIn post",
+      "stage": "step 3",
+      "reason": "Good general systems content but not AI-specific."
+    },
+    {
+      "title": "\"Meta Muse Will Create 1,000 Millionaires\" (YouTube)",
+      "stage": "step 3",
+      "reason": "Hype/clickbait framing, no substantive technical content."
+    },
+    {
+      "title": "Laurie Voss / Arize evals talk (YouTube)",
+      "stage": "step 3",
+      "reason": "Thematically redundant with the prior day's Langfuse evals video."
+    },
+    {
+      "title": "Vercel CEO reaction video (YouTube)",
+      "stage": "step 3",
+      "reason": "Non-first-party reaction content, hype-driven."
+    }
+  ]
+}
