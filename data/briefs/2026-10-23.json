@@ -1,0 +1,363 @@
+{
+  "date": "2026-10-23",
+  "items": [
+    {
+      "slug": "openai-12-hour-prompt-caching",
+      "section": "SHIPPED",
+      "title": "OpenAI ships 12-hour prompt caching in the API",
+      "summary": "You can now choose 12-hour prompt caching for shared instructions, tools and context, so requests hours apart still hit a warm cache instead of paying full input price. 12-hour cache writes cost 2.5x the input token price.",
+      "why": "Longer-lived agent sessions and daily-cron-style workflows that only touch the API every few hours can now keep their system-prompt/tool-schema cache warm instead of re-paying full price every call.",
+      "actionLabel": "Try this",
+      "action": "If you have an agent or workflow that calls the API in bursts hours apart, switch its cache TTL to 12h and compare cached-vs-uncached cost on your next run.",
+      "permalink": "https://developers.openai.com/api/docs/changelog",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new API capability extending cache retention; not a duplicate of any prior day's items."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched developers.openai.com/api/docs/changelog fresh this run; Oct 20 entry confirmed live."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Text matches the changelog entry verbatim, including the 2.5x cache-write price detail."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched for a first-party demo of this specific feature; none found for a minor API change like this."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly actionable cost-reduction technique for anyone running longer-lived agent sessions."
+        }
+      ]
+    },
+    {
+      "slug": "recursive-flint-40b-a2b",
+      "section": "SHIPPED",
+      "title": "Recursive ships Flint-40B-A2B, a fast local coding model built by its own automated research system",
+      "summary": "Recursive's first model release: a 40B-parameter, 2.5B-active local coding model, built using Recursive's automated research system. Recursive's own reported benchmark and speed figures are circulating alongside the release (not independently verified here); the model is already listed in Ollama's library and drawing third-party test coverage.",
+      "why": "A usably fast, open, local coding model is the kind of thing that actually changes a daily workflow if the numbers hold up — worth watching for independent verification before leaning on the vendor's own figures.",
+      "actionLabel": "Try this",
+      "action": "If you run local coding models, pull it via Ollama and run your own quick eval before trusting Recursive's reported benchmark numbers.",
+      "permalink": "https://x.com/tydsh/status/2112952791480357331",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new open-weight local coding model release with real adoption signal (Ollama listing, third-party coverage); not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-confirmed the X post is live and text matches."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Core claim (40B/2.5B-active local coding model) confirmed across independent sources; exact benchmark/speed figures attributed to Recursive's own reporting since no first-party benchmark page could be found."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched; only third-party reviewer videos exist, no genuine first-party Recursive demo found, so the Watch line is omitted."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to daily AI-coding tooling territory."
+        }
+      ]
+    },
+    {
+      "slug": "ironbee-honest-raw-llm-code-review-benchmark",
+      "section": "ON LINKEDIN",
+      "title": "Serkan Ozal: the first \"honest\" raw LLM code-review benchmark — 7,980 reviews, no framework scaffolding",
+      "summary": "21 models across up to 3 reasoning-effort levels, 3 passes each, 7,980 reviews total on 50 real PRs across 5 projects, judged by Martian's Code Review Bench. Claude Sonnet 5.5 at low effort scores highest (F2 64.4) at $0.142/PR and a 9-second median; Muse Spark 1.3 at low effort is the best value in the top group at $0.062/PR. Code and data are open.",
+      "why": "This is a rare raw, apples-to-apples look at which model and effort combination actually catches real bugs in real PRs per dollar, not a vendor-cherry-picked benchmark.",
+      "actionLabel": "Angle for you",
+      "action": "If you're picking a model for automated PR review, start from this cost/quality table instead of a generic leaderboard — low-effort Sonnet 5.5 or Muse Spark 1.3 look like the practical defaults.",
+      "permalink": "https://ironbee.ai/blog/the-honest-raw-llm-code-review-benchmark",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Rigorous, substantial new benchmark (7,980 reviews) published Oct 19; not a duplicate of any prior item."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched ironbee.ai/blog/the-honest-raw-llm-code-review-benchmark fresh; loads fully."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Verified exact figures (F2 64.4, $0.142/PR, 9s; Muse Spark 1.3 $0.062/PR) directly against the fetched page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete 'where do I use this' angle: picking a model+effort level for raw code review."
+        }
+      ]
+    },
+    {
+      "slug": "memorytax-bitter-lesson-agent-memory",
+      "section": "ON LINKEDIN",
+      "title": "Elvis Saravia shares \"MemoryTax\": when a memory layer actually beats full context, and when it doesn't",
+      "summary": "Zedong Peng's paper finds Mem0-style memory only beats dumping the full context when the underlying model is weak (GPT-4o-mini); with a stronger model like Claude Opus 5.5, a simple raw-history-search agent (Pi) tops the cost-accuracy frontier at 99% accuracy for under half the cost of full-context.",
+      "why": "A good argument against reaching for a memory framework by default — test raw context search against your actual model first, since the 'memory tax' often isn't worth paying.",
+      "actionLabel": "Angle for you",
+      "action": "Before adding a memory layer to an agent, benchmark plain full-context or raw-history search against it on your actual model — the paper suggests the fancier option frequently loses on cost-adjusted accuracy.",
+      "permalink": "https://academy.dair.ai/papers/memorytax-the-bitter-lesson-of-agent-memory-2610.29823",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new research summary with concrete numbers; not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched academy.dair.ai page fresh; loads and content matches."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Key figures (Mem0 vs GPT-4o-mini; Pi+Opus 5.5 at 99% for under half cost) match the source page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Short, concrete, actionable test to run before building a memory layer."
+        }
+      ]
+    },
+    {
+      "slug": "swyx-opus-55-work-estimator",
+      "section": "TRENDING ON X",
+      "title": "swyx: Opus 5.5 is the best work-estimator model he's used — and that calibration matters as more work gets delegated",
+      "summary": "\"Opus 5.5 is the best work estimator model i've ever used... don't tell me that it's going to take 2-3 working days (what a human would do) when for you... can get it done in 2-3 hours.\" Framed as a reason agent task-time estimates need their own calibration, not a human-timescale default.",
+      "why": "As more day-to-day work gets delegated to agents, trusting a model's own honest time estimate instead of a human-scaled guess is becoming a real planning skill, not a nice-to-have.",
+      "actionLabel": "Angle for you",
+      "action": "Next time you scope a task for an agent, ask it to estimate its own completion time explicitly and compare that against your human-scale gut estimate before committing to a deadline.",
+      "permalink": "https://x.com/swyx/status/2113283272130412684",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine real-use discourse with a concrete angle (recalibrating agent task-duration estimates), not pure industry debate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened the tweet; confirmed live and text matches exactly."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Quoted directly from the tweet."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Tracked account, concrete 'where do I use this' angle built into the post itself."
+        }
+      ]
+    },
+    {
+      "slug": "deepseek-deepinfer-inference-framework",
+      "section": "STUDY",
+      "title": "DeepSeek open-sources DeepInfer, its own production inference engine",
+      "summary": "DeepSeek released DeepInfer (Apache-2.0, 19.4k stars already) — the actual high-performance, large-scale inference framework powering DeepSeek's production services, including DeepSeek-V4.1-Flash, built on top of vLLM with speculative decoding and distributed-inference support across NVIDIA and Huawei hardware.",
+      "why": "A frontier lab sharing its real production serving stack, not just model weights, is directly useful for anyone self-hosting open models and trying to close the throughput/cost gap with the big labs.",
+      "actionLabel": "Try this",
+      "action": "If you're self-hosting any DeepSeek model on vLLM today, worth a spin to compare DeepInfer's throughput and cost against your current setup.",
+      "permalink": "https://github.com/deepseek-ai/DeepInfer",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine open-source release of DeepSeek's actual production inference engine, covered as AlphaSignal's lead Top News story; not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-confirmed github.com/deepseek-ai/DeepInfer live, 19.4k stars, Apache-2.0."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "README summary verified directly against the repo."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Significant real-world engineering release with depth beyond benchmark-only claims."
+        }
+      ]
+    },
+    {
+      "slug": "google-cloud-tech-ai-harness-crash-course",
+      "section": "WATCH QUEUE",
+      "title": "Google Cloud Tech: \"AI harness crash course\" — what actually sits between the model and your files",
+      "summary": "Annie Wang walks through four parts of an AI harness: context & memory, tools & execution flow, runtime/security/privacy, and evaluation — the software layer that lets a model open files, run tests, or ask before doing something risky, rather than the model itself.",
+      "why": "A clear, first-party breakdown of harness architecture from the people building agent tooling at Google Cloud — useful framing for anyone building or evaluating a coding agent's harness, not just prompting it.",
+      "actionLabel": "Worth the drive",
+      "action": "9.5 minutes. Worth it if you want a clean mental model for 'harness vs. model' before your next harness design decision.",
+      "permalink": "https://www.youtube.com/watch?v=2C_CefSQEAQ",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive technical crash course on harness design, first-party Google Cloud Tech channel, posted Oct 22; not a duplicate of any prior Watch Queue pick."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Confirmed live via direct video page fetch."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Chapters and description read directly from the video page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Watch Queue item, not SHIPPED."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly on-topic for harness engineering, genuine educational content, no sponsor flags."
+        }
+      ]
+    },
+    {
+      "slug": "jellyfish-ai-engineering-throughput-data",
+      "section": "WATCH QUEUE",
+      "title": "AI Engineer: \"Better AI Models Won't Fix Your Engineering Team\" — Jellyfish's 50,000-engineer dataset",
+      "summary": "Nicholas Arcolano (Jellyfish) breaks down what actually drives AI-coding throughput across ~50,000 engineers at 447 companies: the tool itself explains under 1%, skill use ~3% (heavy skill users see ~30% more), token usage ~9%, company/team ~12%, and the individual engineer accounts for most of the rest — including a finding that pushing users from Cursor onto Grok barely moved merged PRs.",
+      "why": "Hard data against the 'just give the team a better model' instinct — useful ammunition if you're making a case for investing in skills and process over model switching.",
+      "actionLabel": "Worth the drive",
+      "action": "16.5 minutes. The breakdown of what explains throughput variance is the part worth not skipping if you only watch one segment.",
+      "permalink": "https://www.youtube.com/watch?v=Ve2bAarPA2I",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Data-driven talk (50,000 engineers, 447 companies) on what actually drives AI-coding throughput; genuinely new (posted Oct 23), not a rehash."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Confirmed live via direct video page fetch."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Description and chapters read directly from the video page."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Watch Queue item, not SHIPPED."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to AI-driven SDLC and team-level impact, concrete data not hype."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Anthropic Agent Skills donation to Agentic AI Foundation",
+      "stage": "step 3",
+      "reason": "More governance/ecosystem news than a capability change; SHIPPED ceiling (2) reached with two stronger picks."
+    },
+    {
+      "title": "OpenAI Decisions API GA",
+      "stage": "step 3",
+      "reason": "Near-duplicate of the beta version of this same API already covered on 2026-10-09."
+    },
+    {
+      "title": "OpenAI service tier controls for projects",
+      "stage": "step 3",
+      "reason": "Too administrative, low day-to-day interest."
+    },
+    {
+      "title": "Cursor Cloud Agent Canvases",
+      "stage": "step 3",
+      "reason": "Already covered on 2026-10-17."
+    },
+    {
+      "title": "Claude Duet",
+      "stage": "step 3",
+      "reason": "Clearly real and trending, but no first-party Anthropic permalink could be found despite searching; dropped per the no-permalink rule rather than guessing a URL."
+    },
+    {
+      "title": "Kuldeep Singh Sidhu: ITER interaction-aware retrieval",
+      "stage": "step 3",
+      "reason": "Strong candidate, close second; ON LINKEDIN ceiling (2) reached."
+    },
+    {
+      "title": "Arpit Bhayani: cleanup agents tip",
+      "stage": "step 3",
+      "reason": "Good but weaker than the two selected LinkedIn picks; author used recently."
+    },
+    {
+      "title": "Antonio Gulli: Harness-squared deep dive",
+      "stage": "step 3",
+      "reason": "Same underlying story as the 2026-10-18 STUDY item; duplicate."
+    },
+    {
+      "title": "Brij Kishore Pandey: observability post",
+      "stage": "step 3",
+      "reason": "Good content but ends in a sponsor/partner pitch for a paid masterclass."
+    },
+    {
+      "title": "Tarek Dweik: buy vs build",
+      "stage": "step 3",
+      "reason": "More conceptual essay, less concrete-actionable than the selected picks."
+    },
+    {
+      "title": "DeepLearning.AI Context Engineering course follow-up",
+      "stage": "step 3",
+      "reason": "Launch date unverifiable this run (page showed 'updated' not a launch date); DeepInfer judged a stronger, more verifiable STUDY pick."
+    },
+    {
+      "title": "LangChain Numan health-coach adoption case study",
+      "stage": "step 3",
+      "reason": "Adoption signal present but thin quantified results; DeepInfer judged stronger for the single STUDY slot."
+    }
+  ]
+}
