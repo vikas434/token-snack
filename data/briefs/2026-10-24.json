@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-24",
+  "items": [
+    {
+      "slug": "cursor-computer-use",
+      "section": "SHIPPED",
+      "title": "Cursor ships Computer Use — agents can now click and type across any app on your computer",
+      "summary": "Cursor's coding agents can now drive any desktop app, not just the browser. Cursor's own demo: an agent adds a \"favorite trails\" feature and tests it live in the iOS Simulator. Invoked automatically when a task needs it, or by @-mentioning Computer Use in a prompt.",
+      "why": "An agent that can click through your actual UI to verify what it just built closes a real gap — until now you had to eyeball the result yourself or wire up a separate test harness.",
+      "actionLabel": "Try this",
+      "action": "Update Cursor, then @-mention Computer Use in a prompt where you want the agent to test a UI change it just made (a simulator, a desktop app, anything with no API) instead of describing it and hoping.",
+      "permalink": "https://x.com/cursor_ai/status/2113661506634305834",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new capability (agentic desktop/UI control), first announced this run; not a duplicate of any prior day." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the X post fresh this run; live, text and demo clip match." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Summary matches the post's own description of the iOS Simulator demo." },
+        { "check": "Watch material", "result": "N/A", "reason": "Demo is embedded directly in the first-party post itself; no separate Watch line needed." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly actionable for anyone building/testing UI-touching features with Cursor." }
+      ]
+    },
+    {
+      "slug": "claude-security-continuous-scanning",
+      "section": "SHIPPED",
+      "title": "Claude Security now scans continuously and tracks fixes automatically",
+      "summary": "Connect a repo once (GitHub, GitLab, or any Git provider) and Claude Security re-scans on every change based on risk and complexity, not on a fixed schedule. It builds an editable threat model per project, rates each finding's severity and exploit path, and closes findings automatically when a fix ships — reopening them if the issue comes back. $25K/month in free usage credits for two months.",
+      "why": "Most scanners hand you a snapshot that goes stale the moment code moves; this one stays current with your codebase and tracks whether a finding actually got fixed, without someone re-running a scan.",
+      "actionLabel": "Try this",
+      "action": "If you're on Claude Enterprise, enable the Claude Security plugin for Claude Code (in beta for all Claude Code users) on one repo and see what its generated threat model gets right.",
+      "permalink": "https://claude.com/blog/claude-security-now-scans-continuously-and-tracks-fixes",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new capability (continuous risk-based scanning + auto fix-tracking) published Oct 21; base product dates to April 2026 but this expansion is real and new, not a rehash — not previously covered." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched claude.com/blog/claude-security-now-scans-continuously-and-tracks-fixes fresh; loads and matches the claim." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Figures (continuous re-scan trigger, $25K/mo credit, auto-close/reopen behavior) verified against the fetched post." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched Anthropic's own blog/YouTube for a first-party demo of this specific capability; none found." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly relevant security-tooling update for anyone running Claude Code on a real codebase." }
+      ]
+    },
+    {
+      "slug": "omarsar-raw-rag-beats-agentic-memory",
+      "section": "ON LINKEDIN",
+      "title": "Elvis Saravia: plain RAG over raw chat history beats complex agentic memory systems",
+      "summary": "A new paper's Raw-RAG baseline — just dense retrieval plus reranking over the unmodified conversation — ranks first in 6 of 7 benchmark/model settings against Mem0, MemOS and Memora, by 0.13 to 5.53 points, and ingests in 0.3 hours against 3.2–27 hours for the agentic-memory systems. Rewriting history into memory entries tends to drop the relations and dependency paths an answer actually needs.",
+      "why": "Before you reach for a memory framework, it's worth knowing the fancier option sometimes loses to just keeping the raw transcript and searching it well.",
+      "actionLabel": "Angle for you",
+      "action": "Next time you're tempted to bolt a memory layer onto an agent, benchmark a raw dense-retrieval baseline against it first — on your own data, not the paper's.",
+      "permalink": "https://www.linkedin.com/posts/omarsar_rag-is-so-back-this-work-shows-that-plain-share-7519401261218246657-wWo0/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new research finding with concrete numbers (6/7 settings, exact point deltas, ingestion-time comparison); not a duplicate of the 2026-10-23 MemoryTax item — different paper and benchmark, different angle (raw-RAG specifically beating agentic memory, not just beating full-context)." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the LinkedIn permalink fresh via the 'Copy link to post' → 'View post' flow this run; resolves to the specific post, not the generic feed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Numbers (6/7 settings, 0.13-5.53 point deltas, 0.3h vs 3.2-27h ingestion) read directly from the post and underlying paper." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Short, concrete, immediately-applicable 'benchmark before you build' angle." }
+      ]
+    },
+    {
+      "slug": "kiro-trace-self-improving-harness",
+      "section": "ON LINKEDIN",
+      "title": "AWS's Kiro team: a system that watches Kiro's own runs opened 8 PRs in its first week, 7 merged, 0 bounced",
+      "summary": "kiro-trace reads Kiro's own agent runs to find where it fails or wastes effort, proposes a fix, and keeps it only if deterministic checks and then a human reviewer accept it. First week: 8 PRs opened, 7 merged, 1 closed for unrelated reasons, none sent back in code review. One fix cut redundant file re-reads by about 83%.",
+      "why": "A coding-agent team using its own run traces to fix the agent itself, gated by deterministic checks before a human ever reviews it, is a concrete harness-improvement loop — not just a roadmap promise.",
+      "actionLabel": "Angle for you",
+      "action": "If you're tuning your own agent harness, steal the pattern: mine your own run traces for waste/failure, let a model propose the fix, and gate it behind a check built to reject bad changes before a human sees it.",
+      "permalink": "https://kiro.dev/blog/how-kiro-fixes-itself",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine first-party account of a concrete self-improving-harness workflow with specific numbers (8 PRs, 7 merged, 83% reduction); not previously covered." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched kiro.dev/blog/how-kiro-fixes-itself fresh; loads fully. Swapped in from the LinkedIn post per the stronger-first-party-permalink precedent." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "PR counts and the 83% redundant-read reduction figure verified directly against the blog post." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, stealable pattern for anyone building or maintaining an agent harness." }
+      ]
+    },
+    {
+      "slug": "simonw-kimi-k3-1-pro",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: Kimi K3.1 Pro is the first open-weights model to credibly compete with the frontier",
+      "summary": "\"This one is a big deal, first time an open weights (well, soon-to-be open weights) model has competed this credibly with the current frontier.\" Moonshot's Kimi K3.1 Pro (1M-token context, 2.8T total/104B active params MoE) landed on the Kimi API; Simon ran his own pelican-on-a-bicycle SVG test and called the result \"pretty solid.\"",
+      "why": "Simon Willison's track record of testing every notable model release himself makes this a signal worth trusting over the vendor's own launch post.",
+      "actionLabel": "Angle for you",
+      "action": "If you evaluate models for coding tasks, run your own go-to smoke test against Kimi K3.1 Pro on the Kimi API this week while it's still fresh.",
+      "permalink": "https://x.com/simonw/status/2113718487529267593",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine discourse from a trusted, independent tester about a real new model capability; not a duplicate of any prior item." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the X post fresh this run; live, quote matches exactly." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Quoted and paraphrased directly from the post; model specs cross-checked against Moonshot's own release notes." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Trusted independent voice, clear 'where do I use this' angle (run your own smoke test now while it's fresh)." }
+      ]
+    },
+    {
+      "slug": "stale-instruction-files-one-sentence-fix",
+      "section": "STUDY",
+      "title": "A one-sentence fix for coding agents that silently follow a stale CLAUDE.md/AGENTS.md over your actual code",
+      "summary": "Across 320 controlled runs on Claude Code and Codex CLI, agents followed a stale instruction file over conflicting existing code about 90% of the time — Claude Code noticed the conflict in 79 of 80 runs but followed the file anyway. Adding one precedence sentence to the user-level instruction file flipped that: following the code rose from 4.2% to 91.4%, and the test pass rate rose from 89.4% to 100%.",
+      "why": "If your CLAUDE.md or AGENTS.md has drifted even slightly from your actual codebase conventions, your agent is probably obeying the stale file over the code it can see — and a one-line fix mostly stops it.",
+      "actionLabel": "Try this",
+      "action": "Add a sentence to your user-level Claude Code / Codex instruction file telling it to defer to existing code over the project instruction file when the two conflict, then see if it stops rewriting working code to match a stale doc.",
+      "permalink": "https://arxiv.org/abs/2610.30571",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new controlled study (320 runs, two agent harnesses) with a concrete, surprising, actionable finding; not previously covered." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched arxiv.org/abs/2610.30571 fresh; submitted 22 Oct 2026, abstract matches the summarized claim." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Percentages (4.2%→91.4%, 89.4%→100%, 79/80) verified directly against the abstract/paper." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly actionable one-line fix for exactly the harness Vikas uses daily (Claude Code)." }
+      ]
+    },
+    {
+      "slug": "jediah-katz-is-the-harness-dead",
+      "section": "WATCH QUEUE",
+      "title": "Is the Agent Harness Dead? — Jediah Katz, SpaceXAI",
+      "summary": "Cursor's former longest-tenured agent-harness engineer, now at SpaceXAI, argues smarter models are absorbing what fancy harnesses used to patch in — but the harness matters more than ever for what models can't absorb: infrastructure, trust/security, and efficiency. Prediction: 90% of agent work runs off the laptop within six months.",
+      "why": "A structured, research-cited argument on exactly the question harness-engineering work lives inside — what a harness is actually for once the model gets good enough to need less hand-holding.",
+      "actionLabel": "Worth the drive",
+      "action": "18 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=7Y4sbZgBdnc",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Substantive technical talk from a credible first-party voice (former Cursor harness engineer), recent (within the last few days), not a rehash of a prior Watch Queue pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Confirmed live via direct video page fetch; AI Engineer channel." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Description and chapter list read directly from the video page via DOM query for the full (non-truncated) description." },
+        { "check": "Watch material", "result": "N/A", "reason": "Watch Queue item, not SHIPPED." },
+        { "check": "Worth the time", "result": "PASS", "reason": "No sponsor flag found; directly on-topic for agentic-AI/SDLC harness work." }
+      ]
+    },
+    {
+      "slug": "jarmak-test-agents-like-a-scientist",
+      "section": "WATCH QUEUE",
+      "title": "Don't Trust Your AI Agents. Test Them Like a Scientist — Stephanie Jarmak, Omni Analytics",
+      "summary": "A former astronomer turned eval-builder shows that swapping only the harness moved her results by 30% — same model, different wiring, different answer — and argues public benchmarks are for shortlisting, not decisions. Walks through designing your own evals like an experiment: realistic tasks, repeated runs, full traces, and a measurement that matches what you actually care about.",
+      "why": "If you've ever trusted a benchmark number without checking whether it survives a harness swap, this is the talk that explains why that number might not mean what you think.",
+      "actionLabel": "Worth the drive",
+      "action": "17 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=A3FL_zTQKU0",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Substantive, data-backed talk on eval methodology from the AI Engineer channel, recent, not a duplicate of any prior Watch Queue pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Confirmed live via direct video page fetch." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "The 30% harness-swap figure and the shortlisting-vs-deciding framing read directly from the video's description/chapters." },
+        { "check": "Watch material", "result": "N/A", "reason": "Watch Queue item, not SHIPPED." },
+        { "check": "Worth the time", "result": "PASS", "reason": "No sponsor flag found; directly relevant to building/trusting evals for agentic coding tools." }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Google Agents CLI Extension System",
+      "stage": "step 3",
+      "reason": "Real capability change, but SHIPPED ceiling (2) reached with two stronger picks (Cursor Computer Use, Claude Security)."
+    },
+    {
+      "title": "DoorDash arXiv paper on delivery-time ML pipeline",
+      "stage": "step 3",
+      "reason": "Real paper, but logistics/ML-ops focused rather than agentic coding/SDLC-relevant; weaker fit than the selected STUDY pick."
+    },
+    {
+      "title": "Hermes robot-duck desktop-automation demo",
+      "stage": "step 3",
+      "reason": "Novelty/hardware demo, not a genuine software capability change or discourse worth a slot."
+    },
+    {
+      "title": "Cole Medin: Run Your AI Software Factory",
+      "stage": "step 3",
+      "reason": "Otherwise strong, directly on-topic video, but description confirms 'includes paid promotion' and the entire premise is built around demonstrating the sponsor's product — dropped per the sponsor-centricity rule rather than flagged."
+    },
+    {
+      "title": "xerj GitHub repo (agent orchestration framework)",
+      "stage": "step 3",
+      "reason": "GitHub trending star count looked inflated on spot-check against repo activity/issues; judged lower-confidence than the selected items, dropped rather than risk SEO-slop."
+    },
+    {
+      "title": "Better AI Models Won't Fix Your Engineering Team — Nicholas Arcolano, Jellyfish",
+      "stage": "step 3",
+      "reason": "Confirmed duplicate: already published in the 2026-10-23 Watch Queue."
+    },
+    {
+      "title": "DeepSeek DeepInfer inference framework",
+      "stage": "step 3",
+      "reason": "Confirmed duplicate: already covered 2026-10-20 (Trending on X) and 2026-10-23 (Study)."
+    }
+  ]
+}
