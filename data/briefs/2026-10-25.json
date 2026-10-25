@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-25",
+  "items": [
+    {
+      "slug": "google-agents-cli-extension-system",
+      "section": "SHIPPED",
+      "title": "Google's Agents CLI gets an Extension System — override or add commands without forking",
+      "summary": "Starting in v1.5.0 (now experimental in v1.8.0), Agents CLI extensions are Git-distributed directories with a manifest that can override built-in commands (like deploy or run) or add new ones — installed from any Git host, pinned to a commit SHA in a lockfile, with project scope beating user scope on conflicts. A first-party LangChain/LangGraph/Deep Agents extension ships too, reimplementing six commands with no google-adk dependency.",
+      "why": "This is a real escape hatch from the usual choice between forking a CLI or living with its defaults — you can wrap deploy with your own security gate or swap in a different framework's lifecycle without touching Google's code.",
+      "actionLabel": "Try this",
+      "action": "If you're on Agents CLI, try the worked example in the post: an sbom-deploy extension that wraps deploy with a syft/grype scan and blocks on critical vulnerabilities.",
+      "permalink": "https://developers.googleblog.com/en/powering-the-agent-development-lifecycle-with-any-framework-from-adk-to-langchain-and-beyond/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Real new capability (Git-distributed extensions overriding/adding CLI commands); checked against full repo history and the Drive run log — not previously published (was shelved at step 3 on 2026-10-24 only for hitting the SHIPPED ceiling, never shipped in a brief)." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the Google Developers blog post fresh this run; loads and matches the summarized claims." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Version numbers, lockfile/SHA-pinning behavior, and the first-party LangChain extension detail verified directly against the post." },
+        { "check": "Watch material", "result": "FAIL", "reason": "No genuine first-party demo video found for the Extension System specifically; only text/blog coverage located." },
+        { "check": "Worth the time", "result": "N/A", "reason": "Not reached — dropped on the Watch material check." }
+      ]
+    },
+    {
+      "slug": "google-agent-compute-engine",
+      "section": "ON LINKEDIN",
+      "title": "Google's Agent Compute Engine gives every agent task its own hardware-isolated microVM",
+      "summary": "Shubham Saboo (Google): traditional VMs boot too slowly and containers share a kernel, so Google built a purpose-made compute layer for Gemini's agents instead. Each task gets its own microVM with its own kernel, its own short-lived credentials (injected outside the microVM, not handled by the agent), and its own disk that persists across sessions — pausing to near-zero cost when the agent is just thinking, resuming from a snapshot when it acts again. Already powers Gemini and Antigravity; coming to Google Cloud in preview in the coming months.",
+      "why": "The design choices here — credentials the agent process never touches, a machine that costs nothing while idle — are the actual answer to how you let an agent run unsupervised without handing it the keys.",
+      "actionLabel": "Angle for you",
+      "action": "If you're building anything that gives an agent its own sandbox today (a container, a VM, a Daytona/E2B box), compare your credential-handling against this pattern — inject at the edge, never inside the agent's reach.",
+      "permalink": "https://cloud.google.com/blog/topics/ai-infrastructure/introducing-agent-compute-engine-and-expanded-agent-governance/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Real new infrastructure product with a specific architectural approach; checked against full repo history, no prior coverage found." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the Google Cloud blog post fresh this run (swapped in from the LinkedIn post per the stronger-first-party-permalink precedent)." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Caught and fixed a conflation on re-verification: the exact phrase 'credentials never seen by the agent' and the sub-500ms/500-activations-per-second figures belong to a different product in the same post (Agent Substrate), not Agent Compute Engine. Rewritten using ACE's own wording ('credentials are injected in egress outside the microVM')." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Short, concrete, immediately-applicable security-architecture angle for anyone running agents in sandboxes today." }
+      ]
+    },
+    {
+      "slug": "arpit-bhayani-compile-sop-into-3b-model",
+      "section": "ON LINKEDIN",
+      "title": "Arpit Bhayani fine-tuned a 3B model to replace a 3,500-token incident-triage prompt",
+      "summary": "A holiday experiment, not a production claim: he generated 5,116 synthetic incident-triage conversations from his own simulator, fine-tuned a 3B model with QLoRA (loss-masked so the model learns only its own decisions, not simulated tool output), and tested it on 500 held-out synthetic scenarios. Result: 93.0% success vs. a large hosted model's 92.0% (cached), input tokens per incident down 91.3% (5,200 to 450), cost per 1,000 incidents down 8.4x ($1.85 to $0.22). Tradeoff he's upfront about: change the workflow, retrain the model — a prompt you can just edit.",
+      "why": "It's a clean demonstration that a procedure can live in a small model's weights instead of a big model's prompt — genuinely cheaper, but proven only on his own simulator, not real incidents yet.",
+      "actionLabel": "Angle for you",
+      "action": "If you have a stable, repetitive agent workflow burning big-model tokens on the same SOP every time, this is a concrete template (data gen, loss masking, QLoRA) for compiling it into a small local model instead.",
+      "permalink": "https://arpitbhayani.me/blogs/compiling-an-sop-into-a-3b-model/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Different specific topic/story from this author's 2026-10-18 prompt-caching post (checked full repo history); no duplicate found." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the author's own blog post fresh this run (swapped in from his LinkedIn comment reply per the first-party-source precedent)." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "All figures (93.0% vs 92.0%, 91.3% token reduction, 8.4x cost reduction) verified directly against the post." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, stealable template (data gen -> loss masking -> QLoRA) for a common agent-cost problem." }
+      ]
+    },
+    {
+      "slug": "anthropic-formal-verification-at-scale",
+      "section": "TRENDING ON X",
+      "title": "Anthropic: Claude just made formal software verification feasible at real scale",
+      "summary": "Working with Theorem, Claude proved no-crash memory-safety properties for 239 entry points across 123 open-source libraries at the compiled RISC-V level — about 180 million lines of Rocq proof, mostly checked automatically rather than reviewed by humans. The process surfaced hundreds of real bugs along the way, including a rediscovered CVE in libexpat, and a PDF-reader pass found in one week roughly as many security bugs as are typically reported in a year.",
+      "why": "Formal verification has always been real but impractical outside tiny codebases; this is the first credible sign it's becoming something you could actually run on your own repo, not just a research demo.",
+      "actionLabel": "Angle for you",
+      "action": "Theorem is offering to run this same verification pipeline on other open-source projects — worth a look if you maintain anything performance- or memory-safety-sensitive.",
+      "permalink": "https://www.anthropic.com/research/formal-verification",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new research result with concrete scale numbers; checked against full repo history, no prior coverage found." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched anthropic.com/research/formal-verification fresh this run; loads and matches the summarized claims." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Scale figures (239 entry points, 123 libraries, ~180M lines of proof) and the libexpat CVE detail verified directly against the source." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Credible signal that formal verification is becoming practical, with a concrete next step (Theorem's open offer) attached." }
+      ]
+    },
+    {
+      "slug": "code-comprehensor-hierarchical-docs-retrieval",
+      "section": "STUDY",
+      "title": "Code Comprehensor: hierarchical documentation + cross-modal retrieval for understanding large repos",
+      "summary": "Accepted at ICSME 2026. Builds a call graph of a codebase, uses code-aware LLMs to write hierarchical documentation across it, then trains a contrastive dual encoder on that documentation so an MCP-based orchestrator can retrieve the right code neighborhood -- not just one function, but its callers, callees, and siblings -- as grounded context for a question. Evaluated on OpenCV and a proprietary 5M-line-of-code repo; the full framework's answers score above 90% faithfulness under RAGAS LLM-as-judge.",
+      "why": "This is a direct attempt at giving an LLM the surrounding context a large, fast-changing codebase actually needs, not just the one function it's looking at.",
+      "actionLabel": "Try this",
+      "action": "If you're prototyping retrieval over a large repo for an agent, the three-part structure here (call graph -> hierarchical doc generation -> contrastive retrieval over that documentation) is a concrete architecture to borrow pieces from.",
+      "permalink": "https://arxiv.org/abs/2610.30016",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new paper/architecture; checked against full repo history, no prior coverage found." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched arxiv.org/abs/2610.30016 fresh this run; abstract matches the summarized claim." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Caught and fixed a misattribution on re-verification: the >90% RAGAS faithfulness figure applies to the framework's overall output, not specifically to the retrieval sub-component -- rewritten to attribute it correctly." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, borrowable architecture for large-repo code retrieval, directly relevant to agentic coding tools." }
+      ]
+    },
+    {
+      "slug": "sofia-jakovcevic-agent-fix-broke-something-else",
+      "section": "WATCH QUEUE",
+      "title": "Your Agent Fix Just Broke Something Else -- Sofia Jakovcevic, Arize AI",
+      "summary": "A one-line 'confirm before any action' prompt change made a support agent 17 points safer and 17 points worse at finishing tasks -- net zero, and invisible until someone actually measured both. Walks through a five-step regression loop: build datasets from production traces (not synthetic data), score with evaluators, run baseline experiments, compare changes, then gate merges in CI so a PR can't land without passing the suite.",
+      "why": "The core point is sharp and easy to forget: agents fail at runtime, not in the diff -- a one-line, easy-to-approve code review can hide a large, invisible behavioral shift that only your traces would catch.",
+      "actionLabel": "Worth the drive",
+      "action": "19 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=v5tm5EAzsAs",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Substantive, data-backed talk from a credible first-party voice (Arize AI), recent; checked against full repo history, no duplicate found." },
+        { "check": "Link works", "result": "PASS", "reason": "Confirmed live via direct video page fetch this run; transcript extracted via YouTube's native transcript panel." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "The 17-point safety/completion tradeoff and the five-step regression-loop structure read directly from the extracted transcript." },
+        { "check": "Watch material", "result": "N/A", "reason": "Watch Queue item, not SHIPPED." },
+        { "check": "Worth the time", "result": "PASS", "reason": "No sponsor flag found; directly relevant to anyone shipping behavioral changes to an agent without a regression suite." }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "cloudflare/security-audit-skill (GitHub trending)",
+      "stage": "step 3",
+      "reason": "False-fresh trap: trending today at 2,264 stars, but actually released mid-September 2026 per independent coverage -- not a genuinely new story."
+    },
+    {
+      "title": "OpenAI 'Patch the Planet' PHP vulnerability disclosure",
+      "stage": "step 3",
+      "reason": "False-fresh trap: tweeted Oct 21 and looked fresh, but the underlying initiative launched in June 2026 and this specific disclosure had already received extensive mainstream press coverage days earlier."
+    },
+    {
+      "title": "Harness² Explained: Self-Improving Agents Without Training (YouTube, AI Engineer channel)",
+      "stage": "eval gate",
+      "reason": "Confirmed duplicate on fresh cross-check against full repo history: the underlying Harness² project (Google Cloud AI Research + Northwestern; agents that rewrite their own execution harness via a Propose/Probe/Compose loop) was already published as a SHIPPED item on 2026-10-18 (harness-squared-recursive-agent-harness, https://harness2.github.io). The video is a new explainer with additional case-study numbers, but the core story is not new -- dropped per the never-patch-always-drop duplicate rule."
+    }
+  ]
+}
