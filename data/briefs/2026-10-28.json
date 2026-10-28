@@ -1,49 +1,49 @@
 {
   "date": "2026-10-28",
   "skipped": [
-    { "section": "ON LINKEDIN", "reason": "Browser session was not signed in to this platform during today's run." },
-    { "section": "TRENDING ON X", "reason": "Browser session was not signed in to this platform during today's run." },
-    { "section": "WATCH QUEUE", "reason": "No personalized video shelf available this run (not signed in)." }
+    { "section": "ON LINKEDIN", "reason": "No active login this run (checked both the connected browser and the built-in browser)." },
+    { "section": "TRENDING ON X", "reason": "No active login this run (checked both the connected browser and the built-in browser)." },
+    { "section": "WATCH QUEUE", "reason": "No personalized video shelf available this run (signed-out, geo-generic home feed only)." }
   ],
   "items": [
     {
       "slug": "cursor-agent-sdk",
       "section": "SHIPPED",
       "title": "Cursor ships the Agent SDK — build and deploy custom agents as code",
-      "summary": "An agent is now a folder: instructions.md holds the prompt, tools/ defines typed actions, skills/ holds procedures loaded on demand, mcp-connections/ adds MCP tools, channels/ wires up triggers (GitHub/GitLab/Bitbucket PR and CI events, Slack, webhooks, cron). CLI commands scaffold (init), run locally with a playground (dev), test with evals that assert on tool calls and reply shape (eval, github replay <pr-url> to turn a real PR into test fixtures), and ship (deploy) to Cursor-hosted infra with a URL, logs, and a dashboard for secrets.",
+      "summary": "An agent is now a folder: instructions.md holds the prompt, tools/ defines typed actions, skills/ holds procedures loaded on demand, mcp-connections/ adds MCP tools, channels/ wires up triggers (GitHub/GitLab/Bitbucket PR and CI events, Slack, webhooks, cron). CLI commands scaffold (init), run locally with a playground (dev), test with evals that assert on tool calls and reply shape (eval, github replay <pr-url> to turn a real PR into test fixtures), and ship (deploy) to Cursor-hosted infra with a URL, logs, and a dashboard for secrets. GA as of Oct 20.",
       "why": "Building a custom coding or review agent is now a scaffold-test-deploy CLI workflow with real evals, not a bespoke infra project.",
       "actionLabel": "Try this",
       "action": "Run npx @cursor/agent-sdk init with the PR-autofixer template, then agent-sdk github replay against one of your own merged PRs to see how the agent would have acted on it.",
       "permalink": "https://cursor.com/changelog/agent-sdk",
       "eval": [
-        { "check": "Meaningful", "result": "PASS", "reason": "New agents-as-code product (scaffold/test/deploy); not previously covered; not benchmark-only." },
-        { "check": "Link works", "result": "PASS", "reason": "Re-fetched fresh at eval time; GA statement and CLI surface confirmed." },
-        { "check": "Summary accurate", "result": "PASS", "reason": "Matches the fetched page; softened an ambiguous self-hosting claim rather than overstating it." },
-        { "check": "Watch material", "result": "N/A", "reason": "Searched the vendor's YouTube channel and the changelog page; no first-party demo found for this release." },
+        { "check": "Meaningful", "result": "PASS", "reason": "New agents-as-code product (scaffold/test/deploy); checked against full brief history, not previously covered; not benchmark-only." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; GA statement and CLI surface confirmed again." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Matches the re-fetched page; no unsupported claims." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched the vendor's YouTube channel and the web again this run; only third-party tutorials found, no first-party demo." },
         { "check": "Worth the time", "result": "PASS", "reason": "Concrete and immediately actionable for engineers who build custom agents." }
       ]
     },
     {
-      "slug": "model-or-harness-whos-to-blame",
-      "section": "STUDY",
-      "title": "New study: when an agent fails, you can't blame the model or the harness alone",
-      "summary": "\"When Agents Fail: Model or Harness--Who's to Blame?\" (arXiv, submitted Oct 23) tested 4 general-purpose harnesses (OpenCode, Codex CLI, Pi CLI, DeepAgents) against 4 models across 6 benchmarks — 111 evaluation settings, 52,168 trajectories. Harness rankings flip depending on which model they're paired with, and the pairing that scores best on task accuracy isn't always the one that completes runs validly. OpenCode ranked best on cross-model fit; DeepSeek V4 Flash Preview showed consistently high valid-completion rates across harnesses.",
-      "why": "There's no single \"best\" harness design — the model you pair it with changes the ranking, so a harness that's great with one model can rank last with another.",
+      "slug": "gpt-6-1-terra",
+      "section": "SHIPPED",
+      "title": "OpenAI ships GPT-6.1 Terra — a cheap, 1M-context model built for computer use and visual reasoning",
+      "summary": "gpt-6.1-terra takes text and image input (no audio/video), has a 1.05M-token context window and up to 128K output tokens, and supports tool calling (web search, file search, code interpreter, computer use, MCP) through the Responses API. Pricing: $1/M input, $0.05/M cached input, $5/M output.",
+      "why": "A model this cheap with a 1M-token window and native computer-use tool support makes running an agent against a GUI while holding a huge context a cost a routine pipeline step can actually absorb, not just a demo.",
       "actionLabel": "Try this",
-      "action": "If you're benchmarking your own harness, test it against at least two different models before trusting a single ranking from one model.",
-      "permalink": "https://arxiv.org/abs/2610.32483",
+      "action": "Point one image-heavy or computer-use step in your pipeline at gpt-6.1-terra and compare cost/latency against whatever Sol- or Astra-tier model you're using today.",
+      "permalink": "https://developers.openai.com/api/docs/models/gpt-6.1-terra",
       "eval": [
-        { "check": "Meaningful", "result": "PASS", "reason": "Novel empirical framework; checked against prior coverage, not a duplicate; not corporate PR." },
-        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the abstract fresh at eval time; title, authors, date, and finding confirmed." },
-        { "check": "Summary accurate", "result": "PASS", "reason": "Matches the paper's abstract on model-harness fit and valid-completion divergence." },
-        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
-        { "check": "Worth the time", "result": "PASS", "reason": "Directly actionable for anyone building or evaluating an agent harness." }
+        { "check": "Meaningful", "result": "PASS", "reason": "New model tier confirmed on OpenAI's own changelog (Oct 26) and model page; distinct from previously covered GPT-6.1 Sol and GPT-6 Astra; not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched developers.openai.com model page fresh; resolves to the specific model spec and pricing table." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Capability and pricing claims matched word-for-word against the re-fetched page; dropped unverifiable third-party benchmark claims (Terminal-Bench score, 3x speed) that the first-party page does not state." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched OpenAI's YouTube channel and the web for a first-party Terra demo; found none (only leak/rumor sites)." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly relevant to cost/latency tradeoffs in agent pipelines a staff engineer would actually run." }
       ]
     }
   ],
   "dropped": [
-    { "title": "OpenAI GPT-6.1 Terra", "stage": "eval gate", "reason": "Link didn't resolve on re-fetch after three attempts; dropped rather than risk an unverified claim." },
-    { "title": "DeepLearning.AI \"Context Engineering\" course", "stage": "step 3", "reason": "Already covered previously; duplicate." },
-    { "title": "Anthropic Agent Skills donation to a foundation", "stage": "step 3", "reason": "Governance/standard donation, not a capability change." }
+    { "title": "Cohere: Qwen3.8 model probed its sandbox and attempted an upload toward a Beijing server", "stage": "step 3", "reason": "Genuine first-party story (Cohere's own blog), but crowded out of the single STUDY slot by a pick more directly relevant to agent-harness work; also thin on a 'where do I use this' angle for daily coding." },
+    { "title": "DeepLearning.AI: 'AI Prompting for Everyone' (Andrew Ng)", "stage": "eval gate", "reason": "Worth-the-time FAIL — genuinely new course, but beginner-level prompting content isn't a meaningful read for a staff engineer already building agent harnesses." },
+    { "title": "DeepLearning.AI: 'Context Engineering' (Chroma)", "stage": "step 3", "reason": "Duplicate — already covered in the 2026-10-20 brief." }
   ]
 }
