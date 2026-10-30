@@ -1,0 +1,149 @@
+{
+  "date": "2026-10-30",
+  "skipped": [],
+  "items": [
+    {
+      "slug": "vercel-ci",
+      "section": "SHIPPED",
+      "title": "Vercel ships Vercel CI — skips unaffected tasks, 2-6x faster in their own repos",
+      "summary": "Vercel CI reads your existing turbo.json: tag a task (e.g. tags: [\"ci\"] on lint) and it runs only on Vercel's Hive compute, sized to the push, with Remote Cache serving anything unchanged. Vercel reports 2-6x faster git-push-to-\"CI passed\" time in its own internal repos (its own measurement, not an independent benchmark). Inspectable via the Vercel CLI (vc ci ls/inspect/logs/grep) and the Vercel MCP server, and posts a normal GitHub check so branch protection still applies. In Beta, on all plans.",
+      "why": "A CI that only reruns what a change actually touches, and that an agent can query through MCP instead of scraping logs, is the kind of plumbing that actually shortens an agentic dev loop.",
+      "actionLabel": "Try this",
+      "action": "Run `npx skills use vercel/ci@setup` on one repo with a turbo.json and tag your lint/test task for CI to see the cache-skip behavior firsthand.",
+      "permalink": "https://vercel.com/blog/introducing-vercel-ci",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "New CI product with task-level skip + remote cache; checked against full brief history, not previously covered." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run via web-fetch agent; beta/all-plans status and CLI surface confirmed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Matches re-fetched blog post; speed claim explicitly attributed to Vercel's own internal measurement, not presented as independent." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched for a first-party demo video; none found on Vercel's channel for this specific feature." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly actionable CI change for an engineer already on Vercel/Turborepo." }
+      ]
+    },
+    {
+      "slug": "cursor-design-mode-annotate",
+      "section": "SHIPPED",
+      "title": "Cursor ships Design Mode: Annotate — give agents visual edits instead of typed instructions",
+      "summary": "In Cursor's browser Design Mode (Cmd+Shift+D), you can now draw directly on a page, edit elements inline, and review the layout at different screen sizes — then hand those visual annotations to an agent as the instruction, instead of describing the change in text.",
+      "why": "A lot of UI feedback is easier to draw than to write (\"move this 10px left, make this bigger\") — letting an agent read visual annotations directly removes a translation step that usually loses precision.",
+      "actionLabel": "Try this",
+      "action": "Open a page in Cursor's browser, press Cmd+Shift+D, and annotate one real layout tweak before typing the equivalent instructions by hand — compare how much the agent gets right on the first try.",
+      "permalink": "https://x.com/cursor_ai/status/2115159585548021814",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "New Design Mode capability (Annotate), not previously covered; genuine capability, not a pricing/benchmark post." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched the post fresh this run; feature and shortcut confirmed, embedded demo clip present." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Matches the re-fetched post text and demo." },
+        { "check": "Watch material", "result": "PASS", "reason": "Genuine first-party demo embedded directly in this same post, so no separate Watch line is needed — the permalink is the demo." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, immediately-triable workflow change for anyone already using Cursor's browser." }
+      ]
+    },
+    {
+      "slug": "pgtask-postgres-durable-queue",
+      "section": "ON LINKEDIN",
+      "title": "A durable task queue and workflow runtime that lives entirely in Postgres",
+      "summary": "Marcelo Trylesinski (Pydantic/Starlette/Uvicorn maintainer) built pgtask: a queue, scheduler and durable workflow runtime with no broker and no extension — just PostgreSQL 16+. task.step() checkpoints a step's result so a retry resumes instead of restarting; task.sleep_for() and task.wait_for_signal() release the worker entirely, so a task asleep for six hours costs one database row, not a held worker slot. Pydantic AI agents run on it via PGTaskDurability, checkpointing every model request and tool call as its own step.",
+      "why": "If an agent run crashes partway through a long tool-calling loop, a durable queue like this is what lets it resume from the last checkpoint instead of re-paying for every tool call it already made.",
+      "actionLabel": "Angle for you",
+      "action": "If you're running agent workflows that can crash or sleep mid-task (a human approval wait, a long external job), it's worth 10 minutes to see if PGTaskDurability fits your Spring Boot + Postgres stack more cheaply than a message-broker-based queue.",
+      "permalink": "https://www.linkedin.com/posts/marcelotryle_i-built-pgtask-a-queue-a-scheduler-and-share-7521572754316410882-8RhI/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "New open-source project from a recognizable maintainer, concrete architecture detail, not a duplicate of prior picks." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the permalink fresh via the connected browser this run; post content confirmed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Matches the re-read post text, including the checkpointing and sleep-release mechanics." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item; no demo-video search required." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Gives a concrete \"where do I use this\" angle for a Spring Boot + Postgres stack, matching the standing LinkedIn-selection bias." }
+      ]
+    },
+    {
+      "slug": "lfm3-production-switch",
+      "section": "ON LINKEDIN",
+      "title": "An engineer switched his production summarization pipeline to Liquid AI's new LFM3-1.7B",
+      "summary": "Aditya Vivek Thota replaced Qwen3.5-4B with Liquid AI's just-shipped LFM3-1.7B for a local article-summarization workflow running 500+ items per run. LFM3 wins on instruction-following (IFEval 96.66 vs 92.52) and is roughly tied on long-context retrieval, while Qwen still leads on GPQA Diamond and 128K-context RULER — Liquid's own numbers, not an independent test. He reports over 100 tokens/sec and says the swap is already live in production as of today, with prompt tuning still in progress.",
+      "why": "Real benchmarks are nice, but someone actually flipping a production workflow to a brand-new small model on day one, and saying why the tradeoffs were worth it, tells you more than the model's own announcement does.",
+      "actionLabel": "Angle for you",
+      "action": "If you have a local/edge inference step currently throttled by model size, LFM3-1.7B's roughly 1GB 4-bit footprint is worth a quick side-by-side against whatever you're running now.",
+      "permalink": "https://www.linkedin.com/posts/aditya-vivek-thota_finally-a-new-17b-local-model-has-me-switching-share-7521301236545986561-VbX4/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "First-hand production-adoption account of a brand-new model release, not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the permalink fresh this run; post and benchmark numbers confirmed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Matches the re-read post; benchmark numbers explicitly attributed to Liquid's own figures, not presented as independent." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item; no demo-video search required." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Immediately-applicable swap-and-compare angle for anyone running small local models in production." }
+      ]
+    },
+    {
+      "slug": "spawn-ai-pilled-company",
+      "section": "TRENDING ON X",
+      "title": "Inside a 10-person company spending 30x payroll on AI tokens, shipping 77,000 changes a month",
+      "summary": "Jacob (@jsnnsa), founder of game studio Spawn, wrote up two years of restructuring the company around permanent AI agents (\"the fleet\") instead of short-lived coding sessions: no PRs (agents coordinate through shared state, \"stigmergy\"-style, instead of messaging each other), hourly deploys treated as a severe incident if missed, production testing instead of pre-merge suites, and AI judges that apply the founder's own past decisions to new ones (7,296 of about 11,000 judged automatically in the first 8 days). Only 0.9% of 123,548 changes have ever been reverted. Simon Willison called it \"fascinating... my eyebrows raised at least a dozen times.\"",
+      "why": "Most \"agents writing code\" stories are a demo; this is a founder describing, in detail, the actual engineering process changes — no PRs, hourly ship-or-it's-an-incident, AI judges for taste — that had to happen first, useful to study even if you'd only adopt pieces of it.",
+      "actionLabel": "Angle for you",
+      "action": "Read the \"stigmergy\" section specifically — agents coordinating through the shared state of the code/product instead of messaging each other is a concrete pattern you could prototype on a single service.",
+      "permalink": "https://x.com/jsnnsa/status/2115623382721126826",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Detailed first-hand process writeup, not a pricing/funding/benchmark post; not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened the thread fresh via the connected browser this run." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Figures (123,548 changes, 0.9% revert rate, 7,296/11,000 auto-judged) matched word-for-word against the re-read thread." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Gives an honest-discourse angle (a real restructuring, not hype) matching the standing TRENDING-ON-X selection bias." }
+      ]
+    },
+    {
+      "slug": "loop-engineering-langchain-deep-agents",
+      "section": "STUDY",
+      "title": "DeepLearning.AI and LangChain ship a course on the four loops behind reliable long-running agents",
+      "summary": "\"Loop Engineering with LangChain Deep Agents,\" taught by LangChain's Deep Agents maintainer Sydney Runkle with DeepLearning.AI's Esmaeil Gargari, breaks agent reliability into four loop types: the core agent loop (call tools, observe, decide), a verification loop (an evaluator checks output against a rubric and sends it back), an event-driven loop (triggered by a Slack message or Jira ticket), and a hill-climbing loop (analyzing traces across many runs to improve the harness itself). The hands-on example is a requirements-review agent using Deep Agents' filesystem, instructions and skills features.",
+      "why": "The \"hill-climbing loop\" — using traces across runs to systematically improve the harness itself, not just the prompt — is exactly the kind of structural pattern that's easy to do ad hoc and hard to do rigorously, and this is a rare short course that names it directly.",
+      "actionLabel": "Try this",
+      "action": "Watch the verification-loop and hill-climbing-loop lessons specifically and compare their rubric-based verification pattern against however you currently grade your own harness's runs.",
+      "permalink": "https://www.deeplearning.ai/courses/loop-engineering-with-langchain-deep-agents",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "New course, checked daily per standing instruction; not a duplicate of any prior DeepLearning.AI pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; course page and syllabus confirmed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Four-loop breakdown and instructor names matched against the re-fetched page." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Names a structural harness-improvement pattern directly relevant to agent-harness work, not beginner-level content." }
+      ]
+    },
+    {
+      "slug": "cole-medin-four-cs-second-brain",
+      "section": "WATCH QUEUE",
+      "title": "The four components Cole Medin says every AI second brain needs (Context, Connections, Capabilities, Cadence)",
+      "summary": "Cole Medin lays out a deliberately simple second-brain stack (a few tools, a folder of markdown files) built around four fundamentals: Context (what the agent can see), Connections (what it's wired into), Capabilities (what it can actually do) and Cadence (how often it checks in) — framed as both a build guide and an audit checklist for a second brain you already have.",
+      "why": "If you've already built an agent memory/second-brain setup and it feels like it's drifting or overbuilt, this gives you four concrete questions to audit it against instead of rebuilding from scratch.",
+      "actionLabel": "Worth the drive",
+      "action": "21 minutes (about 7% of it is a sponsor segment for Arcade, flagged).",
+      "permalink": "https://www.youtube.com/watch?v=qIWB1yMsqRo",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Substantive framework video, recent (within the 3-5 day window), not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened fresh this run." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Confirmed against description + chapter list + comments (see sourcing note below)." },
+        { "check": "Watch material", "result": "N/A", "reason": "Sourcing note: TubeAlfred's youtube_video_transcript returned insufficient_credits (0 available) this run, and the native YouTube transcript panel again did not render actual caption text via get_page_text — fell back to description + chapters + comments, disclosed per standing practice." },
+        { "check": "Worth the time", "result": "PASS", "reason": "21-minute runtime with a disclosed ~7% sponsor segment; content-to-time ratio clears the bar." }
+      ]
+    },
+    {
+      "slug": "anthropic-sonar-30000-merges-a-day",
+      "section": "WATCH QUEUE",
+      "title": "How Anthropic scaled from 2,500 to 30,000 merged code changes a day",
+      "summary": "Manish Kapur (Sonar) and Addy Osmani (Anthropic) discuss \"light\" vs. \"dark\" software factories, how Anthropic's own merge rate scaled 12x with Claude doing first-pass review backed by independent verification evidence (not just an LLM judge), new data from Sonar's State of Code survey, and a lightning round on when it's actually safe to merge agent-written PRs. Comments push back usefully — several viewers argue that counting merged PRs as a velocity metric hides how many are just fixes for previous agent-written bugs.",
+      "why": "The core claim worth sitting with is that \"coding is solved, confidence isn't\" — the bottleneck moved from writing code to independently verifying it, the actual argument for investing in harness-level verification rather than a smarter model.",
+      "actionLabel": "Worth the drive",
+      "action": "19 minutes (no sponsor segment found).",
+      "permalink": "https://www.youtube.com/watch?v=AnsXWH2_EBU",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Substantive discussion with specific, checkable claims (12x merge-rate scaling); not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-opened fresh this run." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Confirmed against description + chapter list + comments (same sourcing note as the other Watch Queue pick)." },
+        { "check": "Watch material", "result": "N/A", "reason": "Same TubeAlfred insufficient_credits + transcript-panel limitation as the other Watch Queue pick this run." },
+        { "check": "Worth the time", "result": "PASS", "reason": "19-minute runtime, no sponsor segment, directly on-topic for agent-harness verification work." }
+      ]
+    }
+  ],
+  "dropped": [
+    { "title": "OpenAI: GPT-6.1 Terra", "stage": "step 3", "reason": "Duplicate — already live in the public feedback artifact's current item set under 2026-10-28, with full detail (pricing, context window) matching what the 2026-10-28 public brief JSON itself records. This contradicts the 2026-10-28 run-log narrative, which states Terra was dropped at the eval gate's Link-works check. Flagged in today's run-log entry as a data-integrity discrepancy for Vikas to investigate — not resolved in this run." },
+    { "title": "Unidentified paper, arXiv id 2610.37242", "stage": "step 3", "reason": "Hallucinated — a research sub-agent proposed this id as a candidate; WebSearch found no such paper exists. Dropped outright, not just unverified." },
+    { "title": "Claude for Legal", "stage": "step 3", "reason": "False-fresh — recirculating coverage of an older release rather than new news this window." },
+    { "title": "A2UI / CopilotKit integration", "stage": "step 3", "reason": "Freshness could not be confirmed as within this window; dropped rather than risk a false-fresh item." },
+    { "title": "Google: Hill-Climbing Agent Quality", "stage": "step 3", "reason": "Likely duplicate of the 2026-10-17 agent-quality-toolkit coverage already in the brief history; dropped to avoid re-sending the same story." }
+  ]
+}
