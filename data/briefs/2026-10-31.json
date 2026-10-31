@@ -1,0 +1,270 @@
+{
+  "date": "2026-10-31",
+  "skipped": [],
+  "items": [
+    {
+      "slug": "ronak-software-factory-orchestrator",
+      "section": "ON LINKEDIN",
+      "title": "A LinkedIn Principal Staff Engineer's actual orchestrator/worker setup for running coding agents long-horizon",
+      "summary": "Ronak Nathani describes the real setup behind his biggest recent productivity jump: one orchestrator agent per project (it doesn't write code, just manages the plan, dependencies, and a cap of 3 open PRs at a time) handing tasks to worker agents that each run in their own terminal tab through a defined pipeline, with state kept on disk so any session is disposable and resumable. Workers route cross-cutting questions back through the orchestrator instead of improvising. Built on an open-source skill set (github.com/ronaknnathani/relay) that works with Claude Code, Copilot CLI and Codex CLI.",
+      "why": "This is a working division of labor for agents — one agent plans and gates PRs, others execute — described by someone actually running it day to day, not a framework pitch.",
+      "actionLabel": "Angle for you",
+      "action": "If you're running more than one coding agent in parallel today without a plan-level coordinator, try relay's single-PR deliver-pr workflow on one task before adopting the full orchestrator pattern.",
+      "permalink": "https://www.linkedin.com/posts/ronaknnathani_building-your-own-software-factory-the-biggest-share-7521697619937566720-qJRD/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine real-world agent-orchestration pattern from a named practitioner; checked against full run-log history, not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "LinkedIn permalink extracted via copy-link-to-post and re-opened fresh this run; linked GitHub repo (github.com/ronaknnathani/relay, ~8 stars) confirmed real and live."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the re-read post text and repo README (orchestrator/worker split, disk-based state, 3-PR cap)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item; no demo-video search required."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete, immediately-triable coordination pattern for anyone running multiple agents in parallel."
+        }
+      ]
+    },
+    {
+      "slug": "agentic-backdoors-pretraining-poisoning",
+      "section": "ON LINKEDIN",
+      "title": "A pretraining poisoning attack plants a working backdoor in a coding agent at just 0.1% poison rate",
+      "summary": "Researchers (Anthropic, UC Berkeley, UIUC and others) pretrained three small language models (0.6B/1.7B/4B) from scratch on a corpus with just 0.1% of its documents poisoned, then ran each through an ordinary post-training pipeline into a working CLI coding agent. The backdoor survives that pipeline and stays dormant on ordinary requests, but executes an attacker-chosen action when a specific trigger phrase appears in a request. Attack success scales with model size, reaching roughly 92% on the 4B model.",
+      "why": "If you train or fine-tune any model that will run as an agent with shell or tool access, this is a concrete demonstration that a small, cheap-to-plant fraction of poisoned pretraining data can hand an attacker control later, not just biased behavior.",
+      "actionLabel": "Angle for you",
+      "action": "If your team trains or fine-tunes agent models on scraped or web-adjacent data, the paper's poison design and detection discussion (arxiv.org/abs/2610.37741) is worth reading past the abstract.",
+      "permalink": "https://www.linkedin.com/posts/omarsar_interesting-paper-from-anthropic-and-colleagues-share-7521949318816210944-2P72/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "New arXiv paper (2610.37741) with a concrete, checkable security claim; not a duplicate of prior coverage."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "LinkedIn post and arXiv abstract both re-fetched fresh this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Corrected at the eval gate: the first draft (from the LinkedIn poster's own reading of the full paper) claimed the backdoor 'survived SFT, DPO, and RL' and persisted at '1.4% of prompts at a 0.0005% poison rate' — a web-fetch verification against the arXiv abstract found neither specific supported there, so both were dropped and the summary was rewritten to only the abstract-supported facts (0.1% poison rate, survives post-training into a working agent, ~92% success at 4B)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly actionable security angle for anyone training or fine-tuning agent models."
+        }
+      ]
+    },
+    {
+      "slug": "cursor-claude-code-extension-malware",
+      "section": "TRENDING ON X",
+      "title": "A malicious Claude Code extension sat in Cursor's marketplace for ~11 hours — uninstalling it isn't enough",
+      "summary": "Cursor disclosed that two builds of the Claude Code VS Code extension (v2.1.312 and v2.1.313, Windows/macOS) — not built by Anthropic — were distributed through the Cursor Extension Marketplace for roughly 11 hours on Oct 29, before any click or activation. The payload added an attacker SSH key to authorized_keys, attempted a reverse SSH tunnel, installed OS-level persistence (a LaunchAgent on macOS, a scheduled task on Windows), and beaconed hostname/git-email/public-IP/env-var names to an attacker server. Cursor pulled the marketplace listing, rotated keys, rebuilt the extension, took the attacker's server offline, and published indicators of compromise plus remediation scripts rather than just a version bump. Corroborated independently by two other LinkedIn posts covering the same incident.",
+      "why": "The weak point was the marketplace listing itself, not the extension's code — and coding-agent extensions hold API keys, repo access and shell permissions, which makes a compromised one worth far more to an attacker than it looks.",
+      "actionLabel": "Angle for you",
+      "action": "If you use Cursor and have the Claude Code VS Code extension installed, check for v2.1.312/2.1.313 and an unexpected key in authorized_keys before assuming an uninstall cleared it — Cursor's notice has the full remediation steps and scripts.",
+      "permalink": "https://cursor.com/blog/claude-code-extension-security-notice",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Real, corroborated security incident (Cursor's own blog plus two independent LinkedIn posts); not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "cursor.com/blog/claude-code-extension-security-notice re-fetched fresh this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Corrected at the eval gate: the first draft (sourced from the X post text) claimed 'impacting at most 5,000 users' and an update to version '2.1.314' — a web-fetch verification against the actual blog post found neither detail stated there. Rewrote using only the blog's own verified facts (affected versions 2.1.312/2.1.313, ~11-hour exposure window on Oct 29, SSH-key/reverse-tunnel/persistence payload, remediation scripts)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Gives Cursor + Claude Code extension users a concrete, actionable check."
+        }
+      ]
+    },
+    {
+      "slug": "context-pipeline-information-attrition-harnesses",
+      "section": "STUDY",
+      "title": "A coding-agent harness silently truncated a third of its own tool outputs into broken JSON — and the context-window numbers never showed it",
+      "summary": "Researchers measured a real tool-using agent (diagnosing injected faults from Linux kernel traces) and found that even though its context-window usage stayed tiny (the largest prompt ever used only 5.75% of it across 720 runs), the harness was slicing tool-call JSON output at a fixed character length. That cut 3,827 of 11,189 tool results, and every cut result became broken JSON, silently deleting whichever fields landed near the end. In a controlled experiment, cutting data this way mainly cost the agent extra work (43% more tool calls, yield falling from 0.61 to 0.31) rather than immediately wrong answers; a survey of seven agent frameworks found two others doing the same unsafe fixed-length cut.",
+      "why": "\"My context window is mostly empty\" tells you nothing about whether your harness is quietly corrupting the tool outputs it does send — this is a concrete bug class worth checking for, not just a benchmark number.",
+      "actionLabel": "Try this",
+      "action": "Grep your own agent harness for any place it truncates or slices a tool result by character count rather than by valid JSON boundaries — that's the exact failure mode this paper documents.",
+      "permalink": "https://arxiv.org/abs/2610.36114",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "New arXiv paper documenting a concrete, previously-unreported harness bug class; not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "arxiv.org/abs/2610.36114 re-fetched fresh this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the abstract; kept the cost framed as 'extra work' (43% more tool calls, yield 0.61→0.31) rather than claiming it causes wrong answers, since the abstract leaves that causal question explicitly open."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Gives a concrete, specific thing to grep for in one's own agent harness."
+        }
+      ]
+    },
+    {
+      "slug": "revolut-self-hosted-ai-coding-costs",
+      "section": "WATCH QUEUE",
+      "title": "How Revolut cut AI coding costs roughly 90% by self-hosting open GLM models for 2,000 engineers",
+      "summary": "David Abitbol, who leads AI operations at Revolut, shares data across 2,000 engineers on what AI coding tools did to delivery time, and why self-hosting open-source GLM models — not just switching frontier vendors — made the biggest difference: roughly 60-70% faster delivery at about a tenth of what they were paying frontier labs, plus the GPU sizing, latency targets, and tuning (88% faster on the same hardware after optimization) that got them there.",
+      "why": "\"Switch frontier vendors\" and \"self-host the model\" are different cost levers, and Revolut's numbers give an actual data point for when the second one is worth the operational overhead.",
+      "actionLabel": "Worth the drive",
+      "action": "12 minutes. No transcript available (both TubeAlfred and YouTube's native panel failed to render one) — judged from the video description, chapters and comments, which push back usefully on upfront GPU capex and break-even team size.",
+      "permalink": "https://www.youtube.com/watch?v=Ok6QdZHCcI8",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive, data-backed cost/performance talk from a named practitioner at a 2,000-engineer org; not a duplicate; recent conference talk."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened fresh this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Confirmed against description, chapter list and comments (transcript unavailable — see Watch material note)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "TubeAlfred was unavailable this run (same insufficient-credits/not-found issue as prior runs) and YouTube's native transcript panel again did not render caption text via get_page_text; fell back to description + chapters + comments, disclosed per standing practice."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "12-minute runtime; comments add a useful pushback on GPU capex and break-even team size."
+        }
+      ]
+    },
+    {
+      "slug": "harrison-chase-model-harness-context",
+      "section": "WATCH QUEUE",
+      "title": "Harrison Chase's three-part framework for improving a coding agent over time: model, harness, context",
+      "summary": "LangChain's co-founder and CEO splits \"improving an agent\" into three separate levers that each improve differently: the model's weights (via supervised fine-tuning or RL on harder tasks), the harness (via a deep agent that runs over your traces, clusters recurring issues, and proposes fixes with a human in the loop), and the context assembled for each call.",
+      "why": "Teams often reach for \"better prompt\" or \"bigger model\" by default — this gives you a vocabulary for deciding which of the three levers is actually underperforming before spending effort on the wrong one.",
+      "actionLabel": "Worth the drive",
+      "action": "20 minutes. No transcript available (same TubeAlfred/native-panel failure as above) — judged from the description, chapters and comments.",
+      "permalink": "https://www.youtube.com/watch?v=xy_7SzwsIjM",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive framework talk from a recognizable, credible figure (LangChain co-founder/CEO); not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened fresh this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Confirmed against description, chapter list and comments (transcript unavailable, same fallback as the other Watch Queue pick)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Same TubeAlfred-unavailable + native-panel-rendering limitation as the other Watch Queue pick this run."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "20-minute runtime, directly on-topic for agent-harness improvement work."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Cursor Agent SDK coverage",
+      "stage": "step 3",
+      "reason": "Duplicate — cross-checked against the Drive run-log and found already sent as a SHIPPED item on 2026-10-28."
+    },
+    {
+      "title": "Claude mobile app update",
+      "stage": "step 3",
+      "reason": "Low relevance — consumer-facing update, not a developer-tooling or agent-engineering signal."
+    },
+    {
+      "title": "Claude for Legal artifacts",
+      "stage": "step 3",
+      "reason": "Low relevance — narrow vertical feature, not representative daily tooling signal for this audience."
+    },
+    {
+      "title": "Claude Enterprise smart reports",
+      "stage": "step 3",
+      "reason": "Low relevance — admin/reporting feature, not agent-development relevant."
+    },
+    {
+      "title": "OpenAI GPT-6 'Rosalind'",
+      "stage": "step 3",
+      "reason": "Gated/early access — claims could not be independently verified at this time."
+    },
+    {
+      "title": "Google 'Hill-Climbing Agent Quality' post",
+      "stage": "step 3",
+      "reason": "Likely duplicate of the 2026-10-17 agent-quality-toolkit coverage already in the brief history; dropped to avoid re-sending the same story."
+    },
+    {
+      "title": "Sonar 'Vortex' conference talk (Watch Queue candidate)",
+      "stage": "step 2b",
+      "reason": "Excluded per the sponsor-ratio standing instruction — an undisclosed-but-obvious vendor product pitch delivered as a sponsored conference talk."
+    },
+    {
+      "title": "Manthan Gupta LinkedIn post on Cursor codebase-indexing architecture",
+      "stage": "step 4",
+      "reason": "FAIL at eval gate (Meaningful / Summary accurate) — the LinkedIn post itself was only ~22h old, but a web-fetch verification found its cited source (cursor.com/blog/secure-codebase-indexing) was actually published Jan 27, 2026, 9+ months stale. A fresh-looking post citing a stale underlying source is a rehash, not new news; dropped and replaced with Ronak Nathani's software-factory post."
+    }
+  ]
+}
