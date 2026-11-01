@@ -1,0 +1,129 @@
+{
+  "date": "2026-11-01",
+  "notice": "SHIPPED ran with zero items today — nothing from Cursor, Anthropic, OpenAI or Google AI cleared the bar.",
+  "skipped": [
+    { "section": "SHIPPED", "reason": "Every lead was either a duplicate of a recent brief, access-restricted, or not a real capability change (see dropped list)." }
+  ],
+  "items": [
+    {
+      "slug": "eidos-architectural-context-ai-agents",
+      "section": "ON LINKEDIN",
+      "title": "Eidos: a local-first semantic knowledge graph that stops AI coding agents from drifting off your architecture",
+      "summary": "An open-source (MIT) Git-native tool that keeps architecture and domain specs as YAML+AsciiDoc in the repo, indexed into a local SQLite + FTS5 + AST + offline-ONNX semantic graph. Agents query it for token-budgeted context and blast-radius analysis instead of a static rules file or expensive grep loops, and a drift command binds architectural invariants to real tests across six languages. Ships adapters for most major coding agents, though only two are thoroughly tested so far. Early-stage — a handful of GitHub stars as of today.",
+      "why": "Targets the exact rule-file-drift problem multi-tool teams hit, with a real local knowledge graph instead of a markdown file agents either ignore or burn tokens re-reading.",
+      "actionLabel": "Angle for you",
+      "action": "Run the context command against one file in a repo you maintain and compare the slice it returns to what you'd normally paste into an agent's context by hand.",
+      "permalink": "https://github.com/mchawa/eidos",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new open-source tool targeting a real, common problem (rule-file drift across multiple AI coding tools); not a rehash or benchmark-only post; not a duplicate of any prior brief." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch of the GitHub repo returned HTTP 200, a real README matching the drafted summary, MIT license, 248 commits." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Feature list (SQLite+FTS5+AST+ONNX, drift command, multi-tool adapters) matches the README verbatim; star count stated honestly as very small rather than omitted." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly on-topic for agentic coding workflows and architecture-aware context; honest about its early/small-adoption stage rather than overselling it." }
+      ]
+    },
+    {
+      "slug": "ibm-jevact-decision-gate-llm-agents",
+      "section": "ON LINKEDIN",
+      "title": "IBM's JevAct: a runtime decision gate that catches bad tool calls before agents make them",
+      "summary": "A runtime gate that sits between an agent and its tools: an LLM turns domain policy into code checks and yes/no questions once, then before a selected tool call executes, deterministic code checks the facts and a small prefill-only decision model answers the policy questions, sending a failed call back to the agent with feedback. On tau-squared-bench Telecom, three-run success rose by 16.9 points on average across all 8 tested agents, with one agent (Opus 4.6) specifically going from 39.5% to 80.7%; all 9 agents tested improved on BFCL, with smaller and mixed results on Airline.",
+      "why": "The gains come from a verification layer wrapped around the agent, not a better model — a pattern that can be added to an existing harness.",
+      "actionLabel": "Angle for you",
+      "action": "Pick one high-stakes tool call in your own agent harness and add an independent policy check before it executes, modeled on JevAct's gate-then-feedback loop.",
+      "permalink": "https://arxiv.org/abs/2610.38620",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A real IBM research paper with a concrete new mechanism (runtime decision gate) and quantified multi-agent results; not a rehash, not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch of the arXiv abstract page confirmed the title, authors (IBM), and all cited figures." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Verified against the abstract directly: the 39.5%->80.7% figure is specifically Opus 4.6's result, not a general average, and the summary attributes it correctly; the 16.9-point figure is the correct cross-agent average." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, reusable harness pattern with real numbers across 9 agents and two benchmarks — clears the 'where do I use this' bar." }
+      ]
+    },
+    {
+      "slug": "anthropic-messages-api-rust-rewrite",
+      "section": "TRENDING ON X",
+      "title": "Anthropic's platform lead says Claude ported the company's own Messages API to Rust — with no Rust developers on the team",
+      "summary": "On the Latent Space podcast, Anthropic's head of platform engineering Katelyn Lesse said her team, which started with zero Rust engineers, had Claude do most of the implementation porting the core Messages API from Python to Rust, verified by running the new version on shadow production traffic and diffing its output against the old one before cutover. She cited roughly 40-50% lower CPU use on the API service layer (not model inference). These are her own reported figures from the interview, not an independently published benchmark.",
+      "why": "The actual trust mechanism here isn't 'the model is good at Rust' — it's running the rewrite on real shadow traffic and diffing outputs before switching over, a technique usable for any agent-driven rewrite.",
+      "actionLabel": "Angle for you",
+      "action": "Before trusting an agent-driven rewrite of a production service, replay real traffic against both versions and diff the outputs before cutover.",
+      "permalink": "https://latent.space/p/how_anthropic_ships_the_1_llm_in_the_world_safely_separating_the_brain_from_the_hands/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A genuine, concrete engineering story (production Rust port of core infra, done largely by Claude) with a real verification technique, not pure discourse or PR; not a duplicate of any prior brief." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch confirmed the episode page is live and its own chapter list includes 'Rebuilding the Messages API in Rust', matching the topic; the specific CPU percentage is from the interview audio itself (confirmed by two independent secondary write-ups of the same episode), not printed in the show notes." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Cross-checked against two independent secondary sources reporting the same episode; explicitly flagged that 'zero Rust developers' describes the starting condition and that the CPU figure is the executive's own unverified account, rather than overstating it as confirmed." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, buildable angle (shadow-traffic diffing as a trust mechanism for agent-driven rewrites), not discourse-only." }
+      ]
+    },
+    {
+      "slug": "stratum-repository-memory-coding-agents",
+      "section": "STUDY",
+      "title": "Stratum: giving coding agents repository memory that survives across sessions, not just a bigger context window",
+      "summary": "A tiered memory system lives alongside the repo and is served to agents through page-safe tools rather than dumped into context. Across 752 real bug-fix commits studied, the median fix touches two files, and 47% of co-edited file pairs have no direct structural link (no shared import or call edge) — plain code search would miss the second file entirely. In a multi-session test on 8 real bugs, an agent with inherited Stratum memory found the root-cause file in 21 of 24 trials versus 6 of 24 for a retrieval-only baseline (statistically significant, p<10^-4), at roughly 4.5x lower token cost. Small sample, self-reported results.",
+      "why": "Real quantified evidence that structural/memory-based retrieval beats plain embedding search for finding files that aren't directly linked.",
+      "actionLabel": "Try this",
+      "action": "Check the 47%-disconnected-pairs finding against your own service's recent bug-fix history — a quick sanity check for whether an embedding-only RAG layer over your codebase would actually find the second file a fix needs.",
+      "permalink": "https://arxiv.org/abs/2610.36153",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A genuine new research contribution (tiered repository memory architecture) with real quantified results; not a rehash, not a duplicate of any prior brief (confirmed via full duplicate-check)." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch of the arXiv abstract page confirmed title, authors, submission date and all cited figures." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "All figures (752 commits, 47% disconnected pairs, 21/24 vs 6/24, p<10^-4, 4.5x token cost) verified directly against the abstract; small-sample caveat stated honestly." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly relevant to finding structurally-disconnected but logically-related files in a codebase — a real, applicable technique, not just a benchmark number." }
+      ]
+    },
+    {
+      "slug": "cole-medin-anthropic-control-study",
+      "section": "WATCH QUEUE",
+      "title": "Anthropic's new study: you're not as in control of your AI agent's decisions as you think",
+      "summary": "Cole Medin walks through an Anthropic study where expert analysts followed an AI agent's recommendation 86% of the time, then explained their 'own' choice back using the agent's own language — and shows the same pattern in his own coding-agent planning sessions. Three countermeasures: state your priorities before the agent recommends an approach, prototype before deciding, and explicitly ask what would change the agent's advice.",
+      "why": "A direct, practical check on a blind spot in agent-assisted planning and architecture decisions.",
+      "actionLabel": "Worth the drive",
+      "action": "16 minutes. Includes a disclosed ~1.5 minute Revolut Business sponsor segment (unrelated to the AI content, about 9% of runtime). No transcript tool available this run — judged from the video's own chapters, full description and comments.",
+      "permalink": "https://www.youtube.com/watch?v=BlbxhsItZPg",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Substantive, not clickbait: walks through a real Anthropic study and gives concrete countermeasures; comments show genuine technical engagement; not a duplicate of any prior Watch Queue pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened directly in a logged-in browser session; confirmed live, title/duration/publish date (Oct 31, 2026) match." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Read the full expanded description, chapter list and top comments directly (not just title/thumbnail); the 86% figure and three countermeasures are stated explicitly in the description and chapters." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Sponsor segment is clearly disclosed, short (~9% of runtime), and unrelated to the core content, which is itself substantive and immediately applicable to daily agent-assisted coding sessions." }
+      ]
+    },
+    {
+      "slug": "richmond-alake-intelligence-plane-agent-memory",
+      "section": "WATCH QUEUE",
+      "title": "Everyone has the same AI models — what actually sets agents apart, with Oracle's Richmond Alake",
+      "summary": "A conference talk arguing the real differentiator beyond the model and control-plane layer is an 'intelligence plane': what an agent knows, remembers, is allowed to see, and how it improves. Demos a governed agent built on an ontology and semantic layer answering correctly 99% of the time using 32K tokens, versus a naive agent needing 200K tokens for the same task, and covers fine-tuning a small decision model purely for memory routing.",
+      "why": "A concrete token-cost argument for structured, governed memory over dumping everything into context.",
+      "actionLabel": "Worth the drive",
+      "action": "26 minutes. A vendor-affiliated conference talk (Oracle's Director of AI Developer Experience) rather than a bolted-on ad — no sponsor segment, genuine technical demo with numbers. Judged from the full description, chapters and comments (no transcript tool available this run).",
+      "permalink": "https://www.youtube.com/watch?v=1_lX0m64-aI",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Conceptual framework (control plane vs. intelligence plane) plus a quantified demo (32K vs 200K tokens), not generic hype; not a duplicate of any prior Watch Queue pick." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened directly in a logged-in browser session; confirmed live, published Nov 1 2026, title/duration match." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Read the full expanded description, chapter list and comments directly; the 32K vs 200K token figures and fine-tuning-for-memory-routing chapter are stated explicitly." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "No sponsor-ad segment (genuine conference talk); comments show substantive, if mixed, technical engagement; conceptually relevant to cross-service agent context/memory design." }
+      ]
+    }
+  ],
+  "dropped": [
+    { "title": "Cursor Agent SDK", "stage": "step 3", "reason": "Duplicate of a recent brief." },
+    { "title": "Cursor Design Mode: Annotate", "stage": "step 3", "reason": "Duplicate of a recent brief." },
+    { "title": "OpenAI GPT-6 Rosalind", "stage": "step 3", "reason": "Access-restricted (trusted-access program only); also a duplicate of a prior day's drop." },
+    { "title": "Google 'Hill-Climbing Agent Quality'", "stage": "step 3", "reason": "Duplicate of earlier coverage of the same agent-eval toolkit." },
+    { "title": "Google A2UI & CopilotKit tutorial", "stage": "step 3", "reason": "A how-to tutorial, not a new capability announcement." },
+    { "title": "DeepSeek V4.1 Flash available in Cursor", "stage": "step 3", "reason": "The underlying model was already covered in an earlier brief; this is an integration note, not a new capability." },
+    { "title": "'AI-pilled company' (Spawn) writeup", "stage": "step 3", "reason": "Duplicate of a recent brief." },
+    { "title": "'How Anthropic Merges 30,000 Code Changes a Day' (AI Engineer / Sonar / Anthropic talk)", "stage": "step 3", "reason": "Exact duplicate of a Watch Queue item already sent in a recent brief; caught during the duplicate-check before reaching the eval gate." },
+    { "title": "DeepLearning.AI 'Loop Engineering with LangChain Deep Agents' course", "stage": "step 3", "reason": "Exact duplicate of a Study item already sent in a recent brief." },
+    { "title": "LangChain Managed Deep Agents v0.10 (browser use, async subagents)", "stage": "step 3", "reason": "Real new release, but passed over for a stronger Study candidate more directly relevant; no adoption/impact commentary in the source post." },
+    { "title": "arXiv: Spine / Skill Dreaming / Continue-or-Restart papers", "stage": "step 3", "reason": "Passed over for a stronger Study candidate." },
+    { "title": "GitHub trending AI-agent repos (hermes-agent, OmniRoute, NemoClaw, warren, kendex)", "stage": "step 3", "reason": "Weak or unverifiable adoption signal; one source showed star counts inconsistent with direct repo verification." },
+    { "title": "YouTube 'weekly GitHub repo countdown' videos", "stage": "step 3", "reason": "Excluded as a category — this genre showed inconsistent, likely inflated star-count claims across channels." },
+    { "title": "Upwind Security LinkedIn post", "stage": "step 3", "reason": "Promoted/sponsored lead-gen post, not a genuine technical item." },
+    { "title": "Anthropic 'automating subtle emergent misalignment research' (X)", "stage": "step 3", "reason": "Passed over for a stronger Trending-on-X candidate with a clearer buildable angle." },
+    { "title": "LangChain / Numan eval-first health coach case study", "stage": "step 3", "reason": "Older (Oct 19) and passed over for a stronger Study candidate." }
+  ]
+}
