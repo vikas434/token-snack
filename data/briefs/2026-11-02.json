@@ -1,0 +1,96 @@
+{
+  "date": "2026-11-02",
+  "items": [
+    {
+      "slug": "vercel-ai-gateway-virtual-models",
+      "section": "SHIPPED",
+      "title": "Vercel ships Virtual Models on AI Gateway — one ID you can re-point at a different model without a redeploy",
+      "summary": "A virtual model (e.g. vmc/coding-agent) is a named alias over a real model plus its settings — fallbacks, Zero Data Retention, provider sort, tags — managed centrally in AI Gateway instead of hardcoded in app or agent code. Point an AI SDK call or a coding agent at the ID, and editing the alias changes what model every caller hits within a few minutes, no code change or redeploy. Settings are sticky across a swap, but provider-specific options stop applying once you point the alias at a different provider. No markup or platform fee on inference, including BYOK.",
+      "why": "This moves 'which model does my coding agent use' out of code and into a config you can flip centrally — useful the next time a cheaper or better model shows up and you don't want to hunt down every hardcoded model string.",
+      "actionLabel": "Try this",
+      "action": "Create one virtual model for a single task, point one AI SDK call or your coding agent's model picker at the vmc/ ID, then test a provider swap on a candidate alias before editing the one in production.",
+      "permalink": "https://vercel.com/blog/ai-gateway-virtual-models",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A genuine new capability (named, centrally-managed model alias with sticky settings and fallbacks), not a rename of existing routing; not a duplicate of any prior brief." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch confirmed the article at this exact URL, dated Oct 28 2026, with all cited CLI/code examples present verbatim." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Cross-checked against the article: routing itself is not new (AI Gateway already did that), the new part is the named alias bundling model+settings; provider-specific settings not carrying over to a different provider is stated explicitly, not an inference." },
+        { "check": "Watch material", "result": "N/A", "reason": "Genuinely searched Vercel's own blog and a web search for a first-party demo video; none found as of this run." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly actionable for anyone running coding agents against multiple model providers; real config pattern, not marketing." }
+      ]
+    },
+    {
+      "slug": "codex-subagent-fresh-context-fix",
+      "section": "ON LINKEDIN",
+      "title": "Matt Pocock's one-line fix for Codex subagents silently inheriting the parent's full context",
+      "summary": "Some Codex models fork the parent conversation when they spawn a subagent, so it gets the parent's whole context window instead of a clean one scoped to its own brief — quietly defeating the point of a subagent for skills like code review or implement-spec. The fix (merged PR #1341, mattpocock/skills) is eight one-sentence edits telling every subagent-dispatching skill to explicitly ask for a fresh context window, plus a matching rule in the repo's own standards.",
+      "why": "If you're using Codex (not just Claude Code) with any skill that spawns subagents, your subagent may be silently seeing your entire parent conversation instead of just its brief — check whether your own skills say so explicitly.",
+      "actionLabel": "Try this",
+      "action": "Grep your own skills/prompts for anywhere you dispatch a subagent and check it explicitly asks for a fresh context window — Codex won't assume that for you the way Claude Code's default does.",
+      "permalink": "https://www.linkedin.com/posts/mapocock_just-shipped-an-important-skill-fix-for-codex-share-7522569118802186240-YQix/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A real, specific fix for a concrete harness behavior bug (Codex forking context on subagent spawn), not a rehash or pure discourse; not a duplicate of any prior brief." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch of the LinkedIn post confirmed it live, ~20h old, 245 reactions / 26 comments; the embedded link resolves to the real GitHub PR #1341 (merged, mattpocock/skills), independently re-opened and confirmed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "PR description and diff confirmed: eight one-sentence edits across skill files plus a CLAUDE.md/AGENTS.md repo-standard addition, matching the summary." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete, immediately-applicable fix for anyone running multi-tool agent skills; real discussion from senior practitioners in the comments, not just reactions." }
+      ]
+    },
+    {
+      "slug": "vibe-coded-service-nobody-read",
+      "section": "ON LINKEDIN",
+      "title": "Arpit Bhayani: somewhere in your company is a vibe-coded production service nobody has actually read",
+      "summary": "One person vibe-coded a service, watched it pass a few manual checks, and shipped it — they're the only one with any real feel for how it behaves, and most of the reasoning lived in an unsaved Claude session. His fixes: review generated code like any other code (if nobody on the team can explain it, it shouldn't ship), keep intent durable in code comments rather than a chat log, and make sure at least two people can operate and debug every production service.",
+      "why": "A concrete, un-hyped checklist for the actual failure mode of fast AI-assisted shipping — not 'AI writes bad code' but 'nobody including the author can explain what's running.'",
+      "actionLabel": "Angle for you",
+      "action": "Pick one service on your team that one person vibe-coded solo and do the two-person debug test: can anyone besides the author explain why a specific non-obvious decision in it was made?",
+      "permalink": "https://www.linkedin.com/posts/arpitbhayani_somewhere-in-your-company-there-is-probably-share-7522869365105549312-roX9/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A genuine, specific practitioner take on a real failure mode, with concrete fixes, not a rehash; not a duplicate of any prior brief (confirmed distinct from this same author's earlier, differently-themed posts)." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch confirmed the post live, 43 minutes old at time of check, 68 reactions / 5 comments, text matches exactly." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Direct side-by-side read of the post; all four listed fixes quoted/paraphrased accurately from the original." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Freshest item in today's brief; concrete, immediately-applicable team-process checklist rather than generic AI-skepticism." }
+      ]
+    },
+    {
+      "slug": "karpathy-hackertube-effort-levels",
+      "section": "TRENDING ON X",
+      "title": "Karpathy built a personalized YouTube clone from Hacker News recommendations in ~2 hours with Claude Code — swyx's take: \"effort levels are the tabs vs spaces of our time\"",
+      "summary": "Karpathy's own account: annoyed by YouTube's algorithm on a Friday night, he had Claude Opus 5.5 (Medium effort, via Claude Code) download and filter Hacker News comments from a public dataset, extract ~6,454 YouTube videos HN users have recommended since 2007, and wrap them in a YouTube-style UI at hackertube.org — his own manual work was getting an API key, booting a VPS, and buying a domain. swyx's reply: having a strong opinion on what effort level to default to is 'like the tabs vs spaces of our time.'",
+      "why": "This is an actual working data point on what 'Medium effort, mostly hands-off' looks like for a real multi-hour build today, not just discourse about it.",
+      "actionLabel": "Angle for you",
+      "action": "If you haven't deliberately picked (and stuck with) a default effort level for your own agent work, this is a nudge to try one default for a week rather than re-deciding per task.",
+      "permalink": "https://x.com/swyx/status/2116773135668404286",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Real discourse anchored to a real, verifiable build (Karpathy's own blog post), not pure opinion; not a duplicate of any prior brief." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch of the X post confirmed live, ~22h old, with an embedded screenshot of Karpathy's blog post; Karpathy's underlying post (karpathy.bearblog.dev/hacker-tube/) independently re-fetched and confirmed, published Oct 31 2026." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Cross-checked against Karpathy's own post text directly: the 'effort levels' framing is confirmed as swyx's own commentary layered on top, not something Karpathy's post itself argues at length (it mentions Medium effort once); summary attributes the framing to the correct person." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concrete 'where do I use this' angle (picking a default effort level) rather than pure hot-take discourse." }
+      ]
+    },
+    {
+      "slug": "deepseek-harness-superagent-design",
+      "section": "STUDY",
+      "title": "DeepSeek Harness's own writeup on 'Super-agent' design: a two-level Router/Worker architecture that beat single-session-plus-subagent by 40% on completion time",
+      "summary": "Machine-translated from the team's original Chinese article. Their internal Super-agent runs continuously across IM and GitHub, not one session per task: a long-lived Router layer handles all human interaction and dispatch without executing work itself, while isolated Worker sessions run tasks concurrently — plus event-driven 'Triggers,' async full-duplex interaction, and a Watchdog session that monitors for stuck or drifting agents. In their own ablation (4 designs, 5 runs each, ~300 messages/run): Super-agent completed tasks in 12.4min (p50) / 15.7min (p95), versus 20.4min / 29.5min for a single-session-with-subagent-tool baseline using a neutral delegate-if-appropriate prompt — the baseline model didn't call a subagent in any of its 5 runs.",
+      "why": "Real quantified evidence for a specific design decision — separate the router (dispatch-only) from workers (execution-only) — rather than trusting a single session's ad hoc judgment about when to delegate.",
+      "actionLabel": "Try this",
+      "action": "If your own agent setup leans on a single session's judgment about when to spin off a subagent, this ablation is a real data point for why that underperforms a structural router/worker split.",
+      "permalink": "https://x.com/DeepSeekHarness/status/2116857257245987236",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "A genuine first-party architecture paper with real quantified ablation experiments (not a benchmark-only post or rehash); not a duplicate of any prior brief." },
+        { "check": "Link works", "result": "PASS", "reason": "Fresh fetch confirmed the X Article live, verified account, published 5:07pm Nov 1 2026, 1.5M views / 333 comments / 1.7K reposts / 9.8K likes." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Full article text read directly; the 12.4/15.7 vs 20.4/29.5 minute figures and the 'baseline didn't delegate in any of 5 runs with the neutral prompt' detail are both stated verbatim in Section 7.1." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Deep, substantive systems-design writeup with real ablation data, directly relevant to anyone building multi-session or multi-agent coding systems." }
+      ]
+    }
+  ],
+  "dropped": [
+    { "title": "DeepSeek's DeepInfer open-source inference engine + V4.1-Flash-1017 pricing (Mervin Praison YouTube video)", "stage": "step 3", "reason": "Core 'DeepSeek open-sourced DeepInfer' story already covered as Trending on X (2026-10-20) and surfaced again as a Study duplicate catch (2026-10-23); dropped as duplicate-adjacent despite new pricing/setup details." },
+    { "title": "\"Anthropic Just Released A New System For Using Claude Code\" (AI LABS YouTube video)", "stage": "step 3", "reason": "Repackages Anthropic's own Oct 15 2026 code-review blog post (claude.dev/blog/solving-code-review-at-anthropic), the same underlying story already sent as a Watch Queue item via the AI Engineer/Sonar/Addy Osmani conference talk in a recent brief; also heavily sponsor-funnel-driven (4 separate paid plugs, a paywalled skills upsell)." },
+    { "title": "Richmond Alake/Oracle, \"Everyone has the same AI models\" conference talk", "stage": "step 3", "reason": "Exact duplicate — already sent as a Watch Queue item in yesterday's brief (2026-11-01); also a false-fresh trap (YouTube upload dated Nov 1, but the talk's own title slide shows it was recorded Oct 13 2026 at AI Engineer NY)." },
+    { "title": "\"How to Decide What Your AI Agent Should Remember\" (Wojciech Pluta/Oracle, AI Engineer)", "stage": "step 3", "reason": "Same AI Engineer NY conference (same Oct 13 2026 event as the Richmond Alake talk above) — not independently verified fresh, and from the same vendor/event already excluded above; not pursued further." }
+  ]
+}
