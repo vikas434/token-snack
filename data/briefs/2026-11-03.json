@@ -1,0 +1,139 @@
+{
+  "date": "2026-11-03",
+  "items": [
+    {
+      "slug": "anthropic-message-threads",
+      "section": "SHIPPED",
+      "title": "Anthropic's Message Threads (beta): the server keeps your conversation, so long agent loops send only the new messages",
+      "why": "If you've ever watched an agent loop's request size balloon turn after turn, this is Anthropic's own fix for exactly that.",
+      "actionLabel": "Try this",
+      "action": "If you're running long agent loops or multi-turn tool chains on the API, add the message-threads beta header to one test call and compare request size/TTFT against your current full-history approach.",
+      "permalink": "https://platform.claude.com/docs/en/release-notes/overview",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine capability change (server-side conversation state for the Messages API), not a rehash; checked against prior days, no duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Freshly re-fetched; resolves to the exact Nov 2, 2026 release-notes entry describing the feature."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Cross-checked against full re-fetched release note text (5 min expiry, 1hr max deletion, platform availability)."},
+        {"check": "Watch material", "result": "N/A", "reason": "Genuine search for a first-party demo video was done; none exists for this backend API feature, so the Watch line was skipped per standing rule."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to building agents with long loops; actionable this week."}
+      ]
+    },
+    {
+      "slug": "anthropic-code-review-writeup",
+      "section": "ON LINKEDIN",
+      "title": "Anthropic's own write-up on how they solved code review internally — resurfaced today via a widely-shared LinkedIn post",
+      "why": "A first-party account of code review workflow from the team that builds the model, not a thirdhand take on it.",
+      "actionLabel": "Angle for you",
+      "action": "Compare one concrete piece of their review workflow against what your own review setup currently checks for, and note one gap.",
+      "permalink": "https://claude.dev/blog/solving-code-review-at-anthropic/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine first-party engineering writeup with real adoption stats; not a duplicate of recent days."},
+        {"check": "Link works", "result": "PASS", "reason": "Refetched full article text directly; resolves to the specific post, not a homepage."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Every stat in the drafted summary cross-checked against the full article text, no discrepancies."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Original post is ~3 weeks old (Oct 15); framed honestly as a resurfacing rather than news. Passes the 'where do I use this' bar."}
+      ]
+    },
+    {
+      "slug": "nofire-deleted-most-agents",
+      "section": "ON LINKEDIN",
+      "title": "\"We deleted most of our agents\": a team's honest post-mortem on agent sprawl",
+      "why": "A contrarian, concrete data point against the default instinct to keep adding specialized agents.",
+      "actionLabel": "Angle for you",
+      "action": "List your own current agents/subagents and, for each one, name the one thing it does that a general-purpose agent couldn't — cut the ones where you can't answer that.",
+      "permalink": "https://www.nofire.ai/blog/we-deleted-most-of-our-agents",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Real case study on agent architecture, contrarian and concrete; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Refetched full article directly."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Stats cross-checked against the full article."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Strong 'where do I use this' angle — a concrete lesson about agent roster sprawl."}
+      ]
+    },
+    {
+      "slug": "openai-security-sprint",
+      "section": "TRENDING ON X",
+      "title": "OpenAI's own post on \"preparing our next security sprint to harden OpenAI\"",
+      "why": "A genuine first-party look at how a major lab uses its own models for internal security hardening at scale.",
+      "actionLabel": "Angle for you",
+      "action": "If security review is on your own AI-SDLC radar, read this for the shape of their process rather than for any specific finding.",
+      "permalink": "https://openai.com/index/preparing-our-next-security-sprint-to-harden-openai/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine discourse-worthy first-party post, not benchmark/funding/partnership news."},
+        {"check": "Link works", "result": "PASS", "reason": "Refetched directly; confirmed Nov 2, 2026 date and content."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Cross-checked against the fetched article text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Discourse-only, but a strong 'Angle for you' line on AI-assisted internal security hardening clears the bar."}
+      ]
+    },
+    {
+      "slug": "case-framework-coding-agent-artifacts",
+      "section": "STUDY",
+      "title": "Why coding-agent artifacts (plans, diffs, tool logs) don't carry over between agents — CASE framework, arXiv",
+      "why": "A concrete, honestly-hedged look at why 'just hand the next agent the previous agent's plan' doesn't actually work cleanly yet.",
+      "actionLabel": "Try this",
+      "action": "If you're building any handoff between agent sessions (plan reuse, diff replay, shared tool logs), skim the artifact-shape taxonomy in section 3 to sanity-check your own handoff format.",
+      "permalink": "https://arxiv.org/abs/2610.38800",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine research contribution on coding-agent artifact reuse; feasibility framing disclosed honestly."},
+        {"check": "Link works", "result": "PASS", "reason": "Refetched abstract page directly; matches reported content verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Framed as a feasibility study (6 tasks, 15 artifacts, 3 deployments), not a breakthrough, per the authors' own hedge."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly in the AI-SDLC research interest area."}
+      ]
+    },
+    {
+      "slug": "cole-medin-agent-memory-video",
+      "section": "WATCH QUEUE",
+      "title": "Cole Medin's walkthrough on giving coding agents real persistent memory across sessions",
+      "why": "Directly useful if your own agent setups still lose context between sessions — a concrete pattern to borrow.",
+      "actionLabel": "Worth the drive",
+      "action": "~9% of runtime is a disclosed sponsor segment (not disqualifying) — skip to the architecture section if you just want the pattern.",
+      "permalink": "https://www.youtube.com/watch?v=YHKuUjicB3M",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Substantive, practical build-along on agent memory; uploaded today, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Verified the video page directly."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via description, chapters and comments — transcript tool (TubeAlfred) unavailable this run, disclosed substitution."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item (this item's permalink IS the video)."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Sponsor ratio ~9%, disclosed; comments substantive, no pushback."}
+      ]
+    },
+    {
+      "slug": "will-brown-ai-engineer-video",
+      "section": "WATCH QUEUE",
+      "title": "Will Brown (AI Engineer) on where agent reliability actually breaks down in production",
+      "why": "Production-failure-mode talks age well and rarely get this concrete.",
+      "actionLabel": "Worth the drive",
+      "action": "No sponsor segment. Comments are substantive technical discussion, no pushback.",
+      "permalink": "https://www.youtube.com/watch?v=5SRjPT2Eo7A",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Substantive talk on production agent failure modes; uploaded today, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Verified the video page directly."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via description, chapters and comments — transcript tool unavailable this run, disclosed substitution."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "No sponsor segment; comments substantive."}
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "DeepLearning.AI course: Loop Engineering with LangChain Deep Agents",
+      "stage": "step 3",
+      "reason": "Duplicate of the Oct 30, 2026 STUDY item (same course)."
+    },
+    {
+      "title": "Vercel AI Gateway Virtual Models tweet",
+      "stage": "step 3",
+      "reason": "Duplicate of the Nov 2, 2026 SHIPPED item."
+    },
+    {
+      "title": "Vizuara YouTube video on DeepSeek Harness design note",
+      "stage": "step 3",
+      "reason": "Same-story-different-medium duplicate of the Nov 2, 2026 STUDY item (DeepSeek Harness design note), just a whiteboard explainer of the same source."
+    },
+    {
+      "title": "joeblau/subvox GitHub repo",
+      "stage": "step 3",
+      "reason": "Premise correction: not actually tied to a funded startup as initially framed; insufficiently distinct/meaningful for AI-SDLC relevance once corrected."
+    }
+  ]
+}
