@@ -1,0 +1,248 @@
+{
+  "date": "2026-11-04",
+  "items": [
+    {
+      "slug": "gemini-api-cli-coding-agents",
+      "section": "SHIPPED",
+      "title": "Google ships the Gemini API CLI (beta): a stateless command-line client built for agent subprocesses, scripts and CI",
+      "summary": "New `gemini-api` CLI (beta, Oct 27): \"a stateless, zero-dependency command-line client built for AI agents with shell access\" that uses the Interactions API to generate text and media, analyze files, and run Gemini-managed agents — run the same commands from an agent subprocess, your terminal, or a CI pipeline.",
+      "why": "A CLI meant to be called by other agents and CI jobs, not typed by a human, is a different design point than a chat client.",
+      "actionLabel": "Try this",
+      "action": "If a CI pipeline or agent harness step currently shells out to curl for a Gemini call, swap it for one gemini-api command and compare.",
+      "permalink": "https://ai.google.dev/gemini-api/docs/cli",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new capability (stateless CLI for agents/scripts/CI); checked against repo history and Drive log, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh same day; page confirms the CLI and its description verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Quoted sentence matches the re-fetched page exactly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched Google's own YouTube channels for a first-party demo; none found for this specific CLI."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable for CI/agent-harness work this week."}
+      ]
+    },
+    {
+      "slug": "gemini-computer-use-ga",
+      "section": "SHIPPED",
+      "title": "Google's Computer Use tool for the Gemini API reaches general availability",
+      "summary": "Oct 30 changelog: \"Computer Use generally available (GA): Released the Computer Use tool to general availability (GA) across the Interactions and GenerateContent APIs.\" No longer preview-only.",
+      "why": "Moving from preview to GA is the signal it's now safe to build on for real, not just a demo you'd have to rip out later.",
+      "actionLabel": "Try this",
+      "action": "If you prototyped anything against Gemini's Computer Use tool while it was in preview, re-check it against the GA API surface before relying on it.",
+      "permalink": "https://ai.google.dev/gemini-api/docs/computer-use",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Distinct from Cursor's own Computer Use feature (already covered previously); this is Google's API-level tool reaching GA, genuinely new status."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the changelog fresh; GA entry and linked docs page both confirmed live."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Quoted changelog line verbatim, cross-checked against the docs page it links to."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched Google's own YouTube channels; no first-party demo found specific to this GA milestone."},
+        {"check": "Worth the time", "result": "PASS", "reason": "GA status change is a real build/rely-on-it signal for agentic UI automation work."}
+      ]
+    },
+    {
+      "slug": "arpit-bhayani-structure-codebase-before-tests",
+      "section": "ON LINKEDIN",
+      "title": "Arpit Bhayani: structure the codebase before you ask your agents to write tests",
+      "summary": "\"This one 'step' has improved the quality of tests more than any prompt tweak I have tried. When files and directories follow a clear convention, the model knows where each piece of logic lives, what its dependencies are...\" — a top comment adds the caveat that this mainly helps greenfield/clean code; legacy codebases need the order flipped.",
+      "why": "A concrete, two-minute-to-test claim from an author whose past picks here have held up.",
+      "actionLabel": "Angle for you",
+      "action": "Before your next 'ask the agent to write tests' session, spend 10 minutes making sure the target module's file/folder layout signals its own structure, then compare test quality.",
+      "permalink": "https://www.linkedin.com/posts/arpitbhayani_pro-tip-structure-the-codebase-before-you-share-7523012457083219969-j3_A/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, specific technique, not conceptual/explanatory-only; not a duplicate of prior Arpit Bhayani picks (TrueForge, prompt-caching internals)."},
+        {"check": "Link works", "result": "PASS", "reason": "Verified live via the LinkedIn post-permalink flow, same day."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Quoted text matches the post and top comment directly from the page."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Clears the standing 'where do I use this' bar directly — a technique applicable this week."}
+      ]
+    },
+    {
+      "slug": "sentinel-six-agent-self-healing",
+      "section": "ON LINKEDIN",
+      "title": "SENTINEL: a six-agent system that argues about a production failure before it's allowed to fix it",
+      "summary": "Mission Controller, Codebase Analyst, Failure Hypothesis, Root-Cause, Repair, and a separate Adversarial Verification agent whose only job is to break the proposed fix before it ships. Every step is gated by confidence scores; an unsure system escalates to a human. Includes a live interactive demo replaying three production incidents, plus full source.",
+      "why": "\"In agent systems, the engineering is in the brakes\" — a concrete, inspectable pattern for knowing when an autonomous fix should NOT ship.",
+      "actionLabel": "Angle for you",
+      "action": "Open the live demo and watch how the Adversarial Verification agent's rejection path works, then check whether your own agent harness has an equivalent step.",
+      "permalink": "https://www.linkedin.com/posts/gurudatha-kandanathi-chittem_aiengineering-multiagentsystems-langgraph-share-7522802270632058880-ce5U/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Specific multi-agent architecture with a working demo and code, not a conceptual teardown; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Verified live via the LinkedIn post-permalink flow, same day; live demo link also loads."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Agent roles and claims quoted directly from the post text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to agent-harness architecture work; demo + code make it concretely inspectable."}
+      ]
+    },
+    {
+      "slug": "simonw-qwen-weight-space-programming",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison replicates GPT-6 Astra's weight-reading trick on a tiny open model, on his own laptop",
+      "summary": "Responding to the \"Sparks of Weight-Space Programming\" paper (LLMs natively reading/writing neural-network weights), Simon Willison spent 45+ minutes getting a much smaller open model, Qwen 3.8 27B, to do the same trick locally.",
+      "why": "A first-party, hands-on replication beats secondhand paper hype — the difference between 'a lab claims X' and 'here's X actually running on a laptop.'",
+      "actionLabel": "Angle for you",
+      "action": "If weight-level interpretability touches your research, read Simon's write-up for the concrete harness he used on a small local model, not just the headline.",
+      "permalink": "https://x.com/simonw/status/2117655816581071203",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Buildable, hands-on angle rather than pure discourse; not a duplicate of anything previously sent."},
+        {"check": "Link works", "result": "PASS", "reason": "Verified live on x.com directly, same day."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Cross-checked against the tweet text and linked write-up."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Clears the standing X 'buildable, not pure discourse' bar directly."}
+      ]
+    },
+    {
+      "slug": "langchain-stagehand-browser-optimization",
+      "section": "STUDY",
+      "title": "LangChain benchmarked 7 browser toolsets for Deep Agents and switched to Stagehand — with real numbers",
+      "summary": "On WebVoyager (100 tasks, Claude Sonnet 5.5), Stagehand hit a 90% pass rate for $1.98 total vs. Playwright MCP's 78% for $26.71 (13x the cost, ~3x the time). Batching browser steps into one call ('code mode') cut cost another 4x; a wait-condition fix cut median task time from 182s to 124s with no accuracy loss. Ships as StagehandMiddleware in langchain-stagehand.",
+      "why": "Browser-driven testing and verification is exactly the long, turn-heavy workload coding agents choke on — this is a benchmarked fix, not a vendor claim.",
+      "actionLabel": "Try this",
+      "action": "If your agent harness drives a browser to test or verify what it built, swap in StagehandMiddleware on one workflow and re-run your own evals before and after.",
+      "permalink": "https://www.langchain.com/blog/how-we-optimized-browser-use-for-deep-agents",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Real benchmark numbers and a shipped middleware, not a bare version-bump line; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh same day; author, date and all cited numbers confirmed verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Every number cross-checked against the live post text with no mismatches."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly applicable to anyone testing/verifying agent-built software via a browser."}
+      ]
+    },
+    {
+      "slug": "george-cameron-agent-caching-costs",
+      "section": "WATCH QUEUE",
+      "title": "George Cameron (Artificial Analysis): without caching, your AI agent costs 10x more",
+      "summary": "Breaks down what drives agent cost in 2026 — input tokens, cache hit rate, number of steps. One example task costs ~$21 with caching and over $200 without it. Judged via description and comments (TubeAlfred transcript tool unavailable this run, disclosed substitution).",
+      "why": "Cache hit rate is an easy-to-ignore variable until it's a 10x swing on your monthly bill.",
+      "actionLabel": "Worth the drive",
+      "action": "19 minutes. No sponsor segment. Comments are substantive and technical, no pushback.",
+      "permalink": "https://www.youtube.com/watch?v=prGP0huECPo",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Substantive, specific cost breakdown with concrete figures; uploaded same day, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Verified the video page directly, same day."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via description and comments; TubeAlfred unavailable this run (confirmed: nlm/youtube_video_transcript tool not found in this session), disclosed substitution."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item (this item's permalink IS the video)."},
+        {"check": "Worth the time", "result": "PASS", "reason": "No sponsor segment; comments substantive and positive, no pushback."}
+      ]
+    },
+    {
+      "slug": "mitchell-troyanovsky-opinionated-agents",
+      "section": "WATCH QUEUE",
+      "title": "Mitchell Troyanovsky (Basis): why AI makes you 100x faster but not your company",
+      "summary": "Argues agents need to be simple, reliable and opinionated to spread through a company — covers behavior specs, why outcome evals don't generalize to production, and two debugging tools for a bad agent call: forking and sub-agent simulations. Judged via description and comments (TubeAlfred transcript tool unavailable this run, disclosed substitution).",
+      "why": "Most 'agents in production' talks stop at the demo; this one covers the reliability engineering that lets an agent survive contact with a real company.",
+      "actionLabel": "Worth the drive",
+      "action": "19 minutes. No sponsor segment. Comments are positive and specific, no pushback.",
+      "permalink": "https://www.youtube.com/watch?v=JGtkTjn4120",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Substantive talk on production agent reliability engineering; uploaded same day, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Verified the video page directly, same day."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via description and comments; TubeAlfred unavailable this run, disclosed substitution."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "No sponsor segment; comments explicitly positive (\"one of the better talks on this I've heard in quite some time\")."}
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Cursor Agent SDK (GA)",
+      "stage": "step 3",
+      "reason": "Duplicate — already sent as a SHIPPED item on 2026-10-20."
+    },
+    {
+      "title": "OpenAI GPT-6.1 Terra",
+      "stage": "step 3",
+      "reason": "Duplicate — already sent as a fully-detailed SHIPPED item (confirmed in the feedback artifact's own history, dated 2026-10-28)."
+    },
+    {
+      "title": "OpenAI Decisions API GA",
+      "stage": "step 3",
+      "reason": "Near-duplicate of the Oct 9, 2026 beta item (same product, GA follow-on, previously flagged and dropped for the same reason)."
+    },
+    {
+      "title": "Anthropic text watermark (Nov 3, 2026 release note)",
+      "stage": "step 3",
+      "reason": "Automatic behavior change with no action for the reader to take; not actionable enough to clear the bar."
+    },
+    {
+      "title": "OpenAI GPT-6 Rosalind (life-sciences model)",
+      "stage": "step 3",
+      "reason": "Gated to a trusted-access program and low relevance to software/AI-SDLC work, consistent with prior-day precedent for this same model."
+    },
+    {
+      "title": "AlphaSignal: Anthropic paid AI safety residency",
+      "stage": "step 3",
+      "reason": "A hiring/career program, not a tooling or capability item."
+    },
+    {
+      "title": "AlphaSignal: \"Claude generates a Studio Ghibli anime scene\" / ChetasLua/moss-keeper repo",
+      "stage": "step 3",
+      "reason": "Verified the GitHub repo directly: 0 stars, 0 watchers, one commit — a personal novelty with no real adoption signal, not a genuine trending repo."
+    },
+    {
+      "title": "AlphaSignal: \"Google's autonomous research agent outperforms human scientists by 25% across 86 tasks\" (ScientistTwo)",
+      "stage": "step 3",
+      "reason": "No genuine first-party Google source found after a direct search of DeepMind's and Google's own blogs; unverifiable, dropped rather than sourced to the newsletter itself."
+    },
+    {
+      "title": "AlphaSignal: \"OpenAI's new Git backend cuts monorepo push latency by 80%\"",
+      "stage": "step 3",
+      "reason": "No first-party OpenAI source found (changelog and index page checked); unverifiable, dropped."
+    },
+    {
+      "title": "AlphaSignal: \"OpenAI releases a real-world benchmark built from thousands of ChatGPT user requests\"",
+      "stage": "step 3",
+      "reason": "No first-party OpenAI announcement found; unverifiable, dropped."
+    },
+    {
+      "title": "AlphaSignal Signal #2 (AWS/Bedrock OpenAI agents)",
+      "stage": "step 3",
+      "reason": "Sponsor/partner-labeled (presented by AWS), excluded per standing rule."
+    },
+    {
+      "title": "AlphaSignal Signal #1 (OpenAI real-world ChatGPT benchmark)",
+      "stage": "step 3",
+      "reason": "Pure benchmark mention with no other substance, per standing rule."
+    },
+    {
+      "title": "\"Tokyo lab AI agents quantum physics experiment\" (arXiv 2610.40589, Mansouri et al., Institute of Science Tokyo)",
+      "stage": "step 3",
+      "reason": "Verified via arXiv (genuine first-party preprint) but STUDY slot ceiling (1) was filled by the stronger LangChain Stagehand item; held in reserve, not a quality failure."
+    },
+    {
+      "title": "GitHub trending: anomalyco/opencode",
+      "stage": "step 3",
+      "reason": "Genuinely surging (adoption driven by Anthropic pricing-change backlash) but STUDY slot ceiling (1) was already filled; held in reserve, not a quality failure."
+    },
+    {
+      "title": "LinkedIn: Elvis Saravia on Microsoft's ParetoSaddler agent-harness optimizer",
+      "stage": "step 3",
+      "reason": "Strong concrete technique with benchmark numbers, but ON LINKEDIN ceiling (2) was filled by stronger/more-applicable picks; held in reserve."
+    },
+    {
+      "title": "LinkedIn: Akshit Sehgal (Zomato) on Infra AI Core SRE agent platform",
+      "stage": "step 3",
+      "reason": "Solid production case study, but ON LINKEDIN ceiling (2) was already filled; held in reserve."
+    },
+    {
+      "title": "LinkedIn: Josh Clemm on folding subagents back into the main agent loop",
+      "stage": "step 3",
+      "reason": "Good concrete technique, but ON LINKEDIN ceiling (2) was already filled; held in reserve."
+    },
+    {
+      "title": "LinkedIn: Maxime Labonne on Weight-Space Programming (GPT-6 Astra)",
+      "stage": "step 3",
+      "reason": "Same underlying paper used instead as the TRENDING ON X pick (Simon Willison's hands-on replication), which had a stronger buildable angle; not sent twice."
+    },
+    {
+      "title": "LinkedIn: \"6 Must Know Terms About AI Harnesses\" infographic",
+      "stage": "step 3",
+      "reason": "Conceptual/glossary content rather than a concrete applicable technique; weaker fit against the standing LinkedIn bar."
+    },
+    {
+      "title": "LinkedIn: Sergio Paniego Blanco on TRL native MOPD distillation",
+      "stage": "step 3",
+      "reason": "General ML-training technique, not clearly AI-SDLC/agentic-coding relevant; off-topic for this reader."
+    },
+    {
+      "title": "Watch Queue: Zachary Blumenfeld (Neo4j), \"Make Your AI Agents Predictable With Graph Engineering\"",
+      "stage": "eval gate",
+      "reason": "Worth-the-time FAIL: comments showed real skepticism from a knowledgeable audience (\"isn't this just what we used to call software engineering?\", \"nothing in this presentation shows it's being solved in a novel way\") — judged, per the standing comments-check instruction, as not clearing the bar despite strong topical fit to Vikas's PhD work."
+    }
+  ]
+}
