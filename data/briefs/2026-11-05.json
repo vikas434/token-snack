@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-05",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "The browser session used for this run was not signed in to LinkedIn, so the feed could not be read. Not a feedback-driven drop."
+    }
+  ],
+  "items": [
+    {
+      "slug": "vercel-security-review-public-beta",
+      "section": "SHIPPED",
+      "title": "Vercel ships Security Review (public beta): scans every GitHub push for vulnerabilities, fixes in one click via Vercel Agent",
+      "summary": "New capability in Vercel Agent, alongside Code Review and Investigation. Scans for vulnerabilities on every push to a team's connected GitHub repos, surfaces findings in the Security dashboard, PR comments and the CLI, and with permission Vercel Agent can validate and push a fix.",
+      "why": "A scan-plus-autonomous-fix loop wired directly into your push pipeline is the kind of agentic guardrail most teams are still hand-rolling themselves.",
+      "actionLabel": "Try this",
+      "action": "If you're on Vercel Pro/Enterprise, turn on Security Review in Vercel Agent Settings for one repo and see what it flags on your next push, reviews are free until Nov 10.",
+      "permalink": "https://vercel.com/blog/vercel-security-review",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new agentic capability (scan + autonomous fix on every push), not pricing/benchmark news; checked against run-log history, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh same day; title, date and feature description match verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Every claim in the summary quoted or paraphrased directly from the re-fetched page."},
+        {"check": "Watch material", "result": "N/A", "reason": "Genuinely searched Vercel's own blog and YouTube channel; post has only static screenshots, no feature-specific demo found."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable this week for anyone on Vercel, with a concrete free-trial window."}
+      ]
+    },
+    {
+      "slug": "openai-autonomous-cyber-vuln-pipeline",
+      "section": "TRENDING ON X",
+      "title": "OpenAI's security team ran an autonomous pipeline that found and patched 948 Linux kernel privilege-escalation bugs in one run",
+      "summary": "An upcoming OpenAI cyber model discovered, validated, and generated patches for 948 local privilege-escalation vulnerabilities in the Linux kernel in a single run, at a total API cost of $1.2 million.",
+      "why": "This is what an autonomous find-exploit-patch loop looks like at kernel scale right now, a preview of both the ceiling and the price tag for agentic vulnerability remediation.",
+      "actionLabel": "Angle for you",
+      "action": "Not a tool you can use today, but worth copying the shape: validate the bug is real, patch it, then re-verify, the same structure any autonomous code-fix step in your own harness should have.",
+      "permalink": "https://x.com/OpenAI/status/2118119451401048497",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine first-party capability demonstration at real scale, posted today, not a duplicate of an earlier security-sprint announcement (that was a plan, this is a concrete result)."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-opened the exact post live this run; timestamp and text confirmed."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "The vulnerability count, target, and cost figure are quoted directly from the post text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Discourse paired with a concrete harness-design angle, clears the standing X bar."}
+      ]
+    },
+    {
+      "slug": "boba-coding-agents-broken-assumptions",
+      "section": "STUDY",
+      "title": "New paper: coding agents can't reliably tell when their own work is wrong",
+      "summary": "A new benchmark chains 20 consecutive real-world requests per project across 140 open-source repos. Ten coding agents complete 95% of requests taken one at a time, but only 51% when chained, because they miss their own mistakes and later requests build on the broken result. Asked directly whether their own implementation is correct, agents are right 53% of the time. One external correction plus a repair round lifts chain completion from 51% to 59%.",
+      "why": "Real numbers behind something worth internalizing: an agent's own confidence, and its own passing tests, aren't a trustworthy stop signal for a chain of work, you need an outside check.",
+      "actionLabel": "Try this",
+      "action": "If you're chaining agent requests in your own harness, add one deliberate external verification step between requests instead of trusting the agent's own done signal.",
+      "permalink": "https://arxiv.org/abs/2611.02207",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Well-quantified research finding directly relevant to AI-driven SDLC reliability; not a duplicate of anything in run-log history."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh same day; title, authors and abstract match exactly."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "All headline figures checked word-for-word against the re-fetched abstract."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Bears directly on agent-harness design decisions and coding-agent reliability research."}
+      ]
+    },
+    {
+      "slug": "ai-labs-trap-or-replace-nous-research",
+      "section": "WATCH QUEUE",
+      "title": "AI Labs Will Trap You or Replace You, Dillon Rolnick, Nous Research",
+      "why": "If a lab's model can do your job as well as its API serves it to you, which vendor do I pick quietly becomes am I still a customer or a target, worth knowing which bet the vendors you build on are making.",
+      "actionLabel": "Worth the drive",
+      "action": "15 minutes. No sponsor segment. Comments are positive and specific, no pushback.",
+      "permalink": "https://www.youtube.com/watch?v=Sg6vtKOAOQ0",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Specific industry-structure argument, not generic hype; uploaded about an hour before this run; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Opened directly in the browser this run, loads and plays, public."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via the video's own description plus its comments; TubeAlfred transcript tool unavailable this session, disclosed fallback."},
+        {"check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Fresh, well-received, gives a framing useful when evaluating which AI vendors to build on."}
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "slug": "gpu-unlock-nvidia-tensor-core",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Hardware/GPU-unlock tool, interesting but not AI-SDLC relevant enough relative to stronger candidates."
+    },
+    {
+      "slug": "hydrogen-1-0-science-model",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Genuine open-weight science model release, but oriented at chemistry/lab research rather than AI-driven software development; weaker fit than the chosen STUDY pick."
+    },
+    {
+      "slug": "make-ai-agents-predictable-graph-engineering",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "Fresh AI Engineer talk, but top comments pushed back hard on novelty (\"just software engineering with a new name\", \"hype\", \"name one great product built with this\"); weak substance-to-hype ratio, dropped before the eval gate."
+    },
+    {
+      "slug": "langsmith-byoc-multi-cloud",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Genuine GA/beta release (LangSmith BYOC on AWS/Azure/GCP) but adoption commentary was thin, no named customer or metric; weaker than the chosen STUDY pick."
+    },
+    {
+      "slug": "anthropic-text-watermark",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Genuine platform change (invisible text watermark on model outputs) but passive/non-actionable for a daily engineering workflow; weaker than the chosen SHIPPED pick."
+    }
+  ]
+}
