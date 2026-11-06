@@ -1,0 +1,162 @@
+{
+  "date": "2026-11-06",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "The browser session used for this run was not signed in to LinkedIn, so the feed could not be read. Not a feedback-driven drop."
+    },
+    {
+      "section": "TRENDING ON X",
+      "reason": "The browser session used for this run was not signed in to X, so no authenticated feed/search was available. Not a feedback-driven drop."
+    }
+  ],
+  "items": [
+    {
+      "slug": "cursor-build-live-apps",
+      "section": "SHIPPED",
+      "title": "Cursor ships \"Build Live Apps\": describe an app, Cursor scaffolds it, provisions a DB/auth/hosting, and publishes it to a shareable link",
+      "summary": "New cloud-agent capability in Cursor: describe the app you want, and Cursor scaffolds it, sets up a Postgres database when needed, wires auth behind Cursor SSO, and provisions hosting. Cursor runs a security review before publishing; once it passes and you explicitly publish, the app deploys to a domain you choose and can be shared with specific people, groups, the whole team, or (on individual plans) publicly. Team admins can see every app and secret on the team, extend the security review, approve blocked publishes, and unpublish anything. Available now on all paid plans with cloud agents enabled.",
+      "why": "This turns Cursor from a code editor into a one-shot internal-tool factory, DB and auth and hosting included, which is exactly the kind of grunt work most teams still hand-wire themselves for every new dashboard or ops tool.",
+      "actionLabel": "Try this",
+      "action": "If you're on a paid Cursor plan with cloud agents, describe a small internal tool you keep meaning to build (a status dashboard, an ops form) and see what it scaffolds before you touch any config yourself.",
+      "permalink": "https://cursor.com/changelog/build-live-apps",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new agentic capability (full app scaffold + DB + auth + hosting + publish, gated by an automatic security review), not a pricing or benchmark update; checked against this log's history and the public repo, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh same day via subagent; HTTP 200, title \"Build Live Apps in Cursor\" and date \"Nov 5, 2026\" confirmed on the live page."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Every claim in the summary is paraphrased directly from the re-fetched page (scaffolding, Postgres, Cursor-SSO auth, security review gate, publish-to-chosen-domain, sharing scopes, admin controls, availability statement)."},
+        {"check": "Watch material", "result": "N/A", "reason": "No feature-specific demo video found on Cursor's own channels for this release; the changelog page itself has no embedded video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable today for anyone already on a paid Cursor plan with cloud agents, no waitlist."}
+      ]
+    },
+    {
+      "slug": "kimi-k3-1-pro-open-weight",
+      "section": "SHIPPED",
+      "title": "Moonshot AI ships Kimi K3.1 Pro, a 3T-class open-weight model with a 1M-token context window",
+      "summary": "Kimi K3.1 Pro is Moonshot AI's most capable open-weight model to date (3T-class, 1-million-token context), a post-trained version of Kimi K3 with substantially more post-training compute; a faster \"Highspeed\" variant (2-3x speed) also shipped. On Terminal-Bench 4.0 it scores 65.7%, ahead of GPT-6 Astra (58.2%) but narrowly behind Claude Opus 5.5 (66.4%). On Moonshot's own internal hallucination stress-test, its claim-level error rate fell from 23.4% (K3) to 8.3% (K3.1 Pro), a comparison against its own predecessor, not against competitors; on that same internal chart, GPT-6 Astra actually scores lower/better (5.5%). Available today via Kimi.ai, Kimi Work, Kimi Code and the Kimi API; full weights were slated for release \"by Nov 4,\" which this blog post does not confirm as having shipped.",
+      "why": "A frontier-class open-weight model that beats one major closed competitor on a real public terminal-automation benchmark while trailing another narrowly is a genuinely useful data point for anyone picking between open and closed models for agentic coding work, as long as you read the benchmarks it actually clears versus the ones it's merely \"approaching.\"",
+      "actionLabel": "Worth knowing",
+      "action": "If you're evaluating open-weight models for agentic/coding workloads, Terminal-Bench 4.0 is the one real head-to-head number here (65.7% vs GPT-6 Astra's 58.2%, vs Opus 5.5's 66.4%); treat the hallucination and finance figures as Moonshot's own internal benchmarks against its own prior model, not independent or competitive claims.",
+      "permalink": "https://www.kimi.ai/blog/kimi-k3-1-pro",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new frontier-class open-weight model release (not a minor patch or pricing change); checked against this log's history, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh same day via subagent; HTTP 200, title and all cited figures confirmed present on the live page; weights also listed at huggingface.co/moonshotai/Kimi-K3.1-Pro."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Benchmark numbers, comparators and the hallucination-baseline caveat were independently re-verified against the live page this run; the summary deliberately avoids repeating an unsourced \"#1 open-weight on Agent Arena\" claim, which was checked for and does not appear anywhere on the page."},
+        {"check": "Watch material", "result": "N/A", "reason": "No feature-specific demo video found; this is a text/benchmark-chart blog post."},
+        {"check": "Worth the time", "result": "PASS", "reason": "A real, if mixed, benchmark picture for a major new open-weight model release, useful for model-selection decisions today."}
+      ]
+    },
+    {
+      "slug": "gated-spec-driven-workflow-audit-trail",
+      "section": "STUDY",
+      "title": "New paper: in a gated spec-driven agent workflow, the orchestrator that grades its own checks is the weak link, not the executor",
+      "summary": "A new audit-trail study analyzes nine features across seven projects run through a gated spec-driven workflow for Claude Code, where a reviewer subagent checks each artifact against a fixed defect list and an executor subagent may only touch files listed in its task, with a file-inventory check after every block of tasks. Five of nine features finished with every planned task done, and 288 of 581 planned tasks were completed block by block. The executor stayed disciplined: it left only one undeclared change in the deliverable folder, and the check caught it. The orchestrator, which runs and judges its own checks, was the weak point: it recorded undeclared changes in 11 of 247 block checks (mostly from the authors' own in-round requests and the environment) and stopped work in only four of those cases.",
+      "why": "The common instinct is to worry about the executor subagent going off-script, but this data says the real risk sits one level up, in the component that both runs the check and grades its own output, worth remembering before you assume a passing orchestrator check means nothing slipped through.",
+      "actionLabel": "Try this",
+      "action": "If your own harness has a gating/orchestrator s tep that both performs and judges a compliance check, add an independent second check on the orchestrator itself rather than trusting its self-report, this study's 11-of-247 miss rate was exactly that blind spot. Caveat: all nine features were run by the paper's own two authors on their own projects, a small, non-independent sample.",
+      "permalink": "https://arxiv.org/abs/2611.05094",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, quantified study of a real gated spec-driven agent workflow's failure modes; distinct from yesterday's BOBA-Bench item and not a duplicate of anything in this log's history."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh same day via subagent; HTTP 200, title \"A Gated Spec-Driven Workflow: An Audit-Trail Study of Coding-Agent Work\" (Abdo, Brom), submitted 3 Nov 2026, confirmed on the live abstract page."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Every figure (9 features/7 projects, 5/9 fully finished, 288/581 tasks, 1 undeclared executor change caught, 11/247 orchestrator-flagged block checks, 4 stops) checked word-for-word against the re-fetched abstract."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Bears directly on gated-workflow and orchestrator-reliability design for anyone building a multi-agent coding harness; small-sample/author-run-on-own-work caveat disclosed in the action line."}
+      ]
+    },
+    {
+      "slug": "agent-harness-explained-build-in-python",
+      "section": "WATCH QUEUE",
+      "title": "Agent Harness Explained: build one in about 26 lines of Python, Beyond The Model",
+      "why": "Most \"what is a harness\" content stays conceptual; this one walks the five parts (loop, tools, context, memory, control) with a real minimal Python implementation you can extend yourself, grounded in a properly sourced benchmark figure (LangChain's own blog: 52.8% to 66.5% on Terminal-Bench 2.0 from a harness change alone, same model).",
+      "actionLabel": "Try this",
+      "action": "~11 minutes. 511 views, 9 likes, real engagement (not a zero-engagement upload). Take the video's own challenge: build the loop, give it one tool you use daily, and see where it breaks.",
+      "permalink": "https://www.youtube.com/watch?v=-K-0ag50tPg",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Hands-on, code-level walkthrough with a properly sourced benchmark statistic, not generic hype; distinct angle (build-along) from other harness-explainer content found this run."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-checked video metadata this run: public, 511 views, 9 likes, published Nov 1, 2026, loads fine."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Verified via direct transcript read (TubeAlfred) this run, not just the description; the Terminal-Bench 2.0 figure traces to LangChain's own blog post, linked in the video's sources."},
+        {"check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete, extensible code example plus a real benchmark anchor; worth the runtime."}
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "slug": "openai-gpt-6-cyber-access-restricted",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Access-restricted to OpenAI's invite-only Daybreak Red program (403 access_program_not_enabled for non-approved orgs); fix mechanism undocumented beyond a one-line description, which directly fails Vikas's own recent feedback asking for fix-mechanism depth on security items."
+    },
+    {
+      "slug": "openai-chatgpt-images-2-6",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Model IDs confirmed at OpenAI's API changelog, but the \"Images 2.6\" branding, \"6-second generation,\" and \"50% faster\" claims could not be verified at any first-party source (openai.com/index/ and help.openai.com both returned client errors); also a weaker topical fit (image generation, not coding-agent/SDLC) than the chosen SHIPPED picks."
+    },
+    {
+      "slug": "claude-code-2-1-316-unverifiable",
+      "section": "SHIPPED",
+      "stage": "research",
+      "reason": "AlphaSignal claimed \"Claude Code v2.1.316 cut subagent cost 99%\"; no first-party source found for this version or claim. The real, verified v2.1.311 changelog entry is an unrelated SubagentStop hook-frequency bug fix. Dropped per the never-guess/never-publish-an-unverifiable-link rule."
+    },
+    {
+      "slug": "embeddinggemma-2-12x-claim",
+      "section": "SHIPPED",
+      "stage": "research",
+      "reason": "AlphaSignal's \"12x smaller embeddings\" claim for EmbeddingGemma 2 could not be confirmed on any of Google's own first-party pages. Dropped as unverifiable."
+    },
+    {
+      "slug": "ist-daslab-deepseek-1bit-compression",
+      "section": "SHIPPED",
+      "stage": "research",
+      "reason": "AlphaSignal's claim of a 763B/72GB/1-bit-compressed DeepSeek model from IST-DASLab was not found anywhere in IST-DASLab's own org listings. Dropped as unverifiable."
+    },
+    {
+      "slug": "do-coding-agents-follow-agents-md",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Genuinely on-topic (compliance with AGENTS.md), but the abstract is thin on quantified figures compared with the chosen STUDY pick; weaker evidence-to-claim ratio."
+    },
+    {
+      "slug": "boba-bench-duplicate-of-yesterday",
+      "section": "STUDY",
+      "stage": "step 2",
+      "reason": "arXiv 2611.02207 (BOBA-Bench) is the exact paper already published as yesterday's (Nov 5) STUDY item; excluded as a duplicate."
+    },
+    {
+      "slug": "lucas-meijer-ai-agents-programming-languages",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "One strong anecdote (the Campfire Ruby-to-Jai rewrite) buried in a 45-minute, mostly-rambling interview with no benchmark numbers; thin substance-to-filler ratio even after a dedicated transcript review."
+    },
+    {
+      "slug": "novu-humans-in-the-loop-stripe-dev",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "Roughly 70% vendor marketing (Novu) with no transferable technical pattern, per a dedicated transcript review."
+    },
+    {
+      "slug": "kgp-talkie-harness-explained-duplicate",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "\"Agent Harness Explained: Claude Code, Codex, DeepSeek Harness, Hermes\" (KGP Talkie) covers the same car/harness metaphor and the same LangChain Terminal-Bench 2.0 statistic as the chosen WATCH QUEUE pick; otherwise substantive on its own (5-harness comparison), but too redundant to run alongside it, so only one of the two was kept."
+    },
+    {
+      "slug": "best-ai-agent-harnesses-compared-nov-2026",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "\"Best AI Agent Harnesses Compared (Nov 2026)\" (TrendingFings) has 0 comments, 0 likes and only 33 views on an unfamiliar channel, with AI-generated music disclosed in its own description; benchmark figures look plausible but carry no independent engagement or corroboration. Dropped on credibility/worth-the-time grounds rather than add a second WATCH QUEUE item of uncertain reliability."
+    },
+    {
+      "slug": "stop-overbuilding-your-agent-harness",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "\"Stop Overbuilding Your Agent Harness\" (AI Engineer Path) discloses a synthetic narration voice and has near-zero engagement (5 views, 1 comment); also sits in the same harness-explainer topic cluster as the chosen pick. Dropped rather than used to fill the second WATCH QUEUE slot."
+    },
+    {
+      "slug": "jetbrains-air-in-pycharm-2026-3",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Genuine product release (multi-agent, multi-vendor AI harness bundled into PyCharm 2026.3), but the available source is a straight vendor promo video rather than documentation with independent verification; weaker and less differentiated than the two chosen SHIPPED picks today."
+    }
+  ]
+}
