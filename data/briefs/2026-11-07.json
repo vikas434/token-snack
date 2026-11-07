@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-07",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "The browser session used for this run was not signed in to LinkedIn, so the feed could not be read. Not a feedback-driven drop."
+    }
+  ],
+  "items": [
+    {
+      "slug": "claude-message-threads-ttft",
+      "section": "SHIPPED",
+      "title": "Anthropic ships message threads in the Messages API: skip resending full conversations, cut median time-to-first-token ~35% on long sessions",
+      "summary": "In public beta on Claude Platform (also AWS, Microsoft Foundry, Google Cloud managed): add a thread parameter to Messages API calls. The first request includes the full conversation and starts a thread; every request after that sends only the new messages plus the ID of the previous response. Anthropic holds each thread in memory (encrypted, never written to disk) and expires it 5 minutes after the last request. Token usage is unchanged (Claude still reads the full conversation each turn); the win is purely latency: median time-to-first-token drops about 35% for 500k-1M token conversations. On by default for most Claude Code users; built for long-running coding agents, computer-use agents, and document/image-heavy workflows.",
+      "why": "If your coding agent runs hundreds of turns in one session, you've felt each one get slower to start responding, this fixes exactly that lag without changing what you pay.",
+      "actionLabel": "Try this",
+      "action": "If you call the Messages API directly in a long-running agent loop, add the thread parameter to your next request and compare time-to-first-token against your current resend-everything pattern.",
+      "permalink": "https://claude.com/resources/articles/message-threads",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new API capability (latency architecture change), not pricing or a benchmark; checked against repo history and this run's own research, not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; HTTP 200, dated Nov 2 2026, confirms public beta status."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "35% median TTFT figure (500k-1M token range), 5-minute expiry, and public-beta status all quoted directly from the re-fetched page."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched Anthropic/Claude's own channels and the general web for a feature-specific demo video; none found."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable for anyone running long agent loops against the Messages API; a real mechanism explained, not just a headline."}
+      ]
+    },
+    {
+      "slug": "antigravity-fortran-to-rust-skill",
+      "section": "SHIPPED",
+      "title": "Google Antigravity turns a legacy-code migration into a reusable skill: Gemini 4 Argon ported a 174K-line 40-year-old Fortran ocean model to Rust in 59 minutes",
+      "summary": "Antigravity's team ran Gemini 4 Argon against FVCOM, a real 174,774-line Fortran/C coastal ocean simulation codebase, in a 59-minute autonomous run, producing memory-safe Rust that ran simulations 1.88x faster and used 54% less RAM (peak 11.84MB to 5.48MB). They packaged the pipeline as an open-source skill in the google/skills repo, runnable on any repo with one command: /migrate-to-rust <github-repo-url>.",
+      "why": "This is the first time a legacy-migration workflow this specific has been packaged as a one-command, reusable skill instead of staying a one-off case study, that's the real gap between a demo and something you'd actually reach for.",
+      "actionLabel": "Try this",
+      "action": "Point /migrate-to-rust at one of your own small, self-contained legacy modules (doesn't have to be Fortran) and see how far the pipeline's approach (dependency mapping, incremental porting, verification against the original) gets you.",
+      "permalink": "https://antigravity.google/blog/modernizing-40-year-old-scientific-code-with-gemini-4-argon/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine demonstrated capability with quantified outcome, packaged as a reusable open-source skill rather than staying a one-off case study; not a duplicate of anything in repo history."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; HTTP 200, dated Nov 3 2026; all cited figures (174,774 lines, 59 minutes, 1.88x, 54% RAM, skill name and invocation) confirmed verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Checked word-for-word against the re-fetched page text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched Google/Antigravity's own channels for a feature-specific demo video; only the written blog walkthrough was found, no video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to legacy/cross-service code transformation work; a concrete, reusable tool rather than a marketing demo."}
+      ]
+    },
+    {
+      "slug": "metr-anthropic-rd-acceleration",
+      "section": "STUDY",
+      "title": "METR's independent assessment: Anthropic is now improving its models' capabilities at roughly 2x its historical rate, and AI itself is doing most of the accelerating",
+      "summary": "METR spent eleven weeks (Aug 12-Oct 29, 2026) with employee-like access inside Anthropic to independently measure whether AI is accelerating AI R&D there. Finding: as of October 2026, Anthropic is improving model capabilities on well-specified tasks at around twice the rate it did between March 2024 and October 2025 (1.9x via Anthropic's own capability index, 95% CI 1.5-2.8x; METR says it would not be surprised if the true rate is anywhere from 1.3x to 3x). METR's own guess is that roughly 80% of that acceleration is attributable to AI itself doing the research work, a judgment they describe as carrying substantial uncertainty. No clear bottleneck was found that would stop the trend continuing. Caveat: Anthropic redacted a majority of the evidence METR found most informative before this went public.",
+      "why": "This is the closest thing yet to a real, externally-measured number on AI now building the AI that builds the next AI, not a lab's own claim, but an outside group that spent eleven weeks checking the internal data.",
+      "actionLabel": "Try this",
+      "action": "Read METR's own subjective-conclusions-on-risk section before repeating the 2x headline anywhere, it comes with real hedges (1.3x-3x, redacted evidence, a hedged 80% attribution) that are easy to lose in secondhand summaries.",
+      "permalink": "https://metr.org/blog/2026-11-05-anthropic-ai-rd-acceleration-assessment/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Rigorously caveated independent research finding on a genuinely new topic (recursive AI R&D acceleration); not a duplicate of anything in repo history."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; HTTP 200, dated Nov 5 2026; the 1.9x/1.3x-3x/~80%/eleven-weeks figures all confirmed verbatim on the live page."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Checked word-for-word against the live page; wording corrected to the page's own phrasing (1.3x or 3x) rather than a looser paraphrase."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "A rare externally-verified, heavily-caveated number on a topic usually argued from vibes alone."}
+      ]
+    },
+    {
+      "slug": "simonw-qwen-weight-space-reproduction",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison reproduces \"LLMs can read raw model weights\" on a local Qwen 3.8 27B, then flags that other researchers call the paper's framing misleading",
+      "summary": "Responding to the paper \"Sparks of Weight-Space Programming\" (claiming GPT-6 Astra can infer what a small network was trained to do just from its raw weights), Willison ran the same no-tools test against Qwen 3.8 27B on his own laptop. Results were mixed: correctly identified Breakout (88% confidence, 52m), a Pong-like game (75%, 65m) and Pac-Man (72%, 46m), but failed on Freeway; Kimi K3.1 Pro did the Breakout task in under 10 minutes. Willison also surfaces pushback from spaCy's Matthew Honnibal and researcher Sean Goedecke, both calling the paper's presentation misleading, and says plainly he's not ready to call this the end of needing source code.",
+      "why": "The honest version of this story is more useful than the hype version, a real, if slow and uneven, reproduction with named critics attached tells you more about whether reading weights like code is actually here than the original paper's abstract does.",
+      "actionLabel": "Angle for you",
+      "action": "Before citing \"AI can read model weights\" claims in your own research framing, check whether the specific example survives independent reproduction the way Pong/Breakout did here, or collapses the way Freeway did.",
+      "permalink": "https://simonwillison.net/2026/nov/3/qwen-can-interpret-model-weights/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine discourse with a concrete reproduction attempt and named critical pushback, not pure hype; not a duplicate of anything previously sent."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; HTTP 200, dated Nov 3 2026 4:29pm; all quoted figures confirmed verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Checked against the re-fetched page; both the successes and the Freeway failure are included, not cherry-picked."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Clears the where-do-I-use-this bar via the Angle-for-you line (verify weight-space claims before citing them in research framing); honest inclusion of critics is itself the actionable lesson."}
+      ]
+    },
+    {
+      "slug": "lance-martin-old-prompts-claude-worse",
+      "section": "WATCH QUEUE",
+      "title": "Your Old Prompts Are Making Claude Worse, Lance Martin, Anthropic (AI Engineer / AIE CODE)",
+      "summary": "An Anthropic engineer's own checklist for what quietly wastes tokens and degrades output: auditing stale prompt habits (like reflexive \"think step by step\"), fixing prompt-cache usage (up to 72% cost cut on their internal benchmarks), designing evals Claude can actually climb, and a worked example that cut cost 90% while improving quality by switching to a stronger model at lower reasoning effort.",
+      "why": "A working Anthropic engineer's own fix list for exactly the stuff that quietly degrades a long-lived coding-agent prompt, concrete numbers, not platitudes.",
+      "actionLabel": "Worth the drive",
+      "action": "64 minutes total (talk plus Q&A); the core content is in roughly the first 24 minutes if you want the short version.",
+      "permalink": "https://www.youtube.com/watch?v=ys6YQ2yfBpM",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Specific, substantive conference talk from a named Anthropic practitioner, not generic hype; fresh (posted hours before this run), not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Opened directly in the browser this run; loads and plays, public, on the AI Engineer YouTube channel."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via the full video description and chapter list, not title/thumbnail alone. TubeAlfred's transcript tool was not present in this session's tool list this run (confirmed via ToolSearch), so this is the disclosed description+chapters fallback, not a transcript-grounded read."},
+        {"check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete, numbers-backed techniques (72% cache cost cut, 90% cost cut via model-switching), not generic advice. Caveat: comments had not loaded yet (0 comments, video posted only hours earlier), so the sponsor-ratio check relied on the description/framing instead, which shows no sponsor or ad branding (a conference recording)."}
+      ]
+    },
+    {
+      "slug": "ben-holmes-warp-agent-self-improvement",
+      "section": "WATCH QUEUE",
+      "title": "Your AI Agent Is Hiding Its Mistakes From You, Ben Holmes, Warp (AI Engineer / AIE CODE)",
+      "summary": "A concrete pattern for a self-improving agent harness: capture every agent conversation with its tool calls, score them with an LLM-judge rubric for redundant tests/verbosity/efficiency, then run a daily agent that turns the worst patterns into pull requests against your own skills and config, plus a free tool (Skill Doctor) you can point at your own Claude Code or Codex history today.",
+      "why": "This is a working recipe for making your own agent harness get better on its own, not just a concept talk, and it ends with a tool you can actually run today.",
+      "actionLabel": "Worth the drive",
+      "action": "19 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=pz74r-4dGfQ",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Specific, substantive conference talk from a named Warp practitioner, not generic hype; fresh (posted hours before this run), not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Opened directly in the browser this run; loads and plays, public, on the AI Engineer YouTube channel."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via the full video description and chapter list, not title/thumbnail alone. TubeAlfred transcript tool was not present in this session's tool list this run, so this is the disclosed description+chapters fallback, not a transcript-grounded read."},
+        {"check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete, reusable harness-improvement pattern plus a named free tool (Skill Doctor), not generic advice. Caveat: comments had not loaded yet (0 comments, video posted only hours earlier); description/framing shows no sponsor or ad branding (a conference recording)."}
+      ]
+    }
+  ],
+  "dropped": [
+    {"title": "OpenAI GPT-6 Cyber (security-focused model)", "stage": "step 3", "reason": "Duplicate of an item already researched and dropped in an earlier run (Daybreak-gated access, thin fix-mechanism depth per standing feedback on security SHIPPED items); also today's AlphaSignal top story, same release."},
+    {"title": "OpenAI GPT-Image-2.6 Sunburst/Flare", "stage": "step 3", "reason": "Genuine new image-generation models, but weak topical fit for a software-engineering/AI-SDLC brief versus the two chosen SHIPPED picks."},
+    {"title": "Google Gemini Omni 1.2 Flash", "stage": "step 3", "reason": "Genuine new video-generation model plus a price cut, but weak topical fit versus the chosen SHIPPED picks."},
+    {"title": "Google Gemini \"sketch to app\" Canvas feature", "stage": "step 3", "reason": "Interesting consumer-facing capability, but weaker and less novel than the Antigravity Fortran-to-Rust migration-skill story."},
+    {"title": "Google Antigravity App v2.29.0 (voice mode, remote agents, Jupyter viewer)", "stage": "step 3", "reason": "Genuine release, but the Fortran-to-Rust migration-skill story from the same vendor this week was judged stronger and more novel; ceiling, not quota."},
+    {"title": "Anthropic \"New agents and products on Claude Marketplace\"", "stage": "step 3", "reason": "Genuine partner-integration roundup (security/dev-infra tools from Chainguard, Checkmarx, Rubrik, Datadog, Netlify among others), but a roundup of third-party listings rather than a single first-party capability ship; weaker than the chosen picks."},
+    {"title": "Anthropic \"components of agent memory\" / dreaming post (via @AnthropicAI)", "stage": "step 3", "reason": "Genuinely interesting and on-topic (agent memory architecture), but the only resolvable link from the X post's card redirected to Anthropic's bare homepage rather than a specific article; no verifiable first-party permalink to the actual piece could be found, dropped per the never-guess-a-URL rule."},
+    {"title": "Anthropic \"vault particles\" science case study (AlphaSignal top story)", "stage": "step 3", "reason": "Genuine first-party research post, but a biology/lab-science case study with weak fit for a software-engineering/AI-SDLC audience versus the chosen picks."},
+    {"title": "LangChain \"How We Optimized Browser Use for Deep Agents\"", "stage": "step 3", "reason": "Strong, concrete, quantified engineering post (13x cost difference between tool-calling patterns), but STUDY is capped at 1 and the METR report was judged the stronger, more novel pick."},
+    {"title": "LangChain \"LangSmith BYOC\" GA/beta on AWS/Azure/GCP", "stage": "step 3", "reason": "Genuine release, but adoption commentary was thin (no named customer or metric), consistent with past cuts of this same pattern."},
+    {"title": "DeepLearning.AI \"Loop Engineering with LangChain Deep Agents\" course", "stage": "step 3", "reason": "Genuinely strong, on-topic candidate (a 4-loop framework for agent harness design, taught by LangChain's own PM), but STUDY is capped at 1 and the METR report was judged stronger for rigor and novelty."},
+    {"title": "GitHub trending / topic:ai-agent search", "stage": "step 3", "reason": "Checked via gh search; results were dominated by low-signal consumer-bot and novelty repos with no credible AI-SDLC relevance or adoption signal; nothing cleared the bar."},
+    {"title": "Cursor changelog entries (Agent SDK, Cloud Agent Canvases, and earlier)", "stage": "step 3", "reason": "Newest entry on cursor.com/changelog is dated Oct 20 2026; all entries are stale (18+ days old) and were almost certainly already covered in an earlier run; not fresh enough for today."}
+  ]
+}
