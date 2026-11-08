@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-08",
+  "skipped": [
+    { "section": "ON LINKEDIN", "reason": "Local browser session was not signed in to LinkedIn this run (redirected to /login on linkedin.com/feed/) — 4th consecutive day this has happened; disclosed skip, not a feedback-driven drop." }
+  ],
+  "items": [
+    {
+      "slug": "cursor-voice-chat-with-agents",
+      "section": "SHIPPED",
+      "title": "Cursor ships two-way voice chat with coding agents, powered by a separate Grok Voice model that delegates to your coding agent",
+      "summary": "In the Agents Window, IDE, web, and iOS, you can now hold a live voice call with your agent instead of typing. A dedicated Grok Voice model does the listening and speaking in real time; it hands off actual coding work to whichever model you've picked as your coding agent in that thread, then keeps talking with you while that agent works, checking a diff, confirming a run, or searching history via read-only lookups it can make directly. The coding agent decides what to say out loud; if it has nothing to say, the call reads back its usual written reply. Privacy Mode gives zero data retention.",
+      "why": "A lightweight voice model that only talks and delegates, instead of trying to code itself, means the actual coding model never has to also be fast enough for live conversation -- a real pattern for anyone building a supervisor-plus-worker agent setup.",
+      "actionLabel": "Try this",
+      "action": "Next time you're away from the keyboard with a small, well-scoped change in mind, start a voice chat on a task and see how the hand-off between the voice agent and the coding agent actually feels in practice.",
+      "permalink": "https://cursor.com/changelog/voice-chat",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new two-way voice interface shipped Nov 6, not pricing/benchmark; distinct from an older voice-dictation anecdote sent previously." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; title and Nov 6 2026 date confirmed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Grok Voice hand-off mechanism, Privacy Mode, and iOS details drawn directly from the re-fetched page." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched Cursor's own YouTube channel; only unofficial fan Shorts with low view counts found, no official demo." },
+        { "check": "Worth the time", "result": "PASS", "reason": "The two-model voice-delegates-to-coding-agent architecture is a reusable orchestration pattern, not just a party trick." }
+      ]
+    },
+    {
+      "slug": "antigravity-voice-mode-gemini-live",
+      "section": "SHIPPED",
+      "title": "Google ships voice mode in Antigravity, built on Gemini Live -- one model does both the listening and the agent work, with voice locked out of anything destructive",
+      "summary": "Antigravity's voice mode runs entirely on Gemini Live, which takes raw streamed audio directly rather than a text transcript. The same model keeps doing the actual agent work while talking, and you can interrupt it mid-sentence. Voice can approve ordinary actions but never anything destructive -- deleting files, elevated commands, a force-push -- those still require an on-screen click. Over SSH, the Antigravity CLI forwards your local mic and speaker to the remote agent.",
+      "why": "It's a clean architectural contrast with Cursor's two-model design -- one model doing double duty, with permission scope enforced architecturally rather than by a second model's judgment.",
+      "actionLabel": "Try this",
+      "action": "If you use Antigravity, turn on voice mode for a routine fix-the-failing-test task and pay attention to exactly which step it still forces you back to the keyboard for.",
+      "permalink": "https://antigravity.google/blog/antigravity-voice-mode",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new capability (Gemini Live raw-audio voice mode with permission gating), shipped Nov 5, not fluff." },
+        { "check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; title and Nov 5 2026 date confirmed." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Gemini Live raw-audio mechanism, half-duplex default, destructive-action rule, and SSH mic-forwarding drawn directly from the re-fetched page." },
+        { "check": "Watch material", "result": "N/A", "reason": "Blog post has two embedded demo clips but they are self-hosted with no retrievable source URL; no official YouTube upload found." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Direct architectural contrast with Cursor's same-week ship is a genuinely useful comparison for agent-permission design." }
+      ]
+    },
+    {
+      "slug": "stablyai-orca-multi-agent-orchestrator",
+      "section": "STUDY",
+      "title": "Orca: a 119k-star multi-agent coding orchestrator that runs Claude Code, Codex, and other CLI agents in parallel, each in its own git worktree",
+      "summary": "Hand Orca one big task and it splits the work, starts worker agents in their own isolated worktrees, and brings the results back to you -- chat or raw CLI, on your laptop, over SSH, or in the cloud with diffs and a browser in one app. A mobile app pings you when an agent needs input. Launched roughly three weeks ago and already at 119k stars, 7.5k forks, and nearly 20,000 commits of active development.",
+      "why": "This is the same git-worktree-per-agent idea as the smaller worktrunk tool, but built out into a complete, massively-adopted product -- the apparent category leader for running several coding agents side by side.",
+      "actionLabel": "Try this",
+      "action": "Install Orca and hand it a task that naturally splits into independent pieces across your repos -- see how its worker-agent split compares to running the same task yourself in separate terminal tabs.",
+      "permalink": "https://github.com/stablyai/orca",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Real, massively-adopted multi-agent coding orchestration tool (119k stars, ~20k commits, active development); not a rehash of CodeGraph or Hindsight -- different category (fleet orchestration via worktrees)." },
+        { "check": "Link works", "result": "PASS", "reason": "Freshly reloaded github.com/stablyai/orca this run; stats and README confirmed live." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Orchestration, worktree-per-agent, mobile app, and remote-runtime details drawn directly from the re-fetched README." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Concretely installable and usable this week for parallel-agent workflows; strongest 'where do I use this' of today's candidates." }
+      ]
+    },
+    {
+      "slug": "anthropic-components-of-agent-memory",
+      "section": "TRENDING ON X",
+      "title": "Anthropic's engineering team explains \"dreaming\" -- how Claude reorganizes its own memory offline, and how it scaled a 350,000-file wiki from 13% to 48% accuracy over 128 sessions",
+      "summary": "Surfaced via @AnthropicAI. Claude writes memory notes during a session, then uses idle time between sessions to \"dream\" -- rereading its own transcripts to catch and correct mistakes in those notes. In one test, Claude built and incrementally corrected a cross-referenced wiki over Anthropic's own 350,000-file internal document corpus; across 128 rounds of dreaming, accuracy on a 25-question eval set climbed from 13% to 48%. A separate test showed dreaming catching and fixing a wrong fact Claude had written mid-task, changing the outcome of a long-horizon task.",
+      "why": "This is a real, tested architecture for giving an agent memory that improves itself over time instead of just accumulating -- directly adjacent to semantic knowledge-graph memory for cross-service code generation.",
+      "actionLabel": "Angle for you",
+      "action": "Read the wiki-building section closely -- the dreaming review/correction loop over a huge document corpus is a concrete pattern to test against your own code-knowledge-graph updates.",
+      "permalink": "https://www.anthropic.com/research/components-of-agent-memory",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Substantive engineering writeup (memory consolidation, wiki-building at scale); not a duplicate of anything sent, distinct from the Nov 7 METR item." },
+        { "check": "Link works", "result": "PASS", "reason": "Found via @AnthropicAI's Nov 7 tweet; resolved to the live article via anthropic.com/engineering's listing and confirmed with a fresh page load this run (a prior run could only resolve this tweet to Anthropic's bare homepage)." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "CL-Bench results, Pokemon memory-file comparison, Mt. Moon dreaming-correction example, and the 13%->48% wiki figure drawn directly from the re-fetched article." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly adjacent to Vikas's own semantic-code-knowledge-graph PhD work; concrete and technical, not discourse-only." }
+      ]
+    },
+    {
+      "slug": "akshat-bubna-agent-infrastructure",
+      "section": "WATCH QUEUE",
+      "title": "Don't Vibe Code Your Agent Infrastructure -- Akshat Bubna, Modal",
+      "summary": "Modal's CTO walks through what agent infrastructure actually needs once you're running many agents at once: a workspace per agent, state that persists for days without paying for idle compute, elastic GPUs, shared file systems for agents that collaborate, network controls, and observability agents can read themselves -- and makes the case against hand-rolling your own sandbox platform.",
+      "why": "If you're building or extending an agent harness yourself, this is a checklist of the infrastructure decisions you'll eventually hit, from someone who's built this at scale.",
+      "actionLabel": "Worth the drive",
+      "action": "17 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=_0SQh8a1Osk",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Concrete infra architecture talk, not hype; judged via description+chapters fallback since TubeAlfred was not present in this session's tool list this run (confirmed via ToolSearch)." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened live in browser this run; confirmed playable and public, published today (Nov 8 2026)." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Workspace, elastic GPU, shared file systems, and observability details drawn directly from the video's own description/chapter list." },
+        { "check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Fresh (published today), substantive AI Engineer conference talk, no sponsor content beyond a standard conference plug." }
+      ]
+    },
+    {
+      "slug": "nouha-dziri-multi-agent-coding-cost",
+      "section": "WATCH QUEUE",
+      "title": "How to Get Frontier Coding Results at 70% Lower Cost -- Nouha Dziri, Cohere",
+      "summary": "A Cohere research scientist's findings from hundreds of experiments on ProgramBench and Commit0: multi-agent coding teams beat a single agent on long tasks but can cost several times more -- she maps where the extra workers pay off, including pairing a strong lead with cheaper planning workers to get close to an all-frontier team's results at roughly 70% lower cost.",
+      "why": "A quantified, practical answer to whether it's worth running a team of agents instead of one -- exactly the tradeoff in designing a multi-agent coding harness.",
+      "actionLabel": "Worth the drive",
+      "action": "31 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=maitMe9HCvw",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Quantified research result from hundreds of experiments; not a rehash of anything sent." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened live in browser this run; confirmed playable and public, published Nov 7 2026." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Lead/worker delegation findings and the ~70%-cost result drawn directly from the video's own description." },
+        { "check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly useful for designing multi-agent coding harnesses cost-effectively." }
+      ]
+    }
+  ],
+  "dropped": [
+    { "title": "OpenAI GPT-6 Cyber (today's AlphaSignal top story -- same Nov 6 issue already mined by the previous run)", "stage": "step 3", "reason": "Daybreak-gated access, thin fix-mechanism depth beyond headline figures; already dropped twice before, no new content since." },
+    { "title": "Anthropic 'vault particles' biology case study (AlphaSignal)", "stage": "step 3", "reason": "Genuine first-party post but a lab-science case study, weak fit for a software-engineering audience; already dropped once before." },
+    { "title": "LangChain 'Agents Are Going Async' (async subagents in Deep Agents)", "stage": "step 3", "reason": "Real architectural pattern shift, but no named-customer or quantitative adoption signal; STUDY capped at 1 and Orca judged stronger/more adopted/more directly actionable." },
+    { "title": "DeepLearning.AI 'Loop Engineering with LangChain Deep Agents' course", "stage": "step 3", "reason": "Genuinely strong 4-loop agent-harness framework, reconsidered for a third day, but STUDY capped at 1 and Orca judged stronger this run." },
+    { "title": "docker/docker-agent (GitHub, ~4.6k stars)", "stage": "step 3", "reason": "Real org backing and default-install distribution in Docker Desktop, but mixed early HN reception on docs; weaker than Orca's scale and adoption." },
+    { "title": "thedotmack/claude-mem (GitHub, ~114k stars)", "stage": "step 3", "reason": "Genuinely popular persistent agent-memory tool, but overlaps conceptually with Hindsight (sent Sep 30); dropped to avoid a near-rehash of an already-sent category." },
+    { "title": "max-sixty/worktrunk (GitHub, git-worktree CLI for parallel agents)", "stage": "step 3", "reason": "Same category as Orca but far smaller and less adopted; Orca promoted as the stronger pick in this space." },
+    { "title": "Simon Willison's Qwen weight-space reproduction (@simonw, Nov 3 post)", "stage": "step 3", "reason": "Exact duplicate of the item already sent Nov 7; excluded." },
+    { "title": "General GitHub trending scan (daily/weekly views)", "stage": "step 3", "reason": "Dominated by low-signal novelty repos unrelated to AI/AI-SDLC; nothing else cleared the bar beyond the three items evaluated above." }
+  ]
+}
