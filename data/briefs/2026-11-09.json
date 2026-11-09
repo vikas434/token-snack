@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-09",
+  "skipped": [
+    { "section": "ON LINKEDIN", "reason": "Local browser session was not signed in to LinkedIn this run (redirected to /login on linkedin.com/feed/) -- 5th consecutive day this has happened; disclosed skip, not a feedback-driven drop." }
+  ],
+  "items": [
+    {
+      "slug": "vercel-schedules-dynamic-agent-scheduling",
+      "section": "SHIPPED",
+      "title": "Vercel Schedules (public beta): agents and apps can create, change, or cancel schedules through code -- no redeploy, no DB-plus-polling-job",
+      "summary": "Static schedules still live in vercel.json and sync on deploy. The new part is dynamic schedules: an agent calls the JS SDK, CLI, or API at runtime to create a one-time or recurring schedule, backed by Vercel Queues, with no database table or cron-polling loop of your own. You can test scheduled work on Preview deployments before it runs in production.",
+      "why": "This removes a whole category of boilerplate -- the database-plus-polling-job pattern -- for any agent that needs to act later instead of right now.",
+      "actionLabel": "Try this",
+      "action": "If you're on Vercel, swap one 'remind me / follow up later' tool call in an agent you're building for a dynamic Schedules.create() call instead of your own DB+cron setup, and see how much code it removes.",
+      "permalink": "https://vercel.com/blog/introducing-vercel-schedules",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Genuine new agentic capability (dynamic schedule creation without a DB+poller), public beta Nov 6; checked against the full Drive run-log history and the repo's briefs directory, not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened live in the browser this run; title, content, and code example confirmed on the live page." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Static vs dynamic schedule distinction, JS SDK/CLI/API, and Preview-testing detail drawn directly from the fetched page." },
+        { "check": "Watch material", "result": "N/A", "reason": "Searched Vercel's own YouTube channel (@VercelHQ) directly for a Schedules demo; nothing feature-specific found, only unrelated recent uploads." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly applicable boilerplate removal for agentic backends, with a working code example, usable today." }
+      ]
+    },
+    {
+      "slug": "google-agent-distraction-stale-todos",
+      "section": "STUDY",
+      "title": "Google: coding agents get measurably distracted by stale TODO/FIXME comments -- unprompted detours cost 70% more steps, 77% more tokens, 105% more wait time",
+      "summary": "Across hundreds of millions of agent steps, Google engineers found 13% of file-reading sessions exposed the agent to an inline TODO(bug/...) or FIXME(bug/...) reference. The agent ignored it 94% of the time, but in the other 6% it often chased the bug unprompted, and 41% of those detours chased tickets that were already closed. A fixed-effects regression put the cost of an unprompted detour at 70% more steps, 77% more tokens, and 105% more wait time per session (all p<0.0001). Their fix: an internal TODO-cleaner agent that cross-checks bug and file history before proposing removal -- it has removed thousands of stale references over 6 months with over 95% human-reviewer acceptance.",
+      "why": "Stale comments and dead references are a direct, measurable tax on your own agents' steps and tokens, not just an annoyance for human readers -- and it's something you can actually scan for and clean up.",
+      "actionLabel": "Try this",
+      "action": "Grep your own repo for TODO/FIXME comments referencing closed or ancient tickets, and see how many your coding agent would plausibly wander into on an unrelated task.",
+      "permalink": "https://developers.googleblog.com/agent-distraction/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Large-scale, regression-backed finding (hundreds of millions of agent steps), published Nov 6; not a duplicate of anything in the log history." },
+        { "check": "Link works", "result": "PASS", "reason": "Fetched fresh this run, HTTP 200; title, date, and authors confirmed live." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "13% exposure, 94%/6% ignore/act split, 41% closed-ticket-chasing, and the 70%/77%/105% regression figures all checked directly against the fetched page body text." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly bears on agent harness/context design -- Vikas's own PhD area (semantic code knowledge graphs, agent harness engineering) -- and gives a concrete, actionable takeaway." }
+      ]
+    },
+    {
+      "slug": "simonw-hide-slop-pr-descriptions",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: hide your agent-written PR description behind a collapsed <details><summary> tag, with a one-line human summary on top",
+      "summary": "GitHub Markdown renders <details><summary> as a collapsed heading you can click to expand, and it works directly in PR descriptions and issue comments. Willison now writes one short, human-judged opening line himself, then wraps the full agent-written essay underneath in a <details> block labeled with the model name, e.g. 'Claude Opus 5.5 Medium.' Nothing is lost -- reviewers just aren't confronted with paragraphs of agent prose by default.",
+      "why": "It's a 30-second habit that fixes the exact thing that makes reviewers tune out agent-generated PRs, without losing any of the detail the agent wrote.",
+      "actionLabel": "Angle for you",
+      "action": "On your next Claude Code or Codex PR, write one human sentence as the opener and wrap the agent's full description in <details><summary>Model name</summary>...</details> underneath.",
+      "permalink": "https://simonwillison.net/2026/Nov/9/details-summary/",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Concrete, specific technique posted today (Nov 9, 4:25am); not generic discourse, not a duplicate of anything sent before." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened directly in the browser this run (not a cached search result -- the post was too new to be indexed yet); confirmed live, full text read." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "The details/summary pattern, human-opener convention, and model-name labeling drawn directly from the fetched post." },
+        { "check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Immediately applicable this week to Vikas's own Claude Code/Codex-generated PRs; clears the standing 'where do I use this' bar cleanly." }
+      ]
+    },
+    {
+      "slug": "keiji-kanazawa-agent-refactor-harness",
+      "section": "WATCH QUEUE",
+      "title": "I Let Agents Refactor My Codebase for 3 Weeks. Then I Read the Code. -- Keiji Kanazawa, Microsoft",
+      "summary": "Three weeks into letting coding agents refactor his personal research agent, a bad digest sent Kanazawa looking for a trace -- and he found the 'agent' was still a deterministic workflow wearing agent language: skills with no SKILL.md, different architectural concepts that were secretly aliases for the same thing, a daily reflection job quietly producing empty reports. He rebuilt around an explicit agent runtime and goal rubrics, comparing four agent frameworks, then caught one of his own evaluation rubrics overfitting when it failed on five other videos.",
+      "why": "A concrete, slightly embarrassing story of approving agent plans without checking whether the implementation actually means what its labels promise -- plus a working pattern for catching it.",
+      "actionLabel": "Worth the drive",
+      "action": "20 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=6TjFjHPjVH0",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Specific, substantive account of real agent-harness pitfalls; premiered 2 hours before this run, not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened live in browser this run; confirmed playable and public." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Judged via the video's own real transcript (opened via YouTube's 'Show transcript' panel and read directly) plus its full description and chapter list -- not description-only." },
+        { "check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Directly relevant to harness engineering and evaluation-rubric design, Vikas's core interest area; concrete, specific lessons rather than generic hype." }
+      ]
+    },
+    {
+      "slug": "mckinsey-top-companies-ai-coding",
+      "section": "WATCH QUEUE",
+      "title": "What the Top Companies Do Differently With AI Coding -- Martin Harrysson & Prakhar Dixit, McKinsey",
+      "summary": "McKinsey's own data across large companies using AI coding agents: most report only modest gains, but the top 20-25% are now seeing 2x end-to-end improvements from the same tools. The standout point, echoed in the comments: the gap is operating model, not tooling -- once generation gets fast, the bottleneck moves to requirements and release, i.e. validation and deployment were always the hard part.",
+      "why": "A quantified answer to 'why isn't my team seeing the gains everyone talks about' -- worth it specifically to check whether your team's bottleneck has quietly moved from writing code to reviewing and shipping it.",
+      "actionLabel": "Worth the drive",
+      "action": "20 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=21tuT-e4NVo",
+      "eval": [
+        { "check": "Meaningful", "result": "PASS", "reason": "Quantified claim (top 20-25% of companies seeing 2x end-to-end gains) from a named source's own data, not pure hype; not a duplicate." },
+        { "check": "Link works", "result": "PASS", "reason": "Opened live in browser this run; confirmed playable and public." },
+        { "check": "Summary accurate", "result": "PASS", "reason": "Judged via the video's own expanded description and its comment section, which includes substantive (not purely dismissive) engagement with the operating-model point." },
+        { "check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video." },
+        { "check": "Worth the time", "result": "PASS", "reason": "Gives a genuine 'where do I use this' angle per the standing instruction -- a concrete question to check against your own team's bottleneck." }
+      ]
+    }
+  ],
+  "dropped": [
+    { "title": "OpenAI GPT-6 Cyber (still the Nov 6 AlphaSignal top story -- no newer AlphaSignal issue has arrived)", "stage": "step 3", "reason": "Daybreak-gated access, thin fix-mechanism depth; already dropped on three prior days, no new content since Nov 6." },
+    { "title": "METR 'Anthropic's AI doubling its own capability growth rate' (AlphaSignal, same Nov 6 issue)", "stage": "step 3", "reason": "Exact duplicate -- this report was already sent as the Nov 7 STUDY item under its own title." },
+    { "title": "Anthropic 'vault particles' biology case study (AlphaSignal, same Nov 6 issue)", "stage": "step 3", "reason": "Weak fit for a software-engineering audience; already dropped on two prior days." },
+    { "title": "KKKKhazix/agent-autoloop (GitHub)", "stage": "step 3", "reason": "A GitHub search API call reported 4,161 stars, but a direct live fetch of the repo page showed only 4 stars and 29 commits -- the 'surging' signal did not survive verification, so dropped rather than presented as adopted." },
+    { "title": "Anthropic FlashProve / 'Progress on provable inference for large language models'", "stage": "step 3", "reason": "Genuine research release with open code, but a research prototype (no API/hosted product) and mostly trust/cryptography infrastructure rather than AI-driven-SDLC relevant; weaker fit than the chosen STUDY pick." },
+    { "title": "LangChain 'How We Optimized Browser Use for Deep Agents' (Nov 3)", "stage": "step 3", "reason": "Genuine engineering write-up with real tuning technique, but STUDY capped at 1 and Google's Agent Distraction judged more directly relevant to Vikas's own harness/knowledge-graph work; also the headline '13x' figure turned out to be a toolset comparison, not a result of the optimization itself." },
+    { "title": "Google Cloud 'Cost per task: routing across Gemini models' (Nov 3)", "stage": "step 3", "reason": "Solid benchmark/how-to, but STUDY capped and the benchmark code itself is not yet released; Agent Distraction judged stronger." },
+    { "title": "DeepLearning.AI 'Evaluating and Improving Agentic Applications' course", "stage": "step 3", "reason": "Reconsidered again per the standing daily-check instruction; last-update date is Nov 4 but no confirmed new-launch date found, and weaker than the chosen STUDY pick this run." },
+    { "title": "Cursor 'Agent SDK' GA and 'Cloud Agent Canvases' (changelog)", "stage": "step 3", "reason": "Genuine capability changes but stale -- newest Cursor changelog entries are Oct 16 and Oct 20, 20+ days old; no fresher Cursor ship found this run." },
+    { "title": "Anthropic news items Oct 22-28 (GSA partnership, AI for Science expansion, S-1 filing, Residency applications)", "stage": "step 3", "reason": "Corporate, partnership, or policy news, not product capability changes." },
+    { "title": "OpenAI items via @sama / @OpenAI on X (GPT-6.1 Terra, FMF Jailbreak Rating Framework, BioBasicsBench, ChatGPT Images 2.6)", "stage": "step 3", "reason": "openai.com/news and openai.com/index both failed to fetch (persistent client error) this run; the X-surfaced items found were either already-covered (GPT-6 Cyber) or weaker fits than the chosen picks." },
+    { "title": "swyx (@swyx) recent posts", "stage": "step 3", "reason": "Conference/community discourse and hype, no concrete buildable angle." },
+    { "title": "General GitHub trending scan (daily/weekly views, via GitHub search API)", "stage": "step 3", "reason": "Mostly low-signal novelty repos and ML education/paper lists; the one promising hit (agent-autoloop) failed verification -- see above." }
+  ]
+}
