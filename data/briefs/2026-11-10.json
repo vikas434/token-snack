@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-10",
+  "items": [
+    {
+      "slug": "claude-fable-mythos-5-2",
+      "section": "SHIPPED",
+      "title": "Anthropic ships Claude Fable 5.2 and Claude Mythos 5.2 — new flagship coding/reasoning models, 20% cheaper than 5.1",
+      "summary": "Fable 5.2 hits 49.1% on FrontierCode 2.0 (Opus 5.5 scores 45.5%), runs up to 30% faster than 5.1, and is priced 20% lower — $8/$40 per million tokens vs 5.1's $10/$50. Anthropic says over 90% of changes merged into its own core codebase are now written by Claude. Mythos 5.2 (restricted access) finds 10% more vulnerabilities than Opus 5.5 on CVE rediscovery.",
+      "why": "This is the new best coding model from the vendor you actually use day to day — and it's cheaper than the model it replaces, not more expensive.",
+      "actionLabel": "Try this",
+      "action": "On a heavy agentic coding task in Claude Code, bump the effort/model to Fable 5.2 and compare cost-per-task against your usual Opus 5.5 runs — Anthropic's own benchmarks say it should land at roughly half the cost for the same score.",
+      "permalink": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new flagship model release with quantified benchmarks and pricing; not a rehash, not benchmark-only PR. Checked against the Drive run log's full Nov 5-9 history; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched live this run; title 'Introducing Claude Fable 5.2 and Claude Mythos 5.2', dated November 9, 2026, matches."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Benchmark figures (49.1% FrontierCode 2.0, 30% faster, $8/$40 pricing, 90%+ of Anthropic's own merged code, Mythos 10.2% more CVEs found) all quoted/paraphrased directly from the re-fetched page's verbatim benchmark table and pricing section."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched web for an official Anthropic YouTube demo of Fable 5.2/Mythos 5.2 specifically; only found older Fable 5 (not 5.2) content and third-party reviews. No genuine first-party 5.2 demo video found."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Vikas uses Claude directly; a cheaper, faster, higher-scoring model release from his primary tool is directly actionable, not just interesting."}
+      ]
+    },
+    {
+      "slug": "opencode-browse-real-browser-control",
+      "section": "SHIPPED",
+      "title": "OpenCode ships Browse: an MCP server + Chrome extension that lets any coding agent drive your real, logged-in browser",
+      "summary": "Browse opens and drives your actual Chrome/Edge/Brave/Arc tabs via Playwright — not a blank automated browser — so an agent inherits your existing logins, cookies and extensions. It hands a tab back to you for a login, 2FA or payment step, then continues once you click Continue. Ships as an MCP server that works with OpenCode, Claude Code, Cursor, Codex, Zed and other MCP clients.",
+      "why": "The single most annoying part of letting an agent drive a browser is re-authenticating everything from a blank session — this just reuses the browser you're already signed into.",
+      "actionLabel": "Try this",
+      "action": "Install the Chrome extension, wire it into Claude Code or Cursor as an MCP server, and try a task that needs a real login — a staging dashboard, a GitHub PR, an internal tool — instead of scripting a headless auth flow.",
+      "permalink": "https://opencode.ai/product/browse",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new agent capability (real-browser MCP + extension), not pricing/benchmark news. Surfaced via AlphaSignal's Nov 9 issue as a Top News item and independently confirmed on OpenCode's own site; not previously sent per the Drive log history."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched opencode.ai/product/browse live via browser this run; page title 'OpenCode | Browse, your real browser for coding agents' loads with full feature/install detail, not a 404 or aggregator page."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Every claim (Playwright-driven real tabs, background grouped tabs, handoff-on-click-Continue, MCP client list including Claude Code/Cursor/Codex/Zed, Chrome Web Store install) is quoted directly from the live page's own feature list."},
+        {"check": "Watch material", "result": "N/A", "reason": "Checked the product page itself for an embedded demo; none present. No separate first-party demo video found."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Solves a real, common friction point (re-authenticating agents) for someone actively building coding-agent harnesses; concrete install path given."}
+      ]
+    },
+    {
+      "slug": "simonw-fable-codebase-ownership-prompt",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: telling Claude Fable 5.2 “this codebase is yours” roughly doubles how often it cleans up repeated code instead of bolting on more",
+      "summary": "Per Anthropic's own prompt-engineering docs for Fable 5.2, when a prompt said nothing about code ownership (or implied the code belonged to someone else), the model tended to add to the existing structure — even when that meant repeating code. Adding one sentence that frames the codebase as the model's own merged/cleaned up repeated code in about half the tries, versus under a tenth of the tries without it.",
+      "why": "One sentence in your system prompt measurably changes whether the agent improves your code's structure or just piles onto it — and it costs nothing to try.",
+      "actionLabel": "Angle for you",
+      "action": "Add a line like “this codebase is yours — you decide how it's built and structured” to your Claude Code or Cursor system prompt on your next refactor-heavy task and see if it's less timid about cleanup.",
+      "permalink": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2#say-who-owns-the-code",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, quantified prompting technique tied to today's model release, not generic discourse; posted ~2 hours before this run per the live X timestamp."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-opened Simon Willison's live X profile and blog this run; followed the exact doc link his post/blog entry cites and it resolved to Anthropic's own prompting guide with an anchor on the ownership tip."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "The 22% figure context, 'about half the tries' vs 'under a tenth' figures, and exact quoted sentence are taken directly from the blog entry's quoted Anthropic documentation text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Clears the standing 'where do I use this' bar directly: short, concrete, copy-pasteable technique tied to a model Vikas uses, not pure discourse."}
+      ]
+    },
+    {
+      "slug": "nous-research-arete-27b-debias-sft",
+      "section": "STUDY",
+      "title": "Nous Research shows political bias in open-weight models is shallow: one SFT pass on Qwen3.8-27B cut a propaganda-answer rate from 22% to under 1%",
+      "summary": "Nous fine-tuned Alibaba's Qwen3.8-27B into Arete-27B using plain supervised fine-tuning — no RL, no preference optimization, no architecture change — on about 53M tokens. The propaganda-rate eval score dropped from 22% to 0.9%, fact-accuracy improved from 2.32 to 2.98/5, and general capability stayed flat (65.60% vs 65.77% on their own Hermes Bench). Weights, eval set and training data are all public on Hugging Face.",
+      "why": "If a values/alignment property this specific can be swapped out with one cheap fine-tune and nothing else breaks, that's a real data point for anyone deciding whether to customize an open-weight model instead of training from scratch.",
+      "actionLabel": "Try this",
+      "action": "If you've been treating an open-weight model's behavior quirks as fixed, this is a concrete, cheap recipe (SFT only, ~53M tokens, full eval set published) worth skimming before assuming you'd need RL or a bigger model.",
+      "permalink": "https://nousresearch.com/arete",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine quantified research release with public weights/data/eval, from today's AlphaSignal issue (not previously mined); a weaker 'where do I use this' fit for SDLC specifically than other sections, noted honestly below."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-verified first-party via nousresearch.com/arete and the HuggingFace model card (NousResearch/Arete-27B) live this run; both load and match."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "22%→0.9% propaganda rate, 2.32→2.98 fact score, 65.60% vs 65.77% Hermes Bench, and ~53M training tokens all checked against the live blog and model card text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Methodologically interesting and directly relevant to anyone evaluating or customizing open-weight models; weaker fit to daily AI-SDLC work than other picks, flagged honestly, but clears the bar as a 'Generative AI' research signal."}
+      ]
+    },
+    {
+      "slug": "levi-strauss-github-universe-agentic-sdlc",
+      "section": "WATCH QUEUE",
+      "title": "17 agents, one SDLC: how Levi Strauss cut a 9-month app rebuild to 2.5 months — Jenny Patchen, GitHub Universe",
+      "summary": "Levi Strauss redesigned their SDLC around GitHub's custom agents platform: a 3-day cross-functional workshop mapped the old process (12 handoffs across 6 roles, with writing user stories and QA/regression as the two biggest bottlenecks), then rebuilt it so agents handle execution and humans make the decisions. The rebuilt “Back Pocket” stylist app shipped in 2.5 months versus 9 months for the prior version.",
+      "why": "It's a real company's before/after on multi-agent SDLC redesign, with actual numbers — 9 months to 2.5 — instead of a vendor's hypothetical case study.",
+      "actionLabel": "Worth the drive",
+      "action": "30 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=-GpxKKgoWWg",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Real enterprise case study with concrete before/after metrics, posted to GitHub's own channel 1 day before this run; not a duplicate of anything in the Drive log history."},
+        {"check": "Link works", "result": "PASS", "reason": "Fetched the transcript live via TubeAlfred this run; video resolves, is public, and matches the described content."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "9-month-to-2.5-month figure, 12 handoffs/6 roles, and the 'agents execute, humans decide' framing are all drawn directly from the read transcript's opening section."},
+        {"check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Judged via a full transcript read (not description-only), and top comments are substantive and positive ('super useful for those of us going through the same shift') with zero sponsor/ad complaints — unlike a same-topic candidate dropped below."}
+      ]
+    }
+  ],
+  "dropped": [
+    {"title": "Cursor changelog (Agent SDK GA, Oct 20)", "section": "SHIPPED", "stage": "step 3", "reason": "Newest entry is 21 days old; no fresh Cursor ship found this run."},
+    {"title": "OpenAI news/index pages", "section": "SHIPPED", "stage": "step 3", "reason": "Both openai.com/news/ and openai.com/index/ failed with a persistent client error on fetch, consistent with prior days; could not evaluate OpenAI's own changelog this run."},
+    {"title": "Meta AI \"Muse Ember\" small model", "section": "SHIPPED", "stage": "step 3", "reason": "Genuine same-day release (per Simon Willison's blog) but ai.meta.com/blog returned a stale cached snapshot with no Nov content, and it's not a tool Vikas uses; weaker fit than the two chosen SHIPPED picks."},
+    {"title": "LangChain blog posts (Agents Are Going Async, LangSmith BYOC, Eval-Driven Development, Browser Use optimization)", "section": "STUDY", "stage": "step 3", "reason": "All re-checked this run; same weak-adoption-signal verdicts as prior days (Nov 5-9), nothing new passed the bar."},
+    {"title": "DeepLearning.AI \"Evaluating and Improving Agentic Applications\" course banner", "section": "STUDY", "stage": "step 3", "reason": "Same course already evaluated and dropped repeatedly since Nov 4; no confirmed new launch date found this run either."},
+    {"title": "GitHub repos: Balanov/uncut, Glen-Web-App/best-agent-memory-mcp", "section": "STUDY", "stage": "step 3", "reason": "GitHub search API reported 261 and 238 stars; live page fetch showed the real counts are 125 and 38 — another confirmed search-API discrepancy. The memory-mcp repo is also a self-promotional ranked list ('maintained by the Glen team, and Glen is ranked first'), not a neutral comparison. Both dropped."},
+    {"title": "cutetailbud/ff-ruyijs headless browser for agents (GitHub)", "section": "STUDY", "stage": "step 3", "reason": "Surfaced via targeted GitHub search but not independently verified against the live repo page this run; dropped for lack of verification rather than a confirmed problem."},
+    {"title": "Tencent \"Terminal-RSI\" self-retraining model (AlphaSignal Signal #4)", "section": "STUDY", "stage": "step 3", "reason": "Could not confirm a first-party source matching AlphaSignal's framing; the closest arXiv match (2608.05466, Recursive Synthesis for Long-Horizon Terminal Tasks) is a data-synthesis paper originally from August, only revised Nov 5, and its authorship/framing didn't clearly match the 'retrains itself with zero human input' claim. Dropped as unverified/possibly mismatched."},
+    {"title": "AlphaSignal \"Top Repo\": Sakutto Chrome translator extension", "section": "STUDY", "stage": "step 3", "reason": "Genuine first-party release but a consumer translation tool, not AI-SDLC relevant."},
+    {"title": "AlphaSignal Signals #1-6 (wet-lab agent benchmark, Google Cloud GPU cluster, txtai, StartLux decision models, Slack/Teams agent cards)", "section": "STUDY", "stage": "step 3", "reason": "Thin one-line mentions with no further substance; per the standing instruction, these headline-only Signals items don't pass the bar on their own."},
+    {"title": "@cursor_ai on X", "section": "TRENDING ON X", "stage": "step 3", "reason": "Only a pinned tweet from August (SpaceX/xAI acquisition) visible logged-out; nothing fresh today."},
+    {"title": "@AnthropicAI on X", "section": "TRENDING ON X", "stage": "step 3", "reason": "Same Fable 5.2/Mythos 5.2 announcement already covered as today's SHIPPED pick; no additional angle."},
+    {"title": "\"Agent Harness explained in 11 minutes\" (The Coding Gopher)", "section": "WATCH QUEUE", "stage": "eval gate", "reason": "Read the full transcript (substantive, non-sponsor content on its face) but top comments flagged it directly as an unlabeled ad: 'this is an ad, and not labelled as such, pathetic' and 'I'm reporting this, this is a straight 7 minute ad and unlabeled' — fails the Watch Queue substance-to-sponsor disclosure check."},
+    {"title": "\"1,000+ Hours of Agent Harness Engineering in 8 Minutes\" (Neel Sikdar)", "section": "WATCH QUEUE", "stage": "step 3", "reason": "Clean, non-sponsor content, but explicitly aimed at beginners/students and thematically overlapping with several harness-explainer videos already sent in recent days; weaker than the Levi Strauss pick."},
+    {"title": "\"Will Repos Become Software Factories?\" (Latent Space / Mihail Eric)", "section": "WATCH QUEUE", "stage": "step 3", "reason": "2-hour runtime and not independently verified this run given time budget; dropped for scope reasons, not a confirmed quality problem."}
+  ],
+  "skipped": [
+    {"section": "ON LINKEDIN", "reason": "LinkedIn not signed in — redirected to /login on linkedin.com/feed/. 6th consecutive day of this pattern (Nov 5, 6, 7, 8, 9, 10)."}
+  ]
+}
