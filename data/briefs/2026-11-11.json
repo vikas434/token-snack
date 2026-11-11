@@ -1,0 +1,132 @@
+{
+  "date": "2026-11-11",
+  "items": [
+    {
+      "slug": "vercel-sandbox-snapshot-10x-faster",
+      "section": "SHIPPED",
+      "title": "Vercel Sandbox snapshots get up to 10x faster — pause/resume an agent session in under half a second",
+      "summary": "Median snapshot creation drops from 4.4s to under 0.4s, and restore time falls from 500ms to 250ms at p50, by reusing frames in Vercel's own snapshot format (VHS) instead of writing fresh each time. Persistent sandboxes now snapshot automatically on stop and resume from the latest one — nothing to configure.",
+      "why": "If you run coding agents in ephemeral sandboxes, pausing and resuming one now costs almost nothing instead of several seconds every time.",
+      "actionLabel": "Try this",
+      "action": "Spin up a persistent Vercel Sandbox, stop and resume it a few times, and compare the pause/resume latency against whatever sandbox or VM approach you use today.",
+      "permalink": "https://vercel.com/changelog/vercel-sandbox-snapshot-creation-is-now-up-to-10x-faster",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine quantified performance change (snapshot create and restore times), not pricing/benchmark PR. Checked against the Drive run log's Nov 5-10 history; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched live this run; title, author (Andy Waller) and figures match the live changelog entry dated Nov 9, 2026."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "4.4s-to-under-0.4s creation time and 500ms-to-250ms p50 restore figures are quoted directly from the re-fetched page."},
+        {"check": "Watch material", "result": "N/A", "reason": "Genuinely checked Vercel's own YouTube channel (@VercelHQ) via browser; its two latest videos are generic 'Ship SF' conference recordings, no feature-specific demo found."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to anyone running agents in ephemeral sandboxes; concrete, testable, no hype language."}
+      ]
+    },
+    {
+      "slug": "codex-cli-agent-command-center",
+      "section": "SHIPPED",
+      "title": "OpenAI's Codex CLI 0.167 ships an agent command center for juggling multiple running agents",
+      "summary": "`codex agents --no-daemon` opens a terminal view listing every agent session grouped by status and sorted by recency, with unread markers for finished work and pending approvals prioritized in the picker — works for embedded and remote App Server sessions too.",
+      "why": "The single biggest pain of running several coding agents at once is losing track of which one actually finished — this puts that in one screen instead of five terminal tabs.",
+      "actionLabel": "Try this",
+      "action": "Update to Codex CLI 0.167+ and run `codex agents --no-daemon` next time you've got more than one task running, instead of switching between terminal tabs to check progress.",
+      "permalink": "https://github.com/openai/codex/releases/tag/rust-v0.167.0",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new CLI/TUI capability shipped Nov 6 (patched Nov 10), not a rehash; found via OpenAI's own changelog, not previously sent per the Drive log history."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the GitHub release page live this run; confirmed it's the openai/codex repo's own release notes for 0.167.0, marked Latest, with the agent-command-center bullet present verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "The 'grouped by status, sorted by recency, unread markers, prioritized approvals' description is drawn directly from the release notes' New Features section and commit list."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched OpenAI's own YouTube channel directly; its /videos page returned no usable list. Also searched YouTube broadly for 'codex agent command center' and found only a third-party explainer Short from an unofficial channel, not OpenAI's own — did not use it, per the first-party-only rule."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete, directly usable CLI feature for anyone running more than one coding agent at a time, which is this week's recurring theme."}
+      ]
+    },
+    {
+      "slug": "simonw-gemini-carbon-standalone-html-prompt",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: Gemini 4 Carbon is open to everyone now — and his one-line prompt fix for agentic demos still holds",
+      "summary": "Carbon (previously gated to \"a subset of cyber defenders\") is available to everyone as of this week, at $2/M input and $10/M output, doubling to $4/$20 on December 1st. Testing it in Google Antigravity with a three.js animation prompt, Willison had to explicitly add \"build that into a standalone HTML file\" to get a version with no external dependencies — without that line, the agent's output didn't run standalone.",
+      "why": "A one-sentence addition to your prompt is the difference between an agent handing you a working, shareable file and one that only runs inside its own dev environment.",
+      "actionLabel": "Angle for you",
+      "action": "Next time you ask a coding agent for a quick demo or prototype, explicitly ask for \"a standalone file with no external dependencies\" rather than assuming it'll bundle things sensibly on its own.",
+      "permalink": "https://simonwillison.net/2026/Nov/10/llm-gemini/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, reusable prompting technique plus genuine model-availability news, posted via his X profile and expanded on his blog; not a duplicate of anything in the Drive log history."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the blog permalink live this run; confirmed full post content, not a truncated or aggregator page."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Pricing ($2/$10, doubling to $4/$20 Dec 1) and the exact prompt-fix quote are taken verbatim from the re-fetched post."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Clears the standing 'where do I use this' bar: a short, copy-pasteable technique, not pure discourse."}
+      ]
+    },
+    {
+      "slug": "langchain-workday-enterprise-agent-platform",
+      "section": "STUDY",
+      "title": "Workday cut agent prototype time from 5 months to under a day by building on LangGraph and LangSmith",
+      "summary": "Workday's internal developer platform — a durable agent server, data-access controls tied to its audit policies, a shared eval platform, and a Python SDK wrapping it all — took prototypes from a 4-to-5-month slog with no guarantee of reaching production down to a staging deployment in under a day. The team grew from 4 to roughly 30 people to build it. Beyond those two figures, the piece is light on hard numbers — no user counts, request volume, or cost data given.",
+      "why": "A 5-months-to-a-day prototype number is the kind of concrete, checkable claim that's rare in vendor case studies — worth reading even with the honest caveat that it's the only hard metric in the piece.",
+      "actionLabel": "Try this",
+      "action": "If you're weighing whether a governance/eval layer (their \"Agent System of Record\") is worth building before scaling agent usage internally, this is a real reference architecture to compare against, not just a thought experiment.",
+      "permalink": "https://www.langchain.com/blog/how-workday-built-an-enterprise-scale-ai-agent-platform-with-langgraph-and-langsmith",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine production case study with a named Fortune-500-serving customer, adoption-focused per the standing LangChain-impact instruction, not a version-bump post; not previously sent."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the full article live this run; author, date (Nov 10, 2026) and content confirmed."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "The 5-months-to-under-a-day prototype figure and 4-to-30 team growth are quoted directly from the re-fetched article; the 'thin on other hard numbers' caveat is disclosed honestly rather than papered over."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete prototype-velocity number plus a real governance-layer design pattern, relevant to anyone scaling internal agent platforms."}
+      ]
+    },
+    {
+      "slug": "ryan-carson-untangle-20-agent-org-chart",
+      "section": "WATCH QUEUE",
+      "title": "How One Founder Manages 20 AI Coding Agents at Once — Ryan Carson, Untangle",
+      "summary": "One \"engineering manager\" agent, mostly talked to by voice, runs up to 20 builder agents through a ticket board: a 15-minute automated check-in on every builder, capped review loops so QA agents can't argue forever, and a merge-queue manager. The one step Ryan won't skip: watching the video of each feature before it ships. Untangle now hires by having candidates record themselves shipping a real feature with an agent, has an agent rank the recordings, and runs a paid trial with the top five.",
+      "why": "It's a concrete org-chart pattern for scaling past \"one person babysitting a handful of chats\" — with the specific guardrails (check-in interval, capped loops, a video-review gate) that make 20 agents tractable instead of chaos.",
+      "actionLabel": "Worth the drive",
+      "action": "15 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=BTtyguoPvBU",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete operational pattern for managing many coding agents, published Nov 9 on the AI Engineer channel; not a duplicate of anything in the Drive log history."},
+        {"check": "Link works", "result": "PASS", "reason": "Opened the video live this run; confirmed public, 14,417 views, 104 likes, 29 comments."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via the expanded description and full chapter list (read directly) plus 29 comments (read directly); the video's own transcript panel did not render text this run (a known recurring issue), so this is the disclosed description+chapters+comments fallback, not a transcript read."},
+        {"check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Comments are substantive and specific (e.g. praising the org-chart framing and the capped-review-loop guardrail), not sponsor-driven; concrete and directly applicable."}
+      ]
+    },
+    {
+      "slug": "raymond-weitekamp-openprose-decision-models",
+      "section": "WATCH QUEUE",
+      "title": "Your Agent Doesn't Need an LLM for Every Decision — Raymond Weitekamp, OpenProse",
+      "summary": "Recursive language models are a well-known harness pattern for coding agents; Weitekamp applies the same recursive idea to fast classifiers (\"System One\" decision models) instead of full LLM calls, to build cheaper, faster workflows for coding agents, information retrieval and computer use. Published hours before this brief went out, so it's too fresh to have a comment section yet — judged on the talk's own description and chapter structure rather than audience reaction.",
+      "why": "If every step of your agent pipeline reaches for a full LLM call, this is a concrete pattern for swapping the cheap, high-volume decisions out for a fast classifier instead — without giving up the recursive-harness structure you already like.",
+      "actionLabel": "Worth the drive",
+      "action": "52 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=hFNbPmzzcEs",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete technical pattern (recursive harness applied to fast classifiers for coding-agent decisions), published hours before this run on the AI Engineer channel; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Opened the video live this run; confirmed public."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Judged via the video's own description, read directly; honestly disclosed that no transcript or comments were available to cross-check given how fresh the upload is."},
+        {"check": "Watch material", "result": "N/A", "reason": "This item's own permalink is the video."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to efficient agent-harness design; the weaker-than-usual verification basis (no comments/transcript yet) is disclosed rather than hidden, and the premise is specific and technical rather than hype language."}
+      ]
+    }
+  ],
+  "dropped": [
+    {"title": "OpenAI 'dots' multi-computer task routing", "section": "SHIPPED", "stage": "step 3", "reason": "openai.com and help.openai.com pages failed to fetch (persistent client error). The one first-party doc page found (learn.chatgpt.com) confirms connecting multiple computers but not the specific 'choose which one per task' framing from a newsletter summary; the only source for that framing was an unconfirmed community-forum post. Dropped for insufficient fresh-dated first-party verification."},
+    {"title": "Google Antigravity 'Knowledge Work' layout", "section": "SHIPPED", "stage": "step 3", "reason": "Real ship (Nov 9), full first-party post read in detail, but it's a UI/audience reskin aimed at non-engineers, not a new capability for Vikas's own engineering workflow; weaker than the two chosen SHIPPED picks."},
+    {"title": "Vercel Tracing general availability", "section": "SHIPPED", "stage": "step 3", "reason": "Genuine GA ship (Nov 6) with real detail (KQL search, CLI, 2-week retention on Pro/Enterprise), but the Sandbox snapshot-speed pick was judged more concrete and quantified; SHIPPED capped at 2."},
+    {"title": "Other Vercel changelog entries (Workflow SDK over WebSockets, build disk space to 64GB, Container Registry 2GB layers, GLM/DeepSeek/Muse Ember added to AI Gateway, CLI project expiry)", "section": "SHIPPED", "stage": "step 3", "reason": "Infrastructure/model-availability line items with no agent-workflow story strong enough to compete with the chosen picks."},
+    {"title": "Google Gemini 4 Carbon general availability", "section": "SHIPPED", "stage": "step 3", "reason": "Genuine widened release, but it's a cybersecurity-focused model (originally gated to 'cyber defenders'); weaker fit for daily coding/SDLC work than the chosen picks, and already covered via the Simon Willison angle in the X pick."},
+    {"title": "Anthropic news page", "section": "SHIPPED", "stage": "step 3", "reason": "Only in-window entry is an IPO roadshow announcement (Nov 10), not a product ship."},
+    {"title": "Cursor changelog", "section": "SHIPPED", "stage": "step 3", "reason": "Newest entry still Nov 6 (Voice Chat with Agents, already known); nothing fresher found this run."},
+    {"title": "OpenAI news/index pages", "section": "SHIPPED", "stage": "step 3", "reason": "openai.com/news/ failed to fetch with a persistent client error, consistent with prior days."},
+    {"title": "GitHub search: recently-created AI-agent-skill repos (e.g. a 3k-star 'Skills for AI coding agents' package)", "section": "STUDY", "stage": "step 3", "reason": "GitHub's default trending page was dominated by long-established ML repos (TensorFlow, Keras, BERT). A targeted search for new AI-agent repos surfaced mostly niche agent-skill packages and novelty projects with no adoption story beyond star counts; none stronger than the chosen STUDY pick."},
+    {"title": "DeepLearning.AI course catalog / banner", "section": "STUDY", "stage": "step 3", "reason": "No course confirmed launched in the Nov 8-11 window; the catalog's 'New Course!' banner course is undated and already known from prior weeks."},
+    {"title": "Simon Willison's Gemini 4 Carbon pelican-benchmark images", "section": "TRENDING ON X", "stage": "step 3", "reason": "Part of the same post used for the chosen pick; the pelican-SVG benchmark itself is a running personal test with no new conclusion ('Gemini pelicans have all been great for a while now'), so only the standalone-HTML prompting tip was used, not the benchmark images."},
+    {"title": "@AnthropicAI on X", "section": "TRENDING ON X", "stage": "step 3", "reason": "Latest post is the IPO roadshow, already excluded as non-product news."},
+    {"title": "@cursor_ai, @swyx, @vercel on X", "section": "TRENDING ON X", "stage": "step 3", "reason": "Logged-out profile pages showed only old pinned tweets (Aug, 2020, and Nov 4 respectively), nothing fresh."},
+    {"title": "@OpenAI on X", "section": "TRENDING ON X", "stage": "step 3", "reason": "Recent posts are 'Businesses in ChatGPT' (consumer product, not coding-relevant), a 'Cyber at the Frontier' event teaser with no content yet, and the Control Room kill-switch post (internal-only, already dropped via AlphaSignal); none clear the bar."},
+    {"title": "@sama on X", "section": "TRENDING ON X", "stage": "step 3", "reason": "Latest visible post (Nov 4) is a philosophical statement on AI and human control, no coding/buildable angle."},
+    {"title": "'Pick Problems That Survive When AI Solves Coding' (Ara Khan, Cline)", "section": "WATCH QUEUE", "stage": "step 3", "reason": "Fresh (published today) but more conceptual/future-of-coding discourse than a concrete technique; weaker 'where do I use this' fit than the two chosen Watch Queue picks."},
+    {"title": "'Codex & AI Coding Agents' full course (freeCodeCamp)", "section": "WATCH QUEUE", "stage": "step 3", "reason": "A 1-hour-50-minute full course, not a single substantive talk; doesn't fit the Watch Queue format, and from a tutorial publisher rather than the usual conference-talk source."},
+    {"title": "AlphaSignal Nov 10 issue: 'org chart for coding agents' (AgentField AI) and 'make inference count on your GPUs' (Buoyant.io)", "section": "STUDY", "stage": "step 3", "reason": "Both are sponsor-labeled ('Presented by') partner placements in the newsletter, excluded per the standing sponsor-content rule."},
+    {"title": "AlphaSignal Nov 10 issue: OpenAI 'Control Room' kill switch", "section": "SHIPPED", "stage": "step 3", "reason": "Explicitly described in OpenAI's own post as internal-only research infrastructure, not an API or product feature usable today."},
+    {"title": "AlphaSignal Nov 10 Signals #1-6 (short-form video tool, Suno Bark open-source, self-improving 27B model, Tencent speculative decoding model, fake-code trap tool)", "section": "STUDY", "stage": "step 3", "reason": "Thin one-line mentions with no further substance; per the standing instruction, headline-only Signals items don't pass the bar on their own."}
+  ],
+  "skipped": [
+    {"section": "ON LINKEDIN", "reason": "LinkedIn not signed in — redirected to /login on linkedin.com/feed/. 7th consecutive day of this pattern (Nov 5 through Nov 11)."}
+  ]
+}
