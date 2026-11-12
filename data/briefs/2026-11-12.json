@@ -1,0 +1,328 @@
+{
+  "date": "2026-11-12",
+  "items": [
+    {
+      "slug": "google-a2ui-1-0-agentic-ui",
+      "section": "SHIPPED",
+      "title": "Google ships A2UI 1.0, an open protocol letting AI agents render native interactive screens",
+      "summary": "A2UI gives agents a way to generate real interactive UI instead of a wall of text or a fragile screenshot: renderer SDKs ship for React, Angular, Lit, Flutter, SwiftUI, and Jetpack Compose, with agent-side SDKs in Python, TypeScript, and Dart. 1.0 adds bidirectional function calls (the UI can call back into the agent), swappable inference formats, and secure data binding so an agent can't silently rewrite fields it shouldn't touch.",
+      "why": "Right now most agent UIs are either a chat transcript or a one-off hand-built component — this is Google's bet on a standard the two can share, with a React SDK on day one.",
+      "actionLabel": "Try this",
+      "action": "Pull the A2UI React SDK and have an agent render one real interactive form (not just text) for a task you already automate, to see how the bidirectional calls actually feel.",
+      "permalink": "https://developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new open protocol + multi-platform SDK release dated Nov 11, 2026 (authors Vishal Motwani and the Google A2UI Team), not pricing/benchmark news. Checked against the full Drive run-log history (Nov 5-11) and the public repo's briefs; not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched developers.googleblog.com/a2ui-10-build-delightful-fast-reliable-agentic-experiences/ live this run; resolves to the specific post, not a homepage or aggregator."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "SDK list (React, Angular, Lit, Flutter, SwiftUI, Jetpack Compose; Python/TypeScript/Dart agent SDKs), bidirectional function calls, swappable inference formats, and secure data binding are all taken directly from the fetched post."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Genuinely searched. The post embeds two first-party Google-hosted MP4 clips (not YouTube) as illustrations, and the only YouTube walkthrough found is from a third-party channel (Soverius AI), correctly excluded per the first-party-only rule."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to Vikas's React/TypeScript stack and interest in agent tooling; concrete, testable via a real SDK, not a roadmap promise."
+        }
+      ]
+    },
+    {
+      "slug": "claude-whiteboards-sheets-data",
+      "section": "SHIPPED",
+      "title": "Anthropic ships Claude Whiteboards and Sheets (beta), and makes Claude Data generally available",
+      "summary": "Claude Whiteboards turns a talked-through plan into a shared, editable board with timelines and owners; Claude Sheets builds real spreadsheets (tabs, formulas, 144 functions, up to 100,000 cells) from a prompt and exports to Excel; Claude Data (formerly Dashboards) is now GA, with certified metric badges, narrated video summaries, and dashboard caching. A related Interactive Connectors feature lets Adobe, Atlassian, HubSpot, and others open as full apps inside Claude.",
+      "why": "If you've been exporting Claude's answers into a spreadsheet or a deck by hand, that step is now something Claude can just do, in place, with real edit history.",
+      "actionLabel": "Try this",
+      "action": "Ask Claude to turn a messy planning conversation into a Sheet with real formulas, or a Whiteboard with owners and dates, instead of a plain list.",
+      "permalink": "https://claude.com/resources/articles/sheets-whiteboards-data",
+      "watch": {
+        "label": "Watch",
+        "url": "https://www.youtube.com/watch?v=YewAJPawE7I"
+      },
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Four genuinely new capabilities shipped Nov 10, 2026, distinct from the already-sent Claude Fable 5.2/Mythos 5.2 model release (Nov 9/10); not a duplicate of anything in the Drive log history."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched claude.com/resources/articles/sheets-whiteboards-data live this run; resolves to the specific announcement, dated Nov 10, 2026."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Tool descriptions (Whiteboards beta, Sheets beta/144 functions/100k cells, Data GA formerly Dashboards, Interactive Connectors with named partners Adobe/Atlassian/HubSpot) match the re-fetched page."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Found and verified a genuine first-party demo: youtube.com/watch?v=YewAJPawE7I, titled 'Introducing Claude Whiteboards, Sheets, and Data', on the official 'Claude' channel (735k subscribers), 456k views, posted 1 day before this check — opened live and confirmed."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Vikas uses Claude directly; these are concrete new capabilities with a verified first-party walkthrough, not vaporware."
+        }
+      ]
+    },
+    {
+      "slug": "simonw-gemini-decisions-api",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison puts Google's new Gemini Decisions API through its paces — the only one of the three that's truly multimodal",
+      "summary": "Google joins OpenAI's GPT-6 Luna and the third-party Jev in the \"decision model\" category with Gemini Decision 1: instead of generating text token by token, it scores up to 1,000 yes/no, choice, or rubric questions against one input in a single pass, in 150-250ms, for $0.10/M input tokens with free output. Willison's own test fed it a video file alongside four yes/no questions (dragon? robot? set in France? set in the USA?) and got back calibrated probabilities rather than a flat 1.0/0.0 — Jev and OpenAI's model are text/JSON-only, so Gemini's is the only one of the three that handles images, audio, video, and PDFs natively.",
+      "why": "If part of your agent pipeline is a cheap yes/no or routing decision, this is a purpose-built, much cheaper primitive than spending a full LLM call on it — and now the only one of the three that works directly on video or a scanned PDF.",
+      "actionLabel": "Angle for you",
+      "action": "Next time you're tempted to burn a full model call on a yes/no gate or a routing decision inside an agent, check whether a decision-model API (Gemini Decision 1, GPT-6 Luna, or Jev) can do it in one pass for a fraction of the cost.",
+      "permalink": "https://simonwillison.net/2026/Nov/11/gemini-decisions-api/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete, hands-on technical comparison across three real decision-model APIs with his own test data, posted Nov 11, 2026; the underlying Gemini Decision 1 API was independently confirmed first-party at blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/ (also Nov 11, Google DeepMind). Not a duplicate — distinct from the already-sent Gemini 4 Carbon item (Nov 11) and the already-sent recursive-fast-classifier Watch Queue video (Nov 11); complementary, not overlapping."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched simonwillison.net live this run and located the exact dated entry/permalink (/2026/Nov/11/gemini-decisions-api/, 10:03pm) via the page's own link; also independently re-fetched Google's first-party blog post."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Pricing ($0.10/M input, free output; Jev at $0.042/M), latency (150-250ms), question-type list, and his JSON test output are all quoted directly from the two fetched sources."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Clears the standing 'where do I use this' bar directly: a specific, buildable technique (swap a full LLM call for a decision-model call) with his own test data backing it, not pure discourse."
+        }
+      ]
+    },
+    {
+      "slug": "langchain-gtm-agent-sales-artifacts",
+      "section": "STUDY",
+      "title": "LangChain's own sales team runs a production Deep Agent — and shares the numbers, warts included",
+      "summary": "LangChain's internal GTM Agent (built on Managed Deep Agents + LangSmith) drafts account plans, proposals, and onboarding docs from Salesforce, Drive, and call transcripts — over 100 artifacts a week for the last 12 weeks. Deals where a rep sent one of its documents progressed to a later stage 47% of the time, vs. 16% for matched deals without one (self-reported, correlational, no stated methodology); one latency fix took a run from 18 minutes down to 7. The team's own honest takeaway: most of the quality gain came from feeding the agent real business context, not from tuning the prompt.",
+      "why": "The actual lesson here isn't the sales use case — it's that a context-engineering fix, not a prompt-engineering one, cut a production agent's runtime by more than half.",
+      "actionLabel": "Try this",
+      "action": "Before reaching for prompt tweaks on a slow or inconsistent agent step, check whether it's missing business/domain context the way LangChain's was — that's the fix that actually worked for them.",
+      "permalink": "https://www.langchain.com/blog/gtm-agent-high-quality-sales-artifacts",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "First-party, real internal production deployment (LangChain's own sales team, not a hypothetical), dated Nov 10, 2026, with several specific adoption/impact figures per the standing LangChain-impact instruction; not a duplicate of the Workday case study already sent Nov 11."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched langchain.com/blog/gtm-agent-high-quality-sales-artifacts live this run; author (Nick Bray) and date confirmed."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "47% vs 16% stage-progression figure, 46% follow-up-call rate, 1,540 artifacts/12 weeks, 337 hours saved, and the 18-to-7-minute latency fix are all quoted directly from the re-fetched post; the correlational/no-stated-methodology caveat is disclosed honestly rather than smoothed over, per the stated preference for honest caveats."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "The underlying use case (sales artifacts) is outside Vikas's core stack, but the generalizable lesson — a context fix, not a prompt fix, halved a production agent's runtime — is directly applicable to harness/agent work; this trade-off is stated plainly rather than oversold."
+        }
+      ]
+    },
+    {
+      "slug": "superlinear-formal-verification-statechart",
+      "section": "WATCH QUEUE",
+      "title": "How to Catch Edge Cases Before Your Coding Agent Writes Code — Superlinear adapts Poteto's /statechart skill",
+      "summary": "Superlinear (a small podcast on getting more out of coding agents) walks through adapting Lauren \"Poteto\" Tan's /statechart skill into a workflow that models proposed behavior, lists promises, and runs a checker to surface edge cases — like duplicate jobs from retries — before an agent writes any code. A real calendar-flow example forces a rethink of the promise itself, not just the implementation; the channel's own pinned comment is upfront that verifying the model doesn't prove the eventual code matches it.",
+      "why": "This is a concrete, honest technique for catching the kind of retry/race-condition edge case that's easy to hand-wave in a spec and easy for a coding agent to miss entirely.",
+      "actionLabel": "Worth the drive",
+      "action": "39 minutes. Note: published Nov 5 — older than usual for this slot, because today's YouTube homepage, channel pages, and search results all failed to render (a harder failure than the usual logged-out fallback); judged via the full description, chapter list, and comments rather than a transcript, since the transcript panel couldn't be opened this run either.",
+      "permalink": "https://www.youtube.com/watch?v=8PUWVSrqZaE",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive technical walkthrough (adapting a known creator's skill, real example, honest Q&A on limitations), not hype; not a duplicate of anything previously sent. Disclosed candidly that it is 7 days old (published Nov 5), older than this slot's usual 3-5 day target, because of today's access failures (see below)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Opened youtube.com/watch?v=8PUWVSrqZaE live this run; confirmed public, 3,682 views, 62 likes, 6 comments, 553-subscriber 'Superlinear' channel."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Judged via the full expanded description, the complete chapter list (00:00 through 38:06), and the channel's own pinned comment disclosing a real limitation — all read directly this run. Not a transcript read: the 'Show transcript' button could not be clicked (a viewport/rendering issue after multiple attempts), so this is the disclosed description+chapters+comments fallback per the standing 2026-10-30 instruction."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "This item's own permalink is the video."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Specific, applicable technique (formal verification of agent-written code via a statechart) directly relevant to coding-agent reliability; the weaker freshness and the transcript-access gap are both disclosed rather than hidden."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Anthropic's Claude Fable 5.2 solves open physics problems and designs working hardware (AlphaSignal Nov 11 issue)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Same underlying model (Claude Fable 5.2/Mythos 5.2) already sent as a SHIPPED item on Nov 10; new benchmark demos of an already-shipped model are a duplicate of the release itself, not a new capability."
+    },
+    {
+      "title": "OpenAI lets businesses build custom chat agents inside ChatGPT ('Businesses in ChatGPT', AlphaSignal Nov 11 issue)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Genuine first-party ship, but a consumer/business-storefront feature with no AI-SDLC or coding-agent relevance; weaker fit than the two chosen SHIPPED picks."
+    },
+    {
+      "title": "Google 'Gemini Decision 1' as a standalone SHIPPED item",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Genuine, verified first-party ship (blog.google, Nov 11), but folded into the TRENDING ON X pick via Simon Willison's hands-on comparison instead, to avoid a third Google-sourced SHIPPED item alongside A2UI 1.0; not a quality drop, a placement decision."
+    },
+    {
+      "title": "AlphaSignal Nov 11 Signals #1-6 (Qwen4-Max preview, Kinference open-source inference serving, smart-home MCP server, clustering algorithm, weight-edited Qwen 27B, Rust browser)",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Thin one-line mentions with no further substance; per the standing instruction, headline-only Signals items don't pass the bar on their own."
+    },
+    {
+      "title": "DeepLearning.AI 'Tabular Foundation Models for Data Science Agents' (new course, launched Nov 11, 2026)",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Genuinely new and verified first-party (deeplearning.ai/courses/tabular-foundation-models-for-data-science-agents, instructors from Prior Labs, teaches building a data-science agent around TabPFN); the LangChain GTM Agent post was judged the stronger pick for its quantified adoption/impact angle, and STUDY is capped at 1. Worth reconsidering on a day with no comparably strong LangChain candidate."
+    },
+    {
+      "title": "Simon Willison: 'aws-emulator', an AWS-built Rust emulator with 29,684 commits from AI agents in three weeks",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Simon's blog post cites a guest post by Swami Sivasubramanian on Werner Vogels' blog, but that guest post could not be located on allthingsdistributed.com (checked the homepage and full article index); dropped per the never-guess-a-URL/drop-if-unverifiable rule rather than publish an unconfirmed claim."
+    },
+    {
+      "title": "Simon Willison: RELEASE llm 0.37.2 (security fix)",
+      "section": "TRENDING ON X",
+      "stage": "step 3",
+      "reason": "Genuine and verified, but a minor dependency-level security patch to his own personal tool, not substantive enough on its own relative to the chosen X pick."
+    },
+    {
+      "title": "Anthropic's IPO roadshow video / 'Approach to compute' (Simon Willison commentary)",
+      "section": "TRENDING ON X",
+      "stage": "step 3",
+      "reason": "Interesting technical color (multi-chip training strategy, AMD port done by Mythos in 3 days), but rooted in corporate/IPO content rather than a usable technique; weaker 'where do I use this' fit than the chosen pick."
+    },
+    {
+      "title": "Cursor changelog",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Newest entry still Nov 6 (Voice Chat with Agents, already sent Nov 8); nothing fresher found this run."
+    },
+    {
+      "title": "Anthropic news page (anthropic.com/news)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Only entries in window are the IPO roadshow (Nov 10, not a product) and Fable 5.2/Mythos 5.2 (Nov 9, already sent Nov 10)."
+    },
+    {
+      "title": "OpenAI news/blog/help pages (openai.com/news, openai.com/index, openai.com/blog, help.openai.com)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "All failed to fetch with persistent client errors or returned a stale 2023 snapshot, consistent with prior days; github.com/openai/codex/releases showed nothing newer than Oct 7."
+    },
+    {
+      "title": "Google AI Studio / Gemini API changelog (ai.google.dev, aistudio.google.com)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Newest entries (storage-on-by-default, Gemini 4 Argon GA, Nano Banana 2.1 GA) all dated Oct 6-26, nothing in the Nov 10-12 window beyond what the developer blog already covered."
+    },
+    {
+      "title": "Google Developers Blog: on-device speech recognition/TTS in AI Edge Gallery (Nov 10)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Genuine first-party ship, but mobile on-device speech tooling with little relevance to the React/TypeScript + Java/Spring Boot stack; A2UI 1.0 was the stronger Google pick."
+    },
+    {
+      "title": "Vercel changelog (MiniMax H3 on AI Gateway, Gemini 4 Carbon on AI Gateway, Speed Insights custom environments)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Model-availability and infrastructure line items with no new agent-workflow capability of their own; the Sandbox snapshot-speed story from this same changelog was already sent Nov 11."
+    },
+    {
+      "title": "Claude Code release notes (code.claude.com, docs.claude.com, github.com/anthropics/claude-code)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "code.claude.com/docs/en/release-notes failed with a client error; the docs.claude.com redirect landed on GitHub's CHANGELOG.md, which did not render its entries, and the raw file was blocked by robots.txt. No entries retrieved this run."
+    },
+    {
+      "title": "keploy/keploy (GitHub, 19,716 stars)",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "Genuinely relevant (API/E2E testing sandboxes) but created January 2022 — an established project surfacing on trending for reasons not independently confirmed this run, the same 'old giant' pattern flagged on prior days; codex-security judged the stronger, more clearly-surging first-party pick."
+    },
+    {
+      "title": "backnotprop/plannotator (GitHub, 10,080 stars)",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "A genuinely interesting agent-review/annotation tool supporting many coding-agent CLIs, created Dec 2025; codex-security was judged stronger for being first-party from a vendor already in use. Worth a second look on a future run."
+    },
+    {
+      "title": "kagent-dev/kagent, darkzOGx/youtube-automation-agent, homeassistant-ai/ha-mcp, addyosmani/agent-skills, meta/astryx, vercel-labs/agent-browser, opensandbox-group/OpenSandbox, google-labs-code/stitch-skills, ranxianglei/billion-context, agent-substrate/substrate (GitHub trending)",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "Niche (Kubernetes-specific agent framework), off-topic (YouTube/home-automation consumer tooling), or already flagged on the 2026-11-11 run as old giants / unverifiable / thin on substance; re-confirmed today still on trending for the same reasons, still excluded."
+    },
+    {
+      "title": "'Claude's New Artifacts Are Amazing' (Ben AI, YouTube, 2 days old)",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "Surfaced via a related-video sidebar; heavy self-promotion (a 'free prompts' lead magnet and a paid AI accelerator course both pushed in the first two lines of the description) relative to actual substance — dropped per the standing instruction to flag/drop sponsor- or course-upsell-heavy candidates."
+    },
+    {
+      "title": "'Your Coding Agent Should Start Proving Its Code' (Superlinear, 13 days old)",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "Same channel/topic as the chosen pick but older (13 days vs. 5 days) and lower-viewed (883 vs. 3,682); the chosen video is explicitly the newer follow-up."
+    },
+    {
+      "title": "OpenAI's own codex-security CLI hit GitHub's daily trending — a first-party tool for finding and fixing vulnerabilities",
+      "section": "GITHUB PICK",
+      "stage": "build-check",
+      "reason": "Pipeline-level gap discovered this run: scripts/build.py's SECTIONS dict only defines SHIPPED, ON LINKEDIN, TRENDING ON X, STUDY, and WATCH QUEUE — 'GITHUB PICK' is not a recognized section, so this item fails --check and can't be published to the public site as written. Kept in today's email and the feedback artifact; excluded here rather than miscategorizing it under an existing section or editing build.py without being asked. Flagged in the run log for a decision: add a GITHUB PICK entry to SECTIONS, or treat GitHub Pick as email/artifact-only going forward."
+    }
+  ],
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "LinkedIn not signed in — redirected to /login on linkedin.com/feed/. 8th consecutive day of this pattern (Nov 5 through Nov 12)."
+    }
+  ]
+}
