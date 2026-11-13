@@ -1,0 +1,370 @@
+{
+  "date": "2026-11-13",
+  "notice": null,
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Browser session was not signed in to LinkedIn this run (redirected to /login), so this section is a disclosed skip, not a feedback-driven drop."
+    }
+  ],
+  "items": [
+    {
+      "slug": "anthropic-claude-meetings",
+      "section": "SHIPPED",
+      "title": "Anthropic ships Claude Meetings (beta): Claude joins your video call and builds the doc while you talk",
+      "summary": "Claude joins a Google Meet call as a visible participant, listens, answers questions out loud or in chat, and co-builds docs, whiteboards, and other artifacts live with whoever is on the invite. After the call, notes, action items, and artifacts live on a per-meeting page, and users can add Claude to upcoming meetings from their calendar. Beta on Team and Enterprise plans, Google Meet only for now.",
+      "why": "This turns Claude from something you paste meeting notes into afterward into something that is actually in the room doing the drafting while the conversation happens.",
+      "actionLabel": "Try this",
+      "action": "Add Claude to your next internal Google Meet (Team/Enterprise plan) and see what the live doc looks like by the time the call ends.",
+      "permalink": "https://claude.com/resources/articles/claude-meetings",
+      "watch": {
+        "label": "Watch",
+        "url": "https://www.youtube.com/watch?v=YUYeHMsqbmY"
+      },
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuinely new capability (live-meeting participation, not just post-call summarization); not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the article fresh; resolves to the specific feature page, not a homepage."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Summary matches the article's own description of the beta."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Found the official first-party demo video on the vendor's own YouTube channel."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Fresh, demoable, directly relevant to daily meeting workflow."
+        }
+      ]
+    },
+    {
+      "slug": "cursor-projects-multiplayer",
+      "section": "SHIPPED",
+      "title": "Cursor rebuilds Projects for multiplayer: your agents can now coordinate with your teammates' agents",
+      "summary": "Cursor's own announcement: Projects has been rebuilt so every teammate and their agents work together in one unified workspace, instead of each person's agent running in isolation on the same codebase.",
+      "why": "The real bottleneck on a team using coding agents usually is not any one agent being slow, it is agents stepping on each other with no shared view of who is doing what.",
+      "actionLabel": "Try this",
+      "action": "If your team is on Cursor Projects, check whether multiplayer mode is live for your workspace.",
+      "permalink": "https://x.com/cursor_ai/status/2120295553309565139",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine capability change for team agent coordination, not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the post fresh; content matches."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Summary drawn directly from the vendor's own post text."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "No separate blog/changelog post found despite checking cursor.com/blog and /changelog; the primary source itself is a short demo clip, so no additional Watch line was needed."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Real, novel team workflow shift with a concrete next step."
+        }
+      ]
+    },
+    {
+      "slug": "simonw-gemini-4-pricing-confusion",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: Gemini 4's pricing is a mess right now, and Hydrogen's quality drop shows why cheaper isn't free",
+      "summary": "Argon and Carbon are priced identically; the new, cheaper Hydrogen is only a 25% discount off that, and Willison's own quick quality check shows Hydrogen's outputs are notably worse. Carbon and Argon are also both set to double in price on December 1.",
+      "why": "If you are routing agent calls across Gemini's tiers to save money, the cheap option right now is a real quality cut, not just a smaller bill, and the clock on today's prices is already running.",
+      "actionLabel": "Angle for you",
+      "action": "Before Dec 1, benchmark your own agent tasks on Hydrogen vs. Argon/Carbon rather than assuming the cheaper tier is a safe default.",
+      "permalink": "https://x.com/simonw/status/2121039423441981444",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete, current pricing/quality facts, not benchmark-only puff; not a rehash of this week's other Gemini items."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the post fresh; content matches."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the post's own figures and claims."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Clear, time-boxed decision point for anyone routing work across Gemini model tiers."
+        }
+      ]
+    },
+    {
+      "slug": "google-gemini-z3-go-bug-hunting",
+      "section": "STUDY",
+      "title": "A Google engineer pairs Gemini with the Z3 solver to find Go bugs that go test -fuzz missed",
+      "summary": "Google Developer Relations' Karl Weinmeister compiled his Go linter to see which runtime bounds-check traps survived the compiler's optimizer, then had Gemini 4 Argon translate each surviving trap into a Z3 constraint-solver model. Z3 found concrete crashing inputs in under a minute per function, and go test replayed them to confirm they were real. The pipeline caught 3 deliberately planted bugs plus 3 real latent bugs the existing fuzz suite had missed.",
+      "why": "This is a genuinely different failure mode than asking an agent to find bugs: the LLM only translates assembly into solver constraints, and the solver, not the model, is what actually proves a crash is reachable.",
+      "actionLabel": "Try this",
+      "action": "Pick one Go function you are not fully sure is panic-safe and see what bounds-check traps the compiler's optimizer left behind before deciding whether the full pipeline is worth setting up.",
+      "permalink": "https://developers.googleblog.com/catch-go-bugs-that-fuzzing-misses-with-gemini-and-a-constraint-solver/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Novel, quantified technique from a first-party engineering post, not corporate PR."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched fresh; content matches."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Summary matches the post's own walkthrough and numbers."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to code-analysis tooling interests; concrete starter action given."
+        }
+      ]
+    },
+    {
+      "slug": "watch-lydia-hallie-claude-code-practices",
+      "section": "WATCH QUEUE",
+      "title": "Rethinking Claude Code Best Practices — Lydia Hallie, Anthropic (AI Engineer)",
+      "summary": "Anthropic's own Lydia Hallie argues most of what engineers bolted onto their Claude Code setups over the past year is now holding the Claude 5.5-era models back, and walks through what is still worth keeping versus what to strip out, plus orchestrator/subagent patterns and auto-mode settings.",
+      "why": "Most Claude Code tips content goes stale within weeks as the models change; this is Anthropic's own DX engineer naming what is now obsolete, not just adding more tips on top.",
+      "actionLabel": "Worth the drive",
+      "action": "17:32. Run your own setup through the audit approach she describes and see what is actually dead weight.",
+      "permalink": "https://www.youtube.com/watch?v=vlfCjWuv4es",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive, specific-technique talk, not generic hype; judged via description plus top comments (no transcript tool available this run)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched fresh; video is public and available."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the video's own description, corroborated by top comments naming specific techniques."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Fresh, specific, and comments confirm real applied value rather than sponsor content."
+        }
+      ]
+    },
+    {
+      "slug": "watch-matt-pocock-home-repo",
+      "section": "WATCH QUEUE",
+      "title": "The Home Repo: The effortless multi-repo agent setup — Matt Pocock",
+      "summary": "A single shared repo holding agent skills, steering files, and custom tooling that other repos' agents all pull from, instead of duplicating or letting setup drift across every project.",
+      "why": "If you are running agents across more than one or two repos, this is the specific thing that stops your skills and config from quietly forking across projects until none of them agree anymore.",
+      "actionLabel": "Worth the drive",
+      "action": "8:53. Short enough to watch before deciding whether to consolidate your own multi-repo agent config into one home repo.",
+      "permalink": "https://www.youtube.com/watch?v=hWe-j78vNpc",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete, specific technique, judged via description plus top comments (no transcript tool available this run)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched fresh; video is public and available."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the video's own description, corroborated by comments confirming sustained real-world use."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Short, specific, no sponsor content detected, directly relevant to multi-repo agent workflows."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Anthropic: self-hosted Claude Managed Agents (Nov 12)",
+      "stage": "step 3",
+      "reason": "Genuine SHIPPED candidate, but lost the 2-slot cap to Claude Meetings (more novel, more broadly demoable)."
+    },
+    {
+      "title": "Google: Gemini 4 Carbon general availability",
+      "stage": "step 3",
+      "reason": "Would be a same-release rehash: its availability was already surfaced via this week's X item about Gemini 4 Carbon pricing/prompting."
+    },
+    {
+      "title": "Vercel: Sandbox snapshot speed",
+      "stage": "step 3",
+      "reason": "Exact duplicate of an already-sent SHIPPED item from a prior day."
+    },
+    {
+      "title": "Google: A2UI 1.0",
+      "stage": "step 3",
+      "reason": "Exact duplicate of an already-sent SHIPPED item from a prior day."
+    },
+    {
+      "title": "Anthropic: Claude Fable 5.2 / Mythos 5.2",
+      "stage": "step 3",
+      "reason": "Duplicate of an already-sent SHIPPED item from a prior day."
+    },
+    {
+      "title": "Vercel: Workflow SDK WebSocket writes",
+      "stage": "step 3",
+      "reason": "Real but minor and several days old; weaker than the chosen SHIPPED picks."
+    },
+    {
+      "title": "Vercel: Speed Insights/Web Analytics custom environments",
+      "stage": "step 3",
+      "reason": "Too minor/non-actionable for a daily engineering audience."
+    },
+    {
+      "title": "Vercel: \"UI SDK\" teaser",
+      "stage": "step 3",
+      "reason": "No first-party blog/docs page found yet confirming what it actually does; could not write an accurate summary."
+    },
+    {
+      "title": "Grok Bot 1.0 (team AI teammates in Slack/Teams/meetings)",
+      "stage": "step 3",
+      "reason": "Considered as a SHIPPED candidate but lost the slot cap; no verified first-party demo video found in time, and outside Vikas's current toolset."
+    },
+    {
+      "title": "FAISS e-means clustering algorithm",
+      "stage": "step 3",
+      "reason": "Could not find any first-party confirmation of this claim (not on the FAISS GitHub releases page or Meta's own engineering/AI blogs); dropped for lack of a verifiable source."
+    },
+    {
+      "title": "Google Agent Anomaly Detection benchmark post",
+      "stage": "step 3",
+      "reason": "Genuine and relevant, but lost the single STUDY slot to the Gemini+Z3 Go bug-hunting post as the more directly actionable technique."
+    },
+    {
+      "title": "LangChain: Eval-Driven Development explainer",
+      "stage": "step 3",
+      "reason": "Concept/explainer piece, not an adoption story; weaker than the chosen STUDY pick."
+    },
+    {
+      "title": "LangChain: Workday and GTM Agent posts",
+      "stage": "step 3",
+      "reason": "Both already covered on prior days; excluded as duplicates."
+    },
+    {
+      "title": "DeepLearning.AI: Tabular Foundation Models / AI Prompting for Everyone",
+      "stage": "step 3",
+      "reason": "Neither could be confirmed as launched within the last 1-7 days; no dated announcement found."
+    },
+    {
+      "title": "Cursor: Gemini 4 Hydrogen / Carbon / Claude Fable 5.2 \"now available in Cursor\" posts",
+      "stage": "step 3",
+      "reason": "Model-availability add-ons, not novel Cursor capabilities."
+    },
+    {
+      "title": "AI Engineer conference live-tweets / teasers",
+      "stage": "step 3",
+      "reason": "Conference promo chatter with no concrete capability or buildable angle."
+    },
+    {
+      "title": "Anthropic IPO roadshow posts",
+      "stage": "step 3",
+      "reason": "Not product news; excluded per the standing no-pricing/funding rule."
+    },
+    {
+      "title": "Anthropic \"components of agent memory\" dreaming post",
+      "stage": "step 3",
+      "reason": "Already covered on a prior day as a TRENDING ON X pick; duplicate."
+    },
+    {
+      "title": "YouTube: \"Exact, Goose, Rune: Build Faster Software with Coding Agents\"",
+      "stage": "step 3",
+      "reason": "Extremely low view/engagement count; weaker audience validation than the chosen picks."
+    },
+    {
+      "title": "YouTube: Stanford CS329Z lecture on function calling and MCP",
+      "stage": "step 3",
+      "reason": "Too long for the Watch Queue format and largely foundational material."
+    },
+    {
+      "title": "YouTube: AI Engineer conference livestreams",
+      "stage": "step 3",
+      "reason": "Multi-hour livestreams, not a discrete technique video."
+    },
+    {
+      "title": "GitHub trending: n8n-io/n8n",
+      "stage": "step 3",
+      "reason": "Long-established giant (created 2019, 210k+ stars) surfacing on since=daily by raw velocity, not a genuinely new or surging project."
+    },
+    {
+      "title": "GitHub trending: QwenLM/qwen-code",
+      "stage": "step 3",
+      "reason": "Legitimate and relevant, but an already-mature, well-known tool rather than a fresh surge."
+    },
+    {
+      "title": "GitHub trending: several other candidates (addyosmani/agent-skills, meta/astryx, google-labs-code/stitch-skills, figma/mcp-server-guide, homeassistant-ai/ha-mcp, ZhuLinsen/daily_stock_analysis, Alishahryar1/free-claude-code)",
+      "stage": "step 3",
+      "reason": "Dropped for being old established giants, off-scope, stale, or (in one case) an unofficial/questionable tool not worth recommending."
+    },
+    {
+      "title": "openai/codex-security",
+      "stage": "step 3",
+      "reason": "Same repo already published as a prior day's GitHub pick; duplicate."
+    },
+    {
+      "title": "GITHUB PICK item (CopilotKit/OpenBot) for the public website",
+      "stage": "step 7b",
+      "reason": "scripts/build.py's SECTIONS/LABELS dicts do not yet define a GITHUB PICK section (same known gap flagged on prior days); per the standing instruction not to edit build.py without authorization, this item is kept in the email and feedback artifact but omitted from the public site's items array."
+    }
+  ]
+}
