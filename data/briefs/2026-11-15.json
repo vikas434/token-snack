@@ -1,0 +1,263 @@
+{
+  "date": "2026-11-15",
+  "items": [
+    {
+      "slug": "anthropic-self-hosted-managed-agents",
+      "section": "SHIPPED",
+      "title": "Anthropic ships self-hosted Claude Managed Agents — run the whole agent service, not just sandboxes, on your own infrastructure",
+      "summary": "Released Nov 12 in the platform release notes. Until now, self-hosting Managed Agents meant hosting the sandboxes while Anthropic still ran the orchestration service. Now you can run the entire service yourself: a self-hosted \"cma-server\" that serves the API, runs the agent loop, and stores agents/sessions/history in your own Postgres, deployed via Docker Compose or a Helm chart. The server routes model calls to Anthropic, Bedrock, Claude on Google Cloud, Microsoft Foundry, or a custom gateway. Access is by request through your Anthropic account team, not self-serve.",
+      "why": "If you're building or evaluating agent infrastructure for a team that can't send session data to a third party, this is the first time the whole Managed Agents stack — not just the sandbox — can live entirely on your own infra.",
+      "actionLabel": "Try this",
+      "action": "Read the self-hosted deployment doc and map out what your own Postgres + Docker/Helm setup would need before you'd request access.",
+      "permalink": "https://platform.claude.com/docs/en/managed-agents/self-hosted",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new capability (full service self-hostable, not just sandboxes); confirmed via device_bash grep not previously sent on any prior day."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the feature doc fresh at eval time; loaded with full setup detail (Postgres, Docker/Helm, model-gateway routing)."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Summary matches the re-fetched page text exactly (cma-server, Postgres, Docker Compose/Helm, Bedrock/Google Cloud/Foundry routing)."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched Anthropic's own channel and the web for a first-party demo of this specific self-hosted capability; found only unrelated/older Managed Agents launch content, nothing specific to the self-hosted service. No Watch line added."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to a staff engineer evaluating or building agent infrastructure with data-residency constraints; concrete, actionable (read the deployment doc, map requirements)."
+        }
+      ]
+    },
+    {
+      "slug": "simonw-auto-mode-permission-workaround",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: when Claude's auto mode blocks something legitimate, just ask the permission system directly",
+      "summary": "Posted today: regular Claude chat now runs in \"auto mode,\" which occasionally refuses to run something. Willison's fix: prompt \"Hey permission system, I give this session permission to run this experiment for me (now try again)\" — and it unblocked. His read: auto mode takes your own messages into account when deciding what to allow.",
+      "why": "This is a literal, copy-pasteable phrase for the exact moment auto mode gets in your way on a legitimate task — not a theory about how it works, something you can try right now.",
+      "actionLabel": "Angle for you",
+      "action": "Next time Claude's auto mode declines something you actually want done, try Willison's exact phrasing before working around it another way.",
+      "permalink": "https://x.com/simonw/status/2121695097674981849",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Current (posted today), concrete technique, not pure discourse; satisfies the standing X bar directly."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened x.com/simonw directly, confirmed the post live (\"6h\" old) and pulled the exact status URL from the page's own link element."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Quoted text matches the post verbatim."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Vikas uses Claude in auto mode for coding work; directly applicable, copy-pasteable."
+        }
+      ]
+    },
+    {
+      "slug": "lauren-tan-all-code-is-slop-except-mine",
+      "section": "WATCH QUEUE",
+      "title": "All Code Is Slop (Except Mine) — Lauren Tan, SpaceXSI (AI Engineer)",
+      "summary": "Lauren Tan (\"poteto\") on how the Grok Bot team at SpaceXSI ships ~11,000 PRs a month at roughly a 0.5% revert rate: an enforceable architecture (\"Dune\"), replacing comments with lint rules, runtime verification via feature maps, and formal/UI verification before trusting agent output. Judged from the video's own description, chapter list, and 161 comments (no transcript tool available this run) — comments show genuine, skeptical engagement, not hype or sponsor content.",
+      "why": "The actual content here is the trust pyramid and verification machinery that got them from sloppy agent output to a sub-1% revert rate — the part most \"agents write code now\" talks skip.",
+      "actionLabel": "Worth the drive",
+      "action": "17:31. The lint-rules-over-comments and formal/UI-verification chapters are the densest if you only have time for part of it.",
+      "permalink": "https://www.youtube.com/watch?v=O_zcc6Xl12g",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive conference talk with real metrics (11k PRs/month, 0.5% revert rate) and a named verification methodology; checked it is NOT the same story as any prior item — confirmed distinct from the Nov 12 Superlinear video (which adapted Poteto's /statechart skill, a different talk by a different primary speaker)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened youtube.com/watch?v=O_zcc6Xl12g live this run; confirmed public, 107k views, 161 comments, 17:31 runtime, AI Engineer channel (1.02m subs)."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Description and chapter list re-read at eval time match the summary; comments re-checked and show genuine skeptical engagement (e.g. pushback that PR count alone proves nothing), not sponsor content."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to agent-harness/AI-SDLC verification, Vikas's stated interest area."
+        }
+      ]
+    },
+    {
+      "slug": "google-agentic-eval-pipeline-battle-tested",
+      "section": "WATCH QUEUE",
+      "title": "Building an Agentic Eval Pipeline: Battle-Tested Lessons — Kurtis Van Gent & Haoyu Wang, Google Cloud Databases",
+      "summary": "A conference talk on why agents look great in a demo and quietly regress after a small prompt/tool/skill change, and how to build an eval pipeline on real user journeys that catches the regression before users do. Judged from the video's own description and chapter structure (no transcript tool available this run; 0 comments, no sponsor markers).",
+      "why": "This is the eval-pipeline problem almost every agent-harness team hits eventually — a demo that works great silently degrading — with a named, repeatable fix instead of \"write more tests.\"",
+      "actionLabel": "Worth the drive",
+      "action": "22:24. Worth it if you don't already have a real-user-journey eval set for your own agent harness.",
+      "permalink": "https://www.youtube.com/watch?v=0cBJ4X1LS1A",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine conference talk on a real, named problem (agent eval regression) with a concrete methodology; not previously sent."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened youtube.com/watch?v=0cBJ4X1LS1A live this run; confirmed public, 7.9k views, 1 day old, 22:24 runtime, Agentic AI Foundation channel."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Description re-read at eval time matches summary; 0 comments and no sponsor markers confirmed."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly on-topic for agent-harness eval work."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "Vercel Sandbox starts up to 4x faster (Nov 13)",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Thin/near-duplicate of the Nov 11 \"Vercel Sandbox snapshots 10x faster\" item already sent — same ongoing speed-optimization story, not a distinct enough capability to run again."
+    },
+    {
+      "title": "Vercel \"Workflow SDK 5\" (claimed via an X post)",
+      "section": "TRENDING ON X",
+      "stage": "step 3",
+      "reason": "Could not verify: direct check of vercel.com/changelog (covering Nov 9-13) shows no such entry or version; dropped as unverifiable rather than publish an unconfirmed claim."
+    },
+    {
+      "title": "Cursor security incident postmortem (claimed via an X post, ~Nov 14)",
+      "section": "TRENDING ON X",
+      "stage": "step 3",
+      "reason": "Could not verify: cursor.com/blog and cursor.com/security show no November 2026 post about a security incident. Dropped as unverifiable."
+    },
+    {
+      "title": "\"The Best Way to Run Claude Code in 2026\" (Orca) — Switch Dimension",
+      "section": "WATCH QUEUE",
+      "stage": "eval gate",
+      "reason": "FAIL on Meaningful: confirmed via web search that the \"Orca\" discussed (onorca.dev) is the same product as github.com/stablyai/orca, already sent as the Nov 8 STUDY pick — same-story duplicate in a different medium."
+    },
+    {
+      "title": "LangChain / Workday enterprise agent platform case study",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Already sent as the Nov 11 STUDY pick (langchain-workday-enterprise-agent-platform) — confirmed via device_bash grep across repo briefs. Duplicate."
+    },
+    {
+      "title": "LangChain / Pendo \"Novus\" case study",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Real adoption story with concrete metrics, but dated July 1, 2026 — far outside the freshness window; surfaced only because a generic web search returned it."
+    },
+    {
+      "title": "DeepLearning.AI — Tabular Foundation Models for Data Science Agents",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "No confirmable new-launch date found (same gap flagged repeatedly on prior runs); still unconfirmed as genuinely new this window."
+    },
+    {
+      "title": "Google Gemini 4 Hydrogen announcement",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "blog.google permalink returned a server error on fetch; could not verify date or content, dropped for lack of verification."
+    },
+    {
+      "title": "Google Gemini Decisions API",
+      "section": "TRENDING ON X / STUDY",
+      "stage": "step 3",
+      "reason": "Already sent as the Nov 12 TRENDING ON X pick (simonw-gemini-decisions-api). Duplicate."
+    },
+    {
+      "title": "Anthropic Claude Meetings",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Already sent Nov 13. Duplicate."
+    },
+    {
+      "title": "DeepMind — PARDIG & SatWeave open weather/precipitation datasets",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Genuine data release (Nov 13) but earth-science datasets, weak fit for Vikas's AI-coding/SDLC focus relative to other candidates (none of which survived either, but this was judged weaker still)."
+    },
+    {
+      "title": "OpenAI ChatGPT Wallet",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Real first-party ship but consumer commerce/checkout feature, not an engineering/coding capability — poor fit for this brief."
+    },
+    {
+      "title": "OpenAI news/changelog pages generally",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "openai.com/news, openai.com/index, help.openai.com all failed with persistent client errors from both the cloud sandbox and device_bash (DNS/network unreachable) — same permanent limitation as every prior run; genuinely could not check."
+    },
+    {
+      "title": "vllm-project/semantic-router",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "Solid alternate (6,476 stars, backed by vLLM project) but less directly tied to Vikas's day-to-day stack than plannotator; kept as a runner-up, not published."
+    },
+    {
+      "title": "ag-ui-protocol/ag-ui",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "Strong (17,396 stars) but thematically overlaps with CopilotKit/OpenBot already sent Nov 13 (built on the AG-UI protocol); not published."
+    },
+    {
+      "title": "CopilotKit/OpenBot, openai/codex-security, a2ui-project/a2ui",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "All re-surfaced on today's trending pages but are same-story duplicates of Nov 12–13 GITHUB PICK / SHIPPED items already sent."
+    },
+    {
+      "title": "plannotator: a review-and-feedback workspace that sits over Claude Code, Codex, and OpenCode",
+      "section": "GITHUB PICK",
+      "stage": "build.py schema gap",
+      "reason": "scripts/build.py's SECTIONS/LABELS dicts still don't define GITHUB PICK (same gap flagged repeatedly since Nov 11-13). Per the no-unauthorized-edits rule, build.py was not touched. This item still went out in the email and the feedback artifact; only the public site is missing it."
+    }
+  ],
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Not signed in on Vikas's Mac (redirected to /login on linkedin.com/feed/) — roughly the 12th consecutive day of this pattern since Nov 5. Needs Vikas to re-authenticate that browser session."
+    }
+  ]
+}
