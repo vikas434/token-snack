@@ -1,0 +1,313 @@
+{
+  "date": "2026-11-16",
+  "notice": null,
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Browser session not signed in to LinkedIn (redirected to login) \u2014 roughly the 13th consecutive day of this pattern since Nov 5."
+    }
+  ],
+  "items": [
+    {
+      "slug": "vercel-workflow-sdk-5",
+      "section": "SHIPPED",
+      "title": "Vercel ships Workflow SDK 5: up to 25x lower overhead, encrypted by default, regional runs",
+      "summary": "Step inputs/outputs, hook payloads and stream data are now encrypted end-to-end with AES-256-GCM, a unique key per run, no config needed on Vercel. Each run can pin to a home region. The engine runs multiple steps inline to cut queue hops. Vendor-measured on one real workload: late-run overhead p75 dropped from 1,748ms to 70ms (25x); a 1,020-step run's median time went from 21.0min to 3.0min (7x). Python SDK now in beta.",
+      "why": "If your agent loops run as durable workflows, this is a real latency and security upgrade you can install today, not just a version bump.",
+      "actionLabel": "Try this",
+      "action": "pnpm add workflow@latest and skim the what's-new doc before your next upgrade.",
+      "permalink": "https://vercel.com/blog/workflow-sdk-5",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine architecture/security release with vendor-measured numbers on a real workload; not a duplicate of any prior SHIPPED item."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched same session, HTTP 200, content matches claim."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Summary matches fetched content; benchmark attributed as vendor-measured on one workload."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched Vercel's own channel/site for a first-party Workflow SDK 5 demo; none found (only an older, different-product AI SDK 5 demo existed)."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete, usable this week, real numbers, directly relevant to agent-workflow engineering."
+        }
+      ]
+    },
+    {
+      "slug": "cursor-security-incident-retrospective",
+      "section": "TRENDING ON X",
+      "title": "Cursor's full incident retrospective: a leaked third-party API key led to a trojanized marketplace extension",
+      "summary": "Root cause: an access key Cursor issued to inference provider Fireworks was exposed by Fireworks, letting an attacker copy a read-only trace bucket; unredacted credentials found there let the attacker reach internal SaaS tools and push a trojanized Claude Code VS Code extension into Cursor's marketplace cache for about 11 hours. Fixes: moved inference off Fireworks, rotated every exposed and all internal credentials, rebuilt and revalidated the marketplace, added secret scanning. The post does not explain the specific gap that let a stolen credential write to the marketplace cache.",
+      "why": "The real lesson is a supply-chain one: a third-party inference vendor's own key leak was the root cause, which is an angle most teams never audit for.",
+      "actionLabel": "Angle for you",
+      "action": "Check whether any third-party model/inference provider you use could leak a key reaching your own internal SaaS tools or logging buckets.",
+      "permalink": "https://cursor.com/blog/security-incident-update",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine incident retrospective with root-cause chain and concrete remediation; not previously sent, distinct from the Nov 5 Vercel Security Review item (different vendor/story)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched same session, HTTP 200."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches fetched content; honestly notes the one thing the post does NOT explain rather than overclaiming."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete 'where do I use this' angle (third-party key/trace-bucket audit), satisfies the standing X bar; also directly answers Vikas's Nov 5 note wanting to know how security fixes actually get made."
+        }
+      ]
+    },
+    {
+      "slug": "deepmind-alphaproof-code-signal-verification",
+      "section": "STUDY",
+      "title": "DeepMind's AlphaProof Code: agentic LLMs formally verified Signal's compiled crypto protocol down to machine code",
+      "summary": "AlphaProof Code is a multi-LLM agentic framework (Gemini Carbon) for formal verification in Lean. Its agents proved the compiled code of Signal's core cryptographic protocol meets its security properties at the machine-code level; humans wrote/reviewed specs, agents flagged about 1% of the codebase for human review. The team reintroduced two previously-fixed bugs and got machine-checked proofs those versions were insecure. Verification artifacts being open-sourced with a technical paper. Note: the page's body text and its meta description give two different total-lines-of-Lean figures; left out of this summary since it couldn't be resolved from the page alone.",
+      "why": "This is agents doing real formal verification on production cryptographic code, not a coding-benchmark score.",
+      "actionLabel": "Try this",
+      "action": "When the artifacts land, check how much of the ~1% flagged-for-human-review codebase maps to what you'd have reviewed anyway.",
+      "permalink": "https://deepmind.google/blog/introducing-alphaproof-code/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine research breakthrough, not benchmark-only; distinct from Google's Z3/Go bug-hunting item sent Nov 13."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched same session, HTTP 200."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Avoided the one disputed figure (LOC count) rather than guessing which is right; rest matches source."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "STUDY item, not SHIPPED."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Intersects Vikas's own PhD area (formal/semantic code analysis); genuinely surprising capability claim."
+        }
+      ]
+    },
+    {
+      "slug": "recursive-harness-self-improving-agents",
+      "section": "WATCH QUEUE",
+      "title": "Recursive Harness: Self-Improving Agents Without Training \u2014 Prompt Engineering",
+      "summary": "A self-evolving agent harness starting with only three tools (shell, read, write) that grows its own tools, hooks and memory while it works, on the Gemini Interactions API. Walks through a three-zone architecture and tests it against a frozen (non-evolving) harness as a control. Judged from the video's description and comment thread \u2014 no transcript tool was available this run (TubeAlfred not found by ToolSearch), disclosed per the standing fallback.",
+      "why": "Most self-improving-agent claims skip the control group; this one explicitly tests against a frozen harness.",
+      "actionLabel": "Worth the drive",
+      "action": "19:45 runtime. The three-zone architecture and frozen-harness comparison are the dense parts.",
+      "permalink": "https://www.youtube.com/watch?v=XaJi7a0UChs",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Real technical demo with a control group, not clickbait; a follow-up to the same channel's 3-week-old video but with new experiments, and neither was previously sent."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Confirmed public and loading this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Built from the video's own description plus comments, not guessed from the title."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not applicable \u2014 this is the Watch Queue item itself."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Squarely on Vikas's PhD/independent-project interest in self-improving agent harnesses; comments show substantive, skeptical engagement, no sponsor framing."
+        }
+      ]
+    },
+    {
+      "slug": "owain-lewis-google-elephant-goldfish-model",
+      "section": "WATCH QUEUE",
+      "title": "Google's NEW Approach to Spec-Driven Development with Claude Code \u2014 Owain Lewis",
+      "summary": "Covers Google's \"Elephant-Goldfish Model\" plugin (independently confirmed real via separate coverage, released ~Nov 8): an elephant-context planner writes the spec, then zero-context \"goldfish\" reviewers stress-test it against stated acceptance criteria before any code is written. Judged from the video's description and its 40-comment thread (same disclosed transcript-unavailable fallback).",
+      "why": "A concrete, comparable alternative to the spec-driven-dev approach in Matt Pocock's video Vikas marked useful on Oct 18.",
+      "actionLabel": "Worth the drive",
+      "action": "23:13 runtime. Worth it to compare the goldfish-reviewer mechanism against your own spec workflow.",
+      "permalink": "https://www.youtube.com/watch?v=oob6rG9pTCo",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Covers a real, independently corroborated Google release (confirmed via a separate web search hitting independent coverage dated ~Nov 8), not just the video creator's claim; not a duplicate of Matt Pocock's Oct 18 item."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Confirmed public and loading this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Core claim cross-verified independently outside the video itself, a stronger bar than usual."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not applicable \u2014 this is the Watch Queue item itself."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "40 substantive comments with real technical comparisons (Matt Pocock's skills, GitHub spec-kit, superpowers plugin), not hype reactions."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "slug": "cursor-ui-sdk",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Vercel 'Introducing the UI SDK' post referenced on X could not be found on vercel.com/blog or its index \u2014 unverifiable, dropped rather than published on an uncorroborated claim."
+    },
+    {
+      "slug": "vercel-security-review-no-linked-project",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Minor feature update (no longer requires a linked Vercel project) to the already-sent Nov 5 Vercel Security Review item \u2014 too thin/incremental on its own."
+    },
+    {
+      "slug": "vercel-sandbox-4x-faster-startup",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Near-duplicate of the already-sent Nov 11 Vercel Sandbox 10x-faster-snapshots story; same product area, thin distinction."
+    },
+    {
+      "slug": "anthropic-ipo-roadshow",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "IPO/funding news, excluded by the no-pricing-no-funding cut rule."
+    },
+    {
+      "slug": "openai-businesses-in-chatgpt",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "Consumer/business feature, not relevant to Vikas's coding/AI-SDLC focus."
+    },
+    {
+      "slug": "openai-control-room",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "OpenAI internal safety infrastructure for tracking model workloads; passive/non-actionable for Vikas's daily workflow, and a week old relative to this window."
+    },
+    {
+      "slug": "google-agent-anomaly-detection-eval",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Genuine quantified benchmark write-up (87% catch rate across 5 benchmarks) but STUDY is capped at 1 and AlphaProof Code was judged the stronger, more novel pick."
+    },
+    {
+      "slug": "deeplearning-ai-tabular-foundation-models",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Genuinely new course (launched Nov 11) but STUDY capped at 1; AlphaProof Code judged stronger."
+    },
+    {
+      "slug": "anthropic-safety-evaluations-blog",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Real engineering post (10 recommendations for designing/running safety evals) but about model-safety evals specifically, not coding/AI-SDLC; weaker fit than the chosen pick."
+    },
+    {
+      "slug": "langchain-workday-case-study-dup",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Same case study already sent as the Nov 11 STUDY pick \u2014 duplicate."
+    },
+    {
+      "slug": "langchain-goal-engineering-essay",
+      "section": "STUDY",
+      "stage": "step 3",
+      "reason": "Conceptual essay on goal design, not an adoption/impact story \u2014 doesn't meet the LangChain adoption-signal preference."
+    },
+    {
+      "slug": "google-a2ui-carbon-hydrogen-z3-dup",
+      "section": "SHIPPED",
+      "stage": "step 3",
+      "reason": "A2UI 1.0, Gemini 4 Carbon GA, Gemini 4 Hydrogen, and the Go+Z3 bug-hunting post are all duplicates of items already sent Nov 11-13."
+    },
+    {
+      "slug": "sama-ai-control-of-future",
+      "section": "TRENDING ON X",
+      "stage": "step 3",
+      "reason": "Pure philosophical discourse on AI and human control, no concrete 'where do I use this' angle \u2014 fails the standing X bar."
+    },
+    {
+      "slug": "jevving-typesafe-ai-talk",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "Comments dominated by reactions to presentation style/appearance rather than substantive technical engagement, plus one top comment calling it overhyped \u2014 didn't clear the comments-check bar."
+    },
+    {
+      "slug": "n8n-free-oss-claude-duet-grokbot",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "Title framing ('FREE + open source version of X, Y, Z') read as hype-y/clickbait; not pursued further given stronger alternatives."
+    },
+    {
+      "slug": "grok-bot-reverse-engineered-free",
+      "section": "WATCH QUEUE",
+      "stage": "step 3",
+      "reason": "Title ('reverse-engineered and made it free') raised IP/legitimacy concerns; not pursued."
+    },
+    {
+      "slug": "tencent-loopforge-github",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "Solid, actively maintained agent-orchestration repo (Tencent, 1.6k stars) but GitHub Pick capped at 1; NVIDIA/SkillEvaluator judged more differentiated (the orchestrator category is already heavily covered by prior picks)."
+    },
+    {
+      "slug": "google-ax-agent-executor-github",
+      "section": "GITHUB PICK",
+      "stage": "step 3",
+      "reason": "Google's Agent Executor runtime, well-backed (14.7k stars) but capped at 1 and judged less novel than the chosen pick given its size/age relative to 'newly surging.'"
+    },
+    {
+      "slug": "nvidia-skillevaluator",
+      "section": "GITHUB PICK",
+      "stage": "step 7b (publish)",
+      "reason": "scripts/build.py's SECTIONS/LABELS dicts still don't define a 'GITHUB PICK' section (same schema gap flagged on prior runs, e.g. Nov 11-13, 15) \u2014 moved out of items to pass the public-site build check. This item still went out in the email and the feedback artifact. Standing recommendation repeated: add a GITHUB PICK entry to SECTIONS and LABELS in scripts/build.py."
+    }
+  ]
+}
