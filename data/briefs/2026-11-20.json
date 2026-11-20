@@ -1,0 +1,239 @@
+{
+  "date": "2026-11-20",
+  "notice": null,
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Browser session still not signed in to LinkedIn (redirected to login) — the 16th consecutive day of this pattern since Nov 5."
+    },
+    {
+      "section": "GITHUB PICK",
+      "reason": "Today's since=daily trending pages loaded but text extraction dropped repo owner/repo slugs; a direct fetch for raw HTML was blocked by a safety policy; the one topic-page candidate with a resolvable URL turned out to be an established repo with no recent releases and no evidence of surging today. Dropped rather than publish an unverified or non-surging pick."
+    }
+  ],
+  "items": [
+    {
+      "slug": "vercel-eve-1-0-ga",
+      "section": "SHIPPED",
+      "title": "Vercel ships eve 1.0: an open-source framework for production agents, now GA",
+      "summary": "GA after 230+ releases since the June preview. The harness handles model calls, tool runs and subagent delegation; the open-source Workflow SDK checkpoints progress so an agent resumes after a crash; multiplayer sessions, multi-tenant agents, cross-session memory, and OpenTelemetry tracing are built in. Rillet built a software-factory agent on eve (request to spec to test to PR) and tripled its shipping rate in three months. Clay's data agent \"monty\" is used weekly by 30-40% of the company just two months in.",
+      "why": "This is a production-grade agent harness with real adoption numbers behind it, not another agent-framework announcement no one is actually running.",
+      "actionLabel": "Try this",
+      "action": "Skim the \"software factory\" pattern (request to spec to test to PR) against your own cross-service code generation ideas.",
+      "permalink": "https://vercel.com/blog/eve-is-now-generally-available",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine GA release with real adoption numbers; not a duplicate of any prior SHIPPED item."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched this run, loaded with full content."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the fetched article text."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched Vercel's own channel; found only pre-1.0 preview-era videos, none specific to today's GA release."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete, real company adoption numbers, directly relevant to agentic coding work."
+        }
+      ]
+    },
+    {
+      "slug": "google-abfs-massive-git-repos",
+      "section": "SHIPPED",
+      "title": "Google open-sources ABFS: cuts Android's 36-minute checkout to under 8 seconds",
+      "summary": "A content-addressable virtual filesystem plus build cache that lazy-loads Git objects on demand and reuses build outputs across CI and local machines. On AOSP: checkout time dropped from about 36 minutes to under 8 seconds, full build time from about 80 minutes to just over 2 minutes, with up to 100% build-action reuse across CI and developer workspaces. Built so multiple agent orchestrators can run parallel workspaces without each paying the full sync-and-build cost. Now open source on GitHub.",
+      "why": "If a build loop pays a multi-minute tax before every change, this is the actual plumbing fix, backed by hard before/after numbers rather than a benchmark claim.",
+      "actionLabel": "Try this",
+      "action": "Check the architecture against whatever monorepo tooling is already in use.",
+      "permalink": "https://developers.googleblog.com/accelerating-development-for-massive-git-repositories/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine open-source infra release with hard before/after numbers; not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched this run, HTTP 200, full article content."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the fetched content."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched for a demo video; only third-party coverage found, no first-party video, so none included."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Dramatic, concrete numbers directly relevant to large-codebase/agent-parallel workflows."
+        }
+      ]
+    },
+    {
+      "slug": "openai-jagged-frontier-research-acceleration",
+      "section": "TRENDING ON X",
+      "title": "OpenAI's own data on AI research acceleration: agents finish 46% of 2-4hr tasks alone, but the gains are jagged",
+      "summary": "Posted via @OpenAI linking a research report. Over several months, autonomous agent success rose 23%-46% on 2-4hr tasks and 13%-35% on 4-8hr tasks, but it is sharply task-dependent: 79% success monitoring training runs vs 35% launching them vs 25% writing inference/serving code. Median researcher agent spend hit $2,400/day, up 62% month over month; the 90th percentile hit $23,000/day, up 105%. Asked what they would trade to keep frontier coding agents for three months, researchers' median answers were 30% of team compute, or separately, 40% of team headcount.",
+      "why": "A company publishing its own jagged, task-by-task agent success rates, not one clean benchmark number, is a rare concrete look at where agent autonomy still breaks down.",
+      "actionLabel": "Angle for you",
+      "action": "The task-type breakdown is a template for auditing which of your own agent workflows are actually reliable versus which just look good in a demo.",
+      "permalink": "https://openai.com/index/research-acceleration-jagged-frontier/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Real internal quantitative data, not benchmark-only or PR; not a duplicate of any prior OpenAI item."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched this run via the actual permalink found on the page, full content loaded."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Figures pulled directly from the fetched article text."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Satisfies the standing bar for X items: discourse plus a concrete usable angle, genuinely quantified."
+        }
+      ]
+    },
+    {
+      "slug": "langsmith-coding-agents-roi",
+      "section": "STUDY",
+      "title": "LangSmith now ties coding-agent spend directly to merged PRs — across Claude Code, Codex, Cursor, Copilot",
+      "summary": "A new \"coding agent\" type in LangSmith's Agent Platform attributes every trace's spend to the pull requests it produced, splits cost by PR state (open, closed, merged) and by work type (features, bug fixes, investigation/review), and tracks \"unattributed\" spend — review work that never produced a PR — separately. Built after the vendor's own coding-agent spend, on an internal agent, started climbing. Context: coding is now the largest category of enterprise AI spend, $34B in 2026.",
+      "why": "This turns \"our coding agent costs X\" into \"here's what X is actually buying\" — the exact question anyone with a coding-agent budget gets asked and usually can't answer.",
+      "actionLabel": "Try this",
+      "action": "The open/closed/merged-PR cost split is worth stealing even without this specific tool, for tracking coding-agent spend anywhere.",
+      "permalink": "https://www.langchain.com/blog/langsmith-coding-agents-roi",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new product capability with real context; not a duplicate of any prior LangChain item."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched this run, full content loaded."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the fetched article text."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "STUDY item, not SHIPPED."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Names the exact tools in daily use by engineers today; directly actionable."
+        }
+      ]
+    },
+    {
+      "slug": "cognition-40x-merged-prs-walden-yan",
+      "section": "WATCH QUEUE",
+      "title": "40x More Merged PRs With 2.7x the Engineers — Walden Yan, CPO, Cognition",
+      "summary": "A conference talk on how merged PRs grew 40x in a year while engineering headcount grew 2.7x. Covers self-driving PRs by default, small pods owning everything end-to-end, every service running locally so agents can test, VMs rebuilt hourly, agents that optimize the factory itself, and a long-running agent-maintained feature. Judged from the video's own full description and timestamped chapters; no transcript tool was available this run and the comment thread was not accessible either, both disclosed.",
+      "why": "Real before/after engineering-org metrics on agent-driven development, not a vendor pitch with no numbers.",
+      "actionLabel": "Worth the drive",
+      "action": "14 min runtime. The small-pods-plus-local-testing segment is the dense part.",
+      "permalink": "https://www.youtube.com/watch?v=U92J5mCDLMc",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Real org-level before/after metrics from a credible speaker; not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-confirmed public and loading this run via the live page."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Built from the video's own full description and chapter list, not guessed from the title."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "This is the Watch Queue item itself."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Genuine metrics, no sponsor framing; squarely on-topic for agentic coding and AI-driven SDLC."
+        }
+      ]
+    },
+    {
+      "slug": "matt-pocock-ship-21000-line-feature",
+      "section": "WATCH QUEUE",
+      "title": "Watch me ship a 21,000-line feature with mattpocock/skills — Matt Pocock",
+      "summary": "A full end-to-end build: capturing requirements with domain-driven design, prototyping, AI-assisted implementation, splitting the PR into stacked diffs, human review, and a retro, all timestamped. Also promotes the creator's own paid skills subscription and workshop; the walkthrough itself is still the substantive part. Judged from the video's own full description and chapters; no transcript tool and no accessible comment thread this run, disclosed.",
+      "why": "A genuine, timestamped, start-to-finish spec-to-merged-PR walkthrough, not a highlight reel.",
+      "actionLabel": "Worth the drive",
+      "action": "69 min runtime. The spec-and-tickets segment partway through is worth it if short on time.",
+      "permalink": "https://www.youtube.com/watch?v=jVBlkOF8sHk",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine full-length technical walkthrough, distinct from any prior item by the same creator."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-confirmed public and loading this run via the live page."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Built from the video's own full description and chapter list."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "This is the Watch Queue item itself."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Substantive end-to-end build directly on-topic, despite some self-promotion, disclosed honestly."
+        }
+      ]
+    }
+  ],
+  "dropped": []
+}
