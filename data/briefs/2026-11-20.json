@@ -8,7 +8,7 @@
     },
     {
       "section": "GITHUB PICK",
-      "reason": "Today's since=daily trending pages loaded but text extraction dropped repo owner/repo slugs; a direct fetch for raw HTML was blocked by a safety policy; the one topic-page candidate with a resolvable URL turned out to be an established repo with no recent releases and no evidence of surging today. Dropped rather than publish an unverified or non-surging pick."
+      "reason": "Today's since=daily trending pages loaded but text extraction dropped repo owner/repo slugs; a direct fetch for raw HTML was blocked by a safety policy; the one topic-page candidate with a resolvable URL turned out to be an established repo with no recent releases and no evidence of surging today. Dropped rather than publish an unverified or non-surging pick. (A GitHub Pick was still found and verified via direct browser access later in this same run and included in the email/feedback-artifact only — this repo's public-site schema has no GITHUB PICK section, so it is intentionally omitted here.)"
     }
   ],
   "items": [
