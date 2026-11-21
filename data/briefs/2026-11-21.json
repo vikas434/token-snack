@@ -1,0 +1,202 @@
+{
+  "date": "2026-11-21",
+  "notice": "ON LINKEDIN skipped again today — the browser session on this Mac is still not signed in to LinkedIn (redirected to /login), an ongoing multi-week streak.",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Browser session still not signed in to LinkedIn (redirected to /login on linkedin.com/feed/) — part of a long-running multi-week streak, not specific to today."
+    },
+    {
+      "section": "GITHUB PICK",
+      "reason": "A genuine candidate (cursor/plugins, 17.9k stars, 299 today, verified live) was found, but this repo's own schema (scripts/build.py SECTIONS dict) has no GITHUB PICK section, so it is included in the email and the feedback artifact only, not in this JSON. Consistent with the 2026-11-20 brief's precedent."
+    }
+  ],
+  "items": [
+    {
+      "slug": "openai-gpt-6-2-astra-sol",
+      "section": "SHIPPED",
+      "title": "OpenAI ships GPT-6.2 Astra and Sol — cheaper, and the first model to hit “High” on self-improvement capability",
+      "summary": "Astra (frontier) and Sol (efficient) both beat their GPT-6 predecessors while costing less: Astra scores 5.2 points higher than GPT-6 Astra on Agents' Last Exam at under a third the cost, and sets a new high on Terminal-Bench-Science (+9 points, also under a third the cost). API pricing for Astra drops 20% on input/output with a 60% cached-input discount. Astra is also the first OpenAI model to hit “High” on self-improvement capability under OpenAI's Preparedness Framework, triggering a new internal oversight process.",
+      "why": "A flagship upgrade that's both better and meaningfully cheaper is rare — and OpenAI flagging its own model as newly capable of self-improvement is a safety signal worth knowing, not just the speed bump.",
+      "actionLabel": "Try this",
+      "action": "If you're on a paid plan, run one of your existing long-horizon coding prompts through Sol instead of Astra and compare cost vs. quality.",
+      "permalink": "https://openai.com/index/introducing-gpt-6-2-astra-sol/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new flagship+efficient model pair with real benchmark and pricing changes; not a rehash of the Sept GPT-6 Astra brief."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched live; resolves to the exact announcement, not a homepage."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Benchmark figures and pricing verified against the page's own text."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched OpenAI's YouTube channel and blog; found only a page-embedded clip, no standalone first-party demo permalink."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Major frontier release with verifiable technical depth, not PR-only."
+        }
+      ]
+    },
+    {
+      "slug": "google-agent-anomaly-detection-multicloud",
+      "section": "SHIPPED",
+      "title": "Google extends Agent Anomaly Detection to agents on AWS, Azure, or on-prem — via telemetry only",
+      "summary": "Previously Google-Cloud-only, Agent Anomaly Detection now reviews agents anywhere, as long as their OpenTelemetry traces/logs reach a GCP project — via Workload Identity Federation, so an agent trades its AWS role or Microsoft Entra identity for short-lived Google credentials with no service-account key involved. In two real test deployments it caught an AWS Lambda inventory agent being scraped page-by-page, and a Microsoft Foundry customer-service agent that approved a $999 refund on a $15.99 order after a prompt injection, plus a fake “store administrator” issuing $1,784.90 in unauthorized refunds.",
+      "why": "A concrete, told-with-receipts example of prompt injection and agent misuse actually getting caught in production — exactly the kind of monitoring worth having on any agent with real permissions, wherever it runs.",
+      "actionLabel": "Try this",
+      "action": "If you're running an agent built with ADK for Python 2.12.0+ outside GCP, check whether your traces already meet the OpenTelemetry + resource-attribute requirements.",
+      "permalink": "https://developers.googleblog.com/en/agent-anomaly-detection-safeguarding-agents-across-other-clouds/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine capability extension (multi-cloud) with real caught-misuse examples; not a dup of the Sept private-preview launch."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched live; confirmed Nov 20 2026 dateline and exact content match."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "OpenTelemetry/Workload-Identity-Federation details and both examples verified against the page text."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched Google Cloud Tech / Google Developers YouTube; no genuine first-party demo found for this post."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly answers a standing request for real security-mechanism depth, not corporate PR."
+        }
+      ]
+    },
+    {
+      "slug": "simonw-external-sandboxes-coding-agents",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: run Claude Code, Codex or Pi against a real sandbox with two npx commands",
+      "summary": "Three working prototype sandboxes (WebAssembly/v86, Apple Containers, Microsoft Quicksand+QEMU) all implement the same protocol, so any of Claude Code, Codex or Pi can execute commands inside one — the agent runs on your Mac as usual, but every command is confined to the folders you mount and the network hosts you explicitly proxy-allow, with API keys injected by the proxy so the agent never sees them directly.",
+      "why": "A real, runnable answer to “what happens when my coding agent does something I didn't want” — not a policy or a prompt, an actual filesystem/network boundary you can stand up in minutes.",
+      "actionLabel": "Angle for you",
+      "action": "Worth testing against your own harness tooling — run its riskier steps through one of these sandboxes before trusting it on a less-reviewed code path.",
+      "permalink": "https://blog.primeradiant.com/external-sandboxes-for-coding-agents/",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuinely new technique with working code, not previously covered."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched live; confirmed the article matches the tweet."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Three sandbox backends, npx commands and security model verified directly against the article."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Concrete, immediately triable technique — clears the standing ‘where do I use this’ bar for X picks."
+        }
+      ]
+    },
+    {
+      "slug": "deeplearning-ai-evaluating-agentic-applications",
+      "section": "STUDY",
+      "title": "New DeepLearning.AI course: Evaluating and Improving Agentic Applications (with Arize Phoenix)",
+      "summary": "Taught by Laurie Voss (Arize's Head of Developer Relations, npm co-founder), built with Arize AI. Covers reading agent traces, labeling recurring failures into a reusable test set, building code-based evaluators and calibrated LLM judges (measured with precision, recall and Cohen's kappa), and verifying agent tool-calls and outcomes, not just final text. The course page shows a Nov 11, 2026 update — not today's single newest DeepLearning.AI course — but it hasn't appeared in this brief before.",
+      "why": "A hands-on course on agentic eval methodology, not another “agents are hard to test” blog post.",
+      "actionLabel": "Try this",
+      "action": "The “Building Evaluators You Can Trust” module (code evaluators vs. calibrated LLM judges) is the part most directly reusable in harness work.",
+      "permalink": "https://www.deeplearning.ai/courses/evaluating-and-improving-agentic-applications",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Not previously covered; squarely on-topic for agentic eval methodology. Page shows an update roughly 10 days old, not launched today — disclosed honestly rather than implied as brand-new."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched live; resolves to the exact course page."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Curriculum details verified directly against the page content."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Hands-on, named tooling (Arize Phoenix), credible instructor."
+        }
+      ]
+    },
+    {
+      "slug": "zach-lloyd-warp-engineer-coding-agents",
+      "section": "WATCH QUEUE",
+      "title": "Engineer Your Coding Agents Like Any Other System — Zach Lloyd, Warp (AI Engineer)",
+      "summary": "Argues most developers still run coding agents locally and prompt them one at a time, which caps throughput and makes cost, security and governance hard to manage — and makes the case for engineering agent fleets as a system rather than babysitting a chat window. Judged from the video's title, channel and available description/comments: TubeAlfred was unavailable this run and the full description was truncated behind a non-clickable “Show more” toggle, so this uses the description+comments fallback, not a transcript read.",
+      "why": "If you're already building your own coding harness, this is the “stop treating it like a toy” argument from someone running agents at genuine production scale.",
+      "actionLabel": "Worth the drive",
+      "action": "18 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=0LeT996Hz3E",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Substantive conference talk on production coding-agent concerns, not clickbait."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-opened directly; video is live and public."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Based on title, channel and available description/comment text; TubeAlfred unavailable this run, disclosed."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Speaker (Warp CEO) and topic (agent fleet engineering) match stated harness-engineering interest."
+        }
+      ]
+    }
+  ],
+  "dropped": []
+}
