@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-22",
+  "items": [
+    {
+      "slug": "gemini-api-tool-retrieval",
+      "section": "SHIPPED",
+      "title": "Google ships Tool Retrieval in the Gemini API — load tool schemas on demand instead of stuffing them all into every prompt",
+      "summary": "Add a tool_search tool and set defer_loading:true on your other tools; the model still sees the name and description of every deferred tool, but the full parameter schema only loads when the model asks for that tool by name, inside the same request. interaction.steps shows exactly which tool got searched and loaded, and deferred schemas stay out of the cached prompt prefix so prefix caching still works turn to turn.",
+      "why": "If your agent juggles dozens of tools, this is a direct fix for the token bloat and tool-misselection problem that comes from cramming every schema into context on every call.",
+      "actionLabel": "Try this",
+      "action": "Add tool_search + defer_loading:true to your long-tail, rarely-used tools in the Interactions API and keep your most-used ones undeferred, then check interaction.steps to see what actually got searched.",
+      "permalink": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-api-tool-retrieval/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new API capability (tool_search/defer_loading) solving a real agent-scaling problem, not pricing/benchmark/partnership. Confirmed not a duplicate via grep across all available prior briefs."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched live at eval gate; resolves to the specific blog.google article, not a homepage."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Mechanism and code sample verified against the fetched page text directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched for a first-party Google demo of this specific feature; found none."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable for anyone building multi-tool agent harnesses, which matches Vikas's own PhD/day-job focus."}
+      ]
+    },
+    {
+      "slug": "openrouter-minimax-secret-forwarding",
+      "section": "TRENDING ON X",
+      "title": "swyx flags an OpenRouter routing leak — some providers were quietly forwarding requests to MiniMax without saying so",
+      "summary": "A researcher's canary links sent through OpenRouter resurfaced via MiniMax 40 to 130 hours later, meaning AtlasCloud, Novita and StreamLake were silently routing requests to MiniMax even when a different provider was selected — and someone opened those links, meaning outputs were accessible to whoever did.",
+      "why": "Picking a specific provider on a multi-provider gateway doesn't guarantee that provider is actually who sees your prompts and outputs — this is a real instance of that assumption breaking.",
+      "actionLabel": "Angle for you",
+      "action": "If you route through OpenRouter or any multi-provider gateway, check your provider-pinning/allow-list settings rather than trusting the provider label shown in the UI.",
+      "permalink": "https://x.com/swyx/status/2124147427313861009",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Real security/privacy incident on LLM API routing infrastructure, not pure discourse; has a concrete where-do-I-use-this angle. Confirmed not a duplicate of the unrelated Nov-12 Vercel/MiniMax AI Gateway availability mention."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched https://x.com/swyx/status/2124147427313861009 at eval gate; resolves to the exact tweet."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches swyx's post text and the quoted michael_chomsky thread, both read directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete actionable security angle, not discourse-only, per the standing TRENDING ON X bar."}
+      ]
+    },
+    {
+      "slug": "langchain-knowledge-factory",
+      "section": "STUDY",
+      "title": "Harrison Chase: how LangChain builds a “knowledge factory” to make its own internal agents actually useful",
+      "summary": "Breaks the knowledge an agent needs into three buckets — skills (how to do things your way), domain knowledge (how the business works), and data-access guidance (where to look) — and describes how LangChain's own LangSmith Engine and internal GTM/content agents run on exactly this pattern in production.",
+      "why": "His core point is blunt and useful: more context doesn't fix a dumb agent, better-curated reusable knowledge does — and he's describing what that looks like at his own company, not a hypothetical.",
+      "actionLabel": "Try this",
+      "action": "Map your own coding agent's recent failures against those three buckets; most “the agent didn't know X” bugs turn out to be a missing skill doc or domain-knowledge gap, not a model limitation.",
+      "permalink": "https://www.langchain.com/blog/knowledge-factory",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Substantive framework post from LangChain's own founder describing real internal production usage (LangSmith Engine, GTM agents), not a version-bump changelog line. Confirmed not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched https://www.langchain.com/blog/knowledge-factory directly at eval gate."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the post's own “Context vs knowledge” and “pieces of knowledge” sections, read directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable framework; ties to Vikas's own Nov-15 feedback wanting eval/knowledge depth and his PhD focus on semantic code knowledge graphs."}
+      ]
+    },
+    {
+      "slug": "codex-new-ways-of-working-ai-engineer",
+      "section": "WATCH QUEUE",
+      "title": "New Ways of Working with Codex — Dominik Kundel & Charlie Guo, OpenAI (AI Engineer / CODE Summit 2026)",
+      "summary": "OpenAI's own engineers demo connected Codex agent workflows at a live conference talk: context-gathering via plugins and “Appshots,” fast UI iteration, and an internal video-editing agent that cuts footage in DaVinci Resolve and returns it for review. Judged from the video's description and its 8 visible comments — TubeAlfred (the configured transcript tool) is not present in this session or on this device this run, so this uses the description+comments fallback, disclosed per standing instruction, not a transcript read.",
+      "why": "This is OpenAI's own team showing its actual day-to-day Codex setup at a conference, not a marketing reel — a commenter specifically flagged the Appshots context-gathering segment as new to them.",
+      "actionLabel": "Worth the drive",
+      "action": "58 minutes; skip toward the Appshots/context-gathering segment if short on time.",
+      "permalink": "https://www.youtube.com/watch?v=IPh9YsWvDQk",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine first-party OpenAI engineer demo at a real conference, not reaction/hype. Confirmed not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched https://www.youtube.com/watch?v=IPh9YsWvDQk at eval gate; video available."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Built from video description + comments (transcript fallback, disclosed); matches what was read directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Credible channel (AI Engineer), real OpenAI engineers, directly relevant to daily Codex-adjacent workflows."}
+      ]
+    },
+    {
+      "slug": "harrison-chase-future-of-agents",
+      "section": "WATCH QUEUE",
+      "title": "The Future of Agents with Harrison Chase — LangChain",
+      "summary": "An interview on where agent deployments are headed in 2027, pairing with today's knowledge-factory STUDY pick from the same person. A commenter specifically calls out a “see, measure, fix” loop for keeping persistent, always-on agents actually improving instead of just getting busier. Judged from the video's description and its 5 visible comments — same TubeAlfred-unavailable fallback as above, disclosed, not a transcript read. More interview/discourse than hands-on tutorial.",
+      "why": "Pairs directly with today's STUDY pick: same person, the measurement side of the same knowledge-factory problem.",
+      "actionLabel": "Worth the drive",
+      "action": "46 minutes; listen for the “see, measure, fix” framing specifically, the rest is more general industry discussion.",
+      "permalink": "https://www.youtube.com/watch?v=GojQtxCT3dg",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Real interview content with a concrete methodology mentioned (see/measure/fix loop) per a corroborating comment, not pure reaction/hype. Confirmed not a duplicate of the different Oct-31 Harrison Chase video (model/harness/context framework, a distinct talk)."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched https://www.youtube.com/watch?v=GojQtxCT3dg at eval gate; resolves."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Built from video description + comments (transcript fallback, disclosed); matches what was read directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Flagged honestly as more interview/discourse than tutorial; still clears the bar on the strength of the measurement-loop takeaway and direct tie to the STUDY pick."}
+      ]
+    }
+  ],
+  "skipped": [
+    {"section": "ON LINKEDIN", "reason": "LinkedIn browser session on this Mac is still not signed in (navigating to linkedin.com/feed/ redirected to /login) — roughly the 14th-15th consecutive scheduled run to hit this since 2026-11-05, excluding a few gap days. Flagged via push notification per Step 8b, as on each prior occurrence."},
+    {"section": "GITHUB PICK", "reason": "Tracer-Cloud/opensre (14k stars live, actively committed today) cleared the bar and is included in today's email and the feedback artifact, but this repo's own schema (scripts/build.py SECTIONS dict) has no GITHUB PICK key — confirmed by reading the file directly — so this pick is email/artifact-only, not published to the public site, following the 2026-11-20/21 precedent."}
+  ],
+  "dropped": [
+    {"slug": "cursor-changelog-stale", "title": "Cursor changelog (stale, newest entry still Nov 6)", "stage": "step 3", "reason": "Nothing new since Nov 6; all recent entries (voice chat, build live apps) already covered in prior briefs."},
+    {"slug": "openai-live-1-1-voice", "title": "OpenAI gpt-live-1.1 voice model update", "stage": "step 3", "reason": "Minor incremental pronunciation/transcription improvement to a voice model, not a meaningful capability change for Vikas's coding workflow."},
+    {"slug": "claude-meetings-recap", "title": "Claude Meetings beta (Nov 12 Anthropic release note)", "stage": "step 3", "reason": "10 days old, already within the window prior runs would have covered; not fresh for today."},
+    {"slug": "simonw-gemini-4-hydrogen-thinking-cost", "title": "Simon Willison's Gemini 4 Hydrogen high-vs-xhigh pelican cost comparison", "stage": "step 3", "reason": "Interesting but benchmark/cost-comparison flavored with a novelty pelican-SVG test; weaker on the standing where-do-I-use-this bar than the chosen OpenRouter security item."},
+    {"slug": "cursor-gemini-4-neon-availability", "title": "Cursor: Gemini 4 Neon now available (benchmark/pricing tweet)", "stage": "step 3", "reason": "Pricing and CursorBench benchmark numbers only, excluded per the standing no-pricing/no-benchmark-only rule."},
+    {"slug": "vercel-various-nov", "title": "Vercel: ISO 42001 certification, Vercel X accelerator, eve 1.0 GA, Vercel Board", "stage": "step 3", "reason": "Certification and accelerator-program posts are corporate/partnership flavored; eve 1.0 GA and Board are 4-9 days old and adjacent to picks already sent in prior briefs."},
+    {"slug": "deeplearning-ai-tabular-foundation-models", "title": "DeepLearning.AI new-course banner: Tabular Foundation Models for Data Science Agents", "stage": "step 3", "reason": "Today's featured new-course banner is data-science/tabular focused, a weaker fit for Vikas's backend/agent-tooling work than the LangChain STUDY pick chosen instead."},
+    {"slug": "github-claude-bughunter", "title": "elementalsouls/Claude-BugHunter (16.1k stars, 1.8k today)", "stage": "step 3", "reason": "Thematically a red-team/bug-hunting skill bundle, judged inappropriate to promote in this brief regardless of star count, consistent with the 2026-11-21 precedent."},
+    {"slug": "github-last30days-skill", "title": "mvanhorn/last30days-skill (72k stars, 560 today)", "stage": "step 3", "reason": "Implausible total star count for the repo's actual scope, consistent with the 2026-11-21 precedent flagging this exact repo as likely-gamed."},
+    {"slug": "github-diagram-design", "title": "cathrynlavery/diagram-design (69.8k stars, 583 today)", "stage": "step 3", "reason": "Same implausible-star-count pattern as above, same precedent."},
+    {"slug": "github-cursor-plugins", "title": "cursor/plugins", "stage": "step 3", "reason": "Confirmed duplicate: already the 2026-11-21 GITHUB PICK."},
+    {"slug": "github-codegraph", "title": "colbymchenry/codegraph", "stage": "step 3", "reason": "Confirmed duplicate of the 2026-10-02 STUDY pick (already flagged as such on 2026-11-20)."},
+    {"slug": "youtube-floorplan-hal-shin", "title": "Floorplan: Finally Understand the Code Your AI Wrote — Hal Shin", "stage": "step 3", "reason": "Pinned comment and description confirm the video is sponsored by TestSprite with an affiliate link; genuine-substance-vs-sponsor ratio could not be confirmed without a transcript (TubeAlfred unavailable), so dropped rather than risk promoting a sponsor-heavy video per the standing disclose-or-drop instruction."}
+  ]
+}
