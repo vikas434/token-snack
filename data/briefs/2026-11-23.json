@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-23",
+  "notice": "ON LINKEDIN and GITHUB PICK are empty today (not signed in on this device; nothing on GitHub's daily-trending pages cleared the bar). Full reasons in the run log.",
+  "skipped": [
+    {"section": "ON LINKEDIN", "reason": "Browser session on this Mac still not signed in to LinkedIn (redirected to /login on linkedin.com/feed/) — roughly the 18th consecutive scheduled run to hit this since ~2026-11-05."},
+    {"section": "GITHUB PICK", "reason": "Checked github.com/trending?since=daily (unfiltered) plus /typescript, /python, /java, /go, /rust (rust page blocked by robots.txt) since=daily pages. Nothing surfaced that was both genuinely AI-coding-agent/dev-tooling relevant and credibly surging today — the lists were dominated by established giants (tensorflow, flask, vscode, spring-boot, etc.) or unrelated novelty/tutorial repos. The topics/ai-agents listing was checked too but is sorted by lifetime stars, not a daily-surge signal, so it was not used to pick a repo. This repo's schema (scripts/build.py SECTIONS) also has no GITHUB PICK key, so even on a day with a pick it would be email/feedback-artifact only, not in this file's items array."}
+  ],
+  "items": [
+    {
+      "slug": "openai-codex-cli-0171-tui-workspace",
+      "section": "SHIPPED",
+      "title": "OpenAI's Codex CLI 0.171.0 turns on a TUI workspace by default — previews, subagent transcripts, and remote session control",
+      "summary": "The terminal UI now ships with searchable document previews, image previews, and subagent transcripts alongside the main conversation, on by default. Also new: codex exec --remote <ADDR> to start or resume noninteractive sessions on an existing app server, and /rc / /remote to manage remote control and pair a display device from the TUI.",
+      "why": "This is OpenAI making the terminal workspace itself more like an IDE — you can now actually see what a subagent did without tailing logs, and drive a session from a different machine.",
+      "actionLabel": "Try this",
+      "action": "Update Codex CLI, open a multi-step task and check the new subagent-transcript panel — then try codex exec --remote against a long-running session from a second machine.",
+      "permalink": "https://github.com/openai/codex/releases/tag/rust-v0.171.0",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Default-on TUI redesign (previews + subagent transcripts) plus new remote session/device-pairing commands; genuine capability change, re-checked not a duplicate of any prior pick in the last 14 days."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched github.com/openai/codex/releases/tag/rust-v0.171.0 fresh at eval time; resolves to the exact release notes."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Summary copied directly from the release's own bullet points, read live on the page."},
+        {"check": "Watch material", "result": "FAIL", "reason": "Searched OpenAI's own channel and YouTube broadly for a first-party demo of this specific release; found none. No Watch line included."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to a multi-CLI coding-agent workflow; a concrete, noticeable change, not a minor bug fix."}
+      ]
+    },
+    {
+      "slug": "claude-code-2130-easel-chart-mod",
+      "section": "SHIPPED",
+      "title": "Claude Code ships easel, a built-in mod that draws charts on request and under MCP metrics results",
+      "summary": "v2.1.330 adds easel (Pro, Max, and where available Team/Enterprise, on macOS and Linux — toggle off in /config), plus sign-in to organizations managed in Anthropic's Enterprise Admin Console, which applies your org's settings and cloud provider automatically after claude auth login.",
+      "why": "A built-in charting mod means you can ask Claude Code to visualize MCP metrics or any numeric result inline, without piping it to a notebook or writing a one-off plotting script.",
+      "actionLabel": "Try this",
+      "action": "Update to 2.1.330, ask Claude Code to chart the output of an MCP metrics call, and check /config if you want to turn automatic charts off.",
+      "permalink": "https://github.com/anthropics/claude-code/releases/tag/v2.1.330",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "New built-in auto-charting mod plus Enterprise Admin Console org sign-in; genuine new capability, not a rehash or duplicate of any prior pick."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched github.com/anthropics/claude-code/releases/tag/v2.1.330 fresh at eval time; resolves to the exact release."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Summary matches the changelog text read directly on the page."},
+        {"check": "Watch material", "result": "FAIL", "reason": "Searched; only found low-view (8-316 views) third-party Shorts reacting to the changelog, not genuine first-party Anthropic content. Excluded per standing rule."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Vikas uses Claude Code directly; an automatic charting mod for MCP results is a concrete, usable capability."}
+      ]
+    },
+    {
+      "slug": "openai-perplexity-intelligence-pachocki",
+      "section": "TRENDING ON X",
+      "title": "OpenAI's chief scientist proposes perplexity, not benchmarks, as the shared metric for pacing AI progress",
+      "summary": "Jakub Pachocki publishes OpenAI's internal perplexity measurements going back to GPT-3.5 and argues for perplexity (cross-entropy loss) as a common metric across labs, with progress beyond agreed thresholds gated on the industry's ability to understand model behavior. Sam Altman amplified it as the most important thing OpenAI has published in a while. This is discourse, not a shipped product.",
+      "why": "If labs converge on this, capability claims stop being a benchmark-marketing contest and start being tied to a harder-to-game, continuously tracked number.",
+      "actionLabel": "Angle for you",
+      "action": "Next time a lab claims a capability jump, ask whether they show the perplexity delta behind it, not just the benchmark score.",
+      "permalink": "https://openai.com/index/perplexity-and-intelligence/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine research/governance publication from OpenAI's chief scientist with real data (perplexity vs. capability across model generations), not a duplicate, not pricing/benchmark-only."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched openai.com/index/perplexity-and-intelligence/ fresh at eval time; dated 2026-11-22, resolves to the post."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Summary reflects the post's own stated thesis and chart, read directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Discourse-only, flagged honestly as such; angle grounded in a concrete 'how to evaluate future capability claims' takeaway rather than left as pure news."}
+      ]
+    },
+    {
+      "slug": "langchain-proactive-agents-memory",
+      "section": "STUDY",
+      "title": "LangChain: what actually breaks when you move agents from prompted to proactive",
+      "summary": "Sydney Runkle describes the architecture behind LangChain's own internal GTM Agent and Robin (their engineering agent, formerly Open SWE) — both built on Managed Deep Agents, where over 70% of runs now start from a schedule or event rather than a human prompt. The real lesson is memory: a three-part model of seed, feedback, and outcomes, and why salience, expiry, and duplication are the hard parts of keeping that memory useful as it grows.",
+      "why": "This is the concrete version of 'give your agent memory' — a specific breakdown of what to store and when it goes stale, from a team running it in production.",
+      "actionLabel": "Try this",
+      "action": "Pick one coding agent you run on a schedule or trigger and write down, in the seed/feedback/outcomes framing, what it's actually remembering between runs today.",
+      "permalink": "https://www.langchain.com/blog/what-weve-learned-building-proactive-agents",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Real production data (>70% of Deep Agent runs now schedule/event-triggered) and a concrete memory architecture; checked against the last 14 days, not a duplicate of the already-used knowledge-factory (11-21/22) or LangSmith-ROI (11-20) posts."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched langchain.com/blog/what-weve-learned-building-proactive-agents fresh at eval time."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Summary matches the post's own text, read directly."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to agentic-SDLC/agent-memory interests."}
+      ]
+    },
+    {
+      "slug": "armin-ronacher-workshop-before-factory",
+      "section": "WATCH QUEUE",
+      "title": "Build the Workshop Before the Software Factory — Armin Ronacher, Earendil (AI Engineer / Code Summit 2026)",
+      "summary": "Real session data from Earendil's own Pi coding agent: the harness hasn't changed in a year, but the models have — correction rate keeps dropping, and the 90th-percentile task now runs 14 minutes versus 2.5 minutes a year ago. Of 141 projects he's started, only 10-15 stay actively maintained. His argument: human attention, not agent capability, is now the bottleneck. Judged from the video's own transcript, read in full via YouTube's transcript panel (TubeAlfred was not available this run).",
+      "why": "One of the most data-grounded 'what's actually changed in agentic coding' talks around right now, from someone who ships a coding agent himself.",
+      "actionLabel": "Worth the drive",
+      "action": "20 minutes — the chapters on 'knowing when to push back on the agent' (7:47) and 'executive summaries instead of reading code' (10:02) are the most immediately applicable.",
+      "permalink": "https://www.youtube.com/watch?v=JNexz3Tbiu8",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine data-driven talk, posted today, not clickbait, not sponsor-driven, confirmed not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the video page fresh at eval time; public, 44k+ views."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Drawn directly from the transcript read live via YouTube's transcript panel, not guessed from title/description."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete, data-driven, directly in his daily-coding-agent wheelhouse."}
+      ]
+    },
+    {
+      "slug": "austin-marchese-self-improving-agents-claude",
+      "section": "WATCH QUEUE",
+      "title": "How To Build Self-Improving AI Agents with Claude (Stanford's Method) — Austin Marchese",
+      "summary": "Walks through a concrete generator/verifier/coach architecture for self-improving Claude agents, based on Stanford's course on the topic: a coach proposes one change at a time into a separate candidate file next to the live one, never rewriting what already works. Three levels: you suggest the improvement, AI suggests and you approve, or AI improves itself unsupervised. Judged from description, chapters, and comments (TubeAlfred unavailable this run, disclosed fallback). One brief affiliate mention near the top of the description; the 16-minute body isn't sponsor content.",
+      "why": "The 'coach writes to a candidate file, never the live one' pattern is the single most copy-pasteable idea here.",
+      "actionLabel": "Worth the drive",
+      "action": "17 minutes — skip to Step 3 (6:42, 'Add the Coach') if you already have a working generator/verifier pair.",
+      "permalink": "https://www.youtube.com/watch?v=UUg5oij7ptw",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, genuinely new technique (3-level self-improvement framework), not a rehash."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the video page fresh at eval time; public, 52k+ views."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches description + chapter timestamps read directly; comment engagement corroborates real technical content."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "One brief affiliate mention judged acceptable (not dominant); genuinely actionable pattern for agent-harness work."}
+      ]
+    }
+  ],
+  "dropped": [
+    {"stage": "step 3", "reason": "Cursor: no qualifying new entries on cursor.com/changelog (stale since Oct 20) or @cursor_ai (Gemini 4 Neon availability is pricing/benchmark-only; security incident retrospective already covered 2026-11-16; Projects multiplayer already covered 2026-11-13)."},
+    {"stage": "step 3", "reason": "Anthropic: anthropic.com/news newest entries in-window are IPO closing/pricing corporate finance news, not a product change."},
+    {"stage": "step 3", "reason": "Vercel: vercel.com/changelog newest entry (Nov 20) is a request-body size bump; @vercel posts are ISO 42001 certification, Vercel X accelerator applications, and AI Gateway spend stats — certification/accelerator/stats-flavored, not a capability change."},
+    {"stage": "step 3", "reason": "Google: blog.google/technology/ai and ai.google.dev/gemini-api/docs/changelog show nothing dated in the Nov 20-23 window (newest Gemini API entry Oct 30)."},
+    {"stage": "step 3", "reason": "LangChain 'How to build a knowledge factory' (Harrison Chase, Nov 21) — confirmed duplicate of the 2026-11-21/22 STUDY picks on the same topic."},
+    {"stage": "step 3", "reason": "LangChain 'LangSmith Tool Gateway' and 'Why agent governance starts with observability' (both Nov 19) — real feature posts, passed over for the more substantive proactive-agents/memory piece given one STUDY slot."},
+    {"stage": "step 3", "reason": "DeepLearning.AI 'Tabular Foundation Models for Data Science Agents' — today's featured new course, but a weaker fit for agent/coding-tooling interests than the LangChain STUDY pick (consistent with prior-day judgment on similar tabular/data-science courses)."},
+    {"stage": "step 3", "reason": "X: Anthropic founder-story video (Nov 20, corporate narrative, not a product); OpenAI neurodegenerative-disease research post (Nov 21, off-topic for coding); swyx/OpenRouter-MiniMax leak repost — confirmed duplicate of the 2026-11-22 pick; Simon Willison Gemini high-vs-xhigh cost comparison (Nov 22) — benchmark/novelty-flavored, not chosen."},
+    {"stage": "step 3", "reason": "GitHub: no repo on any checked since=daily trending page (unfiltered, typescript, python, java, go; rust blocked by robots.txt) was both genuinely AI-coding/dev-tooling relevant and credibly surging; whole section left empty rather than forcing a weak or established-giant pick."},
+    {"stage": "step 3", "reason": "Watch Queue: 'Google Just Killed the Chatbot Reply (A2UI)' (Better Stack) — reacting to an already-covered Google A2UI ship (2026-11-12), redundant angle; 'Data Agents over S3' (Dmitry Petrov, Agentic AI Foundation) — 935 views, reads as a startup pitch for the creator's own tool; 'Why everyone's a builder isn't working' (Lenny's Podcast w/ Sherif Mansour) — 81-minute interview, passed over given two slots already filled with more hands-on-applicable picks."}
+  ]
+}
