@@ -1,0 +1,127 @@
+{
+  "date": "2026-11-24",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Not signed in this run: the built-in browser had no LinkedIn session, and a second local Chrome path needed a user confirmation unavailable in this unattended run. Multi-day streak of this section being empty."
+    },
+    {
+      "section": "GITHUB PICK",
+      "reason": "Found and verified (a small new CLI for profiling + agent-assisted Rust porting of hot paths) but this repo's build schema has no GITHUB PICK section (see scripts/build.py) — included in the email and feedback artifact only, consistent with prior days."
+    }
+  ],
+  "items": [
+    {
+      "slug": "gemini-computer-use-mac-app",
+      "section": "SHIPPED",
+      "title": "Gemini for Mac gets Computer Use: multi-step clicking, typing and form-filling across your desktop apps",
+      "summary": "The Gemini app for Mac can now carry out multi-step actions — clicking, typing, filling forms — across desktop apps and websites, in its own separate window. You choose which apps it can use, and it pauses for logins or payments. Rolling out in English to Google AI Plus, Pro and Ultra subscribers (18+, personal accounts) in the U.S.",
+      "why": "A real computer-use agent shipped into a mainstream desktop app, not a research demo.",
+      "actionLabel": "Try this",
+      "action": "If eligible, download the Gemini Mac app and give it one bounded multi-app task to see where it draws the confirmation line.",
+      "permalink": "https://gemini.google/release-notes/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new agentic capability in a shipping app; not a duplicate of any prior brief."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched live; the dated entry is on the page verbatim."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Summary matches the page's own wording."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched for a first-party demo video; none found."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant agentic-desktop-control capability."}
+      ]
+    },
+    {
+      "slug": "vercel-board-agent-coordination",
+      "section": "SHIPPED",
+      "title": "Vercel ships Board: a shared message board where agents (and you) coordinate tasks",
+      "summary": "An experimental primitive: a message board of channels and threads where agents claim tasks, post updates, and complete work via a CLI or SDK, with two-way Slack/GitHub sync, per-channel access grants, and task dependencies for swarm coordination. Harness-agnostic (Claude Code, Codex, and others named). Now available on all plans.",
+      "why": "A real attempt at the missing shared coordination layer for multi-agent setups, not another single-agent harness.",
+      "actionLabel": "Try this",
+      "action": "Install the skill in a repo where you already run more than one coding agent and try a single task handoff between two agents.",
+      "permalink": "https://vercel.com/blog/introducing-vercel-board",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new product primitive; not previously covered."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched live, HTTP 200, detailed mechanism confirmed on page."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the blog post's own description of the mechanism."},
+        {"check": "Watch material", "result": "N/A", "reason": "Checked the post and Vercel's YouTube channel; no real demo video found, only a scripted in-page walkthrough."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to multi-agent / agentic SDLC workflows."}
+      ]
+    },
+    {
+      "slug": "simonw-gemini-thinking-effort-cost",
+      "section": "TRENDING ON X",
+      "title": "Simon Willison: Gemini 4 Hydrogen's thinking-effort setting is a bigger lever than people realize",
+      "summary": "Comparing a fixed test at \"high\" vs \"xhigh\" thinking effort on Gemini 4 Hydrogen, the xhigh run cost about 6x the tokens and price of the high run for the same prompt.",
+      "why": "A concrete reminder that the reasoning-effort setting, not just model choice, is a major cost/quality lever.",
+      "actionLabel": "Angle for you",
+      "action": "Audit one production prompt using an effort/thinking parameter and check whether it defaults to the highest tier without anyone measuring the difference.",
+      "permalink": "https://x.com/simonw/status/2124217876777464269",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, buildable technique; not a duplicate of prior discourse items."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-opened the live post; engagement numbers match."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Cost/token figures read directly from the post."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Clear where-do-I-use-this angle (cost tuning), per standing preference."}
+      ]
+    },
+    {
+      "slug": "langsmith-tool-gateway",
+      "section": "STUDY",
+      "title": "LangSmith Tool Gateway: one managed layer for credentials, access and audit across every agent's tools",
+      "summary": "A public-beta managed layer that puts every agent tool call behind identity, access and audit controls: register MCP servers or built-ins, group tools into scoped \"kits,\" choose identity mode (as the user or as the agent), and apply deny/approval policies, with every call traced. An anonymized large retailer runs it across 50+ MCP servers and 1,000+ tools.",
+      "why": "The access-control and audit layer most homegrown MCP setups are missing.",
+      "actionLabel": "Try this",
+      "action": "Map which of your own MCP tools are reachable by every agent today with no per-tool scoping, and note the first one you'd want a deny policy on.",
+      "permalink": "https://www.langchain.com/blog/langsmith-tool-gateway",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new capability with a real (if anonymized) adoption example; previously seen but never published."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched live, HTTP 200."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the post's own described mechanism and example."},
+        {"check": "Watch material", "result": "N/A", "reason": "STUDY item, not required."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly relevant to agent tool governance."}
+      ]
+    },
+    {
+      "slug": "birgitta-boeckeler-codified-ambient-context",
+      "section": "WATCH QUEUE",
+      "title": "Context != Context: Codified vs Ambient Context for Agents — Birgitta Boeckeler, Unblocked",
+      "summary": "Separates codified context (deliberately authored and reused, e.g. AGENTS.md/skills) from ambient context assembled at task time from sources like chat and voice, with different life cycles. Judged from description, chapters and comments (video-transcript tool unavailable this run; fallback disclosed).",
+      "why": "A clear framing of a context-architecture problem for coding agents.",
+      "actionLabel": "Worth the drive",
+      "action": "30 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=NxypyNu1944",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Substantive conference talk; not a duplicate of any prior Watch Queue pick."},
+        {"check": "Link works", "result": "PASS", "reason": "Video confirmed live and public."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the video's own description and visible slide content."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Substantive, non-clickbait, real technical content."}
+      ]
+    },
+    {
+      "slug": "dex-horthy-software-factory-12-rules",
+      "section": "WATCH QUEUE",
+      "title": "12 Rules for a Software Factory That Doesn't Ship Slop — Dex Horthy, Factory",
+      "summary": "Using a new benchmark for how well agents evolve a codebase over time (best model scores ~16%), argues software factories are good engineering with agents doing the building, and lays out 12 practices to keep a codebase from degrading. Judged from description and comments (video-transcript tool unavailable this run; fallback disclosed); comments show real engagement including some pushback.",
+      "why": "A benchmark-grounded, somewhat skeptical take on a topic this reader has found useful before.",
+      "actionLabel": "Worth the drive",
+      "action": "20 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=-NFMsM2y0Vk",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Distinct speaker, distinct benchmark/data from any recently covered software-factory talk."},
+        {"check": "Link works", "result": "PASS", "reason": "Video confirmed live and public."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the video's own description; comment pushback noted rather than hidden."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Matches a previously-useful topic with new, concrete benchmark data."}
+      ]
+    }
+  ],
+  "dropped": [
+    {"title": "OpenAI GPT-6.2 Astra and Sol", "stage": "step 3", "reason": "Confirmed duplicate of an item already published in a prior brief."},
+    {"title": "OpenAI / Cisco open-source agent-defense runtime (seen on X)", "stage": "step 3", "reason": "No working first-party blog or repo permalink could be confirmed despite search."},
+    {"title": "Cursor changelog", "stage": "step 3", "reason": "Nothing new this week; newest entry already covered in a prior brief."},
+    {"title": "Anthropic news", "stage": "step 3", "reason": "Only corporate/IPO-related posts in the window, no product capability change."},
+    {"title": "DeepLearning.AI new course check", "stage": "step 3", "reason": "Newest course launch is over a month old; nothing new this week."},
+    {"title": "AlphaSignal newsletter", "stage": "step 3", "reason": "No new issue has arrived in 11 days; nothing to source from it today."},
+    {"title": "Industry perplexity-as-metric discourse (OpenAI chief scientist)", "stage": "step 3", "reason": "Confirmed duplicate of an item already published in a prior brief."},
+    {"title": "Several GitHub trending repos (old, established projects spiking today)", "stage": "step 3", "reason": "Verified live as years-old established projects, not newly surging, despite appearing on a since=daily trending page."}
+  ]
+}
