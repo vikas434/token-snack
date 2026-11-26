@@ -1,0 +1,242 @@
+{
+  "date": "2026-11-26",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "Not signed in this run: linkedin.com/feed/ redirected straight to /login in the local browser. Ongoing multi-week reliability issue (confirmed again today), flagged again via notification."
+    },
+    {
+      "section": "GITHUB PICK",
+      "reason": "Found and verified (google-labs-code/stitch-skills, 13.0k stars live, 1,539 added today) but this repo's build schema has no GITHUB PICK section (see scripts/build.py SECTIONS dict) -- included in the email and feedback artifact only, consistent with prior days."
+    }
+  ],
+  "items": [
+    {
+      "slug": "claude-code-mcp-server-skills",
+      "section": "SHIPPED",
+      "title": "Claude Code 2.1.332 lets any connected MCP server serve you a skill directly",
+      "summary": "Headline addition: skills from MCP servers (beta) -- any MCP server you've already connected can now hand Claude Code a skill, which shows up in the / menu as server:skill alongside your regular skills, no separate plugin install needed. It ships with a new PreSkillShellCommand hook that can block or vet a skill's inline shell commands as it loads, plus a long list of reliability fixes (frozen terminals on flooding MCP output, hung named pipes on .env mounts, several Code Mode worktree/resume bugs).",
+      "why": "Every MCP server you've connected already has tools; now it can ship you a skill too, closing a real gap between the MCP and skills ecosystems that had been growing separately.",
+      "actionLabel": "Try this",
+      "action": "Update to 2.1.332 and check the / menu for a new server:skill entry on any MCP server you already have connected -- that's a skill it's now serving you directly.",
+      "permalink": "https://github.com/anthropics/claude-code/releases/tag/v2.1.332",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Genuine new capability (MCP servers can now serve skills directly), not cosmetic; checked against the last several days' briefs, not a duplicate (differs from the Nov 25 Code Mode multi-cloud item)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Re-fetched the live GitHub release page this run; content matches."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the release notes' own wording for the headline item."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Searched Anthropic's own channel/blog for a first-party demo of this specific beta feature; none found -- it's a minor, just-shipped beta item unlikely to have one yet."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly actionable for anyone who already has an MCP server connected."
+        }
+      ]
+    },
+    {
+      "slug": "anthropic-messages-api-rust-migration",
+      "section": "TRENDING ON X",
+      "title": "Anthropic turned its own production API into a verifier to migrate it from Python to Rust",
+      "summary": "Migrating the Messages API (Claude Code and Cowork's own on-ramp to Claude, with traffic up roughly 1,800x since early 2024) from Python to Rust, Anthropic couldn't trust tests alone: a full test matrix would take 12 days per model, and Claude's own nondeterminism meant two different outputs didn't necessarily mean a bug. Instead they shadowed real production traffic, replayed the same model output into both versions, and fingerprinted each divergence (which step, which byte range) so a coordinating Claude agent could dispatch a worker to each distinct bug -- fixed first in a fast local sandbox loop, then validated against shadowed live traffic, with corrections saved to memory so the same mistake wasn't fixed twice. Result: about 70% less CPU per request and about 20% faster time-to-first-token, without ever taking the API offline.",
+      "why": "The actual hard part of using Claude for a big migration isn't writing the new code -- it's building a way to verify it, and this is a concrete, reusable blueprint for doing that on a live system you can't take offline.",
+      "actionLabel": "Angle for you",
+      "action": "If you're porting or rewriting anything an agent could generate quickly, the bottleneck is your verifier -- consider whether you can shadow the old system against the new one in production instead of relying on your test suite alone.",
+      "permalink": "https://www.anthropic.com/research/migrating-api-to-rust",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Primary-source engineering account with a concrete, novel verification architecture (checkpointing + fingerprinting + inner/outer/memory loops), not a rehash; not a duplicate of the Nov 25 Siren safety-research pick (different post, different topic)."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Found the direct permalink via Anthropic's own /engineering page and re-opened it; it is the real post, not a search snippet."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Figures (70% CPU, 20% TTFT, 1,800x traffic growth, 12 days of tests, 98%/25% test-vs-production pass rates) read directly from the article's own text and figures."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "Not a SHIPPED item."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Unusually concrete and directly transferable to any large agent-assisted migration, which matches Vikas's own interests."
+        }
+      ]
+    },
+    {
+      "slug": "langchain-agent-lake",
+      "section": "STUDY",
+      "title": "LangChain: why your agent traces need their own 'agent lake,' not a data lake",
+      "summary": "LangSmith's architecture has converged on what LangChain calls an agent lake: a database purpose-built for agent traces (SmithDB, handling customers like Clay at hundreds of millions of events/day) paired with 'intelligent compute' that runs over them -- online evaluators plus a natural-language 'AI Search' to find high-signal traces, Insights to cluster what's trending wrong, and LangSmith Engine, which has analyzed 60M+ production traces, diagnosed root causes, and opened its own pull requests (Engine v2 tests its own fix against an eval set before a human ever sees it). SmithTune, a CLI that fine-tunes a model on your best trajectories, took a tuned Kimi K3 to a 96 on LangChain's internal issue-detection benchmark, versus 90 for base Kimi K3 and 87 for GPT-5.6 Sol.",
+      "why": "A trace is only a debugging tool until you're running agents at a scale where no one can read them one by one -- this is what the next layer (purpose-built storage plus automated triage and auto-fix) looks like once you're there.",
+      "actionLabel": "Try this",
+      "action": "If you're logging agent traces anywhere, ask whether you could cluster and auto-triage them the way Insights/Engine do, rather than waiting for a user complaint before you go look.",
+      "permalink": "https://www.langchain.com/blog/the-agent-lake",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Concrete architecture with real customer scale (Clay) and real benchmark numbers (SmithTune 96 vs 90 vs 87), not a release-notes rehash; checked against the Nov 25 'agent record' STUDY pick (same author, same week, but a distinct post about data/compute architecture vs. that post's UI/dashboard rebuild) -- judged genuinely distinct, flagged here for transparency given the thematic closeness."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Read the live post directly at langchain.com/blog/the-agent-lake this run."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "All figures (Clay's event volume, Engine's 60M+ traces, SmithTune's 96/90/87 benchmark) are quoted directly from the post's own text."
+        },
+        {
+          "check": "Watch material",
+          "result": "N/A",
+          "reason": "STUDY item, not required."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "Directly relevant to anyone running agents with any kind of trace logging, including Vikas's own harness/eval work."
+        }
+      ]
+    },
+    {
+      "slug": "alan-braun-context-as-a-graph",
+      "section": "WATCH QUEUE",
+      "title": "Models Alone Aren't Enough: Connected Context for Agents -- Alan Braun, Atlassian",
+      "summary": "Atlassian's Alan Braun argues a model is only as good as the context graph behind it, and makes the case for connecting an org's actual work graph (tickets, docs, code, decisions) to agents instead of relying on retrieval over flat documents. Judged from the video's title, description, and Atlassian's own public Teamwork Graph/MCP work -- TubeAlfred was unavailable this run and the native transcript panel didn't render usable text, so this is the description-based fallback, disclosed per standing instruction.",
+      "why": "Directly on the 'how do agents get the context behind the code, not just the code' problem -- from a team that's shipped an actual MCP-exposed context graph, not just a conference argument for one.",
+      "actionLabel": "Worth the drive",
+      "action": "29 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=pH9CZKTB4yQ",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Specific, on-topic argument from a team with a shipped context-graph product, not generic AI-hype; not a duplicate of any prior brief."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Confirmed the video is live and public on the AI Native Dev channel."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the video's title/description and corroborating background on Atlassian's Teamwork Graph; transcript fallback explicitly disclosed per standing instruction."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Is itself the watch item; legitimate channel (AI Native Dev podcast), not a content-farm clone."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "29 minutes, squarely on Vikas's own semantic-code-knowledge-graph research interest."
+        }
+      ]
+    },
+    {
+      "slug": "quinn-slack-amp-21-people",
+      "section": "WATCH QUEUE",
+      "title": "How 21 People Built a $100M+ Agent Company -- Quinn Slack, Amp",
+      "summary": "Amp spun out of Sourcegraph with 21 people and, unable to hire for a year, was forced to work differently: no task tracker, no PMs, one meeting a week, everything routed through the agent, tiny monitored pushes instead of big releases. Comments on the video are mixed -- several viewers are skeptical of a founder describing his own company's process as a model to follow -- disclosed honestly here rather than treated as unanimous praise (TubeAlfred unavailable this run; judged from description, title, and comments per standing instruction).",
+      "why": "A concrete, if self-reported, account of what an all-in agentic SDLC looks like day to day at a small team, not just the pitch for why you should want one.",
+      "actionLabel": "Worth the drive",
+      "action": "18 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=Xyb1Bn_L2U4",
+      "eval": [
+        {
+          "check": "Meaningful",
+          "result": "PASS",
+          "reason": "Specific process details (no PM/tracker, weekly meeting cadence, small monitored pushes), not generic agent hype; not a duplicate."
+        },
+        {
+          "check": "Link works",
+          "result": "PASS",
+          "reason": "Confirmed live and public on the AI Engineer channel."
+        },
+        {
+          "check": "Summary accurate",
+          "result": "PASS",
+          "reason": "Matches the video's own description; mixed comment reception disclosed rather than hidden, per standing instruction to check comments before suggesting."
+        },
+        {
+          "check": "Watch material",
+          "result": "PASS",
+          "reason": "Is itself the watch item; AI Engineer is a legitimate, established conference-talk channel."
+        },
+        {
+          "check": "Worth the time",
+          "result": "PASS",
+          "reason": "18 minutes, concrete team-structure account relevant to agentic-SDLC practice, with the mixed reception noted so Vikas can judge for himself."
+        }
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "AlphaSignal newsletter",
+      "stage": "step 3",
+      "reason": "Still silent -- last issue landed Nov 13, now a 13-day gap (up from 12 yesterday). Nothing to source from it today."
+    },
+    {
+      "title": "OpenAI Codex CLI 0.172.0",
+      "stage": "step 3",
+      "reason": "Checked the full GitHub release notes; almost entirely internal refactors, bug fixes, and minor UX tweaks (tab-complete for slash command args, task-group navigation, Bedrock Runtime selection at setup) with no standout user-facing capability change. Weaker than the Claude Code MCP-skills pick, so not used as a second SHIPPED item -- SHIPPED cap is 2, but this is a ceiling, not a quota."
+    },
+    {
+      "title": "Cursor changelog, Anthropic news (besides the Rust migration post), Google/Gemini API changelog",
+      "stage": "step 3",
+      "reason": "Cursor: nothing new since Nov 6 (Voice Chat with Agents), already covered in the Nov 8 brief. Anthropic: only IPO/corporate and an interpretability-research post this week, judged less 'where do I use this' than the Rust-migration piece used instead. Google: Gemini API changelog has nothing dated after Nov 19."
+    },
+    {
+      "title": "Vercel changelog (several Nov 24-25 items: Managed Images for Sandbox runtimes, AI Gateway MCP management, Flags SDK, Workflow SDK speed, usage-based builds)",
+      "stage": "step 3",
+      "reason": "None had a genuine user-impact story beyond API/CLI/infra surface expansion. Vercel SHIPPED items have been marked not_useful twice before specifically for lacking real-world impact stories, so held to a higher bar this run and nothing cleared it."
+    },
+    {
+      "title": "DeepLearning.AI",
+      "stage": "step 3",
+      "reason": "No new course launched this week -- newest is 'Tabular Foundation Models for Data Science Agents' (14 days old, already passed over before as a weak fit) and 'Evaluating and Improving Agentic Applications' (21 days old)."
+    },
+    {
+      "title": "GitHub trending: cathrynlavery/diagram-design, colbymchenry/codegraph, obra/superpowers, firecrawl/firecrawl, toeverything/AFFiNE, jingyaogong/minimind, elementalsouls/Claude-BugHunter, and others on today's since=daily pages",
+      "stage": "step 3",
+      "reason": "diagram-design (73.1k stars, 495 commits, full release/CI history) is an established, mature project having a viral day, not a new/surging one -- same category as the other established giants listed (superpowers 326k, firecrawl 210k, AFFiNE 78k, minimind 71k), all excluded per standing instruction. codegraph is a confirmed duplicate of the 2026-10-02 STUDY pick (already excluded once before). Claude-BugHunter's red-team/bug-hunting-disclosure focus was judged off-topic/sensitive for this brief. google-labs-code/stitch-skills (13.0k stars, 1,539 today) was the strongest genuinely-relevant, actively-releasing candidate and was used as today's GITHUB PICK; cursor/plugins (19.5k stars) was a runner-up but reads as an older, already-announced spec (Oct 13) rather than something newly surging today."
+    },
+    {
+      "title": "\"He Built An AI Software Factory From Scratch\" (Modern Software Engineering) and \"Anthropic Just Gave Claude Ten INSANE Upgrades\" (Chase AI)",
+      "stage": "step 3",
+      "reason": "The first is thematically repetitive with several already-published 'software factory' videos from the last three briefs (Dex Horthy Nov 24, Armin Ronacher Nov 23, GitHub Universe Nov 25) -- passed over for genuine topic variety in favor of the Atlassian context-graph and Amp team-structure picks. The second reads as reaction/hype content from a smaller channel, not first-party or substantive."
+    },
+    {
+      "title": "\"Shadcn Just Rebuilt UI for AI Agents\" (Better Stack) and \"How to Use Subagents to Keep Context Clean\" (LangChain)",
+      "stage": "step 3",
+      "reason": "Both looked like reasonable, short, substantive runners-up for Watch Queue but were cut for the section's 2-item cap in favor of the Atlassian and Amp picks, which were judged more directly relevant to Vikas's stated research interest and day-to-day agentic SDLC work respectively."
+    }
+  ]
+}
