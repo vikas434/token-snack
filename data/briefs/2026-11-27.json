@@ -1,0 +1,189 @@
+{
+  "date": "2026-11-27",
+  "skipped": [
+    {
+      "section": "GITHUB PICK",
+      "reason": "Checked github.com/trending/<lang>?since=daily (unfiltered + Python/TypeScript/Go/Rust) and relevant topic pages. Two candidates surfaced (atte500/TeDDy, bjcoombs/ai-native-toolkit) but both came from topic-page 'recently updated' sort, not actual daily trending velocity, and neither appears on today's since=daily trending pages at all (TeDDy ~25 stars, ai-native-toolkit ~31 stars live). Nothing cleared the bar for a genuine daily-surge pick -- left empty per standing instruction not to force a weak pick."
+    }
+  ],
+  "items": [
+    {
+      "slug": "cursor-sdk-1-5-shell-streaming",
+      "section": "SHIPPED",
+      "title": "Cursor SDK 1.5.0: live shell output, per-call step events, and honest usage on failed runs",
+      "summary": "Run streams now emit a shell-tool-call-delta update with each chunk of shell stdout/stderr, so you can show live shell output instead of a dead spinner. Local runs emit one step-started and one step-completed update per model call, so you can count or time steps. Usage is now reported even for runs that are cancelled or fail mid-turn (previously silent). Also new: local.onConnectionStateChange for reconnect/connected state, a configurable sandbox binary path, and HTTP/1.1 streaming for Python local agents.",
+      "why": "If you're building any UI on top of Cursor's agent SDK, this closes the two gaps that make that UI feel broken: no live shell output, and usage numbers that silently went missing on a crash.",
+      "actionLabel": "Try this",
+      "action": "If you have a Cursor SDK integration, wire up the new step-started/step-completed events to show real progress instead of a spinner -- 10 minutes to try against an existing run.",
+      "permalink": "https://cursor.com/docs/release-notes",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new SDK capability (live shell streaming, step events, usage-on-failure); not a duplicate -- Claude Code's recent MCP-skills release is a different product."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched cursor.com/docs/release-notes fresh this run; 1.5.0 entry confirmed live with matching details."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the release notes' verbatim wording."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched Cursor's official YouTube channel for a first-party SDK 1.5.0 demo; none found. Per standing instruction, publishing without a Watch line rather than forcing a non-first-party match."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable for anyone building agent UIs on Cursor's SDK."}
+      ]
+    },
+    {
+      "slug": "vercel-ai-gateway-mcp-agents",
+      "section": "SHIPPED",
+      "title": "Vercel: your own agent can now manage AI Gateway through Vercel MCP",
+      "summary": "Agents connected via Vercel MCP can now manage virtual models, configure routing rules, and set spending budgets on AI Gateway directly -- no dashboard click-through required. This turns gateway configuration into something an agent can do as part of a task, not just something a human sets up once.",
+      "why": "The gap this closes is real: until now, an agent could call models through the Gateway but a human had to be the one who set routing and budget policy -- now the agent can do both ends.",
+      "actionLabel": "Try this",
+      "action": "If you use Vercel AI Gateway, connect it over MCP and ask an agent to set a spending budget or add a routing rule -- see what it actually changes before trusting it on a shared project.",
+      "permalink": "https://vercel.com/changelog/agents-can-now-manage-ai-gateway-through-vercel-mcp",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new agent-facing capability, not a pricing/marketing note; not a duplicate of any prior Vercel SHIPPED item."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched vercel.com/changelog page fresh this run; Nov 24 2026 entry confirmed, content matches."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the changelog's own wording."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched VercelHQ's channel; no first-party demo specific to this feature found. Publishing without a Watch line per standing instruction."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly useful for anyone managing AI Gateway or agent model routing/budgets programmatically. Held Vercel SHIPPED items to a higher real-impact bar this run given two prior not-useful marks on Vercel items -- this one clears it since it's agent-actionable, not just an API surface expansion."}
+      ]
+    },
+    {
+      "slug": "basia-kubicka-agent-model-harness",
+      "section": "ON LINKEDIN",
+      "title": "Agent = Model + Harness: a concrete deterministic-gate pattern for content/agent pipelines",
+      "summary": "Basia Kubicka rebuilt her LinkedIn content agent after discovering its \"MANDATORY. NEVER SKIP.\" prompt instructions could report \"all checks pass\" without actually running the checks. Her fix: a recorded state machine (idea -> accepted -> researched -> drafted -> ready -> shipped -> measured) where a linter, a hook-length check, and a grading model all have to report in before a draft can move to \"ready\" -- anything deterministic moved out of the prompt and into code.",
+      "why": "The exact failure she hit -- a prompt-only check that can silently not run and still claim success -- is the most common silent bug in home-built agent harnesses, and her fix (code-enforced gates, judgment-only LLM calls) is a pattern you can lift directly.",
+      "actionLabel": "Angle for you",
+      "action": "Audit your own harness for one check that still lives only in prompt instructions rather than code -- that's the one most likely to silently stop firing.",
+      "permalink": "https://www.linkedin.com/posts/basiakubicka_agent-model-harness-i-learned-it-the-share-7531049195252850688-h3Qx/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, specific technique (code-enforced state machine gates) with a real failure story behind it, not generic advice; checked against recent days, no duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Full permalink extracted via LinkedIn's copy-link toast and re-verified by opening it directly this run."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the post's full text as read."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Short, detail-rich, immediately applicable per standing LinkedIn-pick preference; maps directly to harness/framework work."}
+      ]
+    },
+    {
+      "slug": "panos-kostakos-agent-knowledge-graph",
+      "section": "ON LINKEDIN",
+      "title": "Turning a single Claude Code session log into a queryable knowledge graph with Relate",
+      "summary": "Panos Kostakos took one 26-turn, 62-tool-call Claude Code session and loaded it into Relate (an open-source embedded graph database): turns and tool calls as the episodic layer, with topics/decisions/questions tagged by the model as a semantic layer on top. He notes the approach scales to linking many sessions into one global graph, and that the topic/decision tags are the model's interpretation, not ground truth.",
+      "why": "This is a working, minimal version of exactly the kind of episodic-plus-semantic structure that turns agent session logs into something queryable instead of a pile of transcripts -- directly adjacent to building a semantic knowledge graph over a codebase.",
+      "actionLabel": "Angle for you",
+      "action": "Try the same turn-by-turn-into-a-graph approach on one of your own Claude Code session logs as a one-evening spike, before deciding whether it's worth building into your research tooling.",
+      "permalink": "https://www.linkedin.com/posts/pkostakos_agent-observability-i-took-one-working-share-7531527743025397761-xvQu/",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete working example with specific numbers (26 turns, 62 tool calls), honest about its own limitation (tags are the model's interpretation); no duplicate found."},
+        {"check": "Link works", "result": "PASS", "reason": "Full permalink extracted and re-verified by direct navigation this run."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the post's full text as read."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Squarely on Vikas's own PhD research interest (semantic code knowledge graphs); short, detail-rich, immediately triable."}
+      ]
+    },
+    {
+      "slug": "openai-codex-astra-exoplanet-hunt",
+      "section": "TRENDING ON X",
+      "title": "Two amateur astronomers used Codex and Astra to search public telescope data for exoplanet signals",
+      "summary": "Kevin Bond and Ethan Byrd, working independently, used OpenAI's Codex and Astra to search public telescope data for the tiny, recurring dips in starlight an orbiting planet can cause. Both found signals worth a second look -- a genuine example of agentic coding tools doing autonomous pattern-search over a large public dataset, not writing code for its own sake.",
+      "why": "It's a clean demonstration of agents doing real exploratory data work end-to-end against public data, not just completing a coding task someone already scoped for them.",
+      "actionLabel": "Angle for you",
+      "action": "If you've got a public or internal dataset nobody has fully mined, this is the pattern: point a coding agent at it with a concrete signal to search for, not an open-ended \"find something interesting.\"",
+      "permalink": "https://x.com/OpenAI/status/2125305606685053416",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine buildable-angle demonstration (agentic search over real public data), favored per standing instruction over pure discourse; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-opened x.com/OpenAI/status/2125305606685053416 fresh this run; resolves and content matches."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the tweet's own text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete applicable pattern (point a coding agent at an unmined dataset with a specific signal), not just a discourse piece."}
+      ]
+    },
+    {
+      "slug": "langsmith-coding-agent-spend-by-outcome",
+      "section": "STUDY",
+      "title": "LangSmith for Coding Agents: spend now tracked by PR outcome, not just tokens",
+      "summary": "New public-beta dashboard in LangSmith links coding-agent spend (Claude Code, Codex, Cursor, Copilot in VS Code, Deep Agents) directly to the GitHub PR or GitLab MR it produced, breaking spend down by PR state (open/closed/merged) and work type, with unattributed spend tracked separately. LangChain's own motivating example is their internal coding agent, Robin, where spend \"started climbing\" with no way to see what it was buying.",
+      "why": "Token spend alone tells you nothing about whether an agent is earning its cost -- this is the first mainstream tool that ties the dollar number to a merged-or-not outcome.",
+      "actionLabel": "Try this",
+      "action": "If your team is running Claude Code or Cursor at any scale, this is worth a look specifically for the \"cost per merged PR\" cut, which is the number that actually matters to a budget conversation.",
+      "permalink": "https://www.langchain.com/blog/langsmith-coding-agents-roi",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete new capability (spend tied to PR outcome) with a specific internal motivating example; not a duplicate of the Nov 26 'agent lake' STUDY pick (different topic -- cost/outcome tracking vs. trace storage architecture). Adoption evidence is thin (LangChain's own internal example, no named external customer cited) -- noted honestly rather than oversold."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched langchain.com/blog/langsmith-coding-agents-roi fresh this run, dated Nov 18 2026; content matches."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Matches the post's own text, including the Robin internal example."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Relevant to anyone running agentic coding tools at scale and wanting cost tied to real outcomes rather than raw token spend."}
+      ]
+    },
+    {
+      "slug": "langchain-jev-decision-models-harness",
+      "section": "WATCH QUEUE",
+      "title": "Building Agent Harnesses with Jev: Where Decision Models Fit -- Sydney Runkle, LangChain",
+      "summary": "Sydney Runkle walks through where small, fast decision models like TypeSafe AI's Jev fit in an agent harness -- the layer around the core loop where extra LLM calls quietly add latency. In a LangChain A/B test, routed threads took longer than unrouted ones because of the routing LLM call itself, not the work it routed to; swapping in Jev fixed it. Comments add real detail: one names it as the classical-ML \"cheap by default, escalate by exception\" cascade pattern, another frames every harness decision as a cost-benefit question against a plain rule.",
+      "why": "A concrete, measured example of a harness decision (which model routes what) quietly becoming the bottleneck -- and a specific fix, not just the general advice to \"use a smaller model somewhere.\"",
+      "actionLabel": "Worth the drive",
+      "action": "13 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=qquIt--ANqI",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Specific, measured engineering finding (routing LLM call itself was the latency bottleneck) rather than generic agent-harness talk; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-confirmed live and public this run via direct navigation; 13:42 runtime."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Based on description plus comment-section review (no transcript tool available this run; fallback disclosed per standing instruction)."},
+        {"check": "Watch material", "result": "PASS", "reason": "Browsed from Vikas's personalized YouTube AI shelf; comments show substantive engineering discussion (cascade pattern, confidence thresholds), not a content-farm clone."},
+        {"check": "Worth the time", "result": "PASS", "reason": "13 minutes; directly applicable to Vikas's own harness design work."}
+      ]
+    },
+    {
+      "slug": "vercel-agent-desktop-vs-claude-code-computer-use",
+      "section": "WATCH QUEUE",
+      "title": "Vercel Agent Desktop vs. Claude Code computer use, tested side by side",
+      "summary": "A side-by-side test of Claude Code's screenshot-based computer use against Vercel's agent-desktop (accessibility-tree based, no screenshots) for testing an app's UI. Real limitation surfaced in comments: around 11:30, a popup covering a button still registers as clickable to Agent Desktop, which two commenters flag as a reason to keep screenshot-based computer use as a fallback. Pinned comment is sponsor plugs (Paradev, a newsletter, Autometa) unrelated to the video's content, which is an organic comparison -- disclosed for transparency.",
+      "why": "The 11:30 popup-still-clickable failure is the kind of concrete limitation that doesn't show up in a feature announcement -- useful before you bet a test suite on either approach alone.",
+      "actionLabel": "Worth the drive",
+      "action": "13 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=1mdFSbyKEB4",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Concrete, specific technical limitation surfaced (popup click-through bug at 11:30) rather than a generic feature comparison; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-confirmed live and public this run via direct navigation; 12:52 runtime."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Based on description plus comment-section review (no transcript tool available this run; fallback disclosed)."},
+        {"check": "Watch material", "result": "PASS", "reason": "Browsed from Vikas's personalized YouTube AI shelf; real technical discussion in comments despite sponsor-heavy pinned comment, flagged honestly rather than hidden."},
+        {"check": "Worth the time", "result": "PASS", "reason": "13 minutes; directly useful before committing a test suite to either computer-use approach."}
+      ]
+    }
+  ],
+  "dropped": [
+    {
+      "title": "AlphaSignal newsletter",
+      "stage": "step 1",
+      "reason": "Still silent -- no new issue found in the last 14 days (gap has now grown from 13 to 14 days). Could not be checked as a source at all this run; flagged separately via notification as a reliability gap, not just 'checked and empty'."
+    },
+    {
+      "title": "Claude Code 2.1.x point releases (through v2.1.332+)",
+      "stage": "step 3",
+      "reason": "Already covered in the Nov 26 brief (MCP-server skills, v2.1.332); any newer point releases since are incremental bug fixes with no standout new capability."
+    },
+    {
+      "title": "Anthropic Rust migration post / Siren research",
+      "stage": "step 3",
+      "reason": "Both already sent -- the Rust migration via the Nov 26 TRENDING ON X item, and Siren research via an earlier brief; also excluded a related tweet and a ~1h50m podcast both covering the same Rust-migration story via two different media."
+    },
+    {
+      "title": "LangChain 'Agent Lake' and related trace-architecture posts",
+      "stage": "step 3",
+      "reason": "Agent Lake sent on Nov 26 as a STUDY pick; today's LangSmith spend-by-outcome post judged sufficiently distinct (cost/outcome tracking vs. trace storage) to use instead, but anything closer to a rehash of the Agent Lake architecture itself was excluded."
+    },
+    {
+      "title": "'How to build a knowledge factory,' 'Building Proactive Agents,' 'LangSmith Tool Gateway'",
+      "stage": "step 3",
+      "reason": "All already covered in recent prior briefs; excluded as duplicates."
+    },
+    {
+      "title": "'How 21 People Built a $100M+ Agent Company' -- Quinn Slack, Amp",
+      "stage": "step 1 (duplicate check)",
+      "reason": "Already in the Nov 26 brief's WATCH QUEUE -- confirmed via direct check of the current feedback artifact's live items before shortlisting candidates."
+    },
+    {
+      "title": "github.com/trending candidates: atte500/TeDDy, bjcoombs/ai-native-toolkit",
+      "stage": "step 2c / GITHUB PICK eval",
+      "reason": "Surfaced via topic-page 'recently updated' sort, not github.com/trending/<lang>?since=daily; live star counts (~25 and ~31) confirmed low and neither appears on any since=daily trending page today. Did not clear the bar for a genuine daily-surge pick -- GITHUB PICK left empty rather than forcing a weak choice."
+    },
+    {
+      "title": "Various GitHub trending-page entries (established giants having a viral day)",
+      "stage": "step 2c",
+      "reason": "Today's since=daily pages (unfiltered and language-filtered) were dominated by long-established large repos rather than genuinely new/surging ones; none judged a fit for a daily-velocity GITHUB PICK."
+    }
+  ]
+}
