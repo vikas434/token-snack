@@ -1,0 +1,95 @@
+{
+  "date": "2026-11-28",
+  "notice": "LinkedIn and X could not be checked today (no signed-in browser session this run); GitHub Pick had no candidate that cleared the bar.",
+  "skipped": [
+    {
+      "section": "ON LINKEDIN",
+      "reason": "No signed-in browser session was available this run to scout the feed."
+    },
+    {
+      "section": "TRENDING ON X",
+      "reason": "No signed-in browser session was available this run to scout the timeline."
+    },
+    {
+      "section": "GITHUB PICK",
+      "reason": "Checked unfiltered and language-filtered since=daily trending pages plus topic pages. One promising candidate's search-API star count (4,490) did not match its live repo page (13 stars), so it was excluded; nothing else both genuinely surging and verifiable live cleared the bar."
+    }
+  ],
+  "items": [
+    {
+      "slug": "anthropic-enterprise-frontier-safeguards",
+      "section": "SHIPPED",
+      "title": "Anthropic's Enterprise Frontier Safeguards actually goes live in beta: zero data retention, keys held in your own cloud bucket",
+      "summary": "Anthropic first announced EFS on Sept 1 as a phased rollout \"later this fall\"; Claude Platform release notes now show it landed in beta on Nov 23. Anthropic stops retaining prompts and responses; an encrypted copy is written to a storage bucket the customer owns, unreadable even by the customer's own team, with Anthropic's human review permanently off. Live now on Claude Platform (per workspace) and via Amazon Bedrock.",
+      "why": "The most concrete answer yet to \"how do we get frontier-model capability without handing our prompts to the vendor.\"",
+      "actionLabel": "Try this",
+      "action": "If your company has held off on top-tier models over data-retention concerns, check EFS eligibility and study the bucket-ownership model as a pattern for anything sensitive you build.",
+      "permalink": "https://platform.claude.com/docs/en/manage-claude/enterprise-frontier-safeguards/overview",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Confirmed via the Sept 1 announcement plus the Nov 23 release-notes entry that this is a real capability actually going live now, not a rehash of the September announcement."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched the exact permalink this run; it resolves to the EFS overview, not a homepage or 404."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Summary checked line-by-line against the freshly fetched page text."},
+        {"check": "Watch material", "result": "N/A", "reason": "Searched Anthropic's own channel and blog for a first-party demo of this specific feature; none exists for this kind of compliance/infra feature."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Directly actionable for anyone evaluating frontier models under data-retention constraints."}
+      ]
+    },
+    {
+      "slug": "langsmith-tool-gateway",
+      "section": "STUDY",
+      "title": "LangSmith Tool Gateway (Public Beta): one managed layer for agent tool credentials, approvals, and audit trails",
+      "summary": "Centralizes how agents authenticate to and call tools: register MCP or built-in servers into \"tool kits\" at one URL, choose whether an agent acts as itself or the signed-in user, set deny/approval policies requiring human confirmation for sensitive calls, and get full tool-call traces. The example customer, a large US retailer building store-ops agents, has already stood up 50+ MCP servers exposing over 1,000 tools through it.",
+      "why": "Answers \"which agent, posing as which identity, is allowed to call which tool, and can I prove it after\" -- the gap that stops a demo from getting signed off by security.",
+      "actionLabel": "Try this",
+      "action": "If you run more than a couple of MCP servers behind an agent, look specifically at the approval-policy model for sensitive calls.",
+      "permalink": "https://www.langchain.com/blog/langsmith-tool-gateway",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Genuine new public-beta product, distinct from other recent LangSmith picks (trace storage, cost-by-PR-outcome); not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Re-fetched fresh this run; confirmed live blog post."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Quotes and the customer detail checked against the fresh fetch."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Concrete adoption number grounds it beyond a feature announcement."}
+      ]
+    },
+    {
+      "slug": "jarred-sumner-bun-agent-written-code",
+      "section": "WATCH QUEUE",
+      "title": "How to Ship Millions of Lines of Agent-Written Code -- Jarred Sumner, Anthropic",
+      "summary": "Jarred Sumner, creator of Bun, walks through merging a multi-million-line PR adding an ahead-of-time compiler to Bun -- five rewrites over about a month, agent-driven, landing at roughly 4x less memory and 2x faster startup.",
+      "why": "Concrete before/after numbers on what it takes to get an agent to a real, production-grade, multi-million-line PR.",
+      "actionLabel": "Worth the drive",
+      "action": "22 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=TvsF67C2F54",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Distinct story from the Anthropic Python-to-Rust API rewrite already covered elsewhere; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Video loaded live this run; title, channel, and view count confirmed."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Checked against the video's own description read this run (no transcript tool available; description plus top comments used, disclosed)."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Real artifact with measured results, plus an honest process detail from top comments."}
+      ]
+    },
+    {
+      "slug": "cloudflare-neolab-michelle-chen",
+      "section": "WATCH QUEUE",
+      "title": "Why Cloudflare Became a Neolab -- Michelle Chen, Cloudflare",
+      "summary": "Cloudflare bet early that models would stay small enough to run at the edge; they grew to trillions of parameters instead, so Cloudflare pivoted to serving frontier models. Then fast \"decision models\" for prompt routing arrived, and Cloudflare trained its own from scratch over a weekend, shipping four models in a few days.",
+      "why": "A fast-turnaround case study in the same decision-model pattern as a recent LangChain pick -- useful for how quickly a team can stand one up.",
+      "actionLabel": "Worth the drive",
+      "action": "20 minutes.",
+      "permalink": "https://www.youtube.com/watch?v=cYcYfM9Mvwo",
+      "eval": [
+        {"check": "Meaningful", "result": "PASS", "reason": "Different company and specifics from the other recent decision-model story; not a duplicate."},
+        {"check": "Link works", "result": "PASS", "reason": "Video loaded live this run; title, channel, and view count confirmed."},
+        {"check": "Summary accurate", "result": "PASS", "reason": "Checked against the video's own description read this run (description plus top comments used, no transcript tool available, disclosed)."},
+        {"check": "Watch material", "result": "N/A", "reason": "Not a SHIPPED item."},
+        {"check": "Worth the time", "result": "PASS", "reason": "Positive, substantive top comments from real viewers plus a concrete technical narrative."}
+      ]
+    }
+  ],
+  "dropped": [
+    {"title": "Anthropic Rust-migration podcast (Katelyn Lesse, The Pragmatic Engineer)", "stage": "step 3", "reason": "Same-story duplicate of the Anthropic Python-to-Rust API rewrite already covered via other media."},
+    {"title": "GitHub repo with an API-reported star count of 4,490", "stage": "eval gate", "reason": "Live repo page showed only 13 real stars -- excluded as unreliable API data, confirming the known search-API star-count problem."},
+    {"title": "\"Stop Building Software Factories\" conference talk", "stage": "step 3", "reason": "Top audience comments on the video itself said the talk had no real substance behind the slides."},
+    {"title": "A science-partnership model-capability announcement", "stage": "step 3", "reason": "Benchmark/research-capability announcement in a non-coding domain, not an actionable developer-tooling change."},
+    {"title": "An ISO-certification blog post citing internal process use", "stage": "step 3", "reason": "Adoption claim was qualitative only with no named customer or measured benefit; a stronger same-day candidate covered similar ground with concrete numbers."}
+  ]
+}
